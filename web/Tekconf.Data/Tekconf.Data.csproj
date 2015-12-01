@@ -82,6 +82,10 @@
     <Compile Include="Migrations\201511300519443_FullConferenceEntity.Designer.cs">
       <DependentUpon>201511300519443_FullConferenceEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512011739552_AddingUsers.cs" />
+    <Compile Include="Migrations\201512011739552_AddingUsers.Designer.cs">
+      <DependentUpon>201512011739552_AddingUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryActionResult.cs" />
@@ -110,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511300519443_FullConferenceEntity.resx">
       <DependentUpon>201511300519443_FullConferenceEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512011739552_AddingUsers.resx">
+      <DependentUpon>201512011739552_AddingUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

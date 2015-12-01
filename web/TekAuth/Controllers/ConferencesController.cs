@@ -1,17 +1,17 @@
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using AutoMapper.QueryableExtensions;
 using Tekconf.Data;
 using Tekconf.Data.Entities;
-using Tekconf;
-using Tekconf.DTO;
 using System.Data.Entity;
+using System.Linq;
+using System.Security.Claims;
+
 
 namespace TekAuth.Controllers
 {
-    [Authorize]
+    [MyAuthAttribute]
     public class ConferencesController : ApiController
     {
         private readonly IConferenceRepository _repository;
@@ -26,11 +26,12 @@ namespace TekAuth.Controllers
             _repository = repository;
         }
 
-
+        
         public async Task<IHttpActionResult> Get()
         {
             try
             {
+                await CreateUserIfNotExists();
                 var conferences = await _repository
                     .GetConferences()
                     .ProjectTo<Tekconf.DTO.Conference>()
@@ -39,19 +40,44 @@ namespace TekAuth.Controllers
                 return Ok(conferences);
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return InternalServerError();
             }
         }
 
-        public async Task<IHttpActionResult> Get(string slug)
+        private async Task CreateUserIfNotExists()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                try
+                {
+                    string name = ClaimsPrincipal.Current?.FindFirst("name")?.Value;
+                    var user = await _repository
+                        .GetUser(name);
+                    if (user == null)
+                    {
+                        user = new User()
+                        {
+                            Name = name
+                        };
+                        await _repository.SaveUser(user);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    var xx = ex.Message;
+                }
+            }
+        }
+
+        public async Task<IHttpActionResult> Get(string id)
         {
             try
             {
                 var conference = await _repository
                     .GetConferences()
-                    .Where(c => c.Slug == slug)
+                    .Where(c => c.Slug == id)
                     .ProjectTo<Tekconf.DTO.Conference>()
                     .SingleOrDefaultAsync();
 

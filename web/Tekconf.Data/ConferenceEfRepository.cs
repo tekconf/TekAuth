@@ -34,15 +34,32 @@ namespace Tekconf.Data
 
         }
 
-        public Conference GetConference(int id)
+        public async Task<Conference> GetConference(int id)
         {
-            return _ctx.Conferences.FirstOrDefault(e => e.Id == id);
+            return await _ctx.Conferences.FirstOrDefaultAsync(e => e.Id == id);
         }
 
 
         public IQueryable<Conference> GetConferences()
         {
             return _ctx.Conferences;
+        }
+
+        public async Task<User> GetUser(string name)
+        {
+            return await _ctx.Users.FirstOrDefaultAsync(e => e.Name == name);
+        }
+
+        public async Task SaveUser(User user)
+        {
+            _ctx.Users.Add(user);
+            await _ctx.SaveChangesAsync();
+        }
+
+
+        public IQueryable<User> GetUsers()
+        {
+            return _ctx.Users;
         }
 
 

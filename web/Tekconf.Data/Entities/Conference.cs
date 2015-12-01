@@ -6,11 +6,32 @@ namespace Tekconf.Data.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    [Table("Users")]
+    public class User
+    {
+        public User()
+        {
+            this.Conferences = new HashSet<Conference>();
+        }
+        public int Id { get; set; }
+
+        [Required]
+        [StringLength(500)]
+        public string Name { get; set; }
+
+        public virtual ICollection<Conference> Conferences { get; set; }
+    }
+
     [Table("Conferences")]
     public class Conference
     {
         public int Id { get; set; }
 
+        public Conference()
+        {
+            this.Users = new HashSet<User>();
+        }
+        public virtual ICollection<User> Users { get; set; }
         [Required]
         [StringLength(100)]
         public string Slug { get; set; }
