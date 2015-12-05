@@ -35,7 +35,7 @@ namespace ios
 					});
 
 					var conferences = await api.GetConferences();
-					var x = conferences.Count();
+					AppDelegate.Conferences = conferences;
 				}
 			};
 		}

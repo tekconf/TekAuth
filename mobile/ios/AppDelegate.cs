@@ -1,5 +1,7 @@
 ﻿using Foundation;
 using UIKit;
+using System.Collections.Generic;
+using Tekconf.DTO;
 
 namespace ios
 {
@@ -8,7 +10,7 @@ namespace ios
 	[Register ("AppDelegate")]
 	public class AppDelegate : UIApplicationDelegate
 	{
-		// class-level declarations
+		public static IList<Conference> Conferences {get;set;} = new List<Conference>();
 
 		public override UIWindow Window {
 			get;
