@@ -1,6 +1,10 @@
 using System;
 using UIKit;
 using Auth0.SDK;
+using Refit;
+using TekConf.Mobile.Core;
+using System.Net.Http;
+using System.Linq;
 
 namespace ios
 {
@@ -25,6 +29,13 @@ namespace ios
 				if (user != null) {
 					nickname.Text = user.Profile.GetValue("nickname").ToString();
 					email.Text = user.Profile.GetValue("email").ToString();
+
+					var api = RestService.For<ITekConfApi>(new HttpClient(new AuthenticatedHttpClientHandler(user.IdToken)) { 
+						BaseAddress = new Uri("https://tekauth.azurewebsites.net/api") 
+					});
+
+					var conferences = await api.GetConferences();
+					var x = conferences.Count();
 				}
 			};
 		}
