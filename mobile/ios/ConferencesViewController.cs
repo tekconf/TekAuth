@@ -7,8 +7,12 @@ namespace ios
 {
 	partial class ConferencesViewController : UITableViewController
 	{
+		private const string cellId = "conferenceCell";
+
 		public ConferencesViewController (IntPtr handle) : base (handle)
 		{
+			TableView.RowHeight = UITableView.AutomaticDimension;
+			TableView.EstimatedRowHeight = 60;
 		}
 
 		public override nint RowsInSection (UITableView tableView, nint section)
@@ -18,9 +22,10 @@ namespace ios
 
 		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
-			string name = AppDelegate.Conferences [indexPath.Row].Name;
-			var cell = new UITableViewCell (CGRect.Empty);
-			cell.TextLabel.Text = name;
+			var conference = AppDelegate.Conferences [indexPath.Row];
+			ConferenceCell cell = this.TableView.DequeueReusableCell (cellId) as ConferenceCell;
+
+			cell.SetConference (conference);
 			return cell;
 		}
 
