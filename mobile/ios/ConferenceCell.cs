@@ -11,6 +11,13 @@ namespace ios
 		{
 		}
 
+		public override void LayoutSubviews ()
+		{
+			base.LayoutSubviews ();
+
+			conferenceContentView.Layer.CornerRadius = 8;
+
+		}
 		public void SetConference(Conference conference)
 		{
 			this.conferenceName.Text = conference.Name;

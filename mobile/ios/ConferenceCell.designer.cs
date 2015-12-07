@@ -16,10 +16,18 @@ namespace ios
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UIView conferenceContentView { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UILabel conferenceName { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
+			if (conferenceContentView != null) {
+				conferenceContentView.Dispose ();
+				conferenceContentView = null;
+			}
 			if (conferenceName != null) {
 				conferenceName.Dispose ();
 				conferenceName = null;

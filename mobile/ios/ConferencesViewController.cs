@@ -11,8 +11,9 @@ namespace ios
 
 		public ConferencesViewController (IntPtr handle) : base (handle)
 		{
-			TableView.RowHeight = UITableView.AutomaticDimension;
-			TableView.EstimatedRowHeight = 60;
+			//TableView.RowHeight = UITableView.AutomaticDimension;
+			//TableView.EstimatedRowHeight = 220;
+
 		}
 
 		public override nint RowsInSection (UITableView tableView, nint section)
