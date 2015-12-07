@@ -14,8 +14,16 @@ namespace ios
 	[Register ("ConferenceCell")]
 	partial class ConferenceCell
 	{
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UILabel conferenceName { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
+			if (conferenceName != null) {
+				conferenceName.Dispose ();
+				conferenceName = null;
+			}
 		}
 	}
 }
