@@ -45,8 +45,21 @@
 	<string>Resources/Images.xcassets/AppIcons.appiconset</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-	    <key>NSAllowsArbitraryLoads</key>
-	    <true/>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Fonts/OpenSans-Light.ttf</string>
+		<string>Fonts/SF-UI-Display-Bold.otf</string>
+		<string>Fonts/SF-UI-Display-Light.otf</string>
+		<string>Fonts/SF-UI-Display-Regular.otf</string>
+		<string>Fonts/SF-UI-Display-Thin.otf</string>
+		<string>Fonts/SF-UI-Display-Ultralight.otf</string>
+		<string>Fonts/OpenSans-Regular.ttf</string>
+		<string>Fonts/OpenSans-Bold.ttf</string>
+		<string>Fonts/OpenSans-ExtraBold.ttf</string>
+		<string>Fonts/OpenSans-SemiBold.ttf</string>
+	</array>
 </dict>
 </plist>

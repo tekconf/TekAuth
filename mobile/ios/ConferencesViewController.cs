@@ -30,9 +30,11 @@ namespace ios
 			return cell;
 		}
 
-		public override void ViewWillAppear (bool animated)
+		public override async void ViewWillAppear (bool animated)
 		{
 			base.ViewWillAppear (animated);
+
+
 			this.TableView.ReloadData ();
 		}
 	}

@@ -20,6 +20,26 @@ namespace ios
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UILabel conferenceDate { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UIView conferenceDateView { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UILabel conferenceDescription { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UILabel conferenceLocation { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UIView conferenceLocationView { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UILabel conferenceName { get; set; }
 
 		[Outlet]
@@ -31,6 +51,26 @@ namespace ios
 			if (conferenceContentView != null) {
 				conferenceContentView.Dispose ();
 				conferenceContentView = null;
+			}
+			if (conferenceDate != null) {
+				conferenceDate.Dispose ();
+				conferenceDate = null;
+			}
+			if (conferenceDateView != null) {
+				conferenceDateView.Dispose ();
+				conferenceDateView = null;
+			}
+			if (conferenceDescription != null) {
+				conferenceDescription.Dispose ();
+				conferenceDescription = null;
+			}
+			if (conferenceLocation != null) {
+				conferenceLocation.Dispose ();
+				conferenceLocation = null;
+			}
+			if (conferenceLocationView != null) {
+				conferenceLocationView.Dispose ();
+				conferenceLocationView = null;
 			}
 			if (conferenceName != null) {
 				conferenceName.Dispose ();

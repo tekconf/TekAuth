@@ -5,6 +5,7 @@ using Refit;
 using TekConf.Mobile.Core;
 using System.Net.Http;
 using System.Linq;
+using System.Text;
 
 namespace ios
 {
@@ -24,18 +25,16 @@ namespace ios
 		{
 			base.ViewDidLoad ();
 
+			var fontList = new StringBuilder ();
+			var familyNames = UIFont.FamilyNames;
+
 			loginButton.TouchUpInside += async (sender, e) => {
 				var user = await _auth0.LoginAsync(this, scope: "openid profile");
 				if (user != null) {
 					nickname.Text = user.Profile.GetValue("nickname").ToString();
 					email.Text = user.Profile.GetValue("email").ToString();
 
-					var api = RestService.For<ITekConfApi>(new HttpClient(new AuthenticatedHttpClientHandler(user.IdToken)) { 
-						BaseAddress = new Uri("https://tekauth.azurewebsites.net/api") 
-					});
-
-					var conferences = await api.GetConferences();
-					AppDelegate.Conferences = conferences;
+					await AppDelegate.LoadConferences(user.IdToken);
 				}
 			};
 		}

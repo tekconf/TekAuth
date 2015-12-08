@@ -2,6 +2,11 @@
 using UIKit;
 using System.Collections.Generic;
 using Tekconf.DTO;
+using Refit;
+using TekConf.Mobile.Core;
+using System.Net.Http;
+using System;
+using System.Threading.Tasks;
 
 namespace ios
 {
@@ -17,6 +22,23 @@ namespace ios
 			set;
 		}
 
+		public static async Task LoadConferences(string token)
+		{
+			ITekConfApi api;
+			if (!string.IsNullOrWhiteSpace (token)) {
+				api = RestService.For<ITekConfApi> (new HttpClient (new AuthenticatedHttpClientHandler (token)) { 
+					BaseAddress = new Uri ("https://tekauth.azurewebsites.net/api") 
+				});
+				var conferences = await api.GetConferences();
+				AppDelegate.Conferences = conferences;
+			} else {
+				//api = RestService.For<ITekConfApi> ("https://tekauth.azurewebsites.net/api");
+			
+			}
+
+
+
+		}
 		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
 		{
 			// Override point for customization after application launch.
