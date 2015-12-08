@@ -140,7 +140,7 @@
                                                 </view>
                                                 <view contentMode="scaleToFill" id="396" translatesAutoresizingMaskIntoConstraints="NO">
                                                     <rect key="frame" x="192" y="167" width="368" height="33"/>
-                                                    <color key="backgroundColor" customColorSpace="calibratedWhite" colorSpace="calibratedRGB" red="0.49803921568627452" green="0" blue="0.49803921568627452" alpha="1"/>
+                                                    <color key="backgroundColor" customColorSpace="calibratedWhite" colorSpace="calibratedRGB" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1"/>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -171,14 +171,14 @@
                                     <outlet property="conferenceContentView" destination="337" id="name-outlet-337"/>
                                     <outlet property="highlightColorBar" destination="378" id="name-outlet-378"/>
                                 </connections>
-                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.77254901960784317" green="1" blue="0.75686274509803919" alpha="1"/>
+                                <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="93" id="95"/>
                             <outlet property="delegate" destination="93" id="96"/>
                         </connections>
-                        <color key="sectionIndexBackgroundColor" colorSpace="calibratedWhite" white="0" alpha="0"/>
+                        <color key="sectionIndexBackgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                         <color key="separatorColor" colorSpace="calibratedWhite" white="0" alpha="0"/>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Conferences" id="126"/>
