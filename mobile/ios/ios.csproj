@@ -127,6 +127,12 @@
     <ImageAsset Include="Resources\Images.xcassets\Second.imageset\Second.pdf">
       <InProject>false</InProject>
     </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Codemash.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\Codemash.imageset\Codemash.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Settings.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\Settings.imageset\ios7-cog-outline.png" />
+    <ImageAsset Include="Resources\Images.xcassets\ConferencesTab.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\ConferencesTab.imageset\ios7-people-outline.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
@@ -211,5 +217,7 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Fonts\OpenSans-Semibold.ttf" />
+    <BundleResource Include="Resources\ios7-people-outline.png" />
+    <BundleResource Include="Resources\ios7-cog-outline.png" />
   </ItemGroup>
 </Project>
