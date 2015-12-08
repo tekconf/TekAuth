@@ -14,8 +14,9 @@ namespace ios
 		public override void LayoutSubviews ()
 		{
 			base.LayoutSubviews ();
-
-			conferenceContentView.Layer.CornerRadius = 8;
+			conferenceContentView.Layer.BorderColor = UIColor.LightGray.CGColor;
+			conferenceContentView.Layer.BorderWidth = 1;
+			//conferenceContentView.Layer.CornerRadius = 8;
 
 		}
 		public void SetConference(Conference conference)

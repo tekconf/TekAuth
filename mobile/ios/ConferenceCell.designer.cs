@@ -22,6 +22,10 @@ namespace ios
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UILabel conferenceName { get; set; }
 
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UIView highlightColorBar { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
 			if (conferenceContentView != null) {
@@ -31,6 +35,10 @@ namespace ios
 			if (conferenceName != null) {
 				conferenceName.Dispose ();
 				conferenceName = null;
+			}
+			if (highlightColorBar != null) {
+				highlightColorBar.Dispose ();
+				highlightColorBar = null;
 			}
 		}
 	}

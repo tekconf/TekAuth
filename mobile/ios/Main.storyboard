@@ -111,7 +111,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" id="337" translatesAutoresizingMaskIntoConstraints="NO">
-                                            <rect key="frame" x="20" y="14" width="560" height="187"/>
+                                            <rect key="frame" x="20" y="10" width="560" height="200"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="342" translatesAutoresizingMaskIntoConstraints="NO">
@@ -124,23 +124,52 @@
                                                         <constraint id="345" firstAttribute="height" constant="21"/>
                                                     </constraints>
                                                 </label>
+                                                <view contentMode="scaleToFill" id="378" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="8" height="187"/>
+                                                    <color key="backgroundColor" customColorSpace="calibratedWhite" colorSpace="calibratedRGB" red="1" green="0.49803921568627452" blue="0" alpha="1"/>
+                                                    <constraints>
+                                                        <constraint id="382" firstItem="378" firstAttribute="width" constant="8"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" id="392" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="8" y="167" width="184" height="33"/>
+                                                    <color key="backgroundColor" customColorSpace="calibratedWhite" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
+                                                    <constraints>
+                                                        <constraint id="395" firstItem="392" firstAttribute="height" constant="33"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" id="396" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="192" y="167" width="368" height="33"/>
+                                                    <color key="backgroundColor" customColorSpace="calibratedWhite" colorSpace="calibratedRGB" red="0.49803921568627452" green="0" blue="0.49803921568627452" alpha="1"/>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint id="357" firstItem="342" firstAttribute="leading" secondItem="337" secondAttribute="leading" constant="20"/>
                                                 <constraint id="358" firstItem="342" firstAttribute="top" secondItem="337" secondAttribute="top" constant="20"/>
+                                                <constraint id="379" firstItem="378" firstAttribute="leading" secondItem="337" secondAttribute="leading"/>
+                                                <constraint id="380" firstItem="378" firstAttribute="bottom" secondItem="337" secondAttribute="bottom"/>
+                                                <constraint id="381" firstItem="378" firstAttribute="top" secondItem="337" secondAttribute="top"/>
+                                                <constraint id="393" firstItem="392" firstAttribute="leading" secondItem="378" secondAttribute="trailing"/>
+                                                <constraint id="394" firstItem="392" firstAttribute="bottom" secondItem="337" secondAttribute="bottom"/>
+                                                <constraint id="397" firstItem="396" firstAttribute="trailing" secondItem="337" secondAttribute="trailing"/>
+                                                <constraint id="398" firstItem="396" firstAttribute="bottom" secondItem="337" secondAttribute="bottom"/>
+                                                <constraint id="399" firstItem="396" firstAttribute="height" secondItem="392" secondAttribute="height"/>
+                                                <constraint id="401" firstItem="396" firstAttribute="leading" secondItem="392" secondAttribute="trailing"/>
+                                                <constraint id="402" firstItem="392" firstAttribute="width" secondItem="396" secondAttribute="width" multiplier="0.5"/>
                                             </constraints>
                                         </view>
                                     </subviews>
                                     <constraints>
                                         <constraint id="353" firstItem="337" firstAttribute="leading" secondItem="98" secondAttribute="leading" constant="20"/>
-                                        <constraint id="354" firstItem="337" firstAttribute="top" secondItem="98" secondAttribute="top" constant="14"/>
-                                        <constraint id="355" firstItem="98" firstAttribute="bottom" secondItem="337" secondAttribute="bottom" constant="20"/>
+                                        <constraint id="354" firstItem="337" firstAttribute="top" secondItem="98" secondAttribute="top" constant="10"/>
+                                        <constraint id="355" firstItem="98" firstAttribute="bottom" secondItem="337" secondAttribute="bottom" constant="10"/>
                                         <constraint id="356" firstItem="98" firstAttribute="trailing" secondItem="337" secondAttribute="trailing" constant="20"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="conferenceName" destination="342" id="name-outlet-342"/>
                                     <outlet property="conferenceContentView" destination="337" id="name-outlet-337"/>
+                                    <outlet property="highlightColorBar" destination="378" id="name-outlet-378"/>
                                 </connections>
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0.77254901960784317" green="1" blue="0.75686274509803919" alpha="1"/>
                             </tableViewCell>
