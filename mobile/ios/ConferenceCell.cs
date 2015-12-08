@@ -15,6 +15,7 @@ namespace ios
 		{
 			base.LayoutSubviews ();
 
+
 			conferenceContentView.Layer.BorderColor = UIColor.LightGray.CGColor;
 			conferenceContentView.Layer.BorderWidth = 0.5f;
 

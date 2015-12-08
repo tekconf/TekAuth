@@ -42,7 +42,7 @@
     <MtouchUseSGen>true</MtouchUseSGen>
     <CodesignKey>iPhone Developer: Robert Gibbens (L8HT856S5P)</CodesignKey>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
-    <CodesignProvision>10d2e7bb-15e5-4e85-a55f-f4275684be4f</CodesignProvision>
+    <CodesignProvision>b7e09d2c-82ac-43a8-9063-582792361a13</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
