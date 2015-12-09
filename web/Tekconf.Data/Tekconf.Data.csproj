@@ -70,6 +70,7 @@
     <Compile Include="Entities\Conference.cs" />
     <Compile Include="Entities\ConferenceContext.cs" />
     <Compile Include="ConferenceEfRepository.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="Helpers\ListExtensions.cs" />
     <Compile Include="IConferenceRepository.cs" />
     <Compile Include="Migrations\201511212053255_InitialDb.cs" />
@@ -83,6 +84,10 @@
     <Compile Include="Migrations\201512011739552_AddingUsers.cs" />
     <Compile Include="Migrations\201512011739552_AddingUsers.Designer.cs">
       <DependentUpon>201512011739552_AddingUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512090323595_AddedHighlightColor.cs" />
+    <Compile Include="Migrations\201512090323595_AddedHighlightColor.Designer.cs">
+      <DependentUpon>201512090323595_AddedHighlightColor.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -115,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512011739552_AddingUsers.resx">
       <DependentUpon>201512011739552_AddingUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512090323595_AddedHighlightColor.resx">
+      <DependentUpon>201512090323595_AddedHighlightColor.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

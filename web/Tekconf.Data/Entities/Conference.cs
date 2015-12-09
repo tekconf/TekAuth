@@ -6,22 +6,6 @@ namespace Tekconf.Data.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Users")]
-    public class User
-    {
-        public User()
-        {
-            this.Conferences = new HashSet<Conference>();
-        }
-        public int Id { get; set; }
-
-        [Required]
-        [StringLength(500)]
-        public string Name { get; set; }
-
-        public virtual ICollection<Conference> Conferences { get; set; }
-    }
-
     [Table("Conferences")]
     public class Conference
     {
@@ -92,6 +76,9 @@ namespace Tekconf.Data.Entities
         public string YouTubeUrl { get; set; }
         public string GithubUrl { get; set; }
         public string LinkedInUrl { get; set; }
+
+        [MaxLength(10)]
+        public string HighlightColor { get; set; }
 
     }
 
