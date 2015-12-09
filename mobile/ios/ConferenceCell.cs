@@ -2,6 +2,7 @@ using System;
 using UIKit;
 using Tekconf.DTO;
 using CoreGraphics;
+using System.Globalization;
 
 namespace ios
 {
@@ -22,7 +23,7 @@ namespace ios
 		public void SetConference (Conference conference)
 		{
 			this.conferenceName.Text = conference.Name;
-			highlightColorBar.BackgroundColor = UIColor.FromRGB (red: 0, green: 0, blue: 0);
+			highlightColorBar.BackgroundColor = UIColorExtensions.FromHex (conference.HighlightColor);
 
 			if (conference.StartDate.HasValue) {
 				this.conferenceDate.Text = conference.StartDate.Value.ToShortDateString ();
@@ -36,13 +37,26 @@ namespace ios
 
 	public static class UIColorExtensions
 	{
-		public static UIColor FromHex(this UIColor color,int hexValue)
+		public static UIColor FromHex(string hexColor)
 		{
-			return UIColor.FromRGB(
-				(((float)((hexValue & 0xFF0000) >> 16))/255.0f),
-				(((float)((hexValue & 0xFF00) >> 8))/255.0f),
-				(((float)(hexValue & 0xFF))/255.0f)
-			);
+			if (!string.IsNullOrWhiteSpace (hexColor)) {
+				var red = int.Parse(hexColor.Substring(0, 2), NumberStyles.AllowHexSpecifier);
+				var green = int.Parse(hexColor.Substring(2, 2), NumberStyles.AllowHexSpecifier);
+				var blue = int.Parse(hexColor.Substring(4, 2), NumberStyles.AllowHexSpecifier);
+
+				return UIColor.FromRGB (red, green, blue);
+
+			} else {
+
+				return UIColor.Green;
+			}
+
+
+//			return UIColor.FromRGB(
+//				(((float)((hexValue & 0xFF0000) >> 16))/255.0f),
+//				(((float)((hexValue & 0xFF00) >> 8))/255.0f),
+//				(((float)(hexValue & 0xFF))/255.0f)
+//			);
 		}
 	}
 }
