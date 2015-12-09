@@ -29,12 +29,18 @@ namespace ios
 			var familyNames = UIFont.FamilyNames;
 
 			loginButton.TouchUpInside += async (sender, e) => {
-				var user = await _auth0.LoginAsync(this, scope: "openid profile");
-				if (user != null) {
-					nickname.Text = user.Profile.GetValue("nickname").ToString();
-					email.Text = user.Profile.GetValue("email").ToString();
+				Auth0User user = null;
+				try {
+					user = await _auth0.LoginAsync (this, scope: "openid profile");
+				} catch (OperationCanceledException) {
+					
+				}
 
-					await AppDelegate.LoadConferences(user.IdToken);
+				if (user != null) {
+					nickname.Text = user.Profile.GetValue ("nickname").ToString ();
+					email.Text = user.Profile.GetValue ("email").ToString ();
+
+					await AppDelegate.LoadConferences (user.IdToken);
 				}
 			};
 		}
