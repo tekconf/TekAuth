@@ -32,6 +32,10 @@ namespace ios
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UIImageView conferenceImage { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UILabel conferenceLocation { get; set; }
 
 		[Outlet]
@@ -63,6 +67,10 @@ namespace ios
 			if (conferenceDescription != null) {
 				conferenceDescription.Dispose ();
 				conferenceDescription = null;
+			}
+			if (conferenceImage != null) {
+				conferenceImage.Dispose ();
+				conferenceImage = null;
 			}
 			if (conferenceLocation != null) {
 				conferenceLocation.Dispose ();

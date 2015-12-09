@@ -20,6 +20,8 @@
                         <segue id="461" destination="134" kind="relationship" relationship="viewControllers"/>
                         <segue id="522" destination="8" kind="relationship" relationship="viewControllers"/>
                     </connections>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
@@ -42,6 +44,8 @@
                     </connections>
                     <tabBarItem key="tabBarItem" id="56" tag="1" title="Settings" image="ios7-cog-outline.png"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -94,6 +98,8 @@
                         <outlet property="nickname" destination="80" id="name-outlet-80"/>
                         <outlet property="email" destination="81" id="name-outlet-81"/>
                     </connections>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -183,7 +189,7 @@
                                                         <constraint id="638" firstItem="558" firstAttribute="height" constant="110" relation="greaterThanOrEqual"/>
                                                     </constraints>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="568" translatesAutoresizingMaskIntoConstraints="NO" image="Codemash">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="568" translatesAutoresizingMaskIntoConstraints="NO" image="BlankConference.png">
                                                     <rect key="frame" x="440" y="20" width="100" height="90"/>
                                                     <constraints>
                                                         <constraint id="583" firstItem="568" firstAttribute="height" constant="100"/>
@@ -229,6 +235,7 @@
                                     <outlet property="conferenceDate" destination="532" id="name-outlet-532"/>
                                     <outlet property="conferenceLocation" destination="536" id="name-outlet-536"/>
                                     <outlet property="conferenceDescription" destination="558" id="name-outlet-558"/>
+                                    <outlet property="conferenceImage" destination="568" id="name-outlet-568"/>
                                 </connections>
                                 <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                             </tableViewCell>
@@ -243,6 +250,8 @@
                     <tabBarItem key="tabBarItem" title="Conferences" id="126" selectedImage="ios7-people-outline.png" image="ios7-people-outline.png"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationItem title="Conferences" id="259" key="navigationItem"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="99" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -265,6 +274,8 @@
                     </connections>
                     <tabBarItem key="tabBarItem" id="186" title="Conferences" selectedImage="ios7-people-outline.png" image="ios7-people-outline.png"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="138" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -285,5 +296,6 @@
         <image name="ConferencesTab" width="60" height="60"/>
         <image name="ios7-people-outline.png" width="60" height="60"/>
         <image name="ios7-cog-outline.png" width="48" height="48"/>
+        <image name="BlankConference.png" width="100" height="100"/>
     </resources>
 </document>
