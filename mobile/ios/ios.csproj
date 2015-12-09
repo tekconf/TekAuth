@@ -219,5 +219,6 @@
     <BundleResource Include="Resources\Fonts\OpenSans-Semibold.ttf" />
     <BundleResource Include="Resources\ios7-people-outline.png" />
     <BundleResource Include="Resources\ios7-cog-outline.png" />
+    <BundleResource Include="Resources\BlankConference.png" />
   </ItemGroup>
 </Project>

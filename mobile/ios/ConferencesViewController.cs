@@ -23,7 +23,12 @@ namespace ios
 			var conference = AppDelegate.Conferences [indexPath.Row];
 			ConferenceCell cell = this.TableView.DequeueReusableCell (cellId) as ConferenceCell;
 
-			cell.SetConference (conference);
+			try {
+				cell.SetConference (conference);
+
+			} catch (Exception ex) {
+				var sdsds = ex.Message;
+			}
 			return cell;
 		}
 
