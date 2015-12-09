@@ -26,7 +26,7 @@ namespace TekAuth.Controllers
             _repository = repository;
         }
 
-        
+
         public async Task<IHttpActionResult> Get()
         {
             try
@@ -42,7 +42,8 @@ namespace TekAuth.Controllers
             }
             catch (Exception ex)
             {
-                return InternalServerError();
+                return Ok(ex.Message);
+               // return InternalServerError(ex);
             }
         }
 

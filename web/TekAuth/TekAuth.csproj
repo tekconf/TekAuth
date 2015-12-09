@@ -272,6 +272,10 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="images\conferences\build-2016.png" />
+    <Content Include="images\conferences\codemash-2016.png" />
+    <Content Include="images\conferences\googleio-2016.png" />
+    <Content Include="images\conferences\wwdc-2016.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\tekauth - FTP.pubxml" />
