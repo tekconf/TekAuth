@@ -43,7 +43,7 @@ namespace ios
 		{
 			// Override point for customization after application launch.
 			// If not required for your application you can safely delete this method
-
+			UINavigationBar.Appearance.BarTintColor = UIColor.FromRGB(red: 34, green: 91, blue: 149);
 			return true;
 		}
 
