@@ -12,7 +12,7 @@ namespace ios
 		public ConferencesViewController (IntPtr handle) : base (handle)
 		{
 		}
-
+			
 		public override nint RowsInSection (UITableView tableView, nint section)
 		{
 			return AppDelegate.Conferences.Count ();

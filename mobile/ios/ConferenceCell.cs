@@ -28,7 +28,7 @@ namespace ios
 		{
 			this.conferenceName.Text = conference.Name;
 			highlightColorBar.BackgroundColor = UIColorExtensions.FromHex (conference.HighlightColor);
-
+			conferenceFavoriteView.BackgroundColor = UIColorExtensions.FromHex (conference.HighlightColor);
 
 			if (conference.StartDate.HasValue) {
 				this.conferenceDate.Text = conference.StartDate.Value.ToShortDateString ();
@@ -40,15 +40,14 @@ namespace ios
 			if (!string.IsNullOrWhiteSpace (conference.ImageUrl)) {
 				try {
 					await DownloadAsync (conference);
-				}
-				catch (Exception e) {
+				} catch (Exception e) {
 					var sdsd = e.Message;
 				}
 			}
 		}
 
 
-		async Task DownloadAsync(Conference conference)
+		async Task DownloadAsync (Conference conference)
 		{
 
 			string documentsPath = Environment.GetFolderPath (Environment.SpecialFolder.Personal);
@@ -56,7 +55,7 @@ namespace ios
 			string localPath = Path.Combine (documentsPath, localFilename);
 			byte[] bytes = null;
 
-			//if (!File.Exists (localPath)) {
+			if (!File.Exists (localPath)) {
 				using (var httpClient = new HttpClient (new NativeMessageHandler ())) {
 
 					try {
@@ -72,18 +71,18 @@ namespace ios
 					FileStream fs = new FileStream (localPath, FileMode.OpenOrCreate);
 					await fs.WriteAsync (bytes, 0, bytes.Length);
 				}
-			//} 
+			} 
 
-				//Resizing image is time costing, using async to avoid blocking the UI thread
-				UIImage image = null;
-				CGSize imageViewSize = conferenceImage.Frame.Size;
+			//Resizing image is time costing, using async to avoid blocking the UI thread
+			UIImage image = null;
+			CGSize imageViewSize = conferenceImage.Frame.Size;
 
-				await Task.Run (() => {
-					image = UIImage.FromFile (localPath).Scale (imageViewSize);
-				});
+			await Task.Run (() => {
+				image = UIImage.FromFile (localPath).Scale (imageViewSize);
+			});
 
 
-				conferenceImage.Image = image;
+			conferenceImage.Image = image;
 
 			
 		}
@@ -92,12 +91,12 @@ namespace ios
 
 	public static class UIColorExtensions
 	{
-		public static UIColor FromHex(string hexColor)
+		public static UIColor FromHex (string hexColor)
 		{
 			if (!string.IsNullOrWhiteSpace (hexColor)) {
-				var red = int.Parse(hexColor.Substring(0, 2), NumberStyles.AllowHexSpecifier);
-				var green = int.Parse(hexColor.Substring(2, 2), NumberStyles.AllowHexSpecifier);
-				var blue = int.Parse(hexColor.Substring(4, 2), NumberStyles.AllowHexSpecifier);
+				var red = int.Parse (hexColor.Substring (0, 2), NumberStyles.AllowHexSpecifier);
+				var green = int.Parse (hexColor.Substring (2, 2), NumberStyles.AllowHexSpecifier);
+				var blue = int.Parse (hexColor.Substring (4, 2), NumberStyles.AllowHexSpecifier);
 
 				return UIColor.FromRGB (red, green, blue);
 

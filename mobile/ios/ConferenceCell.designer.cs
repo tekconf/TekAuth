@@ -32,6 +32,10 @@ namespace ios
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UIView conferenceFavoriteView { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UIImageView conferenceImage { get; set; }
 
 		[Outlet]
@@ -67,6 +71,10 @@ namespace ios
 			if (conferenceDescription != null) {
 				conferenceDescription.Dispose ();
 				conferenceDescription = null;
+			}
+			if (conferenceFavoriteView != null) {
+				conferenceFavoriteView.Dispose ();
+				conferenceFavoriteView = null;
 			}
 			if (conferenceImage != null) {
 				conferenceImage.Dispose ();
