@@ -10,6 +10,8 @@
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>ios</AssemblyName>
     <XamarinInsightsApiKey>7259550172eb1dfb3a35d38595f8d3f08ff6c7b0</XamarinInsightsApiKey>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -122,9 +124,6 @@
     <Reference Include="GalaSoft.MvvmLight.Platform">
       <HintPath>..\..\packages\MvvmLightLibs.5.2.0.0\lib\xamarin.ios10\GalaSoft.MvvmLight.Platform.dll</HintPath>
     </Reference>
-    <Reference Include="PropertyChanged">
-      <HintPath>..\..\packages\PropertyChanged.Fody.1.50.3\Lib\portable-net4+sl4+wp8+win8+wpa81+MonoAndroid16+MonoTouch40\PropertyChanged.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json">
@@ -142,18 +141,31 @@
     <ImageAsset Include="Resources\Images.xcassets\Second.imageset\Second.pdf">
       <InProject>false</InProject>
     </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\Codemash.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\Codemash.imageset\Codemash.png" />
-    <ImageAsset Include="Resources\Images.xcassets\Settings.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\Settings.imageset\ios7-cog-outline.png" />
-    <ImageAsset Include="Resources\Images.xcassets\ConferencesTab.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\ConferencesTab.imageset\ios7-people-outline.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Codemash.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Codemash.imageset\Codemash.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Settings.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Settings.imageset\ios7-cog-outline.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ConferencesTab.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ConferencesTab.imageset\ios7-people-outline.png">
+      <InProject>false</InProject>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
     <InterfaceDefinition Include="Main.storyboard" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />
@@ -196,7 +208,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\Fonts\" />
     <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
