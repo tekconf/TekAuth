@@ -1,5 +1,3 @@
-using GalaSoft.MvvmLight.Ioc;
-using Microsoft.Practices.ServiceLocation;
 
 namespace TekConf.Mobile.Core.ViewModel
 {
@@ -12,6 +10,20 @@ namespace TekConf.Mobile.Core.ViewModel
 			}
 			set {
 				_userIdToken = value;
+			}
+		}		
+
+		private string _auth0Domain;
+
+		public string Auth0Domain { 
+			get {
+				return "tekconf.auth0.com";
+			}   
+		}
+
+		public string Auth0ClientId {
+			get {
+				return "XhxV5TtBdzUwth21O4jhvITp5I9hJ6xS";
 			}
 		}
 	}

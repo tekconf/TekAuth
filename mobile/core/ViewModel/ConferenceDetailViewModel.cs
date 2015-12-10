@@ -15,8 +15,21 @@ namespace TekConf.Mobile.Core.ViewModel
 
 		public ConferenceDetailViewModel (Conference conference)
 		{
-			this._conference = conference;
-			
+			_conference = conference;
+			Name = conference.Name;
+		}
+
+		private string _name;
+
+		public string Name {
+			get {
+				return _name;
+			}
+			set {
+				if (value == _name) return;
+				_name = value;
+				RaisePropertyChanged (() => Name);
+			}
 		}
 	}
 

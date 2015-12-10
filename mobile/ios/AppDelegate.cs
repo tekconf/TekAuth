@@ -15,42 +15,31 @@ namespace ios
 	[Register ("AppDelegate")]
 	public class AppDelegate : UIApplicationDelegate
 	{
-		public static IList<Conference> Conferences {get;set;} = new List<Conference>();
-
 		public override UIWindow Window {
 			get;
 			set;
 		}
 
-		public static async Task LoadConferences(string token)
-		{
-			ITekConfApi api;
-			if (!string.IsNullOrWhiteSpace (token)) {
-				api = RestService.For<ITekConfApi> (new HttpClient (new AuthenticatedHttpClientHandler (token)) { 
-					BaseAddress = new Uri ("https://tekauth.azurewebsites.net/api") 
-				});
-				var conferences = await api.GetConferences();
-				AppDelegate.Conferences = conferences;
-			} else {
-				//api = RestService.For<ITekConfApi> ("https://tekauth.azurewebsites.net/api");
-			
-			}
-
-
-
-		}
+//		public static async Task LoadConferences(string token)
+//		{
+//			ITekConfApi api;
+//			if (!string.IsNullOrWhiteSpace (token)) {
+//				api = RestService.For<ITekConfApi> (new HttpClient (new AuthenticatedHttpClientHandler (token)) { 
+//					BaseAddress = new Uri ("https://tekauth.azurewebsites.net/api") 
+//				});
+//				var conferences = await api.GetConferences();
+//				AppDelegate.Conferences = conferences;
+//			} else {
+//				//api = RestService.For<ITekConfApi> ("https://tekauth.azurewebsites.net/api");
+//			
+//			}
+//
+//
+//
+//		}
 		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
 		{
-			// Override point for customization after application launch.
-			// If not required for your application you can safely delete this method
-			UINavigationBar.Appearance.BarTintColor = UIColor.FromRGB(red: 34, green: 91, blue: 149);
-			//UIApplication.SharedApplication.SetStatusBarStyle (UIStatusBarStyle.LightContent, false);
-			UIBarButtonItem.Appearance.TintColor = UIColor.White;
-			UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes() {
-				TextColor = UIColor.White,
-				TextShadowColor = UIColor.Clear,
-				Font = UIFont.FromName("Open Sans Light", 20f)
-			}); 
+			AdjustDefaultUI ();
 
 			return true;
 		}
@@ -84,6 +73,18 @@ namespace ios
 		public override void WillTerminate (UIApplication application)
 		{
 			// Called when the application is about to terminate. Save data, if needed. See also DidEnterBackground.
+		}
+
+		private void AdjustDefaultUI ()
+		{
+			UINavigationBar.Appearance.BarTintColor = UIColor.FromRGB (red: 34, green: 91, blue: 149);
+			//UIApplication.SharedApplication.SetStatusBarStyle (UIStatusBarStyle.LightContent, false);
+			UIBarButtonItem.Appearance.TintColor = UIColor.White;
+			UINavigationBar.Appearance.SetTitleTextAttributes (new UITextAttributes () {
+				TextColor = UIColor.White,
+				TextShadowColor = UIColor.Clear,
+				Font = UIFont.FromName ("Open Sans Light", 20f)
+			});
 		}
 	}
 }
