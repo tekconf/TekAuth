@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+    </dependencies>
+    <scenes>
+        <!--First-->
+        <!--Second-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="yl2-sM-qoP">
+            <objects>
+                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
+                        <rect key="frame" x="0.0" y="551" width="600" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue id="461" destination="134" kind="relationship" relationship="viewControllers"/>
+                        <segue id="522" destination="8" kind="relationship" relationship="viewControllers"/>
+                    </connections>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="17" y="-6"/>
+        </scene>
+        <scene sceneID="7">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="8" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="11">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="20"/>
+                            <color key="textColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                        </textAttributes>
+                        <color key="barTintColor" colorSpace="calibratedRGB" red="0" green="0.25098039215686274" blue="0.50196078431372548" alpha="1"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="10" kind="relationship" relationship="rootViewController" id="9"/>
+                    </connections>
+                    <tabBarItem key="tabBarItem" id="56" tag="1" title="Settings" image="ios7-cog-outline.png"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="12" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="741" y="420"/>
+        </scene>
+        <scene sceneID="13">
+            <objects>
+                <viewController id="10" sceneMemberID="viewController" customClass="SettingsViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5"/>
+                        <viewControllerLayoutGuide type="bottom" id="6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="15">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="65" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="42" y="99" width="46" height="30"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="17"/>
+                                <state key="normal" title="Login"/>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" minimumFontSize="10" id="80" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="44" y="144" width="536" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" minimumFontSize="10" id="81" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="44" y="188" width="536" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint id="72" firstItem="65" firstAttribute="leading" secondItem="15" secondAttribute="leading" constant="42"/>
+                            <constraint id="73" firstItem="65" firstAttribute="top" secondItem="5" secondAttribute="bottom" constant="35"/>
+                            <constraint id="82" firstItem="80" firstAttribute="leading" secondItem="15" secondAttribute="leading" constant="44"/>
+                            <constraint id="83" firstItem="80" firstAttribute="top" secondItem="65" secondAttribute="bottom" constant="15"/>
+                            <constraint id="84" firstItem="81" firstAttribute="leading" secondItem="15" secondAttribute="leading" constant="44"/>
+                            <constraint id="85" firstItem="81" firstAttribute="top" secondItem="80" secondAttribute="bottom" constant="23"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="14"/>
+                    <connections>
+                        <outlet property="loginButton" destination="65" id="name-outlet-65"/>
+                        <outlet property="nickname" destination="80" id="name-outlet-80"/>
+                        <outlet property="email" destination="81" id="name-outlet-81"/>
+                    </connections>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="16" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1410" y="420"/>
+        </scene>
+        <scene sceneID="92">
+            <objects>
+                <tableViewController id="93" sceneMemberID="viewController" title="Conferences" customClass="ConferencesViewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="221" sectionHeaderHeight="22" sectionFooterHeight="22" id="94" separatorStyle="none">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="97" rowHeight="220" customClass="ConferenceCell" reuseIdentifier="conferenceCell">
+                                <rect key="frame" x="0.0" y="22" width="600" height="220"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="97" id="98">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="220"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" id="337" translatesAutoresizingMaskIntoConstraints="NO">
+                                            <rect key="frame" x="10" y="10" width="570" height="200"/>
+                                            <color key="backgroundColor" customColorSpace="calibratedWhite" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="342" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                                    <rect key="frame" x="20" y="20" width="42" height="21"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
+                                                    <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <constraints>
+                                                        <constraint id="345" firstAttribute="height" constant="21"/>
+                                                    </constraints>
+                                                </label>
+                                                <view contentMode="scaleToFill" id="378" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="8" height="187"/>
+                                                    <color key="backgroundColor" customColorSpace="calibratedWhite" colorSpace="calibratedRGB" red="0" green="1" blue="0" alpha="1"/>
+                                                    <constraints>
+                                                        <constraint id="382" firstItem="378" firstAttribute="width" constant="8"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" id="392" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="8" y="167" width="174.5" height="33"/>
+                                                    <color key="backgroundColor" customColorSpace="calibratedWhite" colorSpace="calibratedRGB" red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1"/>
+                                                    <subviews>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="532" translatesAutoresizingMaskIntoConstraints="NO">
+                                                            <rect key="frame" x="6" y="7" width="162.5" height="19.5"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="14"/>
+                                                            <color key="textColor" colorSpace="calibratedRGB" red="1" green="1" blue="1" alpha="1"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint id="683" firstItem="392" firstAttribute="height" constant="33"/>
+                                                        <constraint id="701" firstItem="532" firstAttribute="centerY" secondItem="392" secondAttribute="centerY"/>
+                                                        <constraint id="702" firstItem="532" firstAttribute="leading" secondItem="392" secondAttribute="leading" constant="6"/>
+                                                        <constraint id="703" firstItem="392" firstAttribute="trailing" secondItem="532" secondAttribute="trailing" constant="6"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" id="396" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="181.5" y="167" width="348.5" height="33"/>
+                                                    <color key="backgroundColor" customColorSpace="calibratedWhite" colorSpace="calibratedRGB" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1"/>
+                                                    <subviews>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="536" translatesAutoresizingMaskIntoConstraints="NO">
+                                                            <rect key="frame" x="6" y="6" width="334.5" height="21"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="14"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <constraints>
+                                                                <constraint id="707" firstItem="536" firstAttribute="height" constant="21"/>
+                                                            </constraints>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint id="704" firstItem="536" firstAttribute="centerY" secondItem="396" secondAttribute="centerY"/>
+                                                        <constraint id="705" firstItem="536" firstAttribute="leading" secondItem="396" secondAttribute="leading" constant="6"/>
+                                                        <constraint id="706" firstItem="396" firstAttribute="trailing" secondItem="536" secondAttribute="trailing" constant="8"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="wordWrap" minimumFontSize="10" id="558" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="0" preferredMaxLayoutWidth="412">
+                                                    <rect key="frame" x="20" y="49" width="422" height="110"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <constraints>
+                                                        <constraint id="638" firstItem="558" firstAttribute="height" constant="110" relation="greaterThanOrEqual"/>
+                                                    </constraints>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="568" translatesAutoresizingMaskIntoConstraints="NO" image="BlankConference.png">
+                                                    <rect key="frame" x="450" y="20" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint id="583" firstItem="568" firstAttribute="height" constant="100"/>
+                                                        <constraint id="590" firstItem="568" firstAttribute="width" constant="100"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" id="646" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="530" y="167" width="40" height="33"/>
+                                                    <color key="backgroundColor" customColorSpace="calibratedWhite" colorSpace="calibratedRGB" red="1" green="0.50196078431372548" blue="0" alpha="1"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" id="647" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                                            <rect key="frame" x="212" y="187" width="149" height="33"/>
+                                                            <color key="backgroundColor" customColorSpace="calibratedWhite" colorSpace="calibratedRGB" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1"/>
+                                                            <subviews>
+                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="648" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                                                    <rect key="frame" x="6" y="6" width="34" height="21"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                    <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="14"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint id="691" firstItem="646" firstAttribute="width" constant="40"/>
+                                                        <constraint id="692" firstItem="646" firstAttribute="height" constant="33"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint id="357" firstItem="342" firstAttribute="leading" secondItem="337" secondAttribute="leading" constant="20"/>
+                                                <constraint id="358" firstItem="342" firstAttribute="top" secondItem="337" secondAttribute="top" constant="20"/>
+                                                <constraint id="379" firstItem="378" firstAttribute="leading" secondItem="337" secondAttribute="leading"/>
+                                                <constraint id="380" firstItem="378" firstAttribute="bottom" secondItem="337" secondAttribute="bottom"/>
+                                                <constraint id="381" firstItem="378" firstAttribute="top" secondItem="337" secondAttribute="top"/>
+                                                <constraint id="594" firstItem="337" firstAttribute="trailing" secondItem="568" secondAttribute="trailing" constant="20"/>
+                                                <constraint id="595" firstItem="568" firstAttribute="top" secondItem="337" secondAttribute="top" constant="20"/>
+                                                <constraint id="634" firstItem="558" firstAttribute="leading" secondItem="378" secondAttribute="trailing" constant="12"/>
+                                                <constraint id="635" firstItem="558" firstAttribute="top" secondItem="342" secondAttribute="bottom" constant="8"/>
+                                                <constraint id="636" firstItem="568" firstAttribute="leading" secondItem="558" secondAttribute="trailing" constant="8"/>
+                                                <constraint id="681" firstItem="392" firstAttribute="leading" secondItem="378" secondAttribute="trailing"/>
+                                                <constraint id="682" firstItem="392" firstAttribute="bottom" secondItem="337" secondAttribute="bottom"/>
+                                                <constraint id="684" firstItem="392" firstAttribute="width" secondItem="396" secondAttribute="width" multiplier="0.5"/>
+                                                <constraint id="685" firstItem="392" firstAttribute="trailing" secondItem="396" secondAttribute="leading" constant="1"/>
+                                                <constraint id="689" firstItem="646" firstAttribute="trailing" secondItem="337" secondAttribute="trailing"/>
+                                                <constraint id="690" firstItem="646" firstAttribute="bottom" secondItem="337" secondAttribute="bottom"/>
+                                                <constraint id="693" firstItem="396" firstAttribute="trailing" secondItem="646" secondAttribute="leading"/>
+                                                <constraint id="694" firstItem="392" firstAttribute="trailing" secondItem="396" secondAttribute="leading" constant="1"/>
+                                                <constraint id="695" firstItem="392" firstAttribute="trailing" secondItem="396" secondAttribute="leading" constant="1"/>
+                                                <constraint id="696" firstItem="396" firstAttribute="centerY" secondItem="392" secondAttribute="centerY"/>
+                                                <constraint id="697" firstItem="396" firstAttribute="height" secondItem="392" secondAttribute="height"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint id="353" firstItem="337" firstAttribute="leading" secondItem="98" secondAttribute="leading" constant="10"/>
+                                        <constraint id="354" firstItem="337" firstAttribute="top" secondItem="98" secondAttribute="top" constant="10"/>
+                                        <constraint id="355" firstItem="98" firstAttribute="bottom" secondItem="337" secondAttribute="bottom" constant="10"/>
+                                        <constraint id="356" firstItem="98" firstAttribute="trailing" secondItem="337" secondAttribute="trailing" constant="10"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="conferenceName" destination="342" id="name-outlet-342"/>
+                                    <outlet property="conferenceContentView" destination="337" id="name-outlet-337"/>
+                                    <outlet property="highlightColorBar" destination="378" id="name-outlet-378"/>
+                                    <outlet property="conferenceDateView" destination="392" id="name-outlet-392"/>
+                                    <outlet property="conferenceLocationView" destination="396" id="name-outlet-396"/>
+                                    <outlet property="conferenceDate" destination="532" id="name-outlet-532"/>
+                                    <outlet property="conferenceLocation" destination="536" id="name-outlet-536"/>
+                                    <outlet property="conferenceDescription" destination="558" id="name-outlet-558"/>
+                                    <outlet property="conferenceImage" destination="568" id="name-outlet-568"/>
+                                    <outlet property="conferenceFavoriteView" destination="646" id="name-outlet-646"/>
+                                </connections>
+                                <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="93" id="95"/>
+                            <outlet property="delegate" destination="93" id="96"/>
+                        </connections>
+                        <color key="sectionIndexBackgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                        <color key="separatorColor" colorSpace="calibratedWhite" white="0" alpha="0"/>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Conferences" id="126" selectedImage="ios7-people-outline.png" image="ios7-people-outline.png"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationItem title="Conferences" id="259" key="navigationItem"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="99" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1400" y="-307"/>
+        </scene>
+        <scene sceneID="133">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="134" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="137">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="20"/>
+                            <color key="textColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                        </textAttributes>
+                        <color key="barTintColor" colorSpace="calibratedRGB" red="0" green="0.25098039215686274" blue="0.50196078431372548" alpha="1"/>
+                    </navigationBar>
+                    <connections>
+                        <segue id="260" destination="93" kind="relationship" relationship="rootViewController"/>
+                    </connections>
+                    <tabBarItem key="tabBarItem" id="186" title="Conferences" selectedImage="ios7-people-outline.png" image="ios7-people-outline.png"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="138" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="739" y="-303"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="First" width="30" height="30"/>
+        <image name="Second" width="30" height="30"/>
+        <image name="Fonts/SanFranLight.ttf" width="0" height="0"/>
+        <image name="Fonts/OpenSans-Light.ttf" width="0" height="0"/>
+        <image name="Fonts/OpenSans-Regular.ttf" width="0" height="0"/>
+        <image name="Fonts/OpenSans-Bold.ttf" width="0" height="0"/>
+        <image name="Fonts/OpenSans-ExtraBold.ttf" width="0" height="0"/>
+        <image name="Fonts/OpenSans-Semibold.ttf" width="0" height="0"/>
+        <image name="Codemash" width="473" height="473"/>
+        <image name="Settings" width="512" height="512"/>
+        <image name="ConferencesTab" width="60" height="60"/>
+        <image name="ios7-people-outline.png" width="60" height="60"/>
+        <image name="ios7-cog-outline.png" width="48" height="48"/>
+        <image name="BlankConference.png" width="100" height="100"/>
+    </resources>
+</document>

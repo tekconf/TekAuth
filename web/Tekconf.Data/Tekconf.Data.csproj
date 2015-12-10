@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -49,14 +49,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -67,11 +59,18 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Conference.cs" />
     <Compile Include="Entities\ConferenceContext.cs" />
     <Compile Include="ConferenceEfRepository.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="Helpers\ListExtensions.cs" />
     <Compile Include="IConferenceRepository.cs" />
     <Compile Include="Migrations\201511212053255_InitialDb.cs" />
@@ -85,6 +84,10 @@
     <Compile Include="Migrations\201512011739552_AddingUsers.cs" />
     <Compile Include="Migrations\201512011739552_AddingUsers.Designer.cs">
       <DependentUpon>201512011739552_AddingUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512090323595_AddedHighlightColor.cs" />
+    <Compile Include="Migrations\201512090323595_AddedHighlightColor.Designer.cs">
+      <DependentUpon>201512090323595_AddedHighlightColor.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -118,10 +121,13 @@
     <EmbeddedResource Include="Migrations\201512011739552_AddingUsers.resx">
       <DependentUpon>201512011739552_AddingUsers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512090323595_AddedHighlightColor.resx">
+      <DependentUpon>201512090323595_AddedHighlightColor.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\common\Tekconf.DTO\Tekconf.DTO.csproj">
-      <Project>{c1fc50ad-2db6-42a1-8c22-93eb78c29116}</Project>
+      <Project>{C1FC50AD-2DB6-42A1-8C22-93EB78C29116}</Project>
       <Name>Tekconf.DTO</Name>
     </ProjectReference>
   </ItemGroup>

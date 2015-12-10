@@ -48,6 +48,6 @@ namespace Tekconf.DTO
         public string YouTubeUrl { get; set; }
         public string GithubUrl { get; set; }
         public string LinkedInUrl { get; set; }
-
+        public string HighlightColor { get; set; }
     }
 }
