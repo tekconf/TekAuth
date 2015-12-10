@@ -1,9 +1,18 @@
 using UIKit;
+using TekConf.Mobile.Core.ViewModel;
 
 namespace ios
 {
 	public class Application
 	{
+		private static ViewModelLocator _locator;
+		public static ViewModelLocator Locator
+		{
+			get
+			{
+				return _locator ?? (_locator = new ViewModelLocator());
+			}
+		}
 		// This is the main entry point of the application.
 		static void Main (string[] args)
 		{
