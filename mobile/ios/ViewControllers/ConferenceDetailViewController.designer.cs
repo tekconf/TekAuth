@@ -28,6 +28,10 @@ namespace ios
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		MapKit.MKMapView conferenceMap { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UILabel conferenceName { get; set; }
 
 		[Outlet]
@@ -47,6 +51,10 @@ namespace ios
 			if (conferenceImage != null) {
 				conferenceImage.Dispose ();
 				conferenceImage = null;
+			}
+			if (conferenceMap != null) {
+				conferenceMap.Dispose ();
+				conferenceMap = null;
 			}
 			if (conferenceName != null) {
 				conferenceName.Dispose ();

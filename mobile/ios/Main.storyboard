@@ -333,22 +333,28 @@
                                     <constraint id="823" firstItem="776" firstAttribute="height" constant="21"/>
                                 </constraints>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="789" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="789" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="20" y="126" width="127" height="22"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="16"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="852" firstAttribute="width" constant="127"/>
+                                </constraints>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="803" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="803" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="164" y="126" width="117" height="22"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="16"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="855" firstAttribute="width" constant="117"/>
+                                </constraints>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="wordWrap" minimumFontSize="10" id="809" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="0">
-                                <rect key="frame" x="20" y="195" width="560" height="21"/>
+                                <rect key="frame" x="20" y="194" width="560" height="22"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="16"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -361,6 +367,12 @@
                                     <constraint id="827" firstItem="817" firstAttribute="height" constant="100"/>
                                 </constraints>
                             </imageView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="856" translatesAutoresizingMaskIntoConstraints="NO" rotateEnabled="NO" pitchEnabled="NO">
+                                <rect key="frame" x="0.0" y="400" width="600" height="151"/>
+                                <constraints>
+                                    <constraint id="861" firstItem="856" firstAttribute="height" constant="151"/>
+                                </constraints>
+                            </mapView>
                         </subviews>
                         <constraints>
                             <constraint id="820" firstItem="776" firstAttribute="leading" secondItem="719" secondAttribute="leading" constant="20"/>
@@ -368,17 +380,16 @@
                             <constraint id="822" firstItem="817" firstAttribute="leading" secondItem="776" secondAttribute="trailing" constant="8"/>
                             <constraint id="824" firstItem="719" firstAttribute="trailing" secondItem="817" secondAttribute="trailing" constant="20"/>
                             <constraint id="825" firstItem="817" firstAttribute="top" secondItem="715" secondAttribute="bottom" constant="22"/>
-                            <constraint id="828" firstItem="789" firstAttribute="leading" secondItem="719" secondAttribute="leading" constant="20"/>
-                            <constraint id="829" firstItem="789" firstAttribute="top" secondItem="776" secondAttribute="bottom" constant="8"/>
-                            <constraint id="830" firstItem="803" firstAttribute="leading" secondItem="789" secondAttribute="trailing" constant="17"/>
-                            <constraint id="831" firstItem="803" firstAttribute="top" secondItem="776" secondAttribute="bottom" constant="8"/>
-                            <constraint id="832" firstItem="803" firstAttribute="leading" secondItem="789" secondAttribute="trailing" constant="17"/>
-                            <constraint id="833" firstItem="817" firstAttribute="leading" secondItem="803" secondAttribute="trailing" constant="199"/>
                             <constraint id="837" firstItem="719" firstAttribute="trailing" secondItem="809" secondAttribute="trailing" constant="20"/>
                             <constraint id="838" firstItem="809" firstAttribute="leading" secondItem="719" secondAttribute="leading" constant="20"/>
-                            <constraint id="839" firstItem="716" firstAttribute="top" secondItem="809" secondAttribute="bottom" constant="335"/>
-                            <constraint id="840" firstItem="809" firstAttribute="top" secondItem="789" secondAttribute="bottom" constant="47"/>
-                            <constraint id="841" firstItem="809" firstAttribute="top" secondItem="803" secondAttribute="bottom" constant="47"/>
+                            <constraint id="850" firstItem="789" firstAttribute="leading" secondItem="719" secondAttribute="leading" constant="20"/>
+                            <constraint id="851" firstItem="789" firstAttribute="top" secondItem="719" secondAttribute="top" constant="126"/>
+                            <constraint id="853" firstItem="803" firstAttribute="leading" secondItem="719" secondAttribute="leading" constant="164"/>
+                            <constraint id="854" firstItem="803" firstAttribute="top" secondItem="719" secondAttribute="top" constant="126"/>
+                            <constraint id="857" firstItem="856" firstAttribute="leading" secondItem="719" secondAttribute="leading"/>
+                            <constraint id="858" firstItem="856" firstAttribute="bottom" secondItem="716" secondAttribute="top"/>
+                            <constraint id="860" firstItem="856" firstAttribute="trailing" secondItem="719" secondAttribute="trailing"/>
+                            <constraint id="867" firstItem="809" firstAttribute="top" secondItem="817" secondAttribute="bottom" constant="8"/>
                         </constraints>
                     </view>
                     <connections>
@@ -387,6 +398,7 @@
                         <outlet property="conferenceEndDate" destination="803" id="name-outlet-803"/>
                         <outlet property="conferenceDescription" destination="809" id="name-outlet-809"/>
                         <outlet property="conferenceImage" destination="817" id="name-outlet-817"/>
+                        <outlet property="conferenceMap" destination="856" id="name-outlet-856"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="720" userLabel="First Responder" sceneMemberID="firstResponder"/>

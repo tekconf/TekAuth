@@ -11,11 +11,11 @@ namespace TekConf.Mobile.Core.ViewModel
 {
 	public class ConferenceDetailViewModel : ViewModelBase
 	{
-		Conference _conference;
+		
 
 		public ConferenceDetailViewModel (Conference conference)
 		{
-			_conference = conference;
+			Conference = conference;
 
 			Name = conference.Name;
 			Description = conference.Description;
@@ -23,6 +23,8 @@ namespace TekConf.Mobile.Core.ViewModel
 			EndDate = conference.EndDate;
 
 		}
+
+		public Conference Conference { get; private set;}
 
 		private string _name;
 		public string Name {
