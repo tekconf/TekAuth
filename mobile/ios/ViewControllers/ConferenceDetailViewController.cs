@@ -49,6 +49,7 @@ namespace ios
 				() => Vm.EndDate,
 				() => conferenceEndDate.Text);
 
+			highlightColor.BackgroundColor = UIColorExtensions.FromHex (Vm.Conference.HighlightColor);
 			GetImage (Vm.Conference);
 
 //			_emailLabelBinding = this.SetBinding (

@@ -78,7 +78,8 @@
     <MtouchUseSGen>true</MtouchUseSGen>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <MtouchProfiling>true</MtouchProfiling>
-    <CodesignProvision>10d2e7bb-15e5-4e85-a55f-f4275684be4f</CodesignProvision>
+    <CodesignProvision>6ef81712-eb1e-4368-8d6b-0683a7a84ce7</CodesignProvision>
+    <BuildIpa>true</BuildIpa>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -163,6 +164,9 @@
     </Reference>
     <Reference Include="Splat">
       <HintPath>..\..\packages\Splat.1.6.2\lib\Xamarin.iOS10\Splat.dll</HintPath>
+    </Reference>
+    <Reference Include="Calabash">
+      <HintPath>..\..\packages\Xamarin.TestCloud.Agent.0.17.0\lib\Xamarin.iOS10\Calabash.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -252,6 +256,7 @@
     </Compile>
     <Compile Include="Infrastructure\UIColorExtensions.cs" />
     <Compile Include="Infrastructure\ImageService.cs" />
+    <Compile Include="IocExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\refit.2.4.1\build\portable-net45+netcore45+wp8+wpa81+monoandroid+xamarin.ios10\refit.targets" Condition="Exists('..\..\packages\refit.2.4.1\build\portable-net45+netcore45+wp8+wpa81+monoandroid+xamarin.ios10\refit.targets')" />

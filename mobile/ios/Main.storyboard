@@ -268,6 +268,9 @@
                                     <segue id="764" destination="718" kind="show" identifier="showConferenceDetail"/>
                                 </connections>
                                 <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute keyPath="accessibilityIdentifier" type="string" value="conferenceCell"/>
+                                </userDefinedRuntimeAttributes>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -373,6 +376,13 @@
                                     <constraint id="861" firstItem="856" firstAttribute="height" constant="151"/>
                                 </constraints>
                             </mapView>
+                            <view contentMode="scaleToFill" id="870" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="0.0" y="64" width="600" height="8"/>
+                                <color key="backgroundColor" customColorSpace="calibratedWhite" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint id="874" firstItem="870" firstAttribute="height" constant="8"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <constraints>
                             <constraint id="820" firstItem="776" firstAttribute="leading" secondItem="719" secondAttribute="leading" constant="20"/>
@@ -390,6 +400,9 @@
                             <constraint id="858" firstItem="856" firstAttribute="bottom" secondItem="716" secondAttribute="top"/>
                             <constraint id="860" firstItem="856" firstAttribute="trailing" secondItem="719" secondAttribute="trailing"/>
                             <constraint id="867" firstItem="809" firstAttribute="top" secondItem="817" secondAttribute="bottom" constant="8"/>
+                            <constraint id="871" firstItem="870" firstAttribute="leading" secondItem="719" secondAttribute="leading"/>
+                            <constraint id="872" firstItem="870" firstAttribute="top" secondItem="715" secondAttribute="bottom"/>
+                            <constraint id="873" firstItem="870" firstAttribute="trailing" secondItem="719" secondAttribute="trailing"/>
                         </constraints>
                     </view>
                     <connections>
@@ -399,6 +412,7 @@
                         <outlet property="conferenceDescription" destination="809" id="name-outlet-809"/>
                         <outlet property="conferenceImage" destination="817" id="name-outlet-817"/>
                         <outlet property="conferenceMap" destination="856" id="name-outlet-856"/>
+                        <outlet property="highlightColor" destination="870" id="name-outlet-870"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="720" userLabel="First Responder" sceneMemberID="firstResponder"/>

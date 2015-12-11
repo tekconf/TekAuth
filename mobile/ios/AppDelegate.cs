@@ -32,6 +32,8 @@ namespace ios
 //		}
 		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
 		{
+			Xamarin.Calabash.Start();
+
 			AdjustDefaultUI ();
 
 			return true;

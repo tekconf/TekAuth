@@ -29,6 +29,8 @@ namespace ios
 		public async Task SetConference (Conference conference)
 		{
 			this.conferenceName.Text = conference.Name;
+			this.AccessibilityIdentifier = conference.Slug;
+
 			highlightColorBar.BackgroundColor = UIColorExtensions.FromHex (conference.HighlightColor);
 			conferenceFavoriteView.BackgroundColor = UIColorExtensions.FromHex (conference.HighlightColor);
 

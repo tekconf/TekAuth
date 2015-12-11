@@ -38,6 +38,10 @@ namespace ios
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UILabel conferenceStartDate { get; set; }
 
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UIView highlightColor { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
 			if (conferenceDescription != null) {
@@ -63,6 +67,10 @@ namespace ios
 			if (conferenceStartDate != null) {
 				conferenceStartDate.Dispose ();
 				conferenceStartDate = null;
+			}
+			if (highlightColor != null) {
+				highlightColor.Dispose ();
+				highlightColor = null;
 			}
 		}
 	}
