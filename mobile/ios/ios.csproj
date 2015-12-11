@@ -233,23 +233,23 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="SettingsViewController.cs" />
-    <Compile Include="SettingsViewController.designer.cs">
-      <DependentUpon>SettingsViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ConferencesViewController.cs" />
-    <Compile Include="ConferencesViewController.designer.cs">
-      <DependentUpon>ConferencesViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ConferenceCell.cs" />
-    <Compile Include="ConferenceCell.designer.cs">
-      <DependentUpon>ConferenceCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ConferenceDetailViewController.cs" />
-    <Compile Include="ConferenceDetailViewController.designer.cs">
+    <Compile Include="Infrastructure\AkavacheSqliteLinkerOverride.cs" />
+    <Compile Include="ViewControllers\ConferenceDetailViewController.cs" />
+    <Compile Include="ViewControllers\ConferenceDetailViewController.designer.cs">
       <DependentUpon>ConferenceDetailViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="AkavacheSqliteLinkerOverride.cs" />
+    <Compile Include="ViewControllers\ConferencesViewController.cs" />
+    <Compile Include="ViewControllers\ConferencesViewController.designer.cs">
+      <DependentUpon>ConferencesViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\SettingsViewController.cs" />
+    <Compile Include="ViewControllers\SettingsViewController.designer.cs">
+      <DependentUpon>SettingsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\ConferenceCell.cs" />
+    <Compile Include="CustomControls\ConferenceCell.designer.cs">
+      <DependentUpon>ConferenceCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\refit.2.4.1\build\portable-net45+netcore45+wp8+wpa81+monoandroid+xamarin.ios10\refit.targets" Condition="Exists('..\..\packages\refit.2.4.1\build\portable-net45+netcore45+wp8+wpa81+monoandroid+xamarin.ios10\refit.targets')" />
@@ -301,14 +301,16 @@
     <Content Include="Resources\Fonts\OpenSans-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="FodyWeavers.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Fonts\OpenSans-Semibold.ttf" />
     <BundleResource Include="Resources\ios7-people-outline.png" />
     <BundleResource Include="Resources\ios7-cog-outline.png" />
     <BundleResource Include="Resources\BlankConference.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infrastructure\" />
+    <Folder Include="ViewControllers\" />
+    <Folder Include="CustomControls\" />
   </ItemGroup>
 </Project>
