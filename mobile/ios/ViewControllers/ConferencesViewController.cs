@@ -4,6 +4,7 @@ using UIKit;
 using System.Linq;
 using TekConf.Mobile.Core.ViewModel;
 using Xamarin;
+using System.Collections.Generic;
 
 namespace ios
 {
@@ -43,6 +44,12 @@ namespace ios
 		public override async void ViewWillAppear (bool animated)
 		{
 			base.ViewWillAppear (animated);
+
+			Insights.Track("ViewedScreen", 
+				new Dictionary <string,string> { 
+					{"Screen", "Conferences"}, 
+				});
+
 			if (!Vm.Conferences.Any ()) {
 				using (Insights.TrackTime ("Loading Conferences List")) {
 					await Vm.LoadConferences ();

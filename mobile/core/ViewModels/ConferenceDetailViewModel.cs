@@ -19,7 +19,7 @@ namespace TekConf.Mobile.Core.ViewModel
 
 			Name = conference.Name;
 			Description = conference.Description;
-			StartDate = conference.StartDate;
+			StartDate = conference.StartDate.Value;
 			EndDate = conference.EndDate;
 
 		}

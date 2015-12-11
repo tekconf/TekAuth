@@ -11,6 +11,7 @@ using TekConf.Mobile.Core.ViewModel;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
 using Xamarin;
+using System.Collections.Generic;
 
 namespace ios
 {
@@ -37,10 +38,20 @@ namespace ios
 			}
 		}
 
+		public override void ViewWillAppear (bool animated)
+		{
+			base.ViewWillAppear (animated);
+
+			Insights.Track("ViewedScreen", 
+				new Dictionary <string,string> { 
+					{"Screen", "Settings"},
+				});
+		}
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
 
+			
 			_nicknameLabelBinding = this.SetBinding (
 				() => Vm.Nickname,
 				() => nickname.Text);

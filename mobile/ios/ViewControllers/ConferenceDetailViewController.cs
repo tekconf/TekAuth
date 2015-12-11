@@ -10,9 +10,11 @@ using TekConf.Mobile.Core;
 using CoreGraphics;
 using System.Threading.Tasks;
 using Xamarin;
+using System.Collections.Generic;
 
 namespace ios
 {
+
 	partial class ConferenceDetailViewController : UIViewController
 	{
 		public ConferenceDetailViewController (IntPtr handle) : base (handle)
@@ -30,6 +32,16 @@ namespace ios
 		private Binding<DateTime?, string> _startDateBinding;
 		private Binding<DateTime?, string> _endDateBinding;
 
+		public override void ViewWillAppear (bool animated)
+		{
+			base.ViewWillAppear (animated);
+
+			Insights.Track("ViewedScreen", 
+				new Dictionary <string,string> { 
+					{"Screen", "ConferenceDetail"},
+					{"Slug", Vm.Conference.Slug }, 
+				});
+		}
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
@@ -45,10 +57,15 @@ namespace ios
 			_startDateBinding = this.SetBinding (
 				() => Vm.StartDate,
 				() => conferenceStartDate.Text);
-
+			
+			_startDateBinding.ConvertSourceToTarget ((source) => source.HasValue ? source.Value.ToString("ddd, MMMM dd, yyyy") : string.Empty);
+			_startDateBinding.ForceUpdateValueFromSourceToTarget ();
 			_endDateBinding = this.SetBinding (
 				() => Vm.EndDate,
 				() => conferenceEndDate.Text);
+
+			_endDateBinding.ConvertSourceToTarget ((source) => source.HasValue ? source.Value.ToShortDateString() : string.Empty);
+			_endDateBinding.ForceUpdateValueFromSourceToTarget ();
 
 			highlightColor.BackgroundColor = UIColorExtensions.FromHex (Vm.Conference.HighlightColor);
 			GetImage (Vm.Conference);
