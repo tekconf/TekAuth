@@ -18,9 +18,10 @@ namespace TekConf.Mobile.Core
 		{
 			// See if the request has an authorize header
 			var auth = request.Headers.Authorization;
-			if (auth != null)
-			{
-				request.Headers.Authorization = new AuthenticationHeaderValue(auth.Scheme, _token);
+			if (auth != null && !string.IsNullOrWhiteSpace(_token)) {
+				request.Headers.Authorization = new AuthenticationHeaderValue (auth.Scheme, _token);
+			} else {
+				request.Headers.Remove ("Authorization");
 			}
 
 			return await base.SendAsync(request, cancellationToken).ConfigureAwait(false);

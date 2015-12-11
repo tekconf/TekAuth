@@ -43,9 +43,9 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchFloat32>true</MtouchFloat32>
     <MtouchUseSGen>true</MtouchUseSGen>
-    <CodesignKey>iPhone Developer: Robert Gibbens (L8HT856S5P)</CodesignKey>
+    <CodesignKey>iPhone Distribution</CodesignKey>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
-    <CodesignProvision>b7e09d2c-82ac-43a8-9063-582792361a13</CodesignProvision>
+    <CodesignProvision>edfc1057-8ecd-4a76-8a28-79e9d9175e09</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -202,6 +202,25 @@
     <ImageAsset Include="Resources\Images.xcassets\ConferencesTab.imageset\ios7-people-outline.png">
       <InProject>false</InProject>
     </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\spotlight-29.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\spotlight-58.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\spotlight-87.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\spotlight-80.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\spotlight-120.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\spotlight-57.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\spotlight-114.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\spotlight-180.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-29.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-58.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-40.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-80.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-152.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-144.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-76.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-167.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-50.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-100.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-72.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />

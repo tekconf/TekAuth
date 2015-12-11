@@ -41,15 +41,15 @@ namespace TekConf.Mobile.Core.ViewModel
 
 		public async Task LoadConferences()
 		{
-			if (!string.IsNullOrWhiteSpace (_settingsService.UserIdToken)) {
+			//if (!string.IsNullOrWhiteSpace (_settingsService.UserIdToken)) {
 				var conferences = await _conferencesService
 					.GetConferences(_settingsService.UserIdToken, Priority.Explicit)
 					.ConfigureAwait(false);
 	
 				this.Conferences = new ObservableCollection<Conference> (conferences);
 
-			} else {
-			}
+			//} else {
+			//}
 		}
 
 

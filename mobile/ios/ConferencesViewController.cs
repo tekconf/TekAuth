@@ -2,9 +2,7 @@ using Foundation;
 using System;
 using UIKit;
 using System.Linq;
-using CoreGraphics;
 using TekConf.Mobile.Core.ViewModel;
-using GalaSoft.MvvmLight.Helpers;
 
 namespace ios
 {
@@ -44,7 +42,7 @@ namespace ios
 		public override async void ViewWillAppear (bool animated)
 		{
 			base.ViewWillAppear (animated);
-			if (Vm.CanLoadConferences() && !Vm.Conferences.Any ()) {
+			if (!Vm.Conferences.Any ()) {
 				await Vm.LoadConferences ();
 				this.TableView.ReloadData ();
 			}
