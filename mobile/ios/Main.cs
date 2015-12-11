@@ -1,5 +1,7 @@
 using UIKit;
 using TekConf.Mobile.Core.ViewModel;
+using GalaSoft.MvvmLight.Ioc;
+using TekConf.Mobile.Core;
 
 namespace ios
 {
@@ -10,7 +12,7 @@ namespace ios
 		{
 			get
 			{
-				return _locator ?? (_locator = new ViewModelLocator());
+				return _locator ?? (_locator = new ViewModelLocator().AddPlatformSpecificImplementations());
 			}
 		}
 		// This is the main entry point of the application.
@@ -20,6 +22,16 @@ namespace ios
 			// if you want to use a different Application Delegate class from "AppDelegate"
 			// you can specify it here.
 			UIApplication.Main (args, null, "AppDelegate");
+		}
+	}
+	public static class IocExtensions
+	{
+		public static ViewModelLocator AddPlatformSpecificImplementations(this ViewModelLocator viewModelLocator)
+		{
+			SimpleIoc.Default.Register<IImageService, ImageService> ();
+
+			return viewModelLocator;
+
 		}
 	}
 }

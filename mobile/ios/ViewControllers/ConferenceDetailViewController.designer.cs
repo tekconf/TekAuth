@@ -16,13 +16,45 @@ namespace ios
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UILabel conferenceDescription { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UILabel conferenceEndDate { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UIImageView conferenceImage { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UILabel conferenceName { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UILabel conferenceStartDate { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
+			if (conferenceDescription != null) {
+				conferenceDescription.Dispose ();
+				conferenceDescription = null;
+			}
+			if (conferenceEndDate != null) {
+				conferenceEndDate.Dispose ();
+				conferenceEndDate = null;
+			}
+			if (conferenceImage != null) {
+				conferenceImage.Dispose ();
+				conferenceImage = null;
+			}
 			if (conferenceName != null) {
 				conferenceName.Dispose ();
 				conferenceName = null;
+			}
+			if (conferenceStartDate != null) {
+				conferenceStartDate.Dispose ();
+				conferenceStartDate = null;
 			}
 		}
 	}

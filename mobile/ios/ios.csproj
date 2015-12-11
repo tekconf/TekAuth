@@ -250,6 +250,8 @@
     <Compile Include="CustomControls\ConferenceCell.designer.cs">
       <DependentUpon>ConferenceCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\UIColorExtensions.cs" />
+    <Compile Include="Infrastructure\ImageService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\refit.2.4.1\build\portable-net45+netcore45+wp8+wpa81+monoandroid+xamarin.ios10\refit.targets" Condition="Exists('..\..\packages\refit.2.4.1\build\portable-net45+netcore45+wp8+wpa81+monoandroid+xamarin.ios10\refit.targets')" />

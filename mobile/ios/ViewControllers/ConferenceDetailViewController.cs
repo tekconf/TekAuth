@@ -20,16 +20,31 @@ namespace ios
 			}
 		}
 
-		private Binding<string, string> _nicknameLabelBinding;
+		private Binding<string, string> _nameBinding;
+		private Binding<string, string> _descriptionBinding;
+		private Binding<DateTime?, string> _startDateBinding;
+		private Binding<DateTime?, string> _endDateBinding;
 
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
 
-			_nicknameLabelBinding = this.SetBinding (
+			_nameBinding = this.SetBinding (
 				() => Vm.Name,
 				() => conferenceName.Text);
-//
+
+			_descriptionBinding = this.SetBinding (
+				() => Vm.Description,
+				() => conferenceDescription.Text);
+
+			_startDateBinding = this.SetBinding (
+				() => Vm.StartDate,
+				() => conferenceStartDate.Text);
+
+			_endDateBinding = this.SetBinding (
+				() => Vm.EndDate,
+				() => conferenceEndDate.Text);
+
 //			_emailLabelBinding = this.SetBinding (
 //				() => Vm.Email,
 //				() => email.Text);

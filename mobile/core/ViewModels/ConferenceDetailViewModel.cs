@@ -16,11 +16,15 @@ namespace TekConf.Mobile.Core.ViewModel
 		public ConferenceDetailViewModel (Conference conference)
 		{
 			_conference = conference;
+
 			Name = conference.Name;
+			Description = conference.Description;
+			StartDate = conference.StartDate;
+			EndDate = conference.EndDate;
+
 		}
 
 		private string _name;
-
 		public string Name {
 			get {
 				return _name;
@@ -31,6 +35,42 @@ namespace TekConf.Mobile.Core.ViewModel
 				RaisePropertyChanged (() => Name);
 			}
 		}
-	}
 
+		private string _description;
+		public string Description {
+			get {
+				return _description;
+			}
+			set {
+				if (value == _name) return;
+				_description = value;
+				RaisePropertyChanged (() => Description);
+			}
+		}
+
+		private DateTime? _startDate;
+		public DateTime? StartDate {
+			get {
+				return _startDate;
+			}
+			set {
+				if (value == _startDate) return;
+				_startDate = value;
+				RaisePropertyChanged (() => StartDate);
+			}
+		}
+
+		private DateTime? _endDate;
+		public DateTime? EndDate {
+			get {
+				return _endDate;
+			}
+			set {
+				if (value == _endDate) return;
+				_endDate = value;
+				RaisePropertyChanged (() => EndDate);
+			}
+		}
+
+	}
 }
