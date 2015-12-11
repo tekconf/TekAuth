@@ -7,6 +7,7 @@ using Tekconf.DTO;
 using System.IO;
 using System.Net.Http;
 using ModernHttpClient;
+using Xamarin;
 
 namespace ios
 {
@@ -25,11 +26,11 @@ namespace ios
 
 					try {
 						bytes = await httpClient.GetByteArrayAsync (conference.ImageUrl);
-					} catch (OperationCanceledException) {
-						Console.WriteLine ("Task Canceled!");
+					} catch (OperationCanceledException opEx) {
+						Insights.Report (opEx);
 						return null;
 					} catch (Exception e) {
-						Console.WriteLine (e.ToString ());
+						Insights.Report (e);
 						return null;
 					}
 

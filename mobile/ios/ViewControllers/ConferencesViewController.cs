@@ -3,6 +3,7 @@ using System;
 using UIKit;
 using System.Linq;
 using TekConf.Mobile.Core.ViewModel;
+using Xamarin;
 
 namespace ios
 {
@@ -34,7 +35,7 @@ namespace ios
 				cell.SetConference (conference);
 
 			} catch (Exception ex) {
-				var sdsds = ex.Message;
+				Insights.Report (ex);
 			}
 			return cell;
 		}
@@ -43,7 +44,9 @@ namespace ios
 		{
 			base.ViewWillAppear (animated);
 			if (!Vm.Conferences.Any ()) {
-				await Vm.LoadConferences ();
+				using (Insights.TrackTime ("Loading Conferences List")) {
+					await Vm.LoadConferences ();
+				}
 				this.TableView.ReloadData ();
 			}
 		}
@@ -53,6 +56,7 @@ namespace ios
 			base.PrepareForSegue (segue, sender);
 			if (segue.Identifier == "showConferenceDetail") {
 				var conference = Vm.Conferences [this.TableView.IndexPathForSelectedRow.Row];
+				Insights.Track ("UserSelectedConference", "ConferenceSlug", conference.Slug);
 				Application.Locator.Conference = new ConferenceDetailViewModel (conference);
 			}
 		}

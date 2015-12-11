@@ -10,6 +10,7 @@ using GalaSoft.MvvmLight.Helpers;
 using TekConf.Mobile.Core.ViewModel;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
+using Xamarin;
 
 namespace ios
 {
@@ -52,16 +53,21 @@ namespace ios
 				Auth0User user = null;
 				try {
 					user = await _auth0.LoginAsync (this, scope: "openid profile");
-				} catch (OperationCanceledException) {
-					
+				} catch (OperationCanceledException opEx) {
+					Insights.Report (opEx);
 				}
 
 				if (user != null) {
-					Vm.Nickname = user.Profile.GetValue ("nickname").ToString ();
-					Vm.Email = user.Profile.GetValue ("email").ToString ();
+					var emailAddress = user.Profile.GetValue ("email").ToString ();
+					var nicknameValue = user.Profile.GetValue ("nickname").ToString ();
+					Insights.Identify(emailAddress, null);
+					Insights.Identify(null, Insights.Traits.Email, emailAddress);
+					Insights.Identify(null, Insights.Traits.Name, nicknameValue);
+
+					Vm.Nickname = nicknameValue;
+					Vm.Email = emailAddress;
 					_settingsService.UserIdToken = user.IdToken;
-					//await Vm.LoadConferences();
-					//await AppDelegate.LoadConferences (user.IdToken);
+
 				}
 			};
 		}

@@ -9,6 +9,7 @@ using Microsoft.Practices.ServiceLocation;
 using TekConf.Mobile.Core;
 using CoreGraphics;
 using System.Threading.Tasks;
+using Xamarin;
 
 namespace ios
 {
@@ -76,7 +77,7 @@ namespace ios
 					conferenceImage.Image = image;
 
 				} catch (Exception e) {
-					var sdsd = e.Message;
+					Insights.Report (e);
 				}
 			}
 		}

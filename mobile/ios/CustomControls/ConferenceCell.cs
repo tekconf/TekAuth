@@ -9,6 +9,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Microsoft.Practices.ServiceLocation;
 using TekConf.Mobile.Core;
+using Xamarin;
 
 namespace ios
 {
@@ -52,14 +53,15 @@ namespace ios
 					CGSize imageViewSize = conferenceImage.Frame.Size;
 
 					await Task.Run (() => {
-						image = UIImage.FromFile (localPath).Scale (imageViewSize);
+						var uiImage = UIImage.FromFile (localPath);
+						image = uiImage?.Scale(imageViewSize);
 					});
 
 
 					conferenceImage.Image = image;
 
 				} catch (Exception e) {
-					var sdsd = e.Message;
+					Insights.Report (e);
 				}
 			}
 		}
