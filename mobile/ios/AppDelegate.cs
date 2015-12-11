@@ -1,12 +1,5 @@
 ﻿using Foundation;
 using UIKit;
-using System.Collections.Generic;
-using Tekconf.DTO;
-using Refit;
-using TekConf.Mobile.Core;
-using System.Net.Http;
-using System;
-using System.Threading.Tasks;
 
 namespace ios
 {
@@ -95,5 +88,3 @@ namespace ios
 		}
 	}
 }
-
-

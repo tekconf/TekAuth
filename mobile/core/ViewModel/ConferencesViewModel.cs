@@ -6,6 +6,9 @@ using System.Net.Http;
 using System;
 using System.Collections.ObjectModel;
 using Tekconf.DTO;
+using System.Collections.Generic;
+using Akavache;
+using Fusillade;
 
 namespace TekConf.Mobile.Core.ViewModel
 {
@@ -13,8 +16,12 @@ namespace TekConf.Mobile.Core.ViewModel
 	{
 		private readonly ISettingsService _settingsService;
 		public RelayCommand LoadConferencesCommand { get; private set; }
-		public ConferencesViewModel (ISettingsService settingsService)
+
+		IConferencesService _conferencesService;
+
+		public ConferencesViewModel (ISettingsService settingsService, IConferencesService conferencesService)
 		{
+			this._conferencesService = conferencesService;
 			_settingsService = settingsService;
 			_conferences = new ObservableCollection<Conference> ();
 			this.LoadConferencesCommand = new RelayCommand(async () => await this.LoadConferences(), CanLoadConferences);
@@ -34,19 +41,17 @@ namespace TekConf.Mobile.Core.ViewModel
 
 		public async Task LoadConferences()
 		{
-			ITekConfApi api;
 			if (!string.IsNullOrWhiteSpace (_settingsService.UserIdToken)) {
-				api = RestService.For<ITekConfApi> (new HttpClient (new AuthenticatedHttpClientHandler (_settingsService.UserIdToken)) { 
-					BaseAddress = new Uri ("https://tekauth.azurewebsites.net/api") 
-				});
-				var conferences = await api.GetConferences();
+				var conferences = await _conferencesService
+					.GetConferences(_settingsService.UserIdToken, Priority.Explicit)
+					.ConfigureAwait(false);
+	
 				this.Conferences = new ObservableCollection<Conference> (conferences);
-				//AppDelegate.Conferences = conferences;
-			} else {
-				//api = RestService.For<ITekConfApi> ("https://tekauth.azurewebsites.net/api");
 
+			} else {
 			}
 		}
+
 
 		public bool CanLoadConferences()
 		{

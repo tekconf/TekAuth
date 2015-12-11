@@ -12,6 +12,9 @@ namespace TekConf.Mobile.Core.ViewModel
 			SimpleIoc.Default.Register<ConferencesViewModel>();
             SimpleIoc.Default.Register<SettingsViewModel>();
 			SimpleIoc.Default.Register<ISettingsService, SettingsService> ();
+			SimpleIoc.Default.Register<IConferencesService, ConferencesService> ();
+			SimpleIoc.Default.Register<IApiService, ApiService> ();
+
         }
 
 		public ConferencesViewModel Conferences
