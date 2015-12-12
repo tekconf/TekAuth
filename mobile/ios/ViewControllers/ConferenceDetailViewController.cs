@@ -1,6 +1,4 @@
-using Foundation;
 using System;
-using System.CodeDom.Compiler;
 using UIKit;
 using Tekconf.DTO;
 using TekConf.Mobile.Core.ViewModel;
@@ -42,9 +40,24 @@ namespace ios
 					{"Slug", Vm.Conference.Slug }, 
 				});
 		}
+
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+
+//			this.NavigationItem.SetRightBarButtonItem(
+//				new UIBarButtonItem(UIBarButtonSystemItem.Save, (sender,args) => {
+//					// button was clicked
+//				})
+//				, true);
+
+			this.NavigationItem.SetRightBarButtonItem(
+				new UIBarButtonItem(UIImage.FromBundle("ConferenceAdd")
+					, UIBarButtonItemStyle.Plain
+					, (sender,args) => {
+						// button was clicked
+					})
+				, true);
 
 			_nameBinding = this.SetBinding (
 				() => Vm.Name,

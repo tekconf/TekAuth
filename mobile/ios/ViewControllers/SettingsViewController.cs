@@ -1,14 +1,8 @@
 using System;
 using UIKit;
 using Auth0.SDK;
-using Refit;
-using TekConf.Mobile.Core;
-using System.Net.Http;
-using System.Linq;
-using System.Text;
 using GalaSoft.MvvmLight.Helpers;
 using TekConf.Mobile.Core.ViewModel;
-using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
 using Xamarin;
 using System.Collections.Generic;
@@ -47,6 +41,19 @@ namespace ios
 					{"Screen", "Settings"},
 				});
 		}
+
+		public override void ViewWillLayoutSubviews ()
+		{
+			base.ViewWillLayoutSubviews ();
+
+			//loggedInView.Hidden = true;
+			//loginButton.Hidden = false;
+			//this.View.BringSubviewToFront (loginButton);
+
+			loggedInView.Layer.BorderColor = UIColor.LightGray.CGColor;
+			loggedInView.Layer.BorderWidth = 0.5f;
+
+		}
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
@@ -77,6 +84,10 @@ namespace ios
 
 					Vm.Nickname = nicknameValue;
 					Vm.Email = emailAddress;
+
+					//loggedInView.Hidden = false;
+					//loginButton.Hidden = true;
+
 					_settingsService.UserIdToken = user.IdToken;
 
 				}

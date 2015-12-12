@@ -20,6 +20,10 @@ namespace ios
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UIView loggedInView { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UIButton loginButton { get; set; }
 
 		[Outlet]
@@ -31,6 +35,10 @@ namespace ios
 			if (email != null) {
 				email.Dispose ();
 				email = null;
+			}
+			if (loggedInView != null) {
+				loggedInView.Dispose ();
+				loggedInView = null;
 			}
 			if (loginButton != null) {
 				loginButton.Dispose ();

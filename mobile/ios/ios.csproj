@@ -176,12 +176,6 @@
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json">
       <InProject>false</InProject>
     </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\First.imageset\Contents.json">
-      <InProject>false</InProject>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\First.imageset\First.pdf">
-      <InProject>false</InProject>
-    </ImageAsset>
     <ImageAsset Include="Resources\Images.xcassets\Second.imageset\Contents.json">
       <InProject>false</InProject>
     </ImageAsset>
@@ -225,6 +219,14 @@
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-50.png" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-100.png" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-72.png" />
+    <ImageAsset Include="Resources\Images.xcassets\ConferenceAdd.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\ConferenceAdd.imageset\conferenceAdd-22.png" />
+    <ImageAsset Include="Resources\Images.xcassets\ConferenceAdd.imageset\conferenceAdd-44.png" />
+    <ImageAsset Include="Resources\Images.xcassets\ConferenceAdd.imageset\conferenceAdd-66.png" />
+    <ImageAsset Include="Resources\Images.xcassets\ConferencesAdded.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\ConferencesAdded.imageset\conferenceAdded-22.png" />
+    <ImageAsset Include="Resources\Images.xcassets\ConferencesAdded.imageset\conferenceAdded-44.png" />
+    <ImageAsset Include="Resources\Images.xcassets\ConferencesAdded.imageset\conferenceAdded-66.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
