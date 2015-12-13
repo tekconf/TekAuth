@@ -46,6 +46,7 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <CodesignProvision>edfc1057-8ecd-4a76-8a28-79e9d9175e09</CodesignProvision>
+    <MtouchUseLlvm>true</MtouchUseLlvm>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -165,9 +166,6 @@
     <Reference Include="Splat">
       <HintPath>..\..\packages\Splat.1.6.2\lib\Xamarin.iOS10\Splat.dll</HintPath>
     </Reference>
-    <Reference Include="Calabash">
-      <HintPath>..\..\packages\Xamarin.TestCloud.Agent.0.17.0\lib\Xamarin.iOS10\Calabash.dll</HintPath>
-    </Reference>
     <Reference Include="Humanizer">
       <HintPath>..\..\packages\Humanizer.1.37.7\lib\portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Humanizer.dll</HintPath>
     </Reference>
@@ -191,13 +189,7 @@
     <ImageAsset Include="Resources\Images.xcassets\Settings.imageset\Contents.json">
       <InProject>false</InProject>
     </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\Settings.imageset\ios7-cog-outline.png">
-      <InProject>false</InProject>
-    </ImageAsset>
     <ImageAsset Include="Resources\Images.xcassets\ConferencesTab.imageset\Contents.json">
-      <InProject>false</InProject>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\ConferencesTab.imageset\ios7-people-outline.png">
       <InProject>false</InProject>
     </ImageAsset>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\spotlight-29.png" />
@@ -227,6 +219,10 @@
     <ImageAsset Include="Resources\Images.xcassets\ConferencesAdded.imageset\conferenceAdded-22.png" />
     <ImageAsset Include="Resources\Images.xcassets\ConferencesAdded.imageset\conferenceAdded-44.png" />
     <ImageAsset Include="Resources\Images.xcassets\ConferencesAdded.imageset\conferenceAdded-66.png" />
+    <ImageAsset Include="Resources\Images.xcassets\ConferencesTab.imageset\conferences-60.png" />
+    <ImageAsset Include="Resources\Images.xcassets\ConferencesTab.imageset\conferences-30.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Settings.imageset\settings-60.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Settings.imageset\settings-30.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />

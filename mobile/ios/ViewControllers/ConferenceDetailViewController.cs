@@ -45,17 +45,15 @@ namespace ios
 		{
 			base.ViewDidLoad ();
 
-//			this.NavigationItem.SetRightBarButtonItem(
-//				new UIBarButtonItem(UIBarButtonSystemItem.Save, (sender,args) => {
-//					// button was clicked
-//				})
-//				, true);
+			addToMySchedule.Layer.BorderColor = UIColor.LightGray.CGColor;
+			addToMySchedule.Layer.BorderWidth = 0.5f;
 
 			this.NavigationItem.SetRightBarButtonItem(
 				new UIBarButtonItem(UIImage.FromBundle("ConferenceAdd")
 					, UIBarButtonItemStyle.Plain
 					, (sender,args) => {
-						// button was clicked
+						var button = sender as UIBarButtonItem;
+						button.Image = UIImage.FromBundle("ConferencesAdded");
 					})
 				, true);
 

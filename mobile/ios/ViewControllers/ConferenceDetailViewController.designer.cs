@@ -16,6 +16,10 @@ namespace ios
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UIButton addToMySchedule { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UILabel conferenceDescription { get; set; }
 
 		[Outlet]
@@ -44,6 +48,10 @@ namespace ios
 
 		void ReleaseDesignerOutlets ()
 		{
+			if (addToMySchedule != null) {
+				addToMySchedule.Dispose ();
+				addToMySchedule = null;
+			}
 			if (conferenceDescription != null) {
 				conferenceDescription.Dispose ();
 				conferenceDescription = null;

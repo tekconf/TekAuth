@@ -45,9 +45,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ios\ios.csproj">
+    <ProjectReference Include="..\ios\TekConf.csproj">
       <Project>{6F7AA443-69DC-4165-9F95-1D162CFEED95}</Project>
-      <Name>ios</Name>
+      <Name>TekConf</Name>
       <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
       <Private>False</Private>
     </ProjectReference>

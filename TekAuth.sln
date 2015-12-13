@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tekconf.DTO", "common\Tekco
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mobile", "mobile", "{1498CAEB-AA78-4D3B-B26A-3856BB5FE404}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ios", "mobile\ios\ios.csproj", "{6F7AA443-69DC-4165-9F95-1D162CFEED95}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TekConf", "mobile\ios\TekConf.csproj", "{6F7AA443-69DC-4165-9F95-1D162CFEED95}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "core", "mobile\core\core.csproj", "{F3CB4036-9E90-499A-80B4-0654FBE5CD7A}"
 EndProject
