@@ -9,10 +9,10 @@ using CoreGraphics;
 using System.Threading.Tasks;
 using Xamarin;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ios
 {
-
 	partial class ConferenceDetailViewController : UIViewController
 	{
 		public ConferenceDetailViewController (IntPtr handle) : base (handle)
@@ -47,6 +47,11 @@ namespace ios
 
 			addToMySchedule.Layer.BorderColor = UIColor.LightGray.CGColor;
 			addToMySchedule.Layer.BorderWidth = 0.5f;
+
+			viewSessions.Layer.BorderColor = UIColor.LightGray.CGColor;
+			viewSessions.Layer.BorderWidth = 0.5f;
+
+
 
 			this.NavigationItem.SetRightBarButtonItem(
 				new UIBarButtonItem(UIImage.FromBundle("ConferenceAdd")

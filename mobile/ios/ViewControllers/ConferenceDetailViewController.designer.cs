@@ -46,6 +46,10 @@ namespace ios
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UIView highlightColor { get; set; }
 
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UIButton viewSessions { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
 			if (addToMySchedule != null) {
@@ -79,6 +83,10 @@ namespace ios
 			if (highlightColor != null) {
 				highlightColor.Dispose ();
 				highlightColor = null;
+			}
+			if (viewSessions != null) {
+				viewSessions.Dispose ();
+				viewSessions = null;
 			}
 		}
 	}

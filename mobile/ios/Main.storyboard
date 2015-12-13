@@ -436,13 +436,26 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="916" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="236" width="560" height="30"/>
+                                <rect key="frame" x="20" y="249" width="560" height="30"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="17"/>
                                 <state key="normal" title="Add to My Schedule">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <constraints>
-                                    <constraint id="920" firstItem="916" firstAttribute="height" constant="30"/>
+                                    <constraint id="1035" firstItem="916" firstAttribute="height" constant="30"/>
+                                </constraints>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="958" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="333" width="560" height="30"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="17"/>
+                                <state key="normal" title="View 120 Sessions">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue id="1015" destination="965" kind="show"/>
+                                </connections>
+                                <constraints>
+                                    <constraint id="1037" firstItem="958" firstAttribute="height" constant="30"/>
                                 </constraints>
                             </button>
                         </subviews>
@@ -465,9 +478,13 @@
                             <constraint id="871" firstItem="870" firstAttribute="leading" secondItem="719" secondAttribute="leading"/>
                             <constraint id="872" firstItem="870" firstAttribute="top" secondItem="715" secondAttribute="bottom"/>
                             <constraint id="873" firstItem="870" firstAttribute="trailing" secondItem="719" secondAttribute="trailing"/>
-                            <constraint id="917" firstItem="916" firstAttribute="top" secondItem="809" secondAttribute="bottom" constant="20"/>
-                            <constraint id="918" firstItem="916" firstAttribute="leading" secondItem="719" secondAttribute="leading" constant="20"/>
-                            <constraint id="919" firstItem="719" firstAttribute="trailing" secondItem="916" secondAttribute="trailing" constant="20"/>
+                            <constraint id="1032" firstItem="916" firstAttribute="leading" secondItem="719" secondAttribute="leading" constant="20"/>
+                            <constraint id="1033" firstItem="916" firstAttribute="top" secondItem="809" secondAttribute="bottom" constant="33"/>
+                            <constraint id="1034" firstItem="719" firstAttribute="trailing" secondItem="916" secondAttribute="trailing" constant="20"/>
+                            <constraint id="1036" firstItem="958" firstAttribute="top" secondItem="916" secondAttribute="bottom" constant="54"/>
+                            <constraint id="1038" firstItem="719" firstAttribute="trailing" secondItem="958" secondAttribute="trailing" constant="20"/>
+                            <constraint id="1039" firstItem="958" firstAttribute="leading" secondItem="719" secondAttribute="leading" constant="20"/>
+                            <constraint id="1040" firstItem="856" firstAttribute="top" secondItem="958" secondAttribute="bottom" constant="37"/>
                         </constraints>
                     </view>
                     <connections>
@@ -479,11 +496,39 @@
                         <outlet property="conferenceMap" destination="856" id="name-outlet-856"/>
                         <outlet property="highlightColor" destination="870" id="name-outlet-870"/>
                         <outlet property="addToMySchedule" destination="916" id="name-outlet-916"/>
+                        <outlet property="viewSessions" destination="958" id="name-outlet-958"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="720" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2077" y="-314"/>
+        </scene>
+        <scene sceneID="964">
+            <objects>
+                <tableViewController id="965" sceneMemberID="viewController" customClass="SessionsViewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="966">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="969" rowHeight="44" reuseIdentifier="sessionCell">
+                                <rect key="frame" x="0.0" y="22" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="969" id="970">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="965" id="967"/>
+                            <outlet property="delegate" destination="965" id="968"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="971" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2778" y="-315"/>
         </scene>
     </scenes>
     <resources>
