@@ -11,8 +11,28 @@ namespace ios
 {
 	partial class SessionsViewController : UITableViewController, IUISearchResultsUpdating
 	{
-		List<string> Sessions = new List<string> () { "Let’s Build a Hybrid Mobile App!", "Cross Platform Mobile UI with Xamarin Forms Workshop", "Game Development with the Unity Game Engine – Part 1", "Breaking Ground with iOS Development – Part 1", "XAML & C# Powered iOS, Android, and Windows apps"};
-		List<string> FilteredSessions = new List<string>();
+		List<Session> Sessions = new List<Session> () { 
+			new Session { 
+				Title = "Let’s Build a Hybrid Mobile App!",
+				Description = "Let’s Build a Hybrid Mobile App!",
+				Id = 1,
+				Room = "Ballroom A",
+				SpeakerName = "Rob Gibbens",
+				StartDate = new DateTime(2016, 04, 16, 13, 0,0),
+				EndDate = new DateTime(2016, 04, 16, 14, 0,0),
+
+			}, 
+			new Session { 
+				Title = "Let’s Build a Hybrid Mobile App!",
+				Description = "Let’s Build a Hybrid Mobile App!",
+				Id = 1,
+				Room = "Ballroom A",
+				SpeakerName = "Rob Gibbens",
+				StartDate = new DateTime(2016, 04, 16, 13, 0,0),
+				EndDate = new DateTime(2016, 04, 16, 14, 0,0),
+			}, 
+		};
+		List<Session> FilteredSessions = new List<Session>();
 
 		public SessionsViewController (IntPtr handle) : base (handle)
 		{
@@ -46,8 +66,10 @@ namespace ios
 
 		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
-			var cell = tableView.DequeueReusableCell ("sessionCell");
-			cell.TextLabel.Text = FilteredSessions.ToArray () [indexPath.Row];
+			var cell = tableView.DequeueReusableCell ("sessionCell") as SessionCell;
+			var session = FilteredSessions.ToArray()[indexPath.Row];
+			cell.SetSession (session);
+			//cell.TextLabel.Text = FilteredSessions.ToArray () [indexPath.Row];
 
 			return cell;
 
@@ -58,7 +80,7 @@ namespace ios
 		{
 			var text = searchController.SearchBar.Text;
 			if (searchController.Active) {
-				FilteredSessions = Sessions.Where (x => x.Contains (text)).ToList ();
+				FilteredSessions = Sessions.Where (x => x.Title.Contains (text)).ToList ();
 			} else {
 				FilteredSessions = Sessions;
 			}

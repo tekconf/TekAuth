@@ -2,6 +2,7 @@
 
 namespace Tekconf.DTO
 {
+
     public class Conference
     {
         public int Id { get; set; }

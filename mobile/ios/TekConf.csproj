@@ -258,8 +258,12 @@
     <Compile Include="Infrastructure\UIColorExtensions.cs" />
     <Compile Include="Infrastructure\ImageService.cs" />
     <Compile Include="IocExtensions.cs" />
-    <Compile Include="SessionsViewController.cs" />
-    <Compile Include="SessionsViewController.designer.cs">
+    <Compile Include="CustomControls\SessionCell.cs" />
+    <Compile Include="CustomControls\SessionCell.designer.cs">
+      <DependentUpon>SessionCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\SessionsViewController.cs" />
+    <Compile Include="ViewControllers\SessionsViewController.designer.cs">
       <DependentUpon>SessionsViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
