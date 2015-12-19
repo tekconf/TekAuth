@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1294">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
     </dependencies>
@@ -458,6 +458,13 @@
                                     <constraint id="1037" firstItem="958" firstAttribute="height" constant="30"/>
                                 </constraints>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1302" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="271" y="371" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections/>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint id="820" firstItem="776" firstAttribute="leading" secondItem="719" secondAttribute="leading" constant="20"/>
@@ -485,6 +492,8 @@
                             <constraint id="1038" firstItem="719" firstAttribute="trailing" secondItem="958" secondAttribute="trailing" constant="20"/>
                             <constraint id="1039" firstItem="958" firstAttribute="leading" secondItem="719" secondAttribute="leading" constant="20"/>
                             <constraint id="1040" firstItem="856" firstAttribute="top" secondItem="958" secondAttribute="bottom" constant="37"/>
+                            <constraint id="1303" firstItem="1302" firstAttribute="top" secondItem="958" secondAttribute="bottom" constant="8"/>
+                            <constraint id="1304" firstItem="1302" firstAttribute="leading" secondItem="719" secondAttribute="leading" constant="271"/>
                         </constraints>
                     </view>
                     <connections>
@@ -680,6 +689,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="971" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2778" y="-315"/>
+        </scene>
+        <scene sceneID="1293">
+            <objects>
+                <tableViewController id="1294" sceneMemberID="viewController" customClass="StackTableViewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="300" sectionHeaderHeight="22" sectionFooterHeight="22" id="1295">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="1298" rowHeight="300" customClass="StackCell" reuseIdentifier="stackCell">
+                                <rect key="frame" x="0.0" y="22" width="600" height="300"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1298" id="1299">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="299.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="1" green="1" blue="0" alpha="1"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="1294" id="1296"/>
+                            <outlet property="delegate" destination="1294" id="1297"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1300" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2772" y="449"/>
         </scene>
     </scenes>
     <resources>
