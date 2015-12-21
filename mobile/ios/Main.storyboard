@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1294">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -764,68 +763,68 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="220"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c8g-DO-5qE" userLabel="mainSessionStackView">
-                                            <rect key="frame" x="8" y="8" width="252" height="205"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="qJx-zL-6zK" userLabel="mainContentStackView">
+                                            <rect key="frame" x="0.0" y="0.0" width="2989" height="221"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c6j-Cd-0nM" userLabel="highlightView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="8" height="205"/>
+                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1315" userLabel="highlightView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="8" height="221"/>
                                                     <animations/>
-                                                    <color key="backgroundColor" red="1" green="0.11998936430175755" blue="0.051698201434209445" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="8" id="eey-xG-Jjw"/>
+                                                        <constraint firstAttribute="width" constant="8" id="1319"/>
                                                     </constraints>
                                                 </view>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="T1r-DW-LZT" userLabel="sessionContentVerticalStackView">
-                                                    <rect key="frame" x="8" y="0.0" width="244" height="205"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Qmh-U0-bbY" userLabel="contentStackView">
+                                                    <rect key="frame" x="8" y="0.0" width="2981" height="63"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4RI-4V-eGM" userLabel="sessionLabelsVerticalStackView">
-                                                            <rect key="frame" x="0.0" y="0.0" width="244" height="184"/>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="This is the label for the title of the session. It could be long, it could be short." lineBreakMode="wordWrap" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1320">
+                                                            <rect key="frame" x="0.0" y="0.0" width="2981" height="21"/>
+                                                            <animations/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1324">
+                                                            <rect key="frame" x="0.0" y="21" width="2981" height="21"/>
+                                                            <animations/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <string key="text">This is the label for the description. Most likely, this will be rather lengthy. It could be SUPER long, or just a little bit long.  Let's see what a very long description of a conference session would look like in, this, our TekConf conference management application. Some people just like to hear themselves speak, some just like to see themselves type, and some men just want to see the world burn.</string>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="4p1-gI-NZq" userLabel="additionalContentStackView">
+                                                            <rect key="frame" x="0.0" y="42" width="2981" height="21"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I81-1x-rDt" userLabel="sessionTitle">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="244" height="163"/>
+                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="11:30 am" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1328">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="994" height="21"/>
                                                                     <animations/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="Ballroom A" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1333">
+                                                                    <rect key="frame" x="994" y="0.0" width="993" height="21"/>
+                                                                    <animations/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="163" id="ecS-6g-PuX"/>
+                                                                        <constraint firstAttribute="height" constant="21" id="1343"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Usp-Gw-Dk3" userLabel="sessionDescription">
-                                                                    <rect key="frame" x="0.0" y="163" width="244" height="21"/>
+                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="Rob Gibbens" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1336">
+                                                                    <rect key="frame" x="1987" y="0.0" width="994" height="21"/>
                                                                     <animations/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="1340"/>
+                                                                    </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                            <animations/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="I81-1x-rDt" secondAttribute="trailing" id="Nzq-mx-lpU"/>
-                                                            </constraints>
-                                                        </stackView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mwJ-fZ-Ime" userLabel="sessionDateRoomStackView">
-                                                            <rect key="frame" x="0.0" y="184" width="244" height="21"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r69-CR-7ty" userLabel="sessionTime">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="160" height="21"/>
-                                                                    <animations/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W48-fb-jDS" userLabel="sessionRoom">
-                                                                    <rect key="frame" x="160" y="0.0" width="42" height="21"/>
-                                                                    <animations/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iv3-4Y-20x" userLabel="sessionSpeaker">
-                                                                    <rect key="frame" x="202" y="0.0" width="42" height="21"/>
-                                                                    <animations/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
@@ -833,27 +832,22 @@
                                                         </stackView>
                                                     </subviews>
                                                     <animations/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="4RI-4V-eGM" secondAttribute="trailing" id="c37-GW-mM2"/>
-                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <animations/>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="T1r-DW-LZT" secondAttribute="trailing" id="xdf-ex-S9I"/>
-                                            </constraints>
                                         </stackView>
                                     </subviews>
                                     <animations/>
-                                    <constraints>
-                                        <constraint firstItem="c8g-DO-5qE" firstAttribute="centerY" secondItem="1299" secondAttribute="centerY" id="M80-PS-iRc"/>
-                                        <constraint firstItem="c8g-DO-5qE" firstAttribute="trailing" secondItem="1299" secondAttribute="trailingMargin" constant="-332" id="c8X-lP-kqx"/>
-                                        <constraint firstItem="c8g-DO-5qE" firstAttribute="leading" secondItem="1299" secondAttribute="leadingMargin" id="joc-is-JSW"/>
-                                        <constraint firstItem="c8g-DO-5qE" firstAttribute="top" secondItem="1299" secondAttribute="topMargin" id="kcQ-cf-i5r"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="sessionDescription" destination="1324" id="name-outlet-1324"/>
+                                    <outlet property="sessionRoom" destination="1333" id="name-outlet-1333"/>
+                                    <outlet property="sessionSpeaker" destination="1336" id="name-outlet-1336"/>
+                                    <outlet property="sessionTime" destination="1328" id="name-outlet-1328"/>
+                                    <outlet property="sessionTitle" destination="1320" id="name-outlet-1320"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
