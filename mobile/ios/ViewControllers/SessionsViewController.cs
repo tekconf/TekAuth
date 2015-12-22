@@ -46,9 +46,11 @@ namespace ios
 
 		public SessionsViewController (IntPtr handle) : base (handle)
 		{
-			
 			FilteredSessions = Sessions;
+			TableView.RowHeight = UITableView.AutomaticDimension;
+			TableView.EstimatedRowHeight = 212;
 		}
+
 		UISearchController searchController;
 		public override void ViewDidLoad ()
 		{
