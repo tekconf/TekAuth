@@ -15,16 +15,13 @@ namespace ios
 		{
 		}
 
-		public override void LayoutSubviews ()
-		{
-			base.LayoutSubviews ();
 
-			conferenceContentView.Layer.BorderColor = UIColor.LightGray.CGColor;
-			conferenceContentView.Layer.BorderWidth = 0.5f;
-		}
 
 		public async Task SetConference (Conference conference)
 		{
+			conferenceContentView.Layer.BorderColor = UIColor.LightGray.CGColor;
+			conferenceContentView.Layer.BorderWidth = 0.5f;
+
 			this.conferenceName.Text = conference.Name;
 			this.AccessibilityIdentifier = conference.Slug;
 

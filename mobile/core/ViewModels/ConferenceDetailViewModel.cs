@@ -31,9 +31,11 @@ namespace TekConf.Mobile.Core.ViewModel
 			{
 
 				string range;
-				if (StartDate == default(DateTime?) || EndDate == default(DateTime?))
-				{
+				if (StartDate == default(DateTime?) && EndDate == default(DateTime?)) {
 					range = "No Date Set";
+				} else if (StartDate.HasValue && !EndDate.HasValue) {
+					// Only start Date
+					range = StartDate.Value.ToString("MMMM") + " " + StartDate.Value.Day + ", " + StartDate.Value.Year;
 				}
 				else if (StartDate.Value.Month == EndDate.Value.Month && StartDate.Value.Year == EndDate.Value.Year)
 				{

@@ -19,6 +19,8 @@ namespace ios
 		private ObservableCollection<Conference> _filteredConferences;
 		public ConferencesViewController (IntPtr handle) : base (handle)
 		{
+			TableView.RowHeight = UITableView.AutomaticDimension;
+			TableView.EstimatedRowHeight = 220;
 		}
 
 		private ConferencesViewModel Vm {
