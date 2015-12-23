@@ -55,6 +55,7 @@ namespace ios
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+			this.Title = Vm.Conference.Name;
 			searchController = new UISearchController ((UITableViewController)null);
 			searchController.DimsBackgroundDuringPresentation = false;
 			this.TableView.TableHeaderView = searchController.SearchBar;
@@ -63,7 +64,6 @@ namespace ios
 			searchController.SearchResultsUpdater = this;
 			this.TableView.SetContentOffset (new CoreGraphics.CGPoint (0, searchController.SearchBar.Frame.Size.Height), animated: false);
 			searchController.SearchBar.BarTintColor = UIColorExtensions.FromHex (Vm.Conference.HighlightColor);
-
 		}
 
 		private ConferenceDetailViewModel Vm {
@@ -71,11 +71,6 @@ namespace ios
 				return Application.Locator.Conference;
 			}
 		}
-
-//		public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
-//		{
-//			return 221;
-//		}
 
 		public override nint RowsInSection (UITableView tableView, nint section)
 		{
@@ -86,14 +81,11 @@ namespace ios
 		{
 			var cell = tableView.DequeueReusableCell ("sessionCell") as SessionCell;
 			var session = FilteredSessions.ToArray()[indexPath.Row];
-			cell.SetSession (session);
-			//cell.TextLabel.Text = FilteredSessions.ToArray () [indexPath.Row];
+			cell.SetSession (session, this.Vm.Conference.HighlightColor);
 
 			return cell;
-
 		}
-
-
+			
 		public void UpdateSearchResultsForSearchController (UISearchController searchController)
 		{
 			var text = searchController.SearchBar.Text;

@@ -16,18 +16,6 @@ namespace ios
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UIView conferenceDateView { get; set; }
-
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UIView conferenceFavoriteView { get; set; }
-
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UIView conferenceLocationView { get; set; }
-
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
 		UIView highlightColorBar { get; set; }
 
 		[Outlet]
@@ -48,7 +36,19 @@ namespace ios
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UIView sessionRoomView { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UILabel sessionSpeaker { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UIView sessionSpeakerView { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UIView sessionTimeView { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
@@ -56,18 +56,6 @@ namespace ios
 
 		void ReleaseDesignerOutlets ()
 		{
-			if (conferenceDateView != null) {
-				conferenceDateView.Dispose ();
-				conferenceDateView = null;
-			}
-			if (conferenceFavoriteView != null) {
-				conferenceFavoriteView.Dispose ();
-				conferenceFavoriteView = null;
-			}
-			if (conferenceLocationView != null) {
-				conferenceLocationView.Dispose ();
-				conferenceLocationView = null;
-			}
 			if (highlightColorBar != null) {
 				highlightColorBar.Dispose ();
 				highlightColorBar = null;
@@ -88,9 +76,21 @@ namespace ios
 				sessionRoom.Dispose ();
 				sessionRoom = null;
 			}
+			if (sessionRoomView != null) {
+				sessionRoomView.Dispose ();
+				sessionRoomView = null;
+			}
 			if (sessionSpeaker != null) {
 				sessionSpeaker.Dispose ();
 				sessionSpeaker = null;
+			}
+			if (sessionSpeakerView != null) {
+				sessionSpeakerView.Dispose ();
+				sessionSpeakerView = null;
+			}
+			if (sessionTimeView != null) {
+				sessionTimeView.Dispose ();
+				sessionTimeView = null;
 			}
 			if (sessionTitle != null) {
 				sessionTitle.Dispose ();

@@ -52,7 +52,7 @@ namespace ios
 			viewSessions.Layer.BorderColor = UIColor.LightGray.CGColor;
 			viewSessions.Layer.BorderWidth = 0.5f;
 
-
+			this.Title = Vm.Conference.Name;
 
 			this.NavigationItem.SetRightBarButtonItem(
 				new UIBarButtonItem(UIImage.FromBundle("ConferenceAdd")
