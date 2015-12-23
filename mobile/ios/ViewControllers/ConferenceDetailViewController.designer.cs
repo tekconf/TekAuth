@@ -24,10 +24,6 @@ namespace ios
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel conferenceEndDate { get; set; }
-
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
 		UIImageView conferenceImage { get; set; }
 
 		[Outlet]
@@ -44,10 +40,6 @@ namespace ios
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UIView highlightColor { get; set; }
-
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
 		UIButton viewSessions { get; set; }
 
 		void ReleaseDesignerOutlets ()
@@ -59,10 +51,6 @@ namespace ios
 			if (conferenceDescription != null) {
 				conferenceDescription.Dispose ();
 				conferenceDescription = null;
-			}
-			if (conferenceEndDate != null) {
-				conferenceEndDate.Dispose ();
-				conferenceEndDate = null;
 			}
 			if (conferenceImage != null) {
 				conferenceImage.Dispose ();
@@ -79,10 +67,6 @@ namespace ios
 			if (conferenceStartDate != null) {
 				conferenceStartDate.Dispose ();
 				conferenceStartDate = null;
-			}
-			if (highlightColor != null) {
-				highlightColor.Dispose ();
-				highlightColor = null;
 			}
 			if (viewSessions != null) {
 				viewSessions.Dispose ();

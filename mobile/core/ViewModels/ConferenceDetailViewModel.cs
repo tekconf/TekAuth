@@ -21,11 +21,47 @@ namespace TekConf.Mobile.Core.ViewModel
 			Description = conference.Description;
 			StartDate = conference.StartDate.Value;
 			EndDate = conference.EndDate;
-
 		}
 
 		public Conference Conference { get; private set;}
 
+		public string DateRange
+		{
+			get
+			{
+
+				string range;
+				if (StartDate == default(DateTime?) || EndDate == default(DateTime?))
+				{
+					range = "No Date Set";
+				}
+				else if (StartDate.Value.Month == EndDate.Value.Month && StartDate.Value.Year == EndDate.Value.Year)
+				{
+					// They begin and end in the same month
+					if (StartDate.Value.Date == EndDate.Value.Date)
+					{
+						range = StartDate.Value.ToString("MMMM") + " " + StartDate.Value.Day + ", " + StartDate.Value.Year;
+					}
+					else
+						range = StartDate.Value.ToString("MMMM") + " " + StartDate.Value.Day + " - " + EndDate.Value.Day + ", " + StartDate.Value.Year;
+				}
+				else
+				{
+					// They begin and end in different months
+					if (StartDate.Value.Year == EndDate.Value.Year)
+					{
+						range = StartDate.Value.ToString("MMMM") + " " + StartDate.Value.Day + " - " + EndDate.Value.ToString("MMMM") + " " + EndDate.Value.Day + ", " + StartDate.Value.Year;
+					}
+					else
+					{
+						range = StartDate.Value.ToString("MMMM") + " " + StartDate.Value.Day + ", " + StartDate.Value.Year + " - " + EndDate.Value.ToString("MMMM") + " " + EndDate.Value.Day + ", " + EndDate.Value.Year;
+					}
+
+				}
+
+				return range;
+			}
+		}
 		private string _name;
 		public string Name {
 			get {

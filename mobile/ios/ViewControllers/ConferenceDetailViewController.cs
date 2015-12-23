@@ -11,6 +11,8 @@ using Xamarin;
 using System.Collections.Generic;
 using System.Linq;
 using Foundation;
+using MapKit;
+using CoreLocation;
 
 namespace ios
 {
@@ -54,43 +56,42 @@ namespace ios
 
 			this.Title = Vm.Conference.Name;
 
-			this.NavigationItem.SetRightBarButtonItem(
-				new UIBarButtonItem(UIImage.FromBundle("ConferenceAdd")
-					, UIBarButtonItemStyle.Plain
-					, (sender,args) => {
-						var button = sender as UIBarButtonItem;
-						button.Image = UIImage.FromBundle("ConferencesAdded");
-					})
-				, true);
+//			this.NavigationItem.SetRightBarButtonItem(
+//				new UIBarButtonItem(UIImage.FromBundle("ConferenceAdd")
+//					, UIBarButtonItemStyle.Plain
+//					, (sender,args) => {
+//						var button = sender as UIBarButtonItem;
+//						button.Image = UIImage.FromBundle("ConferencesAdded");
+//					})
+//				, true);
 
-			_nameBinding = this.SetBinding (
-				() => Vm.Name,
-				() => conferenceName.Text);
+			conferenceName.Text = Vm.Conference.Name;
+			conferenceName.SizeToFit ();
 
-			_descriptionBinding = this.SetBinding (
-				() => Vm.Description,
-				() => conferenceDescription.Text);
+			conferenceDescription.Text = Vm.Conference.Description;
+			conferenceDescription.SizeToFit ();
 
-			_startDateBinding = this.SetBinding (
-				() => Vm.StartDate,
-				() => conferenceStartDate.Text);
-			
-			_startDateBinding.ConvertSourceToTarget ((source) => source.HasValue ? source.Value.ToString("ddd, MMMM dd, yyyy") : string.Empty);
-			_startDateBinding.ForceUpdateValueFromSourceToTarget ();
-			_endDateBinding = this.SetBinding (
-				() => Vm.EndDate,
-				() => conferenceEndDate.Text);
+			conferenceStartDate.Text = Vm.DateRange;
+			conferenceStartDate.SizeToFit ();
 
-			_endDateBinding.ConvertSourceToTarget ((source) => source.HasValue ? source.Value.ToShortDateString() : string.Empty);
-			_endDateBinding.ForceUpdateValueFromSourceToTarget ();
-
-			highlightColor.BackgroundColor = UIColorExtensions.FromHex (Vm.Conference.HighlightColor);
+			//highlightColor.BackgroundColor = UIColorExtensions.FromHex (Vm.Conference.HighlightColor);
 			GetImage (Vm.Conference);
-
-//			_emailLabelBinding = this.SetBinding (
-//				() => Vm.Email,
-//				() => email.Text);
+			ShowMap ();
 		}
+
+		private void ShowMap()
+		{
+			MKMapCamera currentLocation = new MKMapCamera {
+				CenterCoordinate = new CLLocationCoordinate2D(latitude: 42.467051, longitude: -83.409285),
+				Altitude = 1200.0,
+				Pitch = 45.0f,
+				Heading = 130.0
+			};
+
+			conferenceMap.SetCamera (currentLocation, animated: true);
+
+		}
+
 		private async void GetImage(Conference conference)
 		{
 			if (!string.IsNullOrWhiteSpace (conference.ImageUrl)) {
