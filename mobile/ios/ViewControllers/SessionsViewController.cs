@@ -1,6 +1,5 @@
 using Foundation;
 using System;
-using System.CodeDom.Compiler;
 using UIKit;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,7 +56,7 @@ namespace ios
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-			this.Title = Vm.Conference.Name;
+			//this.Title = Vm.Conference.Name;
 			searchController = new UISearchController ((UITableViewController)null);
 			searchController.DimsBackgroundDuringPresentation = false;
 			this.TableView.TableHeaderView = searchController.SearchBar;
@@ -108,7 +107,10 @@ namespace ios
 				var session = Sessions [this.TableView.IndexPathForSelectedRow.Row];
 				Insights.Track ("UserSelectedSession", "SessionSlug", session.Slug);
 
-				Application.Locator.Session = new SessionDetailViewModel (session);
+				Application.Locator.Session = new SessionDetailViewModel (session, Vm.Name);
+
+				this.NavigationItem.BackBarButtonItem = new UIBarButtonItem ("Sessions", UIBarButtonItemStyle.Plain, null);
+
 			}
 		}
 	}

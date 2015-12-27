@@ -24,6 +24,10 @@ namespace ios
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UILabel sessionRoom { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UILabel sessionTime { get; set; }
 
 		[Outlet]
@@ -39,6 +43,10 @@ namespace ios
 			if (sessionDescription != null) {
 				sessionDescription.Dispose ();
 				sessionDescription = null;
+			}
+			if (sessionRoom != null) {
+				sessionRoom.Dispose ();
+				sessionRoom = null;
 			}
 			if (sessionTime != null) {
 				sessionTime.Dispose ();

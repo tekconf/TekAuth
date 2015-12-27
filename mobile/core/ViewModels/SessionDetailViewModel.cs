@@ -6,17 +6,31 @@ namespace TekConf.Mobile.Core.ViewModel
 {
 	public class SessionDetailViewModel : ViewModelBase
 	{
-		public SessionDetailViewModel (Session session)
+		public SessionDetailViewModel (Session session, string conferenceName)
 		{
 			Session = session;
 
+			ConferenceName = conferenceName;
 			Title = Session.Title;
 			Description = Session.Description;
 			StartDate = Session.StartDate.Value;
 			EndDate = Session.EndDate;
+			Room = Session.Room;
 		}
 
 		public Session Session { get; private set;}
+
+		private string _conferenceName;
+		public string ConferenceName {
+			get {
+				return _conferenceName;
+			}
+			set {
+				if (value == _conferenceName) return;
+				_conferenceName = value;
+				RaisePropertyChanged (() => ConferenceName);
+			}
+		}
 
 		private string _title;
 		public string Title {
@@ -27,6 +41,18 @@ namespace TekConf.Mobile.Core.ViewModel
 				if (value == _title) return;
 				_title = value;
 				RaisePropertyChanged (() => Title);
+			}
+		}
+
+		private string _room;
+		public string Room {
+			get {
+				return _room;
+			}
+			set {
+				if (value == _room) return;
+				_room = value;
+				RaisePropertyChanged (() => Room);
 			}
 		}
 

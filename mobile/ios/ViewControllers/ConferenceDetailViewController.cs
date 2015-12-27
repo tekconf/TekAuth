@@ -9,8 +9,6 @@ using CoreGraphics;
 using System.Threading.Tasks;
 using Xamarin;
 using System.Collections.Generic;
-using System.Linq;
-using Foundation;
 using MapKit;
 using CoreLocation;
 

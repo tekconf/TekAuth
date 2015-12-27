@@ -92,6 +92,8 @@ namespace ios
 				var conference = _filteredConferences [this.TableView.IndexPathForSelectedRow.Row];
 				Insights.Track ("UserSelectedConference", "ConferenceSlug", conference.Slug);
 				Application.Locator.Conference = new ConferenceDetailViewModel (conference);
+				this.NavigationItem.BackBarButtonItem = new UIBarButtonItem ("Conferences", UIBarButtonItemStyle.Plain, null);
+
 			}
 		}
 

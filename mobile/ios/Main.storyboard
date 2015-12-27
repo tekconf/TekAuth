@@ -536,7 +536,7 @@
         <!--Sessions View Controller-->
         <scene sceneID="964">
             <objects>
-                <tableViewController id="965" customClass="SessionsViewController" sceneMemberID="viewController">
+                <tableViewController id="965" customClass="SessionsViewController" sceneMemberID="viewController" title="Sessions">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="221" sectionHeaderHeight="22" sectionFooterHeight="22" id="966">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -741,17 +741,18 @@
                                                 </constraints>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1897">
-                                                <rect key="frame" x="8" y="41" width="572" height="21"/>
+                                                <rect key="frame" x="8" y="46" width="55" height="21"/>
                                                 <animations/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="21" id="1906" relation="greaterThanOrEqual"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="12"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <constraints>
+                                                    <constraint id="2162" firstItem="1897" firstAttribute="height" constant="21" relation="greaterThanOrEqual"/>
+                                                    <constraint id="2163" firstItem="1897" firstAttribute="width" constant="55" relation="greaterThanOrEqual"/>
+                                                </constraints>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1895">
-                                                <rect key="frame" x="8" y="70" width="584" height="21"/>
+                                                <rect key="frame" x="8" y="75" width="584" height="21"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="14"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -761,28 +762,42 @@
                                                 </constraints>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1889">
-                                                <rect key="frame" x="8" y="99" width="584" height="30"/>
+                                                <rect key="frame" x="8" y="104" width="584" height="30"/>
                                                 <animations/>
                                                 <state key="normal" title="Add to My Schedule"/>
                                                 <constraints>
                                                     <constraint id="2144" firstItem="1889" firstAttribute="height" constant="30"/>
                                                 </constraints>
                                             </button>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="wordWrap" id="2157" translatesAutoresizingMaskIntoConstraints="NO" adjustsFontSizeToFit="NO" textAlignment="right">
+                                                <rect key="frame" x="71" y="46" width="521" height="21"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <constraints>
+                                                    <constraint id="2166" firstItem="2157" firstAttribute="width" constant="30" relation="greaterThanOrEqual"/>
+                                                    <constraint id="2168" firstItem="2157" firstAttribute="height" constant="21"/>
+                                                </constraints>
+                                            </label>
                                         </subviews>
                                         <animations/>
                                         <constraints>
-                                            <constraint firstItem="1897" firstAttribute="top" secondItem="1893" secondAttribute="bottom" constant="8" id="1920"/>
-                                            <constraint firstItem="1897" firstAttribute="leading" secondItem="1904" secondAttribute="leading" constant="8" id="1921"/>
                                             <constraint firstItem="1893" firstAttribute="leading" secondItem="1904" secondAttribute="leading" constant="8" id="1924"/>
                                             <constraint firstItem="1893" firstAttribute="top" secondItem="1904" secondAttribute="top" constant="8" id="1937"/>
                                             <constraint id="2126" firstItem="1904" firstAttribute="trailing" secondItem="1893" secondAttribute="trailing" constant="20"/>
-                                            <constraint id="2127" firstItem="1904" firstAttribute="trailing" secondItem="1897" secondAttribute="trailing" constant="20"/>
                                             <constraint id="2137" firstItem="1895" firstAttribute="leading" secondItem="1904" secondAttribute="leading" constant="8"/>
-                                            <constraint id="2138" firstItem="1895" firstAttribute="top" secondItem="1897" secondAttribute="bottom" constant="8"/>
                                             <constraint id="2139" firstItem="1904" firstAttribute="trailing" secondItem="1895" secondAttribute="trailing" constant="8"/>
                                             <constraint id="2141" firstItem="1889" firstAttribute="leading" secondItem="1904" secondAttribute="leading" constant="8"/>
                                             <constraint id="2142" firstItem="1889" firstAttribute="top" secondItem="1895" secondAttribute="bottom" constant="8"/>
                                             <constraint id="2143" firstItem="1904" firstAttribute="trailing" secondItem="1889" secondAttribute="trailing" constant="8"/>
+                                            <constraint id="2158" firstItem="1897" firstAttribute="leading" secondItem="1904" secondAttribute="leading" constant="8"/>
+                                            <constraint id="2159" firstItem="1897" firstAttribute="top" secondItem="1893" secondAttribute="bottom" constant="13"/>
+                                            <constraint id="2160" firstItem="1895" firstAttribute="top" secondItem="1897" secondAttribute="bottom" constant="8"/>
+                                            <constraint id="2161" firstItem="2157" firstAttribute="leading" secondItem="1897" secondAttribute="trailing" constant="8"/>
+                                            <constraint id="2165" firstItem="2157" firstAttribute="top" secondItem="1893" secondAttribute="bottom" constant="13"/>
+                                            <constraint id="2167" firstItem="1895" firstAttribute="top" secondItem="2157" secondAttribute="bottom" constant="8"/>
+                                            <constraint id="2169" firstItem="1904" firstAttribute="trailing" secondItem="2157" secondAttribute="trailing" constant="8"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -813,6 +828,7 @@
                         <outlet property="sessionTitle" destination="1893" id="name-outlet-1893"/>
                         <outlet property="sessionDescription" destination="1895" id="name-outlet-1895"/>
                         <outlet property="sessionTime" destination="1897" id="name-outlet-1897"/>
+                        <outlet property="sessionRoom" destination="2157" id="name-outlet-2157"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1951" userLabel="First Responder" sceneMemberID="firstResponder"/>

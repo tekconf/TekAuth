@@ -1,8 +1,5 @@
-using Foundation;
 using System;
-using System.CodeDom.Compiler;
 using UIKit;
-using Tekconf.DTO;
 using TekConf.Mobile.Core.ViewModel;
 
 namespace ios
@@ -23,8 +20,13 @@ namespace ios
 		{
 			base.ViewDidLoad ();
 
+			addToMySchedule.Layer.BorderColor = UIColor.LightGray.CGColor;
+			addToMySchedule.Layer.BorderWidth = 0.5f;
+
+			//this.Title = Vm.ConferenceName;
 			sessionTitle.Text = Vm.Title;
 			sessionDescription.Text = Vm.Description;
+			sessionRoom.Text = Vm.Room;
 			sessionTime.Text = Vm.DateRange;
 		}
 	}
