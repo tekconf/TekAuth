@@ -246,7 +246,7 @@
                                                     <rect key="frame" x="20" y="53" width="445" height="21"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <constraints>
@@ -413,8 +413,8 @@
                                                     <constraint id="1444" firstItem="GFw-Qy-PTQ" firstAttribute="height" constant="21" relation="greaterThanOrEqual"/>
                                                 </constraints>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lNd-tZ-M5L" misplaced="YES">
-                                                <rect key="frame" x="8" y="39.5" width="476" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lNd-tZ-M5L">
+                                                <rect key="frame" x="8" y="41" width="476" height="21"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="IJn-zw-mQl"/>
@@ -429,7 +429,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="n4o-xy-df3" relation="greaterThanOrEqual"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="14"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -442,7 +442,7 @@
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Plt-57-3MG">
-                                                <rect key="frame" x="8" y="147.5" width="584" height="30"/>
+                                                <rect key="frame" x="8" y="145" width="584" height="30"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="7qc-cc-7wT"/>
@@ -450,7 +450,7 @@
                                                 <state key="normal" title="Add to My Schedule"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ogf-1q-xck">
-                                                <rect key="frame" x="8" y="185.5" width="584" height="30"/>
+                                                <rect key="frame" x="8" y="183" width="584" height="30"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="nkI-8J-AO6"/>
@@ -461,7 +461,7 @@
                                                 </connections>
                                             </button>
                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Pma-bI-FJF" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO">
-                                                <rect key="frame" x="8" y="223.5" width="584" height="258"/>
+                                                <rect key="frame" x="8" y="221" width="584" height="258"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="258" id="iFk-aJ-2t0"/>
@@ -623,7 +623,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="1367"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -699,7 +699,7 @@
                                     <outlet property="sessionSpeakerView" destination="1163" id="name-outlet-1163"/>
                                     <outlet property="sessionTimeView" destination="1151" id="name-outlet-1151"/>
                                     <outlet property="sessionTitle" destination="1145" id="name-outlet-1145"/>
-                                    <segue id="1614" destination="1568" kind="show"/>
+                                    <segue id="2103" destination="1887" kind="show"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -713,22 +713,111 @@
             </objects>
             <point key="canvasLocation" x="2778" y="-315"/>
         </scene>
-        <scene sceneID="1567">
+        <scene sceneID="1886">
             <objects>
-                <viewController id="1568" sceneMemberID="viewController" customClass="SessionDetailViewController">
+                <viewController id="1887" customClass="SessionDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="1565"/>
-                        <viewControllerLayoutGuide type="bottom" id="1566"/>
+                        <viewControllerLayoutGuide type="top" id="1944"/>
+                        <viewControllerLayoutGuide type="bottom" id="1946"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="1569">
+                    <view key="view" contentMode="scaleToFill" id="1902">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1903">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1904" userLabel="Content View" misplaced="YES">
+                                        <rect key="frame" x="0.0" y="34" width="600" height="487"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1893">
+                                                <rect key="frame" x="8" y="8" width="572" height="20"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <constraints>
+                                                    <constraint id="1905" firstItem="1893" firstAttribute="height" constant="21" relation="greaterThanOrEqual"/>
+                                                </constraints>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1897">
+                                                <rect key="frame" x="8" y="41" width="572" height="21"/>
+                                                <animations/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="1906" relation="greaterThanOrEqual"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="12"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1895">
+                                                <rect key="frame" x="8" y="70" width="584" height="21"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="14"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <constraints>
+                                                    <constraint id="2140" firstItem="1895" firstAttribute="height" constant="21" relation="greaterThanOrEqual"/>
+                                                </constraints>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1889">
+                                                <rect key="frame" x="8" y="99" width="584" height="30"/>
+                                                <animations/>
+                                                <state key="normal" title="Add to My Schedule"/>
+                                                <constraints>
+                                                    <constraint id="2144" firstItem="1889" firstAttribute="height" constant="30"/>
+                                                </constraints>
+                                            </button>
+                                        </subviews>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstItem="1897" firstAttribute="top" secondItem="1893" secondAttribute="bottom" constant="8" id="1920"/>
+                                            <constraint firstItem="1897" firstAttribute="leading" secondItem="1904" secondAttribute="leading" constant="8" id="1921"/>
+                                            <constraint firstItem="1893" firstAttribute="leading" secondItem="1904" secondAttribute="leading" constant="8" id="1924"/>
+                                            <constraint firstItem="1893" firstAttribute="top" secondItem="1904" secondAttribute="top" constant="8" id="1937"/>
+                                            <constraint id="2126" firstItem="1904" firstAttribute="trailing" secondItem="1893" secondAttribute="trailing" constant="20"/>
+                                            <constraint id="2127" firstItem="1904" firstAttribute="trailing" secondItem="1897" secondAttribute="trailing" constant="20"/>
+                                            <constraint id="2137" firstItem="1895" firstAttribute="leading" secondItem="1904" secondAttribute="leading" constant="8"/>
+                                            <constraint id="2138" firstItem="1895" firstAttribute="top" secondItem="1897" secondAttribute="bottom" constant="8"/>
+                                            <constraint id="2139" firstItem="1904" firstAttribute="trailing" secondItem="1895" secondAttribute="trailing" constant="8"/>
+                                            <constraint id="2141" firstItem="1889" firstAttribute="leading" secondItem="1904" secondAttribute="leading" constant="8"/>
+                                            <constraint id="2142" firstItem="1889" firstAttribute="top" secondItem="1895" secondAttribute="bottom" constant="8"/>
+                                            <constraint id="2143" firstItem="1904" firstAttribute="trailing" secondItem="1889" secondAttribute="trailing" constant="8"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="1904" secondAttribute="bottom" id="1938"/>
+                                    <constraint firstItem="1904" firstAttribute="leading" secondItem="1903" secondAttribute="leading" id="1939"/>
+                                    <constraint firstAttribute="trailing" secondItem="1904" secondAttribute="trailing" id="1940"/>
+                                    <constraint id="1941" firstItem="1904" firstAttribute="top" secondItem="1903" secondAttribute="top" constant="-64"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1904" firstAttribute="width" secondItem="1902" secondAttribute="width" id="1942"/>
+                            <constraint firstItem="1903" firstAttribute="top" secondItem="1944" secondAttribute="bottom" id="1943"/>
+                            <constraint firstItem="1946" firstAttribute="top" secondItem="1903" secondAttribute="bottom" id="1945"/>
+                            <constraint firstAttribute="trailing" secondItem="1903" secondAttribute="trailing" id="1947"/>
+                            <constraint firstItem="1903" firstAttribute="top" secondItem="1944" secondAttribute="bottom" id="1948"/>
+                            <constraint firstItem="1903" firstAttribute="leading" secondItem="1902" secondAttribute="leading" id="1949"/>
+                            <constraint firstItem="1904" firstAttribute="height" secondItem="1902" secondAttribute="height" priority="250" id="1950"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addToMySchedule" destination="1889" id="1888"/>
+                        <outlet property="sessionTitle" destination="1893" id="name-outlet-1893"/>
+                        <outlet property="sessionDescription" destination="1895" id="name-outlet-1895"/>
+                        <outlet property="sessionTime" destination="1897" id="name-outlet-1897"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1570" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1951" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3451" y="-315"/>
+            <point key="canvasLocation" x="2677" y="417"/>
         </scene>
     </scenes>
     <resources>
