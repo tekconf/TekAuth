@@ -26,6 +26,7 @@ namespace TekConf.Mobile.Core.ViewModel
 		}
 
 		public ConferenceDetailViewModel Conference { get; set; }
+		public SessionDetailViewModel Session { get; set; }
 
         public SettingsViewModel Settings
         {

@@ -1,18 +1,11 @@
 using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using System.Threading.Tasks;
-using Refit;
-using System.Net.Http;
 using System;
-using System.Collections.ObjectModel;
 using Tekconf.DTO;
 
 namespace TekConf.Mobile.Core.ViewModel
 {
 	public class ConferenceDetailViewModel : ViewModelBase
 	{
-		
-
 		public ConferenceDetailViewModel (Conference conference)
 		{
 			Conference = conference;
@@ -82,7 +75,7 @@ namespace TekConf.Mobile.Core.ViewModel
 				return _description;
 			}
 			set {
-				if (value == _name) return;
+				if (value == _description) return;
 				_description = value;
 				RaisePropertyChanged (() => Description);
 			}

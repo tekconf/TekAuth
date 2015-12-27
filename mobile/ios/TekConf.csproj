@@ -266,8 +266,8 @@
     <Compile Include="ViewControllers\SessionsViewController.designer.cs">
       <DependentUpon>SessionsViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="SessionDetailViewController.cs" />
-    <Compile Include="SessionDetailViewController.designer.cs">
+    <Compile Include="ViewControllers\SessionDetailViewController.cs" />
+    <Compile Include="ViewControllers\SessionDetailViewController.designer.cs">
       <DependentUpon>SessionDetailViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>

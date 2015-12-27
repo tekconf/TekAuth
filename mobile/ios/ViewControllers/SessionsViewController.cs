@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Tekconf.DTO;
 using TekConf.Mobile.Core.ViewModel;
+using Xamarin;
 
 namespace ios
 {
@@ -18,8 +19,8 @@ namespace ios
 				Id = 1,
 				Room = "Ballroom A",
 				SpeakerName = "Rob Gibbens",
-				StartDate = new DateTime(2016, 04, 16, 13, 0,0),
-				EndDate = new DateTime(2016, 04, 16, 14, 0,0),
+				StartDate = new DateTime (2016, 04, 16, 13, 0, 0),
+				EndDate = new DateTime (2016, 04, 16, 14, 0, 0),
 
 			}, 
 			new Session { 
@@ -28,8 +29,8 @@ namespace ios
 				Id = 1,
 				Room = "Ballroom A",
 				SpeakerName = "Rob Gibbens",
-				StartDate = new DateTime(2016, 04, 16, 13, 0,0),
-				EndDate = new DateTime(2016, 04, 16, 14, 0,0),
+				StartDate = new DateTime (2016, 04, 16, 13, 0, 0),
+				EndDate = new DateTime (2016, 04, 16, 14, 0, 0),
 			}, 
 			new Session { 
 				Title = "Cross Platform Mobile UI with Xamarin Forms Workshop",
@@ -37,12 +38,12 @@ namespace ios
 				Id = 1,
 				Room = "Ballroom A",
 				SpeakerName = "Jason Awbrey",
-				StartDate = new DateTime(2016, 04, 16, 13, 0,0),
-				EndDate = new DateTime(2016, 04, 16, 14, 0,0),
+				StartDate = new DateTime (2016, 04, 16, 13, 0, 0),
+				EndDate = new DateTime (2016, 04, 16, 14, 0, 0),
 			},
 		};
 
-		List<Session> FilteredSessions = new List<Session>();
+		List<Session> FilteredSessions = new List<Session> ();
 
 		public SessionsViewController (IntPtr handle) : base (handle)
 		{
@@ -52,6 +53,7 @@ namespace ios
 		}
 
 		UISearchController searchController;
+
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
@@ -80,12 +82,12 @@ namespace ios
 		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
 			var cell = tableView.DequeueReusableCell ("sessionCell") as SessionCell;
-			var session = FilteredSessions.ToArray()[indexPath.Row];
+			var session = FilteredSessions.ToArray () [indexPath.Row];
 			cell.SetSession (session, this.Vm.Conference.HighlightColor);
 
 			return cell;
 		}
-			
+
 		public void UpdateSearchResultsForSearchController (UISearchController searchController)
 		{
 			var text = searchController.SearchBar.Text;
@@ -96,6 +98,18 @@ namespace ios
 			}
 
 			TableView.ReloadData ();
+		}
+
+		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
+		{
+			base.PrepareForSegue (segue, sender);
+
+			if (segue.Identifier == "showSessionDetail") {
+				var session = Sessions [this.TableView.IndexPathForSelectedRow.Row];
+				Insights.Track ("UserSelectedSession", "SessionSlug", session.Slug);
+
+				Application.Locator.Session = new SessionDetailViewModel (session);
+			}
 		}
 	}
 }

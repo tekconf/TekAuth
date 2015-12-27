@@ -699,7 +699,7 @@
                                     <outlet property="sessionSpeakerView" destination="1163" id="name-outlet-1163"/>
                                     <outlet property="sessionTimeView" destination="1151" id="name-outlet-1151"/>
                                     <outlet property="sessionTitle" destination="1145" id="name-outlet-1145"/>
-                                    <segue id="2103" destination="1887" kind="show"/>
+                                    <segue id="2103" destination="1887" kind="show" identifier="showSessionDetail"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
