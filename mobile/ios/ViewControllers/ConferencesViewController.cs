@@ -136,8 +136,6 @@ namespace ios
 		
 		}
 
-
-
 		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
 		{
 			base.PrepareForSegue (segue, sender);
@@ -152,11 +150,17 @@ namespace ios
 
 		public void SelectConference(string conferenceSlug)
 		{
+			if (string.IsNullOrWhiteSpace (conferenceSlug))
+			{
+				return;
+			}
+			
 			var row = _filteredConferences.ToList ().FindIndex (c => c.Slug == conferenceSlug);
 			var indexPath = NSIndexPath.FromRowSection (row, 0);
 			this.TableView.SelectRow(indexPath, animated:false, scrollPosition:UITableViewScrollPosition.Top);
 			this.PerformSegue ("showConferenceDetail", this.TableView);
 		}
+
 		public void UpdateSearchResultsForSearchController (UISearchController searchController)
 		{
 			var text = searchController.SearchBar.Text;
