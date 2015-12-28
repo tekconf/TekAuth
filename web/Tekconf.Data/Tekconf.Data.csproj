@@ -70,6 +70,7 @@
     <Compile Include="Entities\Conference.cs" />
     <Compile Include="Entities\ConferenceContext.cs" />
     <Compile Include="ConferenceEfRepository.cs" />
+    <Compile Include="Entities\Session.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Helpers\ListExtensions.cs" />
     <Compile Include="IConferenceRepository.cs" />
@@ -88,6 +89,10 @@
     <Compile Include="Migrations\201512090323595_AddedHighlightColor.cs" />
     <Compile Include="Migrations\201512090323595_AddedHighlightColor.Designer.cs">
       <DependentUpon>201512090323595_AddedHighlightColor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512280344372_Sessions.cs" />
+    <Compile Include="Migrations\201512280344372_Sessions.Designer.cs">
+      <DependentUpon>201512280344372_Sessions.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -123,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512090323595_AddedHighlightColor.resx">
       <DependentUpon>201512090323595_AddedHighlightColor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512280344372_Sessions.resx">
+      <DependentUpon>201512280344372_Sessions.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

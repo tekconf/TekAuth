@@ -8,6 +8,7 @@ namespace TekAuth
         public void Init()
         {
             Mapper.CreateMap<Conference, Tekconf.DTO.Conference>();
+            Mapper.CreateMap<Session, Tekconf.DTO.Session>();
         }
     }
 }

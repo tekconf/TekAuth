@@ -192,37 +192,99 @@
     <ImageAsset Include="Resources\Images.xcassets\ConferencesTab.imageset\Contents.json">
       <InProject>false</InProject>
     </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\spotlight-29.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\spotlight-58.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\spotlight-87.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\spotlight-80.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\spotlight-120.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\spotlight-57.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\spotlight-114.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\spotlight-180.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-29.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-58.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-40.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-80.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-152.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-144.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-76.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-167.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-50.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-100.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-72.png" />
-    <ImageAsset Include="Resources\Images.xcassets\ConferenceAdd.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\ConferenceAdd.imageset\conferenceAdd-22.png" />
-    <ImageAsset Include="Resources\Images.xcassets\ConferenceAdd.imageset\conferenceAdd-44.png" />
-    <ImageAsset Include="Resources\Images.xcassets\ConferenceAdd.imageset\conferenceAdd-66.png" />
-    <ImageAsset Include="Resources\Images.xcassets\ConferencesAdded.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\ConferencesAdded.imageset\conferenceAdded-22.png" />
-    <ImageAsset Include="Resources\Images.xcassets\ConferencesAdded.imageset\conferenceAdded-44.png" />
-    <ImageAsset Include="Resources\Images.xcassets\ConferencesAdded.imageset\conferenceAdded-66.png" />
-    <ImageAsset Include="Resources\Images.xcassets\ConferencesTab.imageset\conferences-60.png" />
-    <ImageAsset Include="Resources\Images.xcassets\ConferencesTab.imageset\conferences-30.png" />
-    <ImageAsset Include="Resources\Images.xcassets\Settings.imageset\settings-60.png" />
-    <ImageAsset Include="Resources\Images.xcassets\Settings.imageset\settings-30.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\spotlight-29.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\spotlight-58.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\spotlight-87.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\spotlight-80.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\spotlight-120.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\spotlight-57.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\spotlight-114.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\spotlight-180.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-29.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-58.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-40.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-80.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-152.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-144.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-76.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-167.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-50.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-100.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\settings-72.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ConferenceAdd.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ConferenceAdd.imageset\conferenceAdd-22.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ConferenceAdd.imageset\conferenceAdd-44.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ConferenceAdd.imageset\conferenceAdd-66.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ConferencesAdded.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ConferencesAdded.imageset\conferenceAdded-22.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ConferencesAdded.imageset\conferenceAdded-44.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ConferencesAdded.imageset\conferenceAdded-66.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ConferencesTab.imageset\conferences-60.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ConferencesTab.imageset\conferences-30.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Settings.imageset\settings-60.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Settings.imageset\settings-30.png">
+      <InProject>false</InProject>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
@@ -288,10 +350,6 @@
       <Project>{C1FC50AD-2DB6-42A1-8C22-93EB78C29116}</Project>
       <Name>Tekconf.DTO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\core\core.csproj">
-      <Project>{F3CB4036-9E90-499A-80B4-0654FBE5CD7A}</Project>
-      <Name>core</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Fonts\SF-UI-Display-Bold.otf">
@@ -328,9 +386,5 @@
     <BundleResource Include="Resources\ios7-cog-outline.png" />
     <BundleResource Include="Resources\BlankConference.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Infrastructure\" />
-    <Folder Include="ViewControllers\" />
-    <Folder Include="CustomControls\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

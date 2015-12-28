@@ -42,7 +42,7 @@ namespace Tekconf.Data
 
         public IQueryable<Conference> GetConferences()
         {
-            return _ctx.Conferences;
+            return _ctx.Conferences.Include(x => x.Sessions);
         }
 
         public async Task<User> GetUser(string name)

@@ -1,9 +1,6 @@
 namespace Tekconf.Data.Entities
 {
-    using System;
     using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
 
     public partial class ConferenceContext : DbContext
     {
@@ -14,6 +11,7 @@ namespace Tekconf.Data.Entities
 
         public virtual DbSet<Conference> Conferences { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Session> Sessions { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -27,6 +25,7 @@ namespace Tekconf.Data.Entities
                        cs.ToTable("UserConferences");
                    });
 
+            modelBuilder.Entity<Session>().HasRequired(p => p.Conference);
 
         }
     }

@@ -14,8 +14,12 @@ namespace Tekconf.Data.Entities
         public Conference()
         {
             this.Users = new HashSet<User>();
+            this.Sessions = new HashSet<Session>();
+
         }
         public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<Session> Sessions { get; set; }
+
         [Required]
         [StringLength(100)]
         public string Slug { get; set; }

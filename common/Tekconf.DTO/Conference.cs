@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Tekconf.DTO
 {
 
     public class Conference
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
         public string Slug { get; set; }
         public string Name { get; set; }
@@ -50,5 +51,7 @@ namespace Tekconf.DTO
         public string GithubUrl { get; set; }
         public string LinkedInUrl { get; set; }
         public string HighlightColor { get; set; }
+
+        public List<Session> Sessions { get; set; }
     }
 }

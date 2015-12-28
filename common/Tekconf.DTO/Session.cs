@@ -4,7 +4,7 @@ namespace Tekconf.DTO
 {
 	public class Session
 	{
-		public int Id { get; set; }
+		//public int Id { get; set; }
 
 		public string Slug { get; set; }
 
