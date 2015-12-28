@@ -350,6 +350,10 @@
       <Project>{C1FC50AD-2DB6-42A1-8C22-93EB78C29116}</Project>
       <Name>Tekconf.DTO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\core\core.csproj">
+      <Project>{F3CB4036-9E90-499A-80B4-0654FBE5CD7A}</Project>
+      <Name>core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Fonts\SF-UI-Display-Bold.otf">
