@@ -6,11 +6,11 @@ namespace ios
 {
 	partial class SessionCell : UITableViewCell
 	{
+		Session _session;
+
 		public SessionCell (IntPtr handle) : base (handle)
 		{
 		}
-
-		Session _session;
 
 		public void SetSession(Session session, string highlightColor)
 		{
@@ -20,16 +20,15 @@ namespace ios
 			sessionContentView.Layer.BorderWidth = 0.5f;
 
 			highlightColorBar.BackgroundColor = UIColorExtensions.FromHex (highlightColor);
-			sessionTitle.Text = _session.Title;
-			sessionDate.Text = _session.StartDate.Value.ToShortTimeString ();
-			sessionRoom.Text = _session.Room;
-			sessionSpeaker.Text = _session.SpeakerName;
-			sessionDescription.Text = _session.Description;
 			sessionSpeakerView.BackgroundColor = UIColorExtensions.FromHex (highlightColor);
 
-			sessionTitle.SizeToFit ();
-			sessionDescription.SizeToFit ();
-		}
+			sessionTitle.Text = _session.Title ?? string.Empty;
+			sessionDate.Text = _session.StartDate.HasValue ? 
+				_session.StartDate.Value.ToShortTimeString () : string.Empty;
 
+			sessionRoom.Text = _session.Room ?? string.Empty;
+			sessionSpeaker.Text = _session.SpeakerName ?? string.Empty;
+			sessionDescription.Text = _session.Description ?? string.Empty;
+		}
 	}
 }

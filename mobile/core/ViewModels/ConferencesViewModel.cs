@@ -24,7 +24,7 @@ namespace TekConf.Mobile.Core.ViewModel
 			this._conferencesService = conferencesService;
 			_settingsService = settingsService;
 			_conferences = new ObservableCollection<Conference> ();
-			this.LoadConferencesCommand = new RelayCommand(async () => await this.LoadConferences(), CanLoadConferences);
+			this.LoadConferencesCommand = new RelayCommand(async () => await this.LoadConferences(Priority.UserInitiated), CanLoadConferences);
 		}
 
 		ObservableCollection<Conference> _conferences;
@@ -39,11 +39,11 @@ namespace TekConf.Mobile.Core.ViewModel
 			}
 		}
 
-		public async Task LoadConferences()
+		public async Task LoadConferences(Priority priority)
 		{
 			//if (!string.IsNullOrWhiteSpace (_settingsService.UserIdToken)) {
 				var conferences = await _conferencesService
-					.GetConferences(_settingsService.UserIdToken, Priority.Explicit)
+				.GetConferences(_settingsService.UserIdToken, priority)
 					.ConfigureAwait(false);
 	
 				this.Conferences = new ObservableCollection<Conference> (conferences);

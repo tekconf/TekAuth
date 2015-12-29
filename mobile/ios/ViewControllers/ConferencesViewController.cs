@@ -12,15 +12,19 @@ using CoreSpotlight;
 using System.Threading.Tasks;
 using Microsoft.Practices.ServiceLocation;
 using TekConf.Mobile.Core;
+using Fusillade;
 
 namespace ios
 {
 	partial class ConferencesViewController : UITableViewController, IUISearchResultsUpdating
 	{
+		private UIRefreshControl uirc;
+
 		private const string cellId = "conferenceCell";
 
 		private ObservableCollection<Conference> _conferences;
 		private ObservableCollection<Conference> _filteredConferences;
+
 		public ConferencesViewController (IntPtr handle) : base (handle)
 		{
 			TableView.RowHeight = UITableView.AutomaticDimension;
@@ -39,11 +43,21 @@ namespace ios
 		}
 
 		UISearchController searchController;
+
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
 			_conferences = Vm.Conferences;
 			_filteredConferences = _conferences;
+
+			uirc = new UIRefreshControl ();
+			uirc.ValueChanged += async (sender, e) => { 
+				await LoadConferences (Priority.UserInitiated);
+
+				uirc.EndRefreshing ();
+			};
+
+			RefreshControl = uirc;
 
 			searchController = new UISearchController ((UITableViewController)null);
 			searchController.DimsBackgroundDuringPresentation = false;
@@ -52,7 +66,7 @@ namespace ios
 			DefinesPresentationContext = true;
 			searchController.SearchResultsUpdater = this;
 			this.TableView.SetContentOffset (new CoreGraphics.CGPoint (0, searchController.SearchBar.Frame.Size.Height), animated: false);
-			searchController.SearchBar.BarTintColor = UIColor.FromRGB(red: 34, green: 91, blue: 149);
+			searchController.SearchBar.BarTintColor = UIColor.FromRGB (red: 34, green: 91, blue: 149);
 
 		}
 
@@ -70,61 +84,102 @@ namespace ios
 			return cell;
 		}
 
+		async Task LoadConferences (Priority priority)
+		{
+			using (Insights.TrackTime ("Loading Conferences List")) {
+				await Vm.LoadConferences (priority);
+				_conferences = Vm.Conferences;
+				_filteredConferences = _conferences;
+				await PrepareForSearch (_conferences);
+			}
+			this.TableView.ReloadData ();
+		}
+
 		public override async void ViewWillAppear (bool animated)
 		{
 			base.ViewWillAppear (animated);
 
-			Insights.Track("ViewedScreen", 
+			Insights.Track ("ViewedScreen", 
 				new Dictionary <string,string> { 
-					{"Screen", "Conferences"}, 
+					{ "Screen", "Conferences" }, 
 				});
 
 			if (!_filteredConferences.Any ()) {
-				using (Insights.TrackTime ("Loading Conferences List")) {
-					await Vm.LoadConferences ();
-					_conferences = Vm.Conferences;
-					_filteredConferences = _conferences;
-					await PrepareForSearch (_conferences);
-				}
-				this.TableView.ReloadData ();
+				await LoadConferences (Priority.Background);
 			}
+		}
+
+		async Task<CSSearchableItem> AddSessionToSearch (Conference conference, Session session)
+		{
+			
+			var attributes = new CSSearchableItemAttributeSet (itemContentType: MobileCoreServices.UTType.DelimitedText.ToString());
+
+			attributes.Title = session.Title;
+			attributes.ContentDescription = session.Description;
+			if (!string.IsNullOrWhiteSpace (conference.ImageUrl)) {
+				try {
+					var imageService = ServiceLocator.Current.GetInstance<IImageService> ();
+					var localPath = await imageService.GetImagePath (conference);
+					UIImage image = null;
+					await Task.Run (() => {
+						var uiImage = UIImage.FromFile (localPath);
+						if (uiImage != null) {
+							attributes.ThumbnailData = uiImage.AsPNG ();
+						}
+					});
+				} catch (Exception e) {
+					Insights.Report (e);
+				}
+			}
+
+			var searchableSession = new CSSearchableItem (conference.Slug + "|\\/|" + session.Slug, "tekconf", attributes);
+			return searchableSession;
+		}
+
+		async Task<CSSearchableItem> AddConferenceToSearch (Conference conference)
+		{
+			var attributes = new CSSearchableItemAttributeSet (itemContentType: MobileCoreServices.UTType.DelimitedText.ToString());
+			attributes.Title = conference.Name;
+			attributes.ContentDescription = conference.Description;
+			if (!string.IsNullOrWhiteSpace (conference.ImageUrl)) {
+				try {
+					var imageService = ServiceLocator.Current.GetInstance<IImageService> ();
+					var localPath = await imageService.GetImagePath (conference);
+					UIImage image = null;
+					await Task.Run (() => {
+						var uiImage = UIImage.FromFile (localPath);
+						if (uiImage != null) {
+							attributes.ThumbnailData = uiImage.AsPNG ();
+						}
+					});
+				} catch (Exception e) {
+					Insights.Report (e);
+				}
+			}
+			var searchableConference = new CSSearchableItem (conference.Slug, "tekconf", attributes);
+			return searchableConference;
 		}
 
 		async Task PrepareForSearch (IEnumerable<Conference> conferences)
 		{
-			List<CSSearchableItem> searchableConferences = new List<CSSearchableItem> ();
-			for (int i = 0; i < conferences.Count (); i++) {
-				var conference = conferences.ToArray () [i];
-				var attributes = new CSSearchableItemAttributeSet (itemContentType: "");
-				attributes.Title = conference.Name;
-				attributes.ContentDescription = conference.Description;
+			var conferencesList = conferences.ToList ();
+			var searchableItems = new List<CSSearchableItem> ();
 
-				if (!string.IsNullOrWhiteSpace (conference.ImageUrl)) {
-					try {
+			for (int i = 0; i < conferencesList.Count (); i++) {
+				var conference = conferencesList.ToArray () [i];
 
-						var imageService = ServiceLocator.Current.GetInstance<IImageService> ();
-						var localPath = await imageService.GetImagePath (conference);
+				var searchableConference = await AddConferenceToSearch (conference);
+				searchableItems.Add (searchableConference);
 
-						UIImage image = null;
-
-						await Task.Run (() => {
-							var uiImage = UIImage.FromFile (localPath);
-							if (uiImage != null) {
-								attributes.ThumbnailData = uiImage.AsPNG ();
-							}
-						});
-					} catch (Exception e) {
-						Insights.Report (e);
-					}
+				foreach (var session in conference.Sessions) {
+					var searchableSession = await AddSessionToSearch (conference, session);
+					searchableItems.Add (searchableSession);
 				}
-
-				var searchableConference = new CSSearchableItem (conference.Slug, "tekconf", attributes);
-				searchableConferences.Add (searchableConference);
 			}
 
 			try {
-				var array = searchableConferences.ToArray ();
-				CSSearchableIndex.DefaultSearchableIndex.Index (array, (error) => {
+				var searchableItemsArray = searchableItems.ToArray ();
+				CSSearchableIndex.DefaultSearchableIndex.Index (searchableItemsArray, (error) => {
 					// Successful?
 					if (error != null) {
 						Console.WriteLine (error.LocalizedDescription);
@@ -148,16 +203,27 @@ namespace ios
 			}
 		}
 
-		public void SelectConference(string conferenceSlug)
+		public void SelectSession (string conferenceSlug, string sessionSlug)
 		{
-			if (string.IsNullOrWhiteSpace (conferenceSlug))
-			{
+			if (string.IsNullOrWhiteSpace (conferenceSlug) || string.IsNullOrWhiteSpace(sessionSlug)) {
+				return;
+			}
+
+			var row = _filteredConferences.ToList ().FindIndex (c => c.Slug == conferenceSlug);
+			var indexPath = NSIndexPath.FromRowSection (row, 0);
+			this.TableView.SelectRow (indexPath, animated: false, scrollPosition: UITableViewScrollPosition.Top);
+			this.PerformSegue ("showConferenceDetail", this.TableView);
+		}
+
+		public void SelectConference (string conferenceSlug)
+		{
+			if (string.IsNullOrWhiteSpace (conferenceSlug)) {
 				return;
 			}
 			
 			var row = _filteredConferences.ToList ().FindIndex (c => c.Slug == conferenceSlug);
 			var indexPath = NSIndexPath.FromRowSection (row, 0);
-			this.TableView.SelectRow(indexPath, animated:false, scrollPosition:UITableViewScrollPosition.Top);
+			this.TableView.SelectRow (indexPath, animated: false, scrollPosition: UITableViewScrollPosition.Top);
 			this.PerformSegue ("showConferenceDetail", this.TableView);
 		}
 
@@ -165,10 +231,10 @@ namespace ios
 		{
 			var text = searchController.SearchBar.Text;
 			if (searchController.Active) {
-				var filteredList =  _conferences.Where(p => 
+				var filteredList = _conferences.Where (p => 
 					CultureInfo.CurrentCulture.CompareInfo.IndexOf
-					(p.Name, text, CompareOptions.IgnoreCase) >= 0).ToList();
-				_filteredConferences = new ObservableCollection<Conference>(filteredList);
+					(p.Name, text, CompareOptions.IgnoreCase) >= 0).ToList ();
+				_filteredConferences = new ObservableCollection<Conference> (filteredList);
 			} else {
 				_filteredConferences = _conferences;
 			}

@@ -26,6 +26,9 @@ namespace TekConf.Mobile.Core
 		public async Task<List<Conference>> GetConferences(string token, Priority priority)
 		{
 			var cache = BlobCache.LocalMachine;
+			if (priority == Priority.UserInitiated) {
+				BlobCache.LocalMachine.InvalidateAll ().Subscribe ();
+			}
 			var cachedConferences = cache.GetAndFetchLatest("conferences", () => GetRemoteConferencesAsync(priority),
 				offset =>
 				{
@@ -34,6 +37,7 @@ namespace TekConf.Mobile.Core
 				});
 
 			var conferences = await cachedConferences.FirstOrDefaultAsync();
+
 			return conferences;
 		}
 

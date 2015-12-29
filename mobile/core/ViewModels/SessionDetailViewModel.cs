@@ -13,7 +13,7 @@ namespace TekConf.Mobile.Core.ViewModel
 			ConferenceName = conferenceName;
 			Title = Session.Title;
 			Description = Session.Description;
-			StartDate = Session.StartDate.Value;
+			StartDate = Session.StartDate;
 			EndDate = Session.EndDate;
 			Room = Session.Room;
 		}

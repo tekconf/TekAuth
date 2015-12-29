@@ -1,5 +1,6 @@
 ﻿using Foundation;
 using UIKit;
+using CoreSpotlight;
 
 namespace ios
 {
@@ -69,12 +70,25 @@ namespace ios
 
 		public override bool ContinueUserActivity (UIApplication application, NSUserActivity userActivity, UIApplicationRestorationHandler completionHandler)
 		{
-			var tabController = this.Window.RootViewController as UITabBarController;
-			var navController = tabController.ViewControllers[0] as UINavigationController;
-			var conferencesViewContoller = navController.TopViewController as ConferencesViewController;
+			if (userActivity.ActivityType == CSSearchableItem.ActionType) {
+				var tabController = this.Window.RootViewController as UITabBarController;
+				var navController = tabController.ViewControllers[0] as UINavigationController;
+				var conferencesViewContoller = navController.TopViewController as ConferencesViewController;
 
-			var slug = userActivity?.UserInfo?.ObjectForKey (new NSString ("kCSSearchableItemActivityIdentifier"));
-			conferencesViewContoller.SelectConference (slug?.ToString());
+				var identifier = userActivity?.UserInfo?.ObjectForKey (CSSearchableItem.ActivityIdentifier);
+
+				if (identifier != null && identifier.ToString ().Contains ("|\\/|")) {
+					// This is a session
+					var parts = identifier.ToString().Split(new [] {"|\\/|"}, System.StringSplitOptions.RemoveEmptyEntries);
+					var conferenceSlug = parts[0];
+					var sessionSlug = parts[1];
+					conferencesViewContoller.SelectSession (conferenceSlug, sessionSlug);
+				} else {
+					// This is a conference
+					var slug = identifier.ToString();
+					conferencesViewContoller.SelectConference (slug);
+				}
+			}
 
 			return true;
 		}
@@ -86,7 +100,6 @@ namespace ios
 		private void AdjustDefaultUI ()
 		{
 			UINavigationBar.Appearance.BarTintColor = UIColor.FromRGB(red: 34, green: 91, blue: 149);
-			//UIApplication.SharedApplication.SetStatusBarStyle (UIStatusBarStyle.LightContent, false);
 			UIBarButtonItem.Appearance.TintColor = UIColor.White;
 
 			UINavigationBar.Appearance.TintColor = UIColor.White;

@@ -23,11 +23,10 @@ namespace ios
 			addToMySchedule.Layer.BorderColor = UIColor.LightGray.CGColor;
 			addToMySchedule.Layer.BorderWidth = 0.5f;
 
-			//this.Title = Vm.ConferenceName;
-			sessionTitle.Text = Vm.Title;
-			sessionDescription.Text = Vm.Description;
-			sessionRoom.Text = Vm.Room;
-			sessionTime.Text = Vm.DateRange;
+			sessionTitle.Text = Vm.Title ?? string.Empty;
+			sessionDescription.Text = Vm.Description ?? string.Empty;
+			sessionRoom.Text = Vm.Room ?? string.Empty;
+			sessionTime.Text = Vm.DateRange ?? string.Empty;
 		}
 	}
 }
