@@ -1,6 +1,11 @@
 ﻿using Foundation;
 using UIKit;
 using CoreSpotlight;
+using TekConf.Mobile.Core.ViewModel;
+using Fusillade;
+using System.Linq;
+using System.Threading.Tasks;
+using System;
 
 namespace ios
 {
@@ -73,7 +78,6 @@ namespace ios
 			if (userActivity.ActivityType == CSSearchableItem.ActionType) {
 				var tabController = this.Window.RootViewController as UITabBarController;
 				var navController = tabController.ViewControllers[0] as UINavigationController;
-				var conferencesViewContoller = navController.TopViewController as ConferencesViewController;
 
 				var identifier = userActivity?.UserInfo?.ObjectForKey (CSSearchableItem.ActivityIdentifier);
 
@@ -82,11 +86,42 @@ namespace ios
 					var parts = identifier.ToString().Split(new [] {"|\\/|"}, System.StringSplitOptions.RemoveEmptyEntries);
 					var conferenceSlug = parts[0];
 					var sessionSlug = parts[1];
-					conferencesViewContoller.SelectSession (conferenceSlug, sessionSlug);
+
+					var conferencesViewModel = Application.Locator.Conferences;
+					var task = Task.Run(async () => { await conferencesViewModel.LoadConferences (Priority.Explicit); });
+					task.Wait();
+					var conference = conferencesViewModel.Conferences.Single(c => c.Slug == conferenceSlug);
+					var session = conference.Sessions.Single (s => s.Slug == sessionSlug);
+					var conferenceVm = new ConferenceDetailViewModel(conference);
+					var sessionVm = new SessionDetailViewModel (session, conference.Name);
+
+					Application.Locator.Conference = conferenceVm;
+					Application.Locator.Session = sessionVm;
+
+					var storyboard = UIStoryboard.FromName ("Main", null);
+
+					var conferencesViewController = storyboard.InstantiateViewController ("ConferencesViewController") as ConferencesViewController;
+
+					var conferenceDetailViewController = storyboard.InstantiateViewController ("ConferenceDetailViewController") as ConferenceDetailViewController;
+					var sessionsViewController = storyboard.InstantiateViewController ("SessionsViewController") as SessionsViewController;
+					var sessionDetailViewController = storyboard.InstantiateViewController ("SessionDetailViewController");
+
+					navController.SetViewControllers (new UIViewController[] { conferencesViewController, conferenceDetailViewController, sessionsViewController, sessionDetailViewController }, animated:false);
 				} else {
 					// This is a conference
-					var slug = identifier.ToString();
-					conferencesViewContoller.SelectConference (slug);
+					var conferenceSlug = identifier.ToString();
+
+					var conferencesViewModel = Application.Locator.Conferences;
+					var task = Task.Run(async () => { await conferencesViewModel.LoadConferences (Priority.Explicit); });
+					task.Wait();
+					var conference = conferencesViewModel.Conferences.Single(c => c.Slug == conferenceSlug);
+					var vm = new ConferenceDetailViewModel(conference);
+					Application.Locator.Conference = vm;
+
+					var storyboard = UIStoryboard.FromName ("Main", null);
+					var conferenceDetailViewController = storyboard.InstantiateViewController ("ConferenceDetailViewController") as ConferenceDetailViewController;;
+
+					navController.SetViewControllers (new UIViewController[] { conferenceDetailViewController }, animated:false);
 				}
 			}
 

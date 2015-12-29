@@ -161,7 +161,7 @@
         <!--Conferences-->
         <scene sceneID="92">
             <objects>
-                <tableViewController title="Conferences" id="93" customClass="ConferencesViewController" sceneMemberID="viewController">
+                <tableViewController title="Conferences" id="93" customClass="ConferencesViewController" sceneMemberID="viewController" storyboardIdentifier="ConferencesViewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="221" sectionHeaderHeight="22" sectionFooterHeight="22" id="94">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -388,7 +388,7 @@
         <!--Conference Detail View Controller-->
         <scene sceneID="717">
             <objects>
-                <viewController id="718" customClass="ConferenceDetailViewController" sceneMemberID="viewController">
+                <viewController id="718" customClass="ConferenceDetailViewController" sceneMemberID="viewController" storyboardIdentifier="ConferenceDetailViewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="715"/>
                         <viewControllerLayoutGuide type="bottom" id="716"/>
@@ -536,7 +536,7 @@
         <!--Sessions View Controller-->
         <scene sceneID="964">
             <objects>
-                <tableViewController id="965" customClass="SessionsViewController" sceneMemberID="viewController" title="Sessions">
+                <tableViewController id="965" customClass="SessionsViewController" sceneMemberID="viewController" title="Sessions" storyboardIdentifier="SessionsViewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="221" sectionHeaderHeight="22" sectionFooterHeight="22" id="966">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -715,7 +715,7 @@
         </scene>
         <scene sceneID="1886">
             <objects>
-                <viewController id="1887" customClass="SessionDetailViewController" sceneMemberID="viewController">
+                <viewController id="1887" customClass="SessionDetailViewController" sceneMemberID="viewController" storyboardIdentifier="SessionDetailViewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1944"/>
                         <viewControllerLayoutGuide type="bottom" id="1946"/>
@@ -833,7 +833,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1951" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2677" y="417"/>
+            <point key="canvasLocation" x="3502" y="-307"/>
         </scene>
     </scenes>
     <resources>
