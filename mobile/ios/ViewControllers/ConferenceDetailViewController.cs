@@ -11,6 +11,7 @@ using Xamarin;
 using System.Collections.Generic;
 using MapKit;
 using CoreLocation;
+using System.Linq;
 
 namespace ios
 {
@@ -51,6 +52,9 @@ namespace ios
 
 			viewSessions.Layer.BorderColor = UIColor.LightGray.CGColor;
 			viewSessions.Layer.BorderWidth = 0.5f;
+
+			var sessionCount = Vm?.Conference?.Sessions?.Count ();
+			viewSessions.SetTitle ($"View {sessionCount} Sessions", UIControlState.Normal);
 
 			this.Title = Vm.Conference.Name;
 
