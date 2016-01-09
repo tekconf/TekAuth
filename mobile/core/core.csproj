@@ -47,6 +47,7 @@
     <Compile Include="Services\ITekConfApi.cs" />
     <Compile Include="Services\IImageService.cs" />
     <Compile Include="ViewModels\SessionDetailViewModel.cs" />
+    <Compile Include="ViewModels\MyConferencesViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\refit.2.4.1\build\portable-net45+netcore45+wp8+wpa81+monoandroid+xamarin.ios10\refit.targets" Condition="Exists('..\..\packages\refit.2.4.1\build\portable-net45+netcore45+wp8+wpa81+monoandroid+xamarin.ios10\refit.targets')" />

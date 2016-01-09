@@ -10,6 +10,7 @@ namespace TekConf.Mobile.Core.ViewModel
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
 			SimpleIoc.Default.Register<ConferencesViewModel>();
+			SimpleIoc.Default.Register<MyConferencesViewModel>();
             SimpleIoc.Default.Register<SettingsViewModel>();
 			SimpleIoc.Default.Register<ISettingsService, SettingsService> ();
 			SimpleIoc.Default.Register<IConferencesService, ConferencesService> ();
@@ -17,6 +18,13 @@ namespace TekConf.Mobile.Core.ViewModel
 
         }
 
+		public MyConferencesViewModel MyConferences
+		{
+			get
+			{
+				return ServiceLocator.Current.GetInstance<MyConferencesViewModel>();
+			}
+		}
 		public ConferencesViewModel Conferences
 		{
 			get
