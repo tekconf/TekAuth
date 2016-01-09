@@ -217,6 +217,7 @@
     <Compile Include="Controllers\ConferencesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MyAuthAttribute.cs" />
+    <Compile Include="Controllers\SchedulesController.cs" />
     <Compile Include="DependencyResolution\DefaultRegistry.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
     <Compile Include="DependencyResolution\StructureMapDependencyScope.cs" />

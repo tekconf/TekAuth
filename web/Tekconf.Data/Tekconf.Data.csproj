@@ -67,6 +67,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Schedule.cs" />
+    <Compile Include="IScheduleRepository.cs" />
+    <Compile Include="ScheduleEfRepository.cs" />
     <Compile Include="Entities\Conference.cs" />
     <Compile Include="Entities\ConferenceContext.cs" />
     <Compile Include="ConferenceEfRepository.cs" />

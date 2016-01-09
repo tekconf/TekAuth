@@ -10,6 +10,7 @@ namespace Tekconf.Data.Entities
         }
 
         public virtual DbSet<Conference> Conferences { get; set; }
+        public virtual DbSet<Schedule> Schedules { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Session> Sessions { get; set; }
 
@@ -24,6 +25,25 @@ namespace Tekconf.Data.Entities
                        cs.MapRightKey("ConferenceId");
                        cs.ToTable("UserConferences");
                    });
+
+
+            //modelBuilder.Entity<Schedule>().HasKey(q => new
+            //                                        {
+            //                                            q.ConferenceId,
+            //                                            q.UserId
+            //                                        });
+
+            // Relationships
+            modelBuilder.Entity<Schedule>()
+                .HasRequired(t => t.Conference)
+                .WithMany()
+                .HasForeignKey(t => t.ConferenceId);
+
+            modelBuilder.Entity<Schedule>()
+                .HasRequired(t => t.User)
+                .WithMany()
+                .HasForeignKey(t => t.UserId);
+
 
             modelBuilder.Entity<Session>().HasRequired(p => p.Conference);
 
