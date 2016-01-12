@@ -11,7 +11,7 @@ using System.Security.Claims;
 
 namespace TekAuth.Controllers
 {
-    [MyAuthAttribute]
+    [MyAuth(AuthenticationRequirement.AllowAnoymous)]
     public class ConferencesController : ApiController
     {
         private readonly IConferenceRepository _repository;

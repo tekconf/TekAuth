@@ -217,6 +217,7 @@
     <Compile Include="Controllers\ConferencesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MyAuthAttribute.cs" />
+    <Compile Include="Controllers\SchedulesController.cs" />
     <Compile Include="DependencyResolution\DefaultRegistry.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
     <Compile Include="DependencyResolution\StructureMapDependencyScope.cs" />
@@ -279,7 +280,9 @@
     <Content Include="images\conferences\wwdc-2016.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\tekauth - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\tekauth - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\tekauth - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\tekauth - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />

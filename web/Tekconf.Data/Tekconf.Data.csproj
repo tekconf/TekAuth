@@ -67,6 +67,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Schedule.cs" />
+    <Compile Include="IScheduleRepository.cs" />
+    <Compile Include="Migrations\201601091932066_Schedules.cs" />
+    <Compile Include="Migrations\201601091932066_Schedules.Designer.cs">
+      <DependentUpon>201601091932066_Schedules.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601121604500_ScheduleIndex.cs" />
+    <Compile Include="Migrations\201601121604500_ScheduleIndex.Designer.cs">
+      <DependentUpon>201601121604500_ScheduleIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601121636143_Indexes.cs" />
+    <Compile Include="Migrations\201601121636143_Indexes.Designer.cs">
+      <DependentUpon>201601121636143_Indexes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduleEfRepository.cs" />
     <Compile Include="Entities\Conference.cs" />
     <Compile Include="Entities\ConferenceContext.cs" />
     <Compile Include="ConferenceEfRepository.cs" />
@@ -131,6 +146,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512280344372_Sessions.resx">
       <DependentUpon>201512280344372_Sessions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601091932066_Schedules.resx">
+      <DependentUpon>201601091932066_Schedules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601121604500_ScheduleIndex.resx">
+      <DependentUpon>201601121604500_ScheduleIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601121636143_Indexes.resx">
+      <DependentUpon>201601121636143_Indexes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

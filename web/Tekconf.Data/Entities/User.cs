@@ -14,6 +14,7 @@ namespace Tekconf.Data.Entities
         public int Id { get; set; }
 
         [Required]
+        [Index]
         [StringLength(500)]
         public string Name { get; set; }
 

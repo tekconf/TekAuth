@@ -136,7 +136,7 @@ namespace Tekconf.Data
         {
                 try
                 {
-                    var exp = _ctx.Conferences.Where(e => e.Id == id).FirstOrDefault();
+                    var exp = _ctx.Conferences.FirstOrDefault(e => e.Id == id);
                     if (exp != null)
                     {
                         _ctx.Conferences.Remove(exp);
