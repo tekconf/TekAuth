@@ -8,6 +8,8 @@ namespace TekAuth
         public TekAuthRegistry()
         {
             For<IConferenceRepository>().Use<ConferenceEfRepository>();
+            For<IScheduleRepository>().Use<ScheduleEfRepository>();
+
         }
     }
 }

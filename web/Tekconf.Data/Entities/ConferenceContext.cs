@@ -1,3 +1,6 @@
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Infrastructure.Annotations;
+
 namespace Tekconf.Data.Entities
 {
     using System.Data.Entity;
@@ -27,13 +30,6 @@ namespace Tekconf.Data.Entities
                    });
 
 
-            //modelBuilder.Entity<Schedule>().HasKey(q => new
-            //                                        {
-            //                                            q.ConferenceId,
-            //                                            q.UserId
-            //                                        });
-
-            // Relationships
             modelBuilder.Entity<Schedule>()
                 .HasRequired(t => t.Conference)
                 .WithMany()
@@ -43,6 +39,24 @@ namespace Tekconf.Data.Entities
                 .HasRequired(t => t.User)
                 .WithMany()
                 .HasForeignKey(t => t.UserId);
+
+            modelBuilder
+                .Entity<Schedule>()
+                .Property(t => t.UserId)
+                .IsRequired()
+                .HasColumnAnnotation(
+                    IndexAnnotation.AnnotationName,
+                    new IndexAnnotation(
+                        new IndexAttribute("IX_UserIdConferenceId", 1) { IsUnique = true }));
+
+            modelBuilder
+                .Entity<Schedule>()
+                .Property(t => t.ConferenceId)
+                .IsRequired()
+                .HasColumnAnnotation(
+                    IndexAnnotation.AnnotationName,
+                    new IndexAnnotation(
+                        new IndexAttribute("IX_UserIdConferenceId", 2) { IsUnique = true }));
 
 
             modelBuilder.Entity<Session>().HasRequired(p => p.Conference);

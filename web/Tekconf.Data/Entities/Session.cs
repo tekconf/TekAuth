@@ -7,14 +7,15 @@ namespace Tekconf.Data.Entities
     [Table("Sessions")]
     public class Session
     {
-        
         public int Id { get; set; }
 
         [Required]
         [StringLength(200)]
+        [Index("IX_SessionSlug", 1, IsUnique = true)]
         public string Slug { get; set; }
 
         [Required]
+        [Index]
         [StringLength(400)]
         public string Title { get; set; }
 

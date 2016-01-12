@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
 using System.Data.Entity.Spatial;
 
 namespace Tekconf.Data.Entities
@@ -21,10 +22,12 @@ namespace Tekconf.Data.Entities
         public virtual ICollection<Session> Sessions { get; set; }
 
         [Required]
+        [Index("IX_ConferenceSlug", 1, IsUnique = true)]
         [StringLength(100)]
         public string Slug { get; set; }
         
         [Required]
+        [Index]
         [StringLength(200)]
         public string Name { get; set; }
 

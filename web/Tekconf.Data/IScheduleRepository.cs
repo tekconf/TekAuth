@@ -7,6 +7,7 @@ namespace Tekconf.Data
     public interface IScheduleRepository
     {
         RepositoryActionResult<Schedule> DeleteSchedule(int id);
+        IQueryable<Schedule> GetSchedules(string userName);
         Task<Schedule> GetSchedule(int id);
 
         RepositoryActionResult<Schedule> InsertSchedule(Schedule e);

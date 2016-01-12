@@ -33,7 +33,10 @@ namespace Tekconf.Data
             _ctx.Configuration.LazyLoadingEnabled = false;
 
         }
-
+        public IQueryable<Schedule> GetSchedules(string userName)
+        {
+            return _ctx.Schedules.Where(s => s.User.Name == userName);
+        }
         public async Task<Schedule> GetSchedule(int id)
         {
             return await _ctx.Schedules.FirstOrDefaultAsync(e => e.Id == id);
