@@ -1,6 +1,6 @@
 using GalaSoft.MvvmLight;
 
-namespace TekConf.Mobile.Core.ViewModel
+namespace TekConf.Mobile.Core.ViewModels
 {
 	public class SettingsViewModel : ViewModelBase
     {

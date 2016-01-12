@@ -7,7 +7,7 @@ using System.Net.Http;
 using Fusillade;
 using ModernHttpClient;
 
-namespace TekConf.Mobile.Core
+namespace TekConf.Mobile.Core.Services
 {
 	public interface IConferencesService
 	{

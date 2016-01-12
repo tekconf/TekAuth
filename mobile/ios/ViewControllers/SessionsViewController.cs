@@ -4,7 +4,7 @@ using UIKit;
 using System.Collections.Generic;
 using System.Linq;
 using Tekconf.DTO;
-using TekConf.Mobile.Core.ViewModel;
+using TekConf.Mobile.Core.ViewModels;
 using Xamarin;
 
 namespace ios

@@ -2,7 +2,7 @@ using Foundation;
 using System;
 using UIKit;
 using System.Linq;
-using TekConf.Mobile.Core.ViewModel;
+using TekConf.Mobile.Core.ViewModels;
 using Xamarin;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using Microsoft.Practices.ServiceLocation;
 using TekConf.Mobile.Core;
 using Fusillade;
+using TekConf.Mobile.Core.Services;
 
 namespace ios
 {

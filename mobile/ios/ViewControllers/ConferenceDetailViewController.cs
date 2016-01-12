@@ -1,7 +1,7 @@
 using System;
 using UIKit;
 using Tekconf.DTO;
-using TekConf.Mobile.Core.ViewModel;
+using TekConf.Mobile.Core.ViewModels;
 using GalaSoft.MvvmLight.Helpers;
 using Microsoft.Practices.ServiceLocation;
 using TekConf.Mobile.Core;
@@ -12,6 +12,10 @@ using System.Collections.Generic;
 using MapKit;
 using CoreLocation;
 using System.Linq;
+using Fusillade;
+using GalaSoft.MvvmLight.Messaging;
+using TekConf.Mobile.Core.Messages;
+using TekConf.Mobile.Core.Services;
 
 namespace ios
 {
@@ -52,7 +56,13 @@ namespace ios
 			addToMySchedule.TouchUpInside += (sender, e) => {
 				Vm.AddToScheduleCommand.Execute(null);
 			};
-			viewSessions.Layer.BorderColor = UIColor.LightGray.CGColor;
+
+            Messenger.Default.Register<ConferenceAddedToScheduleMessage>
+            (
+                this,
+                (message) => { addToMySchedule.SetTitle("Remove from My Schedule", UIControlState.Normal); }
+            );
+            viewSessions.Layer.BorderColor = UIColor.LightGray.CGColor;
 			viewSessions.Layer.BorderWidth = 0.5f;
 
 			var sessionCount = Vm?.Conference?.Sessions?.Count ();

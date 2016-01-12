@@ -31,6 +31,7 @@
     <IntermediateOutputPath>obj\Debug</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Messages\ConferenceAddedToScheduleMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
@@ -137,8 +138,5 @@
       <Name>Tekconf.DTO</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-    <Folder Include="Infrastructure\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

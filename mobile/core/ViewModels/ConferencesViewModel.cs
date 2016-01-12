@@ -9,15 +9,16 @@ using Tekconf.DTO;
 using System.Collections.Generic;
 using Akavache;
 using Fusillade;
+using TekConf.Mobile.Core.Services;
 
-namespace TekConf.Mobile.Core.ViewModel
+namespace TekConf.Mobile.Core.ViewModels
 {
 	public class ConferencesViewModel : ViewModelBase
 	{
 		private readonly ISettingsService _settingsService;
 		public RelayCommand LoadConferencesCommand { get; private set; }
 
-		IConferencesService _conferencesService;
+	    readonly IConferencesService _conferencesService;
 
 		public ConferencesViewModel (ISettingsService settingsService, IConferencesService conferencesService)
 		{

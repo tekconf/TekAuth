@@ -2,9 +2,8 @@ using Refit;
 using System;
 using System.Net.Http;
 using Fusillade;
-using TekConf.Mobile.Core.ViewModel;
 
-namespace TekConf.Mobile.Core
+namespace TekConf.Mobile.Core.Services
 {
 	public class ApiService : IApiService
 	{

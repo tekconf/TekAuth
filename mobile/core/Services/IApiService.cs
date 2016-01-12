@@ -1,4 +1,4 @@
-namespace TekConf.Mobile.Core
+namespace TekConf.Mobile.Core.Services
 {
 	public interface IApiService
 	{

@@ -5,6 +5,7 @@ using CoreGraphics;
 using System.Threading.Tasks;
 using Microsoft.Practices.ServiceLocation;
 using TekConf.Mobile.Core;
+using TekConf.Mobile.Core.Services;
 using Xamarin;
 
 namespace ios

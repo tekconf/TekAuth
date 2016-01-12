@@ -5,8 +5,9 @@ using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using Fusillade;
 using System.Threading.Tasks;
+using TekConf.Mobile.Core.Services;
 
-namespace TekConf.Mobile.Core.ViewModel
+namespace TekConf.Mobile.Core.ViewModels
 {
 	public class ConferenceDetailViewModel : ViewModelBase
 	{

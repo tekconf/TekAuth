@@ -1,6 +1,6 @@
 using System;
 using UIKit;
-using TekConf.Mobile.Core.ViewModel;
+using TekConf.Mobile.Core.ViewModels;
 
 namespace ios
 {

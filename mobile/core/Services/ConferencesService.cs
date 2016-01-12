@@ -11,7 +11,7 @@ using Polly;
 using Tekconf.DTO;
 using Plugin.Connectivity;
 
-namespace TekConf.Mobile.Core
+namespace TekConf.Mobile.Core.Services
 {
 
 	public class ConferencesService : IConferencesService

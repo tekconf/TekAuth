@@ -1,5 +1,5 @@
 
-namespace TekConf.Mobile.Core.ViewModel
+namespace TekConf.Mobile.Core.Services
 {
 	public interface ISettingsService
 	{

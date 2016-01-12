@@ -1,7 +1,8 @@
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
+using TekConf.Mobile.Core.Services;
 
-namespace TekConf.Mobile.Core.ViewModel
+namespace TekConf.Mobile.Core.ViewModels
 {
     public class ViewModelLocator
     {

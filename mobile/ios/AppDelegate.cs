@@ -1,13 +1,14 @@
 ﻿using Foundation;
 using UIKit;
 using CoreSpotlight;
-using TekConf.Mobile.Core.ViewModel;
+using TekConf.Mobile.Core.ViewModels;
 using Fusillade;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
 using Microsoft.Practices.ServiceLocation;
 using TekConf.Mobile.Core;
+using TekConf.Mobile.Core.Services;
 
 namespace ios
 {

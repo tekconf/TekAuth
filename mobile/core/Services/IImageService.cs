@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Tekconf.DTO;
 
-namespace TekConf.Mobile.Core
+namespace TekConf.Mobile.Core.Services
 {
 	public interface IImageService
 	{

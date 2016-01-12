@@ -2,10 +2,11 @@ using System;
 using UIKit;
 using Auth0.SDK;
 using GalaSoft.MvvmLight.Helpers;
-using TekConf.Mobile.Core.ViewModel;
+using TekConf.Mobile.Core.ViewModels;
 using Microsoft.Practices.ServiceLocation;
 using Xamarin;
 using System.Collections.Generic;
+using TekConf.Mobile.Core.Services;
 
 namespace ios
 {

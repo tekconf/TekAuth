@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Tekconf.DTO;
 
-namespace TekConf.Mobile.Core
+namespace TekConf.Mobile.Core.Services
 {
 	[Headers("Accept: application/json")]
 	public interface ITekConfApi

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Tekconf.DTO;
 using Fusillade;
 
-namespace TekConf.Mobile.Core
+namespace TekConf.Mobile.Core.Services
 {
 	public interface ISchedulesService
 	{

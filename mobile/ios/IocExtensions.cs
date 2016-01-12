@@ -1,7 +1,8 @@
 using UIKit;
-using TekConf.Mobile.Core.ViewModel;
+using TekConf.Mobile.Core.ViewModels;
 using GalaSoft.MvvmLight.Ioc;
 using TekConf.Mobile.Core;
+using TekConf.Mobile.Core.Services;
 
 namespace ios
 {

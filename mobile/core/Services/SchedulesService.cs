@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 using Akavache;
 
 using Fusillade;
+using GalaSoft.MvvmLight.Messaging;
 using Polly;
 
 using Tekconf.DTO;
 using Plugin.Connectivity;
+using TekConf.Mobile.Core.Messages;
 
-namespace TekConf.Mobile.Core
+namespace TekConf.Mobile.Core.Services
 {
-
 	public class SchedulesService : ISchedulesService
 	{
 		private readonly IApiService _apiService;
@@ -149,6 +150,7 @@ namespace TekConf.Mobile.Core
 					.ExecuteAsync(async () => await addToScheduleTask);
 			}
 
+            Messenger.Default.Send(new ConferenceAddedToScheduleMessage { Slug = slug } );
 			return schedule;
 		}
 	}

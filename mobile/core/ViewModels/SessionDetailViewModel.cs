@@ -2,7 +2,7 @@ using GalaSoft.MvvmLight;
 using System;
 using Tekconf.DTO;
 
-namespace TekConf.Mobile.Core.ViewModel
+namespace TekConf.Mobile.Core.ViewModels
 {
 	public class SessionDetailViewModel : ViewModelBase
 	{

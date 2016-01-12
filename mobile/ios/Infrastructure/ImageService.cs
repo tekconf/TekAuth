@@ -7,6 +7,7 @@ using Tekconf.DTO;
 using System.IO;
 using System.Net.Http;
 using ModernHttpClient;
+using TekConf.Mobile.Core.Services;
 using Xamarin;
 
 namespace ios

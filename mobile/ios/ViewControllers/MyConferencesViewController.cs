@@ -2,7 +2,7 @@ using Foundation;
 using System;
 using UIKit;
 using System.Linq;
-using TekConf.Mobile.Core.ViewModel;
+using TekConf.Mobile.Core.ViewModels;
 using Xamarin;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,6 +13,9 @@ using System.Threading.Tasks;
 using Microsoft.Practices.ServiceLocation;
 using TekConf.Mobile.Core;
 using Fusillade;
+using GalaSoft.MvvmLight.Messaging;
+using TekConf.Mobile.Core.Messages;
+using TekConf.Mobile.Core.Services;
 
 namespace ios
 {
@@ -58,7 +61,13 @@ namespace ios
 				uirc.EndRefreshing ();
 			};
 
-			RefreshControl = uirc;
+            Messenger.Default.Register<ConferenceAddedToScheduleMessage>
+            (
+                this,
+                async (action) => await LoadMyConferences(Priority.UserInitiated)
+            );
+
+            RefreshControl = uirc;
 
 			searchController = new UISearchController ((UITableViewController)null);
 			searchController.DimsBackgroundDuringPresentation = false;
@@ -88,7 +97,7 @@ namespace ios
 		async Task LoadMyConferences (Priority priority)
 		{
 			using (Insights.TrackTime ("Loading MyConferences List")) {
-				await Vm.LoadMyConferences (priority);
+				await Vm.LoadSchedules (priority);
 				_conferences = Vm.MyConferences;
 				_filteredConferences = _conferences;
 			}

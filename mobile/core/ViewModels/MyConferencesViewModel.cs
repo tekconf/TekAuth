@@ -1,34 +1,38 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System.Threading.Tasks;
-using Refit;
-using System.Net.Http;
-using System;
 using System.Collections.ObjectModel;
 using Tekconf.DTO;
-using System.Collections.Generic;
-using Akavache;
 using Fusillade;
 using System.Linq;
+using GalaSoft.MvvmLight.Messaging;
+using TekConf.Mobile.Core.Messages;
+using TekConf.Mobile.Core.Services;
 
-namespace TekConf.Mobile.Core.ViewModel
+namespace TekConf.Mobile.Core.ViewModels
 {
 	public class MyConferencesViewModel : ViewModelBase
 	{
 		private readonly ISettingsService _settingsService;
-		public RelayCommand LoadConferencesCommand { get; private set; }
+		private readonly ISchedulesService _schedulesService;
+        public RelayCommand LoadSchedulesCommand { get; private set; }
 
-		private ISchedulesService _schedulesService;
-
-		public MyConferencesViewModel (ISettingsService settingsService, ISchedulesService schedulesService)
+        public MyConferencesViewModel (ISettingsService settingsService, ISchedulesService schedulesService)
 		{
 			_schedulesService = schedulesService;
 			_settingsService = settingsService;
 			_myConferences = new ObservableCollection<Conference> ();
-			this.LoadConferencesCommand = new RelayCommand(async () => await this.LoadMyConferences(Priority.UserInitiated), CanLoadSchedules);
-		}
+			this.LoadSchedulesCommand = new RelayCommand(async () => await this.LoadSchedules(Priority.UserInitiated), CanLoadSchedules);
 
-		ObservableCollection<Conference> _myConferences;
+
+        }
+
+	    private async Task ReloadSchedules(ConferenceAddedToScheduleMessage message)
+	    {
+	        await this.LoadSchedules(Priority.UserInitiated);
+	    }
+
+	    ObservableCollection<Conference> _myConferences;
 		public ObservableCollection<Conference> MyConferences {
 			get {
 				return _myConferences;
@@ -40,19 +44,14 @@ namespace TekConf.Mobile.Core.ViewModel
 			}
 		}
 
-		public async Task LoadMyConferences(Priority priority)
+		public async Task LoadSchedules(Priority priority)
 		{
-			//if (!string.IsNullOrWhiteSpace (_settingsService.UserIdToken)) {
 			var schedules = await _schedulesService
 				.GetSchedules(priority)
 				.ConfigureAwait(false);
 
-			//TODO : Better filter
 			var conferences = schedules.Select(s => s.Conference).ToList();
 			this.MyConferences = new ObservableCollection<Conference> (conferences);
-
-			//} else {
-			//}
 		}
 
 
