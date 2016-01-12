@@ -14,5 +14,4 @@ namespace TekConf.Mobile.Core
 		Task<List<Conference>> GetConferences(string token, Priority priority);
 		Task<Conference> GetConference(Priority priority, string slug);
 	}
-	
 }

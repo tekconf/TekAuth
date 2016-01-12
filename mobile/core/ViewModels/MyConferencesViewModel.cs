@@ -18,14 +18,14 @@ namespace TekConf.Mobile.Core.ViewModel
 		private readonly ISettingsService _settingsService;
 		public RelayCommand LoadConferencesCommand { get; private set; }
 
-		IConferencesService _conferencesService;
+		private ISchedulesService _schedulesService;
 
-		public MyConferencesViewModel (ISettingsService settingsService, IConferencesService conferencesService)
+		public MyConferencesViewModel (ISettingsService settingsService, ISchedulesService schedulesService)
 		{
-			this._conferencesService = conferencesService;
+			_schedulesService = schedulesService;
 			_settingsService = settingsService;
 			_myConferences = new ObservableCollection<Conference> ();
-			this.LoadConferencesCommand = new RelayCommand(async () => await this.LoadMyConferences(Priority.UserInitiated), CanLoadMyConferences);
+			this.LoadConferencesCommand = new RelayCommand(async () => await this.LoadMyConferences(Priority.UserInitiated), CanLoadSchedules);
 		}
 
 		ObservableCollection<Conference> _myConferences;
@@ -43,12 +43,12 @@ namespace TekConf.Mobile.Core.ViewModel
 		public async Task LoadMyConferences(Priority priority)
 		{
 			//if (!string.IsNullOrWhiteSpace (_settingsService.UserIdToken)) {
-			var conferences = await _conferencesService
-				.GetConferences(_settingsService.UserIdToken, priority)
+			var schedules = await _schedulesService
+				.GetSchedules(priority)
 				.ConfigureAwait(false);
 
 			//TODO : Better filter
-			conferences = conferences.Take (2).ToList();
+			var conferences = schedules.Select(s => s.Conference).ToList();
 			this.MyConferences = new ObservableCollection<Conference> (conferences);
 
 			//} else {
@@ -56,7 +56,7 @@ namespace TekConf.Mobile.Core.ViewModel
 		}
 
 
-		public bool CanLoadMyConferences()
+		public bool CanLoadSchedules()
 		{
 			return !string.IsNullOrWhiteSpace(_settingsService.UserIdToken);
 		}

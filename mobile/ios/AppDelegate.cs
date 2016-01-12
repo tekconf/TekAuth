@@ -6,6 +6,8 @@ using Fusillade;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
+using Microsoft.Practices.ServiceLocation;
+using TekConf.Mobile.Core;
 
 namespace ios
 {
@@ -75,6 +77,9 @@ namespace ios
 
 		public override bool ContinueUserActivity (UIApplication application, NSUserActivity userActivity, UIApplicationRestorationHandler completionHandler)
 		{
+			var settingsService = ServiceLocator.Current.GetInstance<ISettingsService>();
+			var schedulesService = ServiceLocator.Current.GetInstance<ISchedulesService>();
+
 			if (userActivity.ActivityType == CSSearchableItem.ActionType) {
 				var tabController = this.Window.RootViewController as UITabBarController;
 				var navController = tabController.ViewControllers[0] as UINavigationController;
@@ -88,11 +93,13 @@ namespace ios
 					var sessionSlug = parts[1];
 
 					var conferencesViewModel = Application.Locator.Conferences;
-					var task = Task.Run(async () => { await conferencesViewModel.LoadConferences (Priority.Explicit); });
+					var task = Task.Run(async () => { 
+						await conferencesViewModel.LoadConferences (Priority.Explicit); 
+					});
 					task.Wait();
 					var conference = conferencesViewModel.Conferences.Single(c => c.Slug == conferenceSlug);
 					var session = conference.Sessions.Single (s => s.Slug == sessionSlug);
-					var conferenceVm = new ConferenceDetailViewModel(conference);
+					var conferenceVm = new ConferenceDetailViewModel(conference, schedulesService, settingsService);
 					var sessionVm = new SessionDetailViewModel (session, conference.Name);
 
 					Application.Locator.Conference = conferenceVm;
@@ -115,7 +122,7 @@ namespace ios
 					var task = Task.Run(async () => { await conferencesViewModel.LoadConferences (Priority.Explicit); });
 					task.Wait();
 					var conference = conferencesViewModel.Conferences.Single(c => c.Slug == conferenceSlug);
-					var vm = new ConferenceDetailViewModel(conference);
+					var vm = new ConferenceDetailViewModel(conference, schedulesService, settingsService);
 					Application.Locator.Conference = vm;
 
 					var storyboard = UIStoryboard.FromName ("Main", null);

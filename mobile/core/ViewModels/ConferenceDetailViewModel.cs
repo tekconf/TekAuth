@@ -1,22 +1,46 @@
 using GalaSoft.MvvmLight;
 using System;
 using Tekconf.DTO;
+using System.Windows.Input;
+using GalaSoft.MvvmLight.Command;
+using Fusillade;
+using System.Threading.Tasks;
 
 namespace TekConf.Mobile.Core.ViewModel
 {
 	public class ConferenceDetailViewModel : ViewModelBase
 	{
-		public ConferenceDetailViewModel (Conference conference)
+		public Conference Conference { get; private set;}
+		public ICommand AddToScheduleCommand { get; private set; }
+		private ISchedulesService _schedulesService;
+		private ISettingsService _settingsService;
+
+		public ConferenceDetailViewModel (Conference conference, ISchedulesService schedulesService, ISettingsService settingsService)
 		{
 			Conference = conference;
+			_schedulesService = schedulesService;
+			_settingsService = settingsService;
 
 			Name = conference.Name;
 			Description = conference.Description;
 			StartDate = conference.StartDate.Value;
 			EndDate = conference.EndDate;
+
+			this.AddToScheduleCommand = new RelayCommand(async () => await this.AddToSchedule(Priority.UserInitiated), CanAddToSchedule);
+
 		}
 
-		public Conference Conference { get; private set;}
+		public async Task AddToSchedule(Priority priority)
+		{
+			var schedule = await _schedulesService
+				.AddToSchedule(priority, Conference.Slug)
+				.ConfigureAwait(false);
+		}
+
+		public bool CanAddToSchedule()
+		{
+			return !string.IsNullOrWhiteSpace(_settingsService.UserIdToken);
+		}
 
 		public string DateRange
 		{

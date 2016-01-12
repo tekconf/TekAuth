@@ -122,4 +122,5 @@ namespace TekConf.Mobile.Core
 		}
 
 	}
+
 }

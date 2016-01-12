@@ -14,7 +14,7 @@ namespace TekConf.Mobile.Core
 
 		public ApiService(ISettingsService settingsService)
 		{
-			this._settingsService = settingsService;
+			_settingsService = settingsService;
 			Func<HttpMessageHandler, ITekConfApi> createClient = messageHandler =>
 			{
 				var client = new HttpClient(messageHandler)

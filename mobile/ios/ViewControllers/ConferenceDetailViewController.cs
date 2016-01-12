@@ -49,7 +49,9 @@ namespace ios
 
 			addToMySchedule.Layer.BorderColor = UIColor.LightGray.CGColor;
 			addToMySchedule.Layer.BorderWidth = 0.5f;
-
+			addToMySchedule.TouchUpInside += (sender, e) => {
+				Vm.AddToScheduleCommand.Execute(null);
+			};
 			viewSessions.Layer.BorderColor = UIColor.LightGray.CGColor;
 			viewSessions.Layer.BorderWidth = 0.5f;
 

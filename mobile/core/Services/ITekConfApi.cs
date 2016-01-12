@@ -13,6 +13,19 @@ namespace TekConf.Mobile.Core
 		Task<List<Conference>> GetConferences();
 
 		[Get("/conferences/{slug}")]
+		[Headers("Authorization: Bearer")]
 		Task<Conference> GetConference(string slug);
+
+		[Get("/schedules")]
+		[Headers("Authorization: Bearer")]
+		Task<List<Schedule>> GetSchedules();
+
+		[Get("/schedules?conferenceSlug={slug}")]
+		[Headers("Authorization: Bearer")]
+		Task<Schedule> GetSchedule(string slug);
+
+		[Post("/schedules?conferenceSlug={slug}")]
+		[Headers("Authorization: Bearer")]
+		Task<Schedule> AddToSchedule(string slug);
 	}
 }

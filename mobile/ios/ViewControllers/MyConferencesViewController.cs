@@ -116,7 +116,9 @@ namespace ios
 			if (segue.Identifier == "showConferenceDetail") {
 				var conference = _filteredConferences [this.TableView.IndexPathForSelectedRow.Row];
 				Insights.Track ("UserSelectedConference", "ConferenceSlug", conference.Slug);
-				Application.Locator.Conference = new ConferenceDetailViewModel (conference);
+				var settingsService = ServiceLocator.Current.GetInstance<ISettingsService>();
+				var schedulesService = ServiceLocator.Current.GetInstance<ISchedulesService>();
+				Application.Locator.Conference = new ConferenceDetailViewModel (conference, schedulesService, settingsService);
 				this.NavigationItem.BackBarButtonItem = new UIBarButtonItem ("Conferences", UIBarButtonItemStyle.Plain, null);
 
 			}
