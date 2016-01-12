@@ -32,9 +32,15 @@ namespace TekAuth.Controllers
         public async Task<IHttpActionResult> Get()
         {
             string name = ClaimsPrincipal.Current?.FindFirst("name")?.Value;
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                return Unauthorized();
+            }
+
             var schedules = await _scheduleRepository.GetSchedules(name)
-                                    .Select(s => s.Conference)
-                                    .ProjectTo<Tekconf.DTO.Conference>()
+                                    .Include(s => s.Conference)
+                                    .ProjectTo<Tekconf.DTO.Schedule>()
                                     .ToListAsync();
 
             return Ok(schedules);
