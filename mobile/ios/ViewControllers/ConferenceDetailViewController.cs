@@ -2,9 +2,7 @@ using System;
 using UIKit;
 using Tekconf.DTO;
 using TekConf.Mobile.Core.ViewModels;
-using GalaSoft.MvvmLight.Helpers;
 using Microsoft.Practices.ServiceLocation;
-using TekConf.Mobile.Core;
 using CoreGraphics;
 using System.Threading.Tasks;
 using Xamarin;
@@ -13,7 +11,6 @@ using MapKit;
 using CoreLocation;
 using System.Linq;
 using Foundation;
-using Fusillade;
 using GalaSoft.MvvmLight.Messaging;
 using TekConf.Mobile.Core.Messages;
 using TekConf.Mobile.Core.Services;
@@ -72,19 +69,13 @@ namespace ios
             Messenger.Default.Register<ConferenceAddedToScheduleMessage>
             (
                 this,
-                (message) =>
-                {
-                    SetRemoveButtonStatus();
-                }
+				(message) => SetRemoveButtonStatus ()
             );
 
             Messenger.Default.Register<ConferenceRemovedFromScheduleMessage>
             (
                 this,
-                (message) =>
-                {
-                    SetAddButtonStatus();
-                }
+				(message) => SetAddButtonStatus ()
             );
 
             viewSessions.Layer.BorderColor = UIColor.LightGray.CGColor;
@@ -95,15 +86,6 @@ namespace ios
 
 			this.Title = Vm.Conference.Name;
 
-//			this.NavigationItem.SetRightBarButtonItem(
-//				new UIBarButtonItem(UIImage.FromBundle("ConferenceAdd")
-//					, UIBarButtonItemStyle.Plain
-//					, (sender,args) => {
-//						var button = sender as UIBarButtonItem;
-//						button.Image = UIImage.FromBundle("ConferencesAdded");
-//					})
-//				, true);
-
 			conferenceName.Text = Vm.Conference.Name;
 			conferenceName.SizeToFit ();
 
@@ -113,7 +95,6 @@ namespace ios
 			conferenceStartDate.Text = Vm.DateRange;
 			conferenceStartDate.SizeToFit ();
 
-			//highlightColor.BackgroundColor = UIColorExtensions.FromHex (Vm.Conference.HighlightColor);
 			GetImage (Vm.Conference);
 			ShowMap ();
 		}

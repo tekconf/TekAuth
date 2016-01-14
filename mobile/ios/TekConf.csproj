@@ -45,7 +45,7 @@
     <MtouchUseSGen>true</MtouchUseSGen>
     <CodesignKey>iPhone Distribution</CodesignKey>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
-    <CodesignProvision>edfc1057-8ecd-4a76-8a28-79e9d9175e09</CodesignProvision>
+    <CodesignProvision>169ecb8f-9bd1-4928-a57b-9115bcacf347</CodesignProvision>
     <MtouchUseLlvm>true</MtouchUseLlvm>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
@@ -79,7 +79,7 @@
     <MtouchUseSGen>true</MtouchUseSGen>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <MtouchProfiling>true</MtouchProfiling>
-    <CodesignProvision>6ef81712-eb1e-4368-8d6b-0683a7a84ce7</CodesignProvision>
+    <CodesignProvision>098b91e1-b82e-4325-9508-c5b366c7eba8</CodesignProvision>
     <BuildIpa>true</BuildIpa>
   </PropertyGroup>
   <ItemGroup>
