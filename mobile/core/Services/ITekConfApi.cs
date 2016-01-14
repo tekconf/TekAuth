@@ -27,5 +27,9 @@ namespace TekConf.Mobile.Core.Services
 		[Post("/schedules?conferenceSlug={slug}")]
 		[Headers("Authorization: Bearer")]
 		Task<Schedule> AddToSchedule(string slug);
-	}
+
+        [Delete("/schedules?conferenceSlug={slug}")]
+        [Headers("Authorization: Bearer")]
+        Task RemoveFromSchedule(string slug);
+    }
 }

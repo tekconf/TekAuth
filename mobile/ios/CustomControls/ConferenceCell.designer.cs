@@ -16,6 +16,10 @@ namespace ios
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UILabel addedToScheduleStatus { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UIView conferenceContentView { get; set; }
 
 		[Outlet]
@@ -56,6 +60,10 @@ namespace ios
 
 		void ReleaseDesignerOutlets ()
 		{
+			if (addedToScheduleStatus != null) {
+				addedToScheduleStatus.Dispose ();
+				addedToScheduleStatus = null;
+			}
 			if (conferenceContentView != null) {
 				conferenceContentView.Dispose ();
 				conferenceContentView = null;

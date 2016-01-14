@@ -66,6 +66,11 @@ namespace ios
                 this,
                 async (action) => await LoadMyConferences(Priority.UserInitiated)
             );
+            Messenger.Default.Register<ConferenceRemovedFromScheduleMessage>
+            (
+                this,
+                async (action) => await LoadMyConferences(Priority.UserInitiated)
+            );
 
             RefreshControl = uirc;
 

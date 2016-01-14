@@ -27,11 +27,6 @@ namespace TekConf.Mobile.Core.ViewModels
 
         }
 
-	    private async Task ReloadSchedules(ConferenceAddedToScheduleMessage message)
-	    {
-	        await this.LoadSchedules(Priority.UserInitiated);
-	    }
-
 	    ObservableCollection<Conference> _myConferences;
 		public ObservableCollection<Conference> MyConferences {
 			get {

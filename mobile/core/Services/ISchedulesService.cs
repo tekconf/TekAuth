@@ -10,5 +10,6 @@ namespace TekConf.Mobile.Core.Services
 		Task<List<Schedule>> GetSchedules(Priority priority);
 		Task<Schedule> GetSchedule(Priority priority, string slug);
 		Task<Schedule> AddToSchedule(Priority priority, string slug);
-	}
+        Task RemoveFromSchedule(Priority priority, string slug);
+    }
 }

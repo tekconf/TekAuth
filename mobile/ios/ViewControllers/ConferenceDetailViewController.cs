@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using MapKit;
 using CoreLocation;
 using System.Linq;
+using Foundation;
 using Fusillade;
 using GalaSoft.MvvmLight.Messaging;
 using TekConf.Mobile.Core.Messages;
@@ -31,10 +32,10 @@ namespace ios
 			}
 		}
 
-		private Binding<string, string> _nameBinding;
-		private Binding<string, string> _descriptionBinding;
-		private Binding<DateTime?, string> _startDateBinding;
-		private Binding<DateTime?, string> _endDateBinding;
+		//private Binding<string, string> _nameBinding;
+		//private Binding<string, string> _descriptionBinding;
+		//private Binding<DateTime?, string> _startDateBinding;
+		//private Binding<DateTime?, string> _endDateBinding;
 
 		public override void ViewWillAppear (bool animated)
 		{
@@ -51,17 +52,41 @@ namespace ios
 		{
 			base.ViewDidLoad ();
 
-			addToMySchedule.Layer.BorderColor = UIColor.LightGray.CGColor;
+            SetAddButtonStatus();
+
+		    addToMySchedule.Layer.BorderColor = UIColor.LightGray.CGColor;
 			addToMySchedule.Layer.BorderWidth = 0.5f;
 			addToMySchedule.TouchUpInside += (sender, e) => {
-				Vm.AddToScheduleCommand.Execute(null);
-			};
+                //TODO : This is a bad filter. Should use VM
+			    if (addToMySchedule.Title(UIControlState.Normal) =="Add to My Schedule")
+			    {
+                    Vm.AddToScheduleCommand.Execute(null);
+                }
+                else
+			    {
+                    Vm.RemoveFromScheduleCommand.Execute(null);
+                }
+
+            };
 
             Messenger.Default.Register<ConferenceAddedToScheduleMessage>
             (
                 this,
-                (message) => { addToMySchedule.SetTitle("Remove from My Schedule", UIControlState.Normal); }
+                (message) =>
+                {
+                    SetRemoveButtonStatus();
+                }
             );
+
+            Messenger.Default.Register<ConferenceRemovedFromScheduleMessage>
+            (
+                this,
+                (message) =>
+                {
+                    SetAddButtonStatus();
+                }
+            );
+
             viewSessions.Layer.BorderColor = UIColor.LightGray.CGColor;
 			viewSessions.Layer.BorderWidth = 0.5f;
 
@@ -93,7 +118,38 @@ namespace ios
 			ShowMap ();
 		}
 
-		private void ShowMap()
+	    private void SetAddButtonStatus()
+	    {
+	        SetButtonStatus("\xf274 Add to My Schedule");
+	    }
+
+        private void SetRemoveButtonStatus()
+        {
+            SetButtonStatus("\xf273 Remove from My Schedule");
+        }
+
+        private void SetButtonStatus(string status)
+	    {
+            var statusAttributes = new UIStringAttributes
+            {
+                ForegroundColor = UIColor.FromRGBA(red: 0f, blue: 1.0f, green: 0.478431f, alpha: 1.0f),
+                Font = UIFont.FromName("FontAwesome", 17f)
+            };
+
+
+            var textAttributes = new UIStringAttributes
+            {
+                ForegroundColor = UIColor.FromRGBA(red: 0f, blue: 1.0f, green: 0.478431f, alpha: 1.0f),
+                Font = UIFont.FromName("Open Sans Light", 17f)
+            };
+
+            var prettyString = new NSMutableAttributedString(status);
+            prettyString.SetAttributes(statusAttributes.Dictionary, new NSRange(0, 1));
+            prettyString.SetAttributes(textAttributes.Dictionary, new NSRange(2, 17));
+            this.addToMySchedule.SetAttributedTitle(prettyString, UIControlState.Normal);
+        }
+
+        private void ShowMap()
 		{
 			MKMapCamera currentLocation = new MKMapCamera {
 				CenterCoordinate = new CLLocationCoordinate2D(latitude: 42.467051, longitude: -83.409285),

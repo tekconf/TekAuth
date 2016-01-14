@@ -2,6 +2,8 @@ using Refit;
 using System;
 using System.Net.Http;
 using Fusillade;
+using GalaSoft.MvvmLight.Messaging;
+using TekConf.Mobile.Core.Messages;
 
 namespace TekConf.Mobile.Core.Services
 {
@@ -14,31 +16,42 @@ namespace TekConf.Mobile.Core.Services
 		public ApiService(ISettingsService settingsService)
 		{
 			_settingsService = settingsService;
-			Func<HttpMessageHandler, ITekConfApi> createClient = messageHandler =>
-			{
-				var client = new HttpClient(messageHandler)
-				{
-					BaseAddress = new Uri(ApiBaseAddress)
-				};
+		    InitializeApis();
 
-				return RestService.For<ITekConfApi>(client);
-			};
+            Messenger.Default.Register<UserLoggedInMessage>
+            (
+                this,
+                (message) => { InitializeApis(); }
+            );
+        }
 
-			_background = new Lazy<ITekConfApi>(() => createClient(
-				new RateLimitedHttpMessageHandler(new AuthenticatedHttpClientHandler (_settingsService.UserIdToken), Priority.Background)));
+		private Lazy<ITekConfApi> _background;
+		private Lazy<ITekConfApi> _userInitiated;
+		private Lazy<ITekConfApi> _speculative;
 
-			_userInitiated = new Lazy<ITekConfApi>(() => createClient(
-				new RateLimitedHttpMessageHandler(new AuthenticatedHttpClientHandler (_settingsService.UserIdToken), Priority.UserInitiated)));
+	    private void InitializeApis()
+	    {
+            Func<HttpMessageHandler, ITekConfApi> createClient = messageHandler =>
+            {
+                var client = new HttpClient(messageHandler)
+                {
+                    BaseAddress = new Uri(ApiBaseAddress)
+                };
 
-			_speculative = new Lazy<ITekConfApi>(() => createClient(
-				new RateLimitedHttpMessageHandler(new AuthenticatedHttpClientHandler (_settingsService.UserIdToken), Priority.Speculative)));
-		}
+                return RestService.For<ITekConfApi>(client);
+            };
 
-		private readonly Lazy<ITekConfApi> _background;
-		private readonly Lazy<ITekConfApi> _userInitiated;
-		private readonly Lazy<ITekConfApi> _speculative;
+            _background = new Lazy<ITekConfApi>(() => createClient(
+                new RateLimitedHttpMessageHandler(new AuthenticatedHttpClientHandler(_settingsService.UserIdToken), Priority.Background)));
 
-		public ITekConfApi Background
+            _userInitiated = new Lazy<ITekConfApi>(() => createClient(
+                new RateLimitedHttpMessageHandler(new AuthenticatedHttpClientHandler(_settingsService.UserIdToken), Priority.UserInitiated)));
+
+            _speculative = new Lazy<ITekConfApi>(() => createClient(
+                new RateLimitedHttpMessageHandler(new AuthenticatedHttpClientHandler(_settingsService.UserIdToken), Priority.Speculative)));
+        }
+
+        public ITekConfApi Background
 		{
 			get { return _background.Value; }
 		}

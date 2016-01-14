@@ -59,6 +59,7 @@
 		<string>Fonts/OpenSans-Bold.ttf</string>
 		<string>Fonts/OpenSans-ExtraBold.ttf</string>
 		<string>Fonts/OpenSans-SemiBold.ttf</string>
+    <string>Fonts/fontawesome.ttf</string>
 	</array>
 	<key>CFBundleName</key>
 	<string>TekConf</string>

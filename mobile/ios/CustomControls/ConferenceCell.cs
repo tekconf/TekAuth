@@ -3,6 +3,7 @@ using UIKit;
 using Tekconf.DTO;
 using CoreGraphics;
 using System.Threading.Tasks;
+using Foundation;
 using Microsoft.Practices.ServiceLocation;
 using TekConf.Mobile.Core;
 using TekConf.Mobile.Core.Services;
@@ -15,8 +16,6 @@ namespace ios
 		public ConferenceCell (IntPtr handle) : base (handle)
 		{
 		}
-
-
 
 		public async Task SetConference (Conference conference)
 		{
@@ -36,7 +35,11 @@ namespace ios
 
 			this.conferenceLocation.Text = "San Francisco, CA";
 
-			if (!string.IsNullOrWhiteSpace (conference.ImageUrl)) {
+            this.addedToScheduleStatus.Font = UIFont.FromName("FontAwesome", 20f);
+		    this.addedToScheduleStatus.Text = "\xf274";
+		    //this.addedToScheduleStatus.Text = "\xf273";
+
+            if (!string.IsNullOrWhiteSpace (conference.ImageUrl)) {
 				try {
 					
 					var imageService = ServiceLocator.Current.GetInstance<IImageService>();

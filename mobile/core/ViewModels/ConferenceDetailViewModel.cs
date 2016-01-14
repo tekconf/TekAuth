@@ -13,8 +13,10 @@ namespace TekConf.Mobile.Core.ViewModels
 	{
 		public Conference Conference { get; private set;}
 		public ICommand AddToScheduleCommand { get; private set; }
-		private ISchedulesService _schedulesService;
-		private ISettingsService _settingsService;
+		public ICommand RemoveFromScheduleCommand { get; private set; }
+
+        private readonly ISchedulesService _schedulesService;
+		private readonly ISettingsService _settingsService;
 
 		public ConferenceDetailViewModel (Conference conference, ISchedulesService schedulesService, ISettingsService settingsService)
 		{
@@ -28,10 +30,11 @@ namespace TekConf.Mobile.Core.ViewModels
 			EndDate = conference.EndDate;
 
 			this.AddToScheduleCommand = new RelayCommand(async () => await this.AddToSchedule(Priority.UserInitiated), CanAddToSchedule);
+            this.RemoveFromScheduleCommand = new RelayCommand(async () => await this.RemoveFromSchedule(Priority.UserInitiated), CanRemoveFromSchedule);
 
-		}
+        }
 
-		public async Task AddToSchedule(Priority priority)
+        public async Task AddToSchedule(Priority priority)
 		{
 			var schedule = await _schedulesService
 				.AddToSchedule(priority, Conference.Slug)
@@ -43,7 +46,19 @@ namespace TekConf.Mobile.Core.ViewModels
 			return !string.IsNullOrWhiteSpace(_settingsService.UserIdToken);
 		}
 
-		public string DateRange
+        public async Task RemoveFromSchedule(Priority priority)
+        {
+            await _schedulesService
+                .RemoveFromSchedule(priority, Conference.Slug)
+                .ConfigureAwait(false);
+        }
+
+        public bool CanRemoveFromSchedule()
+        {
+            return !string.IsNullOrWhiteSpace(_settingsService.UserIdToken);
+        }
+
+        public string DateRange
 		{
 			get
 			{
@@ -130,5 +145,20 @@ namespace TekConf.Mobile.Core.ViewModels
 			}
 		}
 
-	}
+        private bool _isAddedToSchedule;
+        public bool IsAddedToSchedule
+        {
+            get
+            {
+                return _isAddedToSchedule;
+            }
+            set
+            {
+                if (value == _isAddedToSchedule) return;
+                _isAddedToSchedule = value;
+                RaisePropertyChanged(() => IsAddedToSchedule);
+            }
+        }
+
+    }
 }

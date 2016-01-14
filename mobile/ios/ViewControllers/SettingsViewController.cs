@@ -6,13 +6,15 @@ using TekConf.Mobile.Core.ViewModels;
 using Microsoft.Practices.ServiceLocation;
 using Xamarin;
 using System.Collections.Generic;
+using GalaSoft.MvvmLight.Messaging;
+using TekConf.Mobile.Core.Messages;
 using TekConf.Mobile.Core.Services;
 
 namespace ios
 {
 	partial class SettingsViewController : UIViewController
 	{
-		private Auth0Client _auth0;
+		private readonly Auth0Client _auth0;
 		private Binding<string, string> _nicknameLabelBinding;
 		private Binding<string, string> _emailLabelBinding;
 		private readonly ISettingsService _settingsService;
@@ -58,7 +60,6 @@ namespace ios
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-
 			
 			_nicknameLabelBinding = this.SetBinding (
 				() => Vm.Nickname,
@@ -86,13 +87,12 @@ namespace ios
 					Vm.Nickname = nicknameValue;
 					Vm.Email = emailAddress;
 
-					//loggedInView.Hidden = false;
-					//loginButton.Hidden = true;
-
 					_settingsService.UserIdToken = user.IdToken;
 
-				}
-			};
+                    Messenger.Default.Send(new UserLoggedInMessage());
+
+                }
+            };
 		}
 	}
 }

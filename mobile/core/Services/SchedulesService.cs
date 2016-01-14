@@ -153,5 +153,38 @@ namespace TekConf.Mobile.Core.Services
             Messenger.Default.Send(new ConferenceAddedToScheduleMessage { Slug = slug } );
 			return schedule;
 		}
-	}
+
+        public async Task RemoveFromSchedule(Priority priority, string slug)
+        {
+            Task removeFromScheduleTask;
+            switch (priority)
+            {
+                case Priority.Background:
+                    removeFromScheduleTask = _apiService.Background.RemoveFromSchedule(slug);
+                    break;
+                case Priority.UserInitiated:
+                    removeFromScheduleTask = _apiService.UserInitiated.RemoveFromSchedule(slug);
+                    break;
+                case Priority.Speculative:
+                    removeFromScheduleTask = _apiService.Speculative.RemoveFromSchedule(slug);
+                    break;
+                default:
+                    removeFromScheduleTask = _apiService.UserInitiated.RemoveFromSchedule(slug);
+                    break;
+            }
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                await Policy
+                    .Handle<Exception>()
+                    .RetryAsync(retryCount: 5)
+                    .ExecuteAsync(async () => await removeFromScheduleTask);
+            }
+
+            Messenger.Default.Send(new ConferenceRemovedFromScheduleMessage { Slug = slug });
+
+        }
+
+
+    }
 }

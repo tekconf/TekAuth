@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TekConf.Mobile.Core.Messages
+﻿namespace TekConf.Mobile.Core.Messages
 {
     public class ConferenceAddedToScheduleMessage
     {
