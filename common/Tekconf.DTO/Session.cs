@@ -13,8 +13,6 @@ namespace Tekconf.DTO
 
 		public DateTime? EndDate { get; set; }
 
-		public string SpeakerName { get; set; }
-
 		public string Description { get; set; }
 
 		public string Room { get; set; }

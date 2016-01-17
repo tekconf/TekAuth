@@ -19,6 +19,12 @@ namespace Tekconf.Data.Entities
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Conference>()
+                .Property(c => c.Latitude).HasPrecision(12, 10);
+
+            modelBuilder.Entity<Conference>()
+                .Property(c => c.Longitude).HasPrecision(12, 10);
+
             modelBuilder.Entity<User>()
                    .HasMany(u => u.Conferences)
                    .WithMany(c => c.Users)

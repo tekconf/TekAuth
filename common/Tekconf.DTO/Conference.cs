@@ -49,7 +49,7 @@ namespace Tekconf.DTO
         public string GithubUrl { get; set; }
         public string LinkedInUrl { get; set; }
         public string HighlightColor { get; set; }
-
+        public Address Address { get; set; } = new Address();
         public List<Session> Sessions { get; set; }
     }
 }

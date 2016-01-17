@@ -68,6 +68,18 @@ namespace Tekconf.Data.Entities
 
         public bool IsOnlineConference { get; set; }
 
+        public string AddressLine1 { get; set; }
+        public string AddressLine2 { get; set; }
+        public string AddressLine3 { get; set; }
+        public string City { get; set; }
+        public string StateOrProvince { get; set; }
+        public string PostalCode { get; set; }
+        public string Country { get; set; }
+        public decimal? Latitude { get; set; }
+        public decimal? Longitude { get; set; }
+        public string VenuePhoneNumber { get; set; }
+        public string OrganizerPhoneNumber { get; set; }
+
         public string ImageUrl { get; set; }
         public string ImageSquareUrl { get; set; }
         public string TagLine { get; set; }

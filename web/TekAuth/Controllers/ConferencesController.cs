@@ -34,6 +34,8 @@ namespace TekAuth.Controllers
                 await CreateUserIfNotExists();
                 var conferences = await _repository
                     .GetConferences()
+                    .Include(c => c.Sessions)
+                    .Include(c => c.Sessions.Select(s => s.Speakers))
                     .ProjectTo<Tekconf.DTO.Conference>()
                     .ToListAsync();
 

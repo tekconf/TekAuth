@@ -30,8 +30,6 @@ namespace Tekconf.Data.Entities
         [Column(TypeName = "date")]
         public DateTime? EndDate { get; set; }
 
-        public string SpeakerName { get; set; }
-
         public string Description { get; set; }
 
         [StringLength(100)]
