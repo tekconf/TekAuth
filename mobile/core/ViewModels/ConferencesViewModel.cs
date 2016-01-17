@@ -1,13 +1,8 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System.Threading.Tasks;
-using Refit;
-using System.Net.Http;
-using System;
 using System.Collections.ObjectModel;
 using Tekconf.DTO;
-using System.Collections.Generic;
-using Akavache;
 using Fusillade;
 using TekConf.Mobile.Core.Services;
 
@@ -28,7 +23,7 @@ namespace TekConf.Mobile.Core.ViewModels
 			this.LoadConferencesCommand = new RelayCommand(async () => await this.LoadConferences(Priority.UserInitiated), CanLoadConferences);
 		}
 
-		ObservableCollection<Conference> _conferences;
+		private ObservableCollection<Conference> _conferences;
 		public ObservableCollection<Conference> Conferences {
 			get {
 				return _conferences;
@@ -42,15 +37,11 @@ namespace TekConf.Mobile.Core.ViewModels
 
 		public async Task LoadConferences(Priority priority)
 		{
-			//if (!string.IsNullOrWhiteSpace (_settingsService.UserIdToken)) {
 				var conferences = await _conferencesService
-				.GetConferences(_settingsService.UserIdToken, priority)
+    				.GetConferences(_settingsService.UserIdToken, priority)
 					.ConfigureAwait(false);
 	
 				this.Conferences = new ObservableCollection<Conference> (conferences);
-
-			//} else {
-			//}
 		}
 
 

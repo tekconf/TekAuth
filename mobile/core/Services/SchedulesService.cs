@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
@@ -18,18 +19,26 @@ namespace TekConf.Mobile.Core.Services
 	public class SchedulesService : ISchedulesService
 	{
 		private readonly IApiService _apiService;
+	    private readonly ISettingsService _settingsService;
 
-		public SchedulesService(IApiService apiService)
-		{
-			_apiService = apiService;
-		}
+	    public SchedulesService(IApiService apiService, ISettingsService settingsService)
+	    {
+	        _apiService = apiService;
+	        _settingsService = settingsService;
+	    }
 
-		public async Task<List<Schedule>> GetSchedules(Priority priority)
+	    public async Task<List<Schedule>> GetSchedules(Priority priority)
 		{
 			var cache = BlobCache.LocalMachine;
 			if (priority == Priority.UserInitiated) {
 				BlobCache.LocalMachine.InvalidateAll ().Subscribe ();
 			}
+
+	        if (string.IsNullOrWhiteSpace(_settingsService.UserIdToken))
+	        {
+	            return Enumerable.Empty<Schedule>().ToList();
+	        }
+
 			var cachedSchedules = cache.GetAndFetchLatest("schedules", () => GetRemoteSchedulesAsync(priority),
 				offset =>
 				{
@@ -44,7 +53,11 @@ namespace TekConf.Mobile.Core.Services
 
 		public async Task<Schedule> GetSchedule(Priority priority, string slug)
 		{
-			var cachedSchedule = BlobCache.LocalMachine.GetAndFetchLatest($"schedule-{slug}", () => GetRemoteSchedule(priority, slug), offset =>
+            if (string.IsNullOrWhiteSpace(_settingsService.UserIdToken))
+            {
+                return null;
+            }
+            var cachedSchedule = BlobCache.LocalMachine.GetAndFetchLatest($"schedule-{slug}", () => GetRemoteSchedule(priority, slug), offset =>
 				{
 					TimeSpan elapsed = DateTimeOffset.Now - offset;
 					return elapsed > new TimeSpan(hours: 0, minutes: 30, seconds: 0);

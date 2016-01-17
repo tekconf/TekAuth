@@ -4,12 +4,11 @@ using System.Net;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Akavache;
-
 using Fusillade;
 using Polly;
-
 using Tekconf.DTO;
 using Plugin.Connectivity;
+using System.Linq;
 
 namespace TekConf.Mobile.Core.Services
 {
@@ -17,13 +16,15 @@ namespace TekConf.Mobile.Core.Services
 	public class ConferencesService : IConferencesService
 	{
 		private readonly IApiService _apiService;
+	    private readonly ISchedulesService _schedulesService;
 
-		public ConferencesService(IApiService apiService)
-		{
-			_apiService = apiService;
-		}
+	    public ConferencesService(IApiService apiService, ISchedulesService schedulesService)
+	    {
+	        _apiService = apiService;
+	        _schedulesService = schedulesService;
+	    }
 
-		public async Task<List<Conference>> GetConferences(string token, Priority priority)
+	    public async Task<List<Conference>> GetConferences(string token, Priority priority)
 		{
 			var cache = BlobCache.LocalMachine;
 			if (priority == Priority.UserInitiated) {
@@ -37,8 +38,19 @@ namespace TekConf.Mobile.Core.Services
 				});
 
 			var conferences = await cachedConferences.FirstOrDefaultAsync();
-
-			return conferences;
+	        var schedules = await _schedulesService.GetSchedules(priority);
+	        if (schedules != null)
+	        {
+	            foreach (var schedule in schedules)
+	            {
+	                var conference = conferences.SingleOrDefault(c => c.Slug == schedule.Conference.Slug);
+	                if (conference != null)
+	                {
+	                    conference.IsAddedToSchedule = true;
+	                }
+	            }
+	        }
+	        return conferences;
 		}
 
 		public async Task<Conference> GetConference(Priority priority, string slug)

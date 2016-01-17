@@ -31,6 +31,7 @@
     <IntermediateOutputPath>obj\Debug</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Messages\AuthenticationInitializedMessage.cs" />
     <Compile Include="Messages\ConferenceAddedToScheduleMessage.cs" />
     <Compile Include="Messages\ConferenceRemovedFromScheduleMessage.cs" />
     <Compile Include="Messages\UserLoggedInMessage.cs" />

@@ -13,18 +13,20 @@ using System.Threading.Tasks;
 using Microsoft.Practices.ServiceLocation;
 using TekConf.Mobile.Core;
 using Fusillade;
+using GalaSoft.MvvmLight.Messaging;
+using TekConf.Mobile.Core.Messages;
 using TekConf.Mobile.Core.Services;
 
 namespace ios
 {
 	partial class ConferencesViewController : UITableViewController, IUISearchResultsUpdating
 	{
-		private UIRefreshControl uirc;
+		private UIRefreshControl _uirc;
+        private ObservableCollection<Conference> _conferences;
+        private ObservableCollection<Conference> _filteredConferences;
+        private UISearchController _searchController;
 
-		private const string cellId = "conferenceCell";
-
-		private ObservableCollection<Conference> _conferences;
-		private ObservableCollection<Conference> _filteredConferences;
+        private const string cellId = "conferenceCell";
 
 		public ConferencesViewController (IntPtr handle) : base (handle)
 		{
@@ -42,32 +44,37 @@ namespace ios
 		{
 			return _filteredConferences.Count ();
 		}
-
-		UISearchController searchController;
-
+        
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
 			_conferences = Vm.Conferences;
 			_filteredConferences = _conferences;
 
-			uirc = new UIRefreshControl ();
-			uirc.ValueChanged += async (sender, e) => { 
+			_uirc = new UIRefreshControl ();
+			_uirc.ValueChanged += async (sender, e) => { 
 				await LoadConferences (Priority.UserInitiated);
-
-				uirc.EndRefreshing ();
+				_uirc.EndRefreshing ();
 			};
 
-			RefreshControl = uirc;
+			RefreshControl = _uirc;
 
-			searchController = new UISearchController ((UITableViewController)null);
-			searchController.DimsBackgroundDuringPresentation = false;
-			this.TableView.TableHeaderView = searchController.SearchBar;
-			searchController.SearchBar.SizeToFit ();
+            Messenger.Default.Register<AuthenticationInitializedMessage>
+            (
+                this,
+                async (message) => { await LoadConferences(Priority.UserInitiated); }
+            );
+
+		    _searchController = new UISearchController((UITableViewController) null)
+		    {
+		        DimsBackgroundDuringPresentation = false
+		    };
+		    this.TableView.TableHeaderView = _searchController.SearchBar;
+			_searchController.SearchBar.SizeToFit ();
 			DefinesPresentationContext = true;
-			searchController.SearchResultsUpdater = this;
-			this.TableView.SetContentOffset (new CoreGraphics.CGPoint (0, searchController.SearchBar.Frame.Size.Height), animated: false);
-			searchController.SearchBar.BarTintColor = UIColor.FromRGB (red: 34, green: 91, blue: 149);
+			_searchController.SearchResultsUpdater = this;
+			this.TableView.SetContentOffset (new CoreGraphics.CGPoint (0, _searchController.SearchBar.Frame.Size.Height), animated: false);
+			_searchController.SearchBar.BarTintColor = UIColor.FromRGB (red: 34, green: 91, blue: 149);
 
 		}
 

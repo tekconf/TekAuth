@@ -49,6 +49,11 @@ namespace TekConf.Mobile.Core.Services
 
             _speculative = new Lazy<ITekConfApi>(() => createClient(
                 new RateLimitedHttpMessageHandler(new AuthenticatedHttpClientHandler(_settingsService.UserIdToken), Priority.Speculative)));
+
+	        if (!string.IsNullOrWhiteSpace(_settingsService.UserIdToken))
+	        {
+                Messenger.Default.Send(new AuthenticationInitializedMessage());
+            }
         }
 
         public ITekConfApi Background

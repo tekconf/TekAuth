@@ -36,8 +36,8 @@ namespace ios
 			this.conferenceLocation.Text = "San Francisco, CA";
 
             this.addedToScheduleStatus.Font = UIFont.FromName("FontAwesome", 20f);
-		    this.addedToScheduleStatus.Text = "\xf274";
-		    //this.addedToScheduleStatus.Text = "\xf273";
+            this.addedToScheduleStatus.Text = conference.IsAddedToSchedule ? "\xf274" : "\xf273"; //
+            //this.addedToScheduleStatus.Text = "\xf273";
 
             if (!string.IsNullOrWhiteSpace (conference.ImageUrl)) {
 				try {

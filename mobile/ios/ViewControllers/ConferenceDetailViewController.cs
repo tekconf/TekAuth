@@ -49,19 +49,25 @@ namespace ios
 		{
 			base.ViewDidLoad ();
 
-            SetAddButtonStatus();
-
-		    addToMySchedule.Layer.BorderColor = UIColor.LightGray.CGColor;
+		    if (Vm.Conference.IsAddedToSchedule)
+		    {
+                SetRemoveButtonStatus();
+		    }
+		    else
+		    {
+		        SetAddButtonStatus();
+            }
+            addToMySchedule.Layer.BorderColor = UIColor.LightGray.CGColor;
 			addToMySchedule.Layer.BorderWidth = 0.5f;
 			addToMySchedule.TouchUpInside += (sender, e) => {
                 //TODO : This is a bad filter. Should use VM
-			    if (addToMySchedule.Title(UIControlState.Normal) =="Add to My Schedule")
+			    if (Vm.Conference.IsAddedToSchedule)
 			    {
-                    Vm.AddToScheduleCommand.Execute(null);
+                    Vm.RemoveFromScheduleCommand.Execute(null);
                 }
                 else
 			    {
-                    Vm.RemoveFromScheduleCommand.Execute(null);
+                    Vm.AddToScheduleCommand.Execute(null);
                 }
 
             };
@@ -99,14 +105,17 @@ namespace ios
 			ShowMap ();
 		}
 
-	    private void SetAddButtonStatus()
+	    private const string AddToScheduleMessage = "\xf274 Add to My Schedule";
+	    private const string RemoveFromScheduleMessage = "\xf273 Remove from My Schedule";
+
+        private void SetAddButtonStatus()
 	    {
-	        SetButtonStatus("\xf274 Add to My Schedule");
+	        SetButtonStatus(AddToScheduleMessage);
 	    }
 
         private void SetRemoveButtonStatus()
         {
-            SetButtonStatus("\xf273 Remove from My Schedule");
+            SetButtonStatus(RemoveFromScheduleMessage);
         }
 
         private void SetButtonStatus(string status)

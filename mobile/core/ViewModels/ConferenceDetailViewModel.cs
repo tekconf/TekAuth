@@ -39,9 +39,11 @@ namespace TekConf.Mobile.Core.ViewModels
 			var schedule = await _schedulesService
 				.AddToSchedule(priority, Conference.Slug)
 				.ConfigureAwait(false);
-		}
 
-		public bool CanAddToSchedule()
+            this.Conference.IsAddedToSchedule = true;
+        }
+
+        public bool CanAddToSchedule()
 		{
 			return !string.IsNullOrWhiteSpace(_settingsService.UserIdToken);
 		}
@@ -51,6 +53,8 @@ namespace TekConf.Mobile.Core.ViewModels
             await _schedulesService
                 .RemoveFromSchedule(priority, Conference.Slug)
                 .ConfigureAwait(false);
+
+            this.Conference.IsAddedToSchedule = false;
         }
 
         public bool CanRemoveFromSchedule()

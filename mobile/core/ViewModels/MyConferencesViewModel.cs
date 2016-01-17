@@ -5,8 +5,6 @@ using System.Collections.ObjectModel;
 using Tekconf.DTO;
 using Fusillade;
 using System.Linq;
-using GalaSoft.MvvmLight.Messaging;
-using TekConf.Mobile.Core.Messages;
 using TekConf.Mobile.Core.Services;
 
 namespace TekConf.Mobile.Core.ViewModels
@@ -23,8 +21,6 @@ namespace TekConf.Mobile.Core.ViewModels
 			_settingsService = settingsService;
 			_myConferences = new ObservableCollection<Conference> ();
 			this.LoadSchedulesCommand = new RelayCommand(async () => await this.LoadSchedules(Priority.UserInitiated), CanLoadSchedules);
-
-
         }
 
 	    ObservableCollection<Conference> _myConferences;
