@@ -20,7 +20,7 @@ namespace Tekconf.Data.Entities
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()
-                   .HasMany<Conference>(u => u.Conferences)
+                   .HasMany(u => u.Conferences)
                    .WithMany(c => c.Users)
                    .Map(cs =>
                    {
@@ -29,6 +29,15 @@ namespace Tekconf.Data.Entities
                        cs.ToTable("UserConferences");
                    });
 
+            modelBuilder.Entity<Speaker>()
+               .HasMany(u => u.Sessions)
+               .WithMany(s => s.Speakers)
+               .Map(cs =>
+               {
+                   cs.MapLeftKey("SpeakerId");
+                   cs.MapRightKey("SessionId");
+                   cs.ToTable("SessionSpeakers");
+               });
 
             modelBuilder.Entity<Schedule>()
                 .HasRequired(t => t.Conference)

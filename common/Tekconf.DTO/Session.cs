@@ -1,8 +1,9 @@
 using System;
+using System.Collections.Generic;
 
 namespace Tekconf.DTO
 {
-	public class Session
+    public class Session
 	{
 		public string Slug { get; set; }
 
@@ -17,5 +18,7 @@ namespace Tekconf.DTO
 		public string Description { get; set; }
 
 		public string Room { get; set; }
-	}   
+
+        public List<Speaker> Speakers { get; set; }
+    }
 }

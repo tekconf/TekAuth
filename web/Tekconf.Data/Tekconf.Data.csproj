@@ -59,15 +59,10 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Schedule.cs" />
+    <Compile Include="Entities\Speaker.cs" />
     <Compile Include="IScheduleRepository.cs" />
     <Compile Include="Migrations\201601091932066_Schedules.cs" />
     <Compile Include="Migrations\201601091932066_Schedules.Designer.cs">
@@ -162,9 +157,6 @@
       <Project>{C1FC50AD-2DB6-42A1-8C22-93EB78C29116}</Project>
       <Name>Tekconf.DTO</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

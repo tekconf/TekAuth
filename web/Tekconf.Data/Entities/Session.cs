@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -7,6 +8,10 @@ namespace Tekconf.Data.Entities
     [Table("Sessions")]
     public class Session
     {
+        public Session()
+        {
+            this.Speakers = new HashSet<Speaker>();
+        }
         public int Id { get; set; }
 
         [Required]
@@ -34,5 +39,8 @@ namespace Tekconf.Data.Entities
 
         public int ConferenceId { get; set; }
         public Conference Conference { get; set; }
+
+        public virtual ICollection<Speaker> Speakers { get; set; }
+
     }
 }
