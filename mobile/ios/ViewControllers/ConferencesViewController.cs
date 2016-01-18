@@ -62,14 +62,23 @@ namespace ios
             Messenger.Default.Register<AuthenticationInitializedMessage>
             (
                 this,
-                async (message) => { await LoadConferences(Priority.UserInitiated); }
+                async (message) => { 
+					_uirc.BeginRefreshing();
+					await LoadConferences(Priority.UserInitiated);
+					_uirc.EndRefreshing();
+				}
             );
 
 			Messenger.Default.Register<ConferenceAddedMessage>
 			(
 				this,
 				async (message) => { 
-					await LoadConferences(Priority.UserInitiated); 
+					TableView.SetContentOffset(new CoreGraphics.CGPoint(x:0, y: 0-_uirc.Frame.Size.Height-_searchController.SearchBar.Frame.Size.Height), animated:true);
+					_uirc.BeginRefreshing();
+					await LoadConferences(Priority.UserInitiated);
+					_uirc.EndRefreshing();
+					TableView.SetContentOffset(new CoreGraphics.CGPoint(x:0, y: -((_searchController.SearchBar.Frame.Size.Height - 10) * 2)), animated:true);
+
 				}
 			);
 

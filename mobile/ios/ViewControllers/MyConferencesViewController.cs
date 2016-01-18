@@ -56,29 +56,38 @@ namespace ios
 
 				_uirc.EndRefreshing ();
 			};
+			RefreshControl = _uirc;
 
             Messenger.Default.Register<ConferenceAddedToScheduleMessage>
             (
                 this,
-                async (action) => await LoadMyConferences(Priority.UserInitiated)
+				async (action) => {
+					_uirc.BeginRefreshing();
+					await LoadMyConferences(Priority.UserInitiated);
+					_uirc.EndRefreshing();
+				}
             );
 
             Messenger.Default.Register<ConferenceRemovedFromScheduleMessage>
             (
                 this,
-                async (action) =>
-                {
-                    await LoadMyConferences(Priority.UserInitiated);
-                }
+				async (action) => {
+					_uirc.BeginRefreshing();
+					await LoadMyConferences(Priority.UserInitiated);
+					_uirc.EndRefreshing();
+				}
             );
 
             Messenger.Default.Register<AuthenticationInitializedMessage>
             (
                 this,
-                async (message) => { await LoadMyConferences(Priority.UserInitiated); }
+				async (action) => {
+					_uirc.BeginRefreshing();
+					await LoadMyConferences(Priority.UserInitiated);
+					_uirc.EndRefreshing();
+				}
             );
 
-            RefreshControl = _uirc;
 
 		    _searchController = new UISearchController((UITableViewController) null)
 		    {
