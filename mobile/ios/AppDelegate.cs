@@ -20,7 +20,6 @@ namespace ios
 	[Register ("AppDelegate")]
 	public class AppDelegate : UIApplicationDelegate
 	{
-		private SBNotificationHub Hub { get; set; }
 		public override UIWindow Window {
 			get;
 			set;
@@ -172,21 +171,48 @@ namespace ios
 
 		public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
 		{
-			Hub = new SBNotificationHub(Constants.ConnectionString, Constants.NotificationHubPath);
+			RegisterForRemoteNotifications (deviceToken);
+		}
 
-			Hub.UnregisterAllAsync (deviceToken, (error) => {
-				if (error != null)
-				{
-					Console.WriteLine("Error calling Unregister: {0}", error.ToString());
-					return;
-				}
+		private static SBNotificationHub Hub { get; set; }
 
-				NSSet tags = null; // create tags if you want
-				Hub.RegisterNativeAsync(deviceToken, tags, (errorCallback) => {
-					if (errorCallback != null)
-						Console.WriteLine("RegisterNativeAsync error: " + errorCallback.ToString());
+		public static void RegisterForRemoteNotifications(NSData deviceToken)
+		{
+			var settingsService = ServiceLocator.Current.GetInstance<ISettingsService>();
+
+			if (deviceToken == null && !string.IsNullOrWhiteSpace (settingsService.DeviceToken)) {
+				deviceToken = new NSString (settingsService.DeviceToken).Encode (NSStringEncoding.UTF8);
+			}
+			if (deviceToken != null) {
+				settingsService.DeviceToken = deviceToken.Description;
+				Hub = new SBNotificationHub (Constants.ConnectionString, Constants.NotificationHubPath);
+
+				Hub.UnregisterAllAsync (deviceToken, (error) => {
+					if (error != null) {
+						Console.WriteLine ("Error calling Unregister: {0}", error.ToString ());
+						return;
+					}
+					NSSet tags = null;
+					if (!string.IsNullOrWhiteSpace (settingsService.EmailAddress)) {
+						tags = new NSSet (new string[] {
+							"platform:iOS",
+							"emailAddress:" + settingsService.EmailAddress
+						});
+					} else {
+						tags = new NSSet (new string[] {
+							"platform:iOS"
+						});
+					}
+
+
+					Hub.RegisterNativeAsync (deviceToken, tags, (errorCallback) => {
+						if (errorCallback != null)
+							Console.WriteLine ("RegisterNativeAsync error: " + errorCallback.ToString ());
+					});
+
+
 				});
-			});
+			}
 		}
 
 		public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)

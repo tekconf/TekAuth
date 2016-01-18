@@ -88,6 +88,11 @@ namespace ios
 					Vm.Email = emailAddress;
 
 					_settingsService.UserIdToken = user.IdToken;
+					_settingsService.EmailAddress = emailAddress;
+					_settingsService.Nickname = nicknameValue;
+
+					AppDelegate.RegisterForRemoteNotifications(null);
+
 
                     Messenger.Default.Send(new UserLoggedInMessage());
 

@@ -3,15 +3,10 @@ namespace TekConf.Mobile.Core.Services
 {
 	public class SettingsService : ISettingsService
 	{
-		private string _userIdToken;
-		public string UserIdToken {
-			get {
-				return _userIdToken;
-			}
-			set {
-				_userIdToken = value;
-			}
-		}		
+		public string UserIdToken { get; set; }
+		public string EmailAddress {get;set;}
+		public string Nickname {get;set;}
+		public string DeviceToken {get;set;}
 
 		private string _auth0Domain;
 
