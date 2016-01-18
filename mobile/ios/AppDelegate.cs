@@ -178,6 +178,7 @@ namespace ios
 
 		public static void RegisterForRemoteNotifications(NSData deviceToken)
 		{
+			
 			var settingsService = ServiceLocator.Current.GetInstance<ISettingsService>();
 
 			if (deviceToken == null && !string.IsNullOrWhiteSpace (settingsService.DeviceToken)) {
@@ -203,7 +204,6 @@ namespace ios
 							"platform:iOS"
 						});
 					}
-
 
 					Hub.RegisterNativeAsync (deviceToken, tags, (errorCallback) => {
 						if (errorCallback != null)
@@ -247,11 +247,14 @@ namespace ios
 					//Manually show an alert
 					if (!string.IsNullOrEmpty(command))
 					{
-						if (command == RemoteCommands.RefreshConferences) {
+						if (command == RemoteCommands.Alert) {
+							UIAlertView avAlert = new UIAlertView("Notification", "Alert", null, "OK", null);
+							avAlert.Show();
+						} else if (command == RemoteCommands.RefreshConferences) {
 							Messenger.Default.Send (new ConferenceAddedMessage ());
 						} else if (command == RemoteCommands.RefreshSchedule) {
 							Messenger.Default.Send (new ConferenceAddedToScheduleMessage ());
-						}
+						} 
 					}
 				}
 			}

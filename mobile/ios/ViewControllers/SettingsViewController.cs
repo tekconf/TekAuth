@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using GalaSoft.MvvmLight.Messaging;
 using TekConf.Mobile.Core.Messages;
 using TekConf.Mobile.Core.Services;
+using Foundation;
 
 namespace ios
 {
@@ -91,8 +92,13 @@ namespace ios
 					_settingsService.EmailAddress = emailAddress;
 					_settingsService.Nickname = nicknameValue;
 
-					AppDelegate.RegisterForRemoteNotifications(null);
+					//AppDelegate.RegisterForRemoteNotifications(null);
+					var pushSettings = UIUserNotificationSettings.GetSettingsForTypes (
+						UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound,
+						new NSSet ());
 
+					UIApplication.SharedApplication.RegisterUserNotificationSettings (pushSettings);
+					UIApplication.SharedApplication.RegisterForRemoteNotifications ();
 
                     Messenger.Default.Send(new UserLoggedInMessage());
 
