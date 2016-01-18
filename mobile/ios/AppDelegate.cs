@@ -171,21 +171,8 @@ namespace ios
 
 		public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
 		{
-			RegisterForRemoteNotifications (deviceToken);
-		}
 
-		private static SBNotificationHub Hub { get; set; }
-
-		public static void RegisterForRemoteNotifications(NSData deviceToken)
-		{
-			
-			var settingsService = ServiceLocator.Current.GetInstance<ISettingsService>();
-
-			if (deviceToken == null && !string.IsNullOrWhiteSpace (settingsService.DeviceToken)) {
-				deviceToken = new NSString (settingsService.DeviceToken).Encode (NSStringEncoding.UTF8);
-			}
 			if (deviceToken != null) {
-				settingsService.DeviceToken = deviceToken.Description;
 				Hub = new SBNotificationHub (Constants.ConnectionString, Constants.NotificationHubPath);
 
 				Hub.UnregisterAllAsync (deviceToken, (error) => {
@@ -194,6 +181,7 @@ namespace ios
 						return;
 					}
 					NSSet tags = null;
+					var settingsService = ServiceLocator.Current.GetInstance<ISettingsService>();
 					if (!string.IsNullOrWhiteSpace (settingsService.EmailAddress)) {
 						tags = new NSSet (new string[] {
 							"platform:iOS",
@@ -214,6 +202,8 @@ namespace ios
 				});
 			}
 		}
+
+		private static SBNotificationHub Hub { get; set; }
 
 		public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
 		{

@@ -8,7 +8,6 @@ namespace TekConf.Mobile.Core.Services
 		string Auth0ClientId { get;  }
 		string EmailAddress {get;set;}
 		string Nickname {get;set;}
-		string DeviceToken {get;set;}
 	}
 
 }

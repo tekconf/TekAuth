@@ -6,7 +6,6 @@ namespace TekConf.Mobile.Core.Services
 		public string UserIdToken { get; set; }
 		public string EmailAddress {get;set;}
 		public string Nickname {get;set;}
-		public string DeviceToken {get;set;}
 
 		private string _auth0Domain;
 
