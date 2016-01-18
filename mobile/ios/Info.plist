@@ -5,9 +5,9 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.tekconf.mobile.ios</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.55</string>
+	<string>1.56</string>
 	<key>CFBundleVersion</key>
-	<string>1.55</string>
+	<string>1.56</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
@@ -65,5 +65,9 @@
 	<string>TekConf</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Show your location on map</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 </dict>
 </plist>

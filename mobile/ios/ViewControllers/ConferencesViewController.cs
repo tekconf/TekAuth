@@ -65,6 +65,14 @@ namespace ios
                 async (message) => { await LoadConferences(Priority.UserInitiated); }
             );
 
+			Messenger.Default.Register<ConferenceAddedMessage>
+			(
+				this,
+				async (message) => { 
+					await LoadConferences(Priority.UserInitiated); 
+				}
+			);
+
 		    _searchController = new UISearchController((UITableViewController) null)
 		    {
 		        DimsBackgroundDuringPresentation = false

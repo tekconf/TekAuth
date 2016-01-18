@@ -9,6 +9,9 @@ using System;
 using Microsoft.Practices.ServiceLocation;
 using TekConf.Mobile.Core;
 using TekConf.Mobile.Core.Services;
+using WindowsAzure.Messaging;
+using GalaSoft.MvvmLight.Messaging;
+using TekConf.Mobile.Core.Messages;
 
 namespace ios
 {
@@ -17,6 +20,7 @@ namespace ios
 	[Register ("AppDelegate")]
 	public class AppDelegate : UIApplicationDelegate
 	{
+		private SBNotificationHub Hub { get; set; }
 		public override UIWindow Window {
 			get;
 			set;
@@ -46,6 +50,13 @@ namespace ios
 			#endif
 
 			AdjustDefaultUI ();
+
+			var pushSettings = UIUserNotificationSettings.GetSettingsForTypes (
+				UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound,
+				new NSSet ());
+
+			UIApplication.SharedApplication.RegisterUserNotificationSettings (pushSettings);
+			UIApplication.SharedApplication.RegisterForRemoteNotifications ();
 
 			return true;
 		}
@@ -135,6 +146,7 @@ namespace ios
 
 			return true;
 		}
+
 		public override void WillTerminate (UIApplication application)
 		{
 			// Called when the application is about to terminate. Save data, if needed. See also DidEnterBackground.
@@ -156,6 +168,67 @@ namespace ios
 			UINavigationBar.Appearance.SetTitleTextAttributes(navStyle); 
 			UIImageView.AppearanceWhenContainedIn (typeof(UINavigationBar)).TintColor = UIColor.White;
 			UIBarButtonItem.Appearance.SetTitleTextAttributes (navStyle, UIControlState.Normal);
+		}
+
+		public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
+		{
+			Hub = new SBNotificationHub(Constants.ConnectionString, Constants.NotificationHubPath);
+
+			Hub.UnregisterAllAsync (deviceToken, (error) => {
+				if (error != null)
+				{
+					Console.WriteLine("Error calling Unregister: {0}", error.ToString());
+					return;
+				}
+
+				NSSet tags = null; // create tags if you want
+				Hub.RegisterNativeAsync(deviceToken, tags, (errorCallback) => {
+					if (errorCallback != null)
+						Console.WriteLine("RegisterNativeAsync error: " + errorCallback.ToString());
+				});
+			});
+		}
+
+		public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
+		{
+			ProcessNotification(userInfo, false);
+		}
+
+		void ProcessNotification(NSDictionary options, bool fromFinishedLaunching)
+		{
+			// Check to see if the dictionary has the aps key.  This is the notification payload you would have sent
+			if (null != options && options.ContainsKey(new NSString("aps")))
+			{
+				//Get the aps dictionary
+				NSDictionary aps = options.ObjectForKey(new NSString("aps")) as NSDictionary;
+
+				string command = string.Empty;
+
+				//Extract the alert text
+				// NOTE: If you're using the simple alert by just specifying
+				// "  aps:{alert:"alert msg here"}  ", this will work fine.
+				// But if you're using a complex alert with Localization keys, etc.,
+				// your "alert" object from the aps dictionary will be another NSDictionary.
+				// Basically the JSON gets dumped right into a NSDictionary,
+				// so keep that in mind.
+				if (aps.ContainsKey (new NSString ("command"))) {
+					command = (aps [new NSString ("command")] as NSString).ToString ();
+				}
+				//If this came from the ReceivedRemoteNotification while the app was running,
+				// we of course need to manually process things like the sound, badge, and alert.
+				if (!fromFinishedLaunching)
+				{
+					//Manually show an alert
+					if (!string.IsNullOrEmpty(command))
+					{
+						if (command == RemoteCommands.RefreshConferences) {
+							Messenger.Default.Send (new ConferenceAddedMessage ());
+						} else if (command == RemoteCommands.RefreshSchedule) {
+							Messenger.Default.Send (new ConferenceAddedToScheduleMessage ());
+						}
+					}
+				}
+			}
 		}
 	}
 }
