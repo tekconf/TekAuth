@@ -33,7 +33,7 @@ namespace ios
 			}
 			this.conferenceDescription.Text = conference.Description;
 
-			this.conferenceLocation.Text = "San Francisco, CA";
+			this.conferenceLocation.Text = conference.Address.AddressShortDisplay();
 
             this.addedToScheduleStatus.Font = UIFont.FromName("FontAwesome", 20f);
             this.addedToScheduleStatus.Text = conference.IsAddedToSchedule ? "\xf274" : "\xf273"; //

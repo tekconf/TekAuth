@@ -27,7 +27,7 @@ namespace ios
 				_session.StartDate.Value.ToShortTimeString () : string.Empty;
 
 			sessionRoom.Text = _session.Room ?? string.Empty;
-			sessionSpeaker.Text = _session.SpeakerName ?? string.Empty;
+			sessionSpeaker.Text = _session.SpeakerName ();
 			sessionDescription.Text = _session.Description ?? string.Empty;
 		}
 	}

@@ -473,13 +473,23 @@
                                                     <segue id="1499" destination="965" kind="show"/>
                                                 </connections>
                                             </button>
-                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Pma-bI-FJF" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO">
+                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Pma-bI-FJF" pitchEnabled="NO" showsUserLocation="YES">
                                                 <rect key="frame" x="8" y="221" width="584" height="258"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="258" id="iFk-aJ-2t0"/>
                                                 </constraints>
                                             </mapView>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="wordWrap" id="2448" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="0" adjustsFontSizeToFit="NO">
+                                                <rect key="frame" x="8" y="70" width="476" height="21"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <constraints>
+                                                    <constraint id="2453" firstItem="2448" firstAttribute="height" constant="21" relation="greaterThanOrEqual"/>
+                                                </constraints>
+                                            </label>
                                         </subviews>
                                         <animations/>
                                         <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
@@ -507,6 +517,10 @@
                                             <constraint firstItem="A5C-PJ-RNv" firstAttribute="leading" secondItem="lNd-tZ-M5L" secondAttribute="trailing" constant="8" id="oat-x0-ncr"/>
                                             <constraint firstAttribute="trailing" secondItem="JFW-yx-M69" secondAttribute="trailing" constant="8" id="qcq-nx-Jbn"/>
                                             <constraint firstItem="GFw-Qy-PTQ" firstAttribute="top" secondItem="o1j-83-rLE" secondAttribute="top" constant="8" id="wNI-bJ-8Sa"/>
+                                            <constraint id="2449" firstItem="2448" firstAttribute="leading" secondItem="o1j-83-rLE" secondAttribute="leading" constant="8"/>
+                                            <constraint id="2450" firstItem="2448" firstAttribute="top" secondItem="lNd-tZ-M5L" secondAttribute="bottom" constant="8"/>
+                                            <constraint id="2451" firstItem="A5C-PJ-RNv" firstAttribute="leading" secondItem="2448" secondAttribute="trailing" constant="8"/>
+                                            <constraint id="2452" firstItem="JFW-yx-M69" firstAttribute="top" secondItem="2448" secondAttribute="bottom" constant="8" relation="greaterThanOrEqual"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -540,6 +554,7 @@
                         <outlet property="conferenceStartDate" destination="lNd-tZ-M5L" id="name-outlet-lNd-tZ-M5L"/>
                         <outlet property="conferenceImage" destination="A5C-PJ-RNv" id="name-outlet-A5C-PJ-RNv"/>
                         <outlet property="conferenceMap" destination="Pma-bI-FJF" id="name-outlet-Pma-bI-FJF"/>
+                        <outlet property="conferenceAddress" destination="2448" id="name-outlet-2448"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="720" userLabel="First Responder" sceneMemberID="firstResponder"/>

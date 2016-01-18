@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Tekconf.DTO
 {
@@ -18,5 +19,19 @@ namespace Tekconf.DTO
 		public string Room { get; set; }
 
         public List<Speaker> Speakers { get; set; }
+
+		public string SpeakerName()
+		{
+			if (Speakers == null || !Speakers.Any ()) {
+				return "N/A";
+			}
+
+			if (Speakers.Count () == 1) {
+				var speaker = Speakers.First ();
+				return string.Format ("{0} {1}", speaker.FirstName, speaker.LastName);
+			}
+
+			return string.Format ("{0} speakers", Speakers.Count ());
+		}
     }
 }

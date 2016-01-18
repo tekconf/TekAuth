@@ -20,6 +20,10 @@ namespace ios
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UILabel conferenceAddress { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UILabel conferenceDescription { get; set; }
 
 		[Outlet]
@@ -47,6 +51,10 @@ namespace ios
 			if (addToMySchedule != null) {
 				addToMySchedule.Dispose ();
 				addToMySchedule = null;
+			}
+			if (conferenceAddress != null) {
+				conferenceAddress.Dispose ();
+				conferenceAddress = null;
 			}
 			if (conferenceDescription != null) {
 				conferenceDescription.Dispose ();

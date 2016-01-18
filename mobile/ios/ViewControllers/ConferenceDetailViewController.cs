@@ -19,6 +19,7 @@ namespace ios
 {
 	partial class ConferenceDetailViewController : UIViewController
 	{
+		CLLocationManager _locationManager;
 		public ConferenceDetailViewController (IntPtr handle) : base (handle)
 		{
 		}
@@ -48,6 +49,9 @@ namespace ios
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+
+			_locationManager = new CLLocationManager { DesiredAccuracy = 1000 };
+			_locationManager.RequestWhenInUseAuthorization ();
 
 		    if (Vm.Conference.IsAddedToSchedule)
 		    {
@@ -101,6 +105,9 @@ namespace ios
 			conferenceStartDate.Text = Vm.DateRange;
 			conferenceStartDate.SizeToFit ();
 
+			conferenceAddress.Text = Vm.Conference.Address.AddressLongDisplay ();
+			conferenceAddress.SizeToFit ();
+
 			GetImage (Vm.Conference);
 			ShowMap ();
 		}
@@ -141,15 +148,21 @@ namespace ios
 
         private void ShowMap()
 		{
-			MKMapCamera currentLocation = new MKMapCamera {
-				CenterCoordinate = new CLLocationCoordinate2D(latitude: 42.467051, longitude: -83.409285),
-				Altitude = 1200.0,
-				Pitch = 45.0f,
-				Heading = 130.0
-			};
+			if (Vm.Conference.Address.Latitude.HasValue && Vm.Conference.Address.Longitude.HasValue) {
+				conferenceMap.Hidden = false;
 
-			conferenceMap.SetCamera (currentLocation, animated: true);
+				MKMapCamera currentLocation = new MKMapCamera {
+					CenterCoordinate = new CLLocationCoordinate2D ((double)Vm.Conference.Address.Latitude.Value, (double)Vm.Conference.Address.Longitude.Value),
+					Altitude = 1200.0,
+					Pitch = 45.0f,
+					Heading = 130.0
+				};
 
+				conferenceMap.SetCamera (currentLocation, animated: true);
+			} else {
+				//TODO : Look for address?
+				conferenceMap.Hidden = true;
+			}
 		}
 
 		private async void GetImage(Conference conference)
