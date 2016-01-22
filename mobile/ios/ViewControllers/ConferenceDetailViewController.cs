@@ -61,18 +61,25 @@ namespace ios
 		    {
 		        SetAddButtonStatus();
             }
-            addToMySchedule.Layer.BorderColor = UIColor.LightGray.CGColor;
+
+			addToMySchedule.Layer.BorderColor = UIColor.LightGray.CGColor;
+
 			addToMySchedule.Layer.BorderWidth = 0.5f;
 			addToMySchedule.TouchUpInside += (sender, e) => {
-                //TODO : This is a bad filter. Should use VM
-			    if (Vm.Conference.IsAddedToSchedule)
-			    {
-                    Vm.RemoveFromScheduleCommand.Execute(null);
-                }
-                else
-			    {
-                    Vm.AddToScheduleCommand.Execute(null);
-                }
+                
+				var settingsService = ServiceLocator.Current.GetInstance<ISettingsService>();
+				if (!string.IsNullOrWhiteSpace(settingsService.UserIdToken)) {
+				    if (Vm.Conference.IsAddedToSchedule)
+				    {
+	                    Vm.RemoveFromScheduleCommand.Execute(null);
+	                }
+	                else
+				    {
+	                    Vm.AddToScheduleCommand.Execute(null);
+	                }
+				} else {
+					new UIAlertView("Login", "You must login to add a conference to your schedule", null, "Ok", null).Show();
+				}
 
             };
 
@@ -88,7 +95,7 @@ namespace ios
 				(message) => SetAddButtonStatus ()
             );
 
-            viewSessions.Layer.BorderColor = UIColor.LightGray.CGColor;
+			viewSessions.Layer.BorderColor = UIColor.LightGray.CGColor;
 			viewSessions.Layer.BorderWidth = 0.5f;
 
 			var sessionCount = Vm?.Conference?.Sessions?.Count ();

@@ -7,7 +7,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System;
 using Microsoft.Practices.ServiceLocation;
-using TekConf.Mobile.Core;
 using TekConf.Mobile.Core.Services;
 using WindowsAzure.Messaging;
 using GalaSoft.MvvmLight.Messaging;
@@ -20,10 +19,7 @@ namespace ios
 	[Register ("AppDelegate")]
 	public class AppDelegate : UIApplicationDelegate
 	{
-		public override UIWindow Window {
-			get;
-			set;
-		}
+		public override UIWindow Window { get; set; }
 
 //		public static async Task LoadConferences(string token)
 //		{

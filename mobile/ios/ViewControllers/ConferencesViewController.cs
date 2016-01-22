@@ -16,6 +16,8 @@ using Fusillade;
 using GalaSoft.MvvmLight.Messaging;
 using TekConf.Mobile.Core.Messages;
 using TekConf.Mobile.Core.Services;
+using CoreGraphics;
+using ObjCRuntime;
 
 namespace ios
 {
@@ -45,6 +47,7 @@ namespace ios
 			return _filteredConferences.Count ();
 		}
         
+		UIView _emptyView;
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
@@ -59,6 +62,8 @@ namespace ios
 
 			RefreshControl = _uirc;
 
+			AddEmptyView ();
+				
             Messenger.Default.Register<AuthenticationInitializedMessage>
             (
                 this,
@@ -93,6 +98,27 @@ namespace ios
 			this.TableView.SetContentOffset (new CoreGraphics.CGPoint (0, _searchController.SearchBar.Frame.Size.Height), animated: false);
 			_searchController.SearchBar.BarTintColor = UIColor.FromRGB (red: 34, green: 91, blue: 149);
 
+		}
+
+		private void AddEmptyView()
+		{
+//			var background = new UIView()  
+//			{ 
+//				BackgroundColor = UIColor.White 
+//			};
+//			var signInLabel = new UILabel (new CGRect(x:0, y:0, width:300, height:300)) {
+//				Lines = 0,
+//				LineBreakMode = UILineBreakMode.WordWrap
+//			};
+//			signInLabel.Font = UIFont.FromName("FontAwesome", 168f);
+//			signInLabel.Text = "\xf090";
+//			signInLabel.TextColor = UIColor.DarkGray;
+//
+//			background.AddSubview (signInLabel);
+
+			var unauthenticatedView = Runtime.GetNSObject(NSBundle.MainBundle.LoadNib("UnauthenticatedView", this, null).ValueAt(0)) as UnauthenticatedView;
+
+			TableView.BackgroundView = unauthenticatedView;
 		}
 
 		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
