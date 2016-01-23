@@ -11,19 +11,19 @@ using UIKit;
 
 namespace ios
 {
-	[Register ("UnauthenticatedView")]
-	partial class UnauthenticatedView
-	{
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel logo { get; set; }
+    [Register ("UnauthenticatedView")]
+    partial class UnauthenticatedView
+    {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel logo { get; set; }
 
-		void ReleaseDesignerOutlets ()
-		{
-			if (logo != null) {
-				logo.Dispose ();
-				logo = null;
-			}
-		}
-	}
+        void ReleaseDesignerOutlets ()
+        {
+            if (logo != null) {
+                logo.Dispose ();
+                logo = null;
+            }
+        }
+    }
 }

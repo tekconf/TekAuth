@@ -137,14 +137,14 @@ namespace ios
             var statusAttributes = new UIStringAttributes
             {
                 ForegroundColor = UIColor.FromRGBA(red: 0f, blue: 1.0f, green: 0.478431f, alpha: 1.0f),
-                Font = UIFont.FromName("FontAwesome", 17f)
+                Font = UIFont.FromName("FontAwesome", 14f)
             };
 
 
             var textAttributes = new UIStringAttributes
             {
                 ForegroundColor = UIColor.FromRGBA(red: 0f, blue: 1.0f, green: 0.478431f, alpha: 1.0f),
-                Font = UIFont.FromName("Open Sans Light", 17f)
+				Font = UIFont.FromName("OpenSans-Light", 14f)
             };
 
             var prettyString = new NSMutableAttributedString(status);

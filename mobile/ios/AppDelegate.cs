@@ -157,7 +157,7 @@ namespace ios
 				TextColor = UIColor.White,
 				TextShadowColor = UIColor.Clear,
 
-				Font = UIFont.FromName ("Open Sans Light", 20f)
+				Font = UIFont.FromName ("OpenSans-Light", 16f)
 			};
 
 			UINavigationBar.Appearance.SetTitleTextAttributes(navStyle); 
