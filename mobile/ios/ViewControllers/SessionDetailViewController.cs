@@ -52,13 +52,22 @@ namespace ios
 			base.ViewDidLoad ();
 
 			speakersList.WeakDataSource = this;
-
+			speakersList.TableFooterView = new UIView();
 			addToMySchedule.Layer.BorderColor = UIColor.LightGray.CGColor;
 			addToMySchedule.Layer.BorderWidth = 0.5f;
 
+			//if (Vm.Session.IsAddedToSchedule)
+			//{
+			//	SetRemoveButtonStatus();
+			//}
+			//else
+			//{
+				SetAddButtonStatus();
+			//}
 			addToMySchedule.TouchUpInside += (sender, e) => {
 				var settingsService = ServiceLocator.Current.GetInstance<ISettingsService>();
 				if (!string.IsNullOrWhiteSpace (settingsService.UserIdToken)) {
+					SetRemoveButtonStatus();
 				} else {
 					new UIAlertView("Login", "You must login to add a session to your schedule", null, "Ok", null).Show();
 				}
@@ -68,6 +77,40 @@ namespace ios
 			sessionDescription.Text = Vm.Description ?? string.Empty;
 			sessionRoom.Text = Vm.Room ?? string.Empty;
 			sessionTime.Text = Vm.DateRange ?? string.Empty;
+		}
+
+		private const string AddToScheduleMessage = "\xf274 Add to My Schedule";
+		private const string RemoveFromScheduleMessage = "\xf273 Remove from My Schedule";
+
+		private void SetAddButtonStatus()
+		{
+			SetButtonStatus(AddToScheduleMessage);
+		}
+
+		private void SetRemoveButtonStatus()
+		{
+			SetButtonStatus(RemoveFromScheduleMessage);
+		}
+
+		private void SetButtonStatus(string status)
+		{
+			var statusAttributes = new UIStringAttributes
+			{
+				ForegroundColor = UIColor.FromRGBA(red: 0f, blue: 1.0f, green: 0.478431f, alpha: 1.0f),
+				Font = UIFont.FromName("FontAwesome", 16f)
+			};
+
+
+			var textAttributes = new UIStringAttributes
+			{
+				ForegroundColor = UIColor.FromRGBA(red: 0f, blue: 1.0f, green: 0.478431f, alpha: 1.0f),
+				Font = UIFont.FromName("OpenSans-Light", 16f)
+			};
+
+			var prettyString = new NSMutableAttributedString(status);
+			prettyString.SetAttributes(statusAttributes.Dictionary, new NSRange(0, 1));
+			prettyString.SetAttributes(textAttributes.Dictionary, new NSRange(2, 17));
+			this.addToMySchedule.SetAttributedTitle(prettyString, UIControlState.Normal);
 		}
 	}
 }
