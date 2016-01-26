@@ -31,7 +31,7 @@ namespace ios
         UIKit.UILabel sessionTitle { get; set; }
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITableView speakersList { get; set; }
+        UIKit.UICollectionView speakersCollectionView { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
@@ -60,9 +60,9 @@ namespace ios
                 sessionTitle = null;
             }
 
-            if (speakersList != null) {
-                speakersList.Dispose ();
-                speakersList = null;
+            if (speakersCollectionView != null) {
+                speakersCollectionView.Dispose ();
+                speakersCollectionView = null;
             }
         }
     }

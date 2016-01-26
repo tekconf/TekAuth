@@ -333,6 +333,7 @@
     <BundleResource Include="Resources\Fonts\fontawesome.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
+    <BundleResource Include="Resources\BlankUser.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -378,6 +379,10 @@
     <Compile Include="UnauthenticatedView.cs" />
     <Compile Include="UnauthenticatedView.designer.cs">
       <DependentUpon>UnauthenticatedView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpeakerCollectionViewCell.cs" />
+    <Compile Include="SpeakerCollectionViewCell.designer.cs">
+      <DependentUpon>SpeakerCollectionViewCell.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

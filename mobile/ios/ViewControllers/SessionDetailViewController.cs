@@ -8,51 +8,53 @@ using System.Linq;
 
 namespace ios
 {
-	partial class SessionDetailViewController : UIViewController, IUITableViewDataSource, IUITableViewDelegate
+	partial class SessionDetailViewController : UIViewController, IUICollectionViewDataSource, IUICollectionViewDelegate
 	{
-		public SessionDetailViewController (IntPtr handle) : base (handle)
+		public SessionDetailViewController(IntPtr handle) : base(handle)
 		{
 		}
 
-		private SessionDetailViewModel Vm {
-			get {
+		private SessionDetailViewModel Vm
+		{
+			get
+			{
 				return Application.Locator.Session;
 			}
 		}
 
-		public UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
+		//public UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
+		//{
+		//	var speaker = this.Vm.Session.Speakers.ToArray()[indexPath.Row];
+		//	var cell = new UITableViewCell(UITableViewCellStyle.Default, "sessionSpeakerCell");
+
+		//	var font = UIFont.FromName("OpenSans-Light", 14f);
+		//	if (font != null)
+		//	{
+		//		cell.TextLabel.Font = font;
+		//	}
+		//	cell.TextLabel.Text = string.Format("{0} {1}", speaker.FirstName, speaker.LastName);
+
+		//	return cell;
+		//}
+
+		//public nint RowsInSection(UITableView tableView, nint section)
+		//{
+		//	if (this.Vm == null 
+		//	    || this.Vm.Session == null 
+		//	    || this.Vm.Session.Speakers == null)
+		//	{
+		//		return 0;
+		//	}
+
+		//	return this.Vm.Session.Speakers.Count();
+		//}
+
+		public override void ViewDidLoad()
 		{
-			var speaker = this.Vm.Session.Speakers.ToArray()[indexPath.Row];
-			var cell = new UITableViewCell(UITableViewCellStyle.Default, "sessionSpeakerCell");
+			base.ViewDidLoad();
 
-			var font = UIFont.FromName("OpenSans-Light", 14f);
-			if (font != null)
-			{
-				cell.TextLabel.Font = font;
-			}
-			cell.TextLabel.Text = string.Format("{0} {1}", speaker.FirstName, speaker.LastName);
-
-			return cell;
-		}
-
-		public nint RowsInSection(UITableView tableView, nint section)
-		{
-			if (this.Vm == null 
-			    || this.Vm.Session == null 
-			    || this.Vm.Session.Speakers == null)
-			{
-				return 0;
-			}
-
-			return this.Vm.Session.Speakers.Count();
-		}
-
-		public override void ViewDidLoad ()
-		{
-			base.ViewDidLoad ();
-
-			speakersList.WeakDataSource = this;
-			speakersList.TableFooterView = new UIView();
+			speakersCollectionView.WeakDataSource = this;
+			//speakersList.TableFooterView = new UIView();
 			addToMySchedule.Layer.BorderColor = UIColor.LightGray.CGColor;
 			addToMySchedule.Layer.BorderWidth = 0.5f;
 
@@ -62,13 +64,16 @@ namespace ios
 			//}
 			//else
 			//{
-				SetAddButtonStatus();
+			SetAddButtonStatus();
 			//}
-			addToMySchedule.TouchUpInside += (sender, e) => {
+			addToMySchedule.TouchUpInside += (sender, e) =>
+			{
 				var settingsService = ServiceLocator.Current.GetInstance<ISettingsService>();
-				if (!string.IsNullOrWhiteSpace (settingsService.UserIdToken)) {
+				if (!string.IsNullOrWhiteSpace(settingsService.UserIdToken))
+				{
 					SetRemoveButtonStatus();
-				} else {
+				}
+				else {
 					new UIAlertView("Login", "You must login to add a session to your schedule", null, "Ok", null).Show();
 				}
 			};
@@ -111,6 +116,36 @@ namespace ios
 			prettyString.SetAttributes(statusAttributes.Dictionary, new NSRange(0, 1));
 			prettyString.SetAttributes(textAttributes.Dictionary, new NSRange(2, 17));
 			this.addToMySchedule.SetAttributedTitle(prettyString, UIControlState.Normal);
+		}
+
+		public nint GetItemsCount(UICollectionView collectionView, nint section)
+		{
+			if (this.Vm == null
+				|| this.Vm.Session == null
+				|| this.Vm.Session.Speakers == null)
+			{
+				return 0;
+			}
+
+			return this.Vm.Session.Speakers.Count();
+		}
+
+		public UICollectionViewCell GetCell(UICollectionView collectionView, NSIndexPath indexPath)
+		{
+
+			var speaker = this.Vm.Session.Speakers.ToArray()[indexPath.Row];
+			SpeakerCollectionViewCell cell = (SpeakerCollectionViewCell)collectionView.DequeueReusableCell("speakersCollectionCell", indexPath);
+			cell.SetSpeaker(speaker);
+			//var cell = new SpeakerCollectionViewCell();
+
+			//var font = UIFont.FromName("OpenSans-Light", 14f);
+			//	if (font != null)
+			//	{
+			//		cell.TextLabel.Font = font;
+			//	}
+			//	cell.TextLabel.Text = string.Format("{0} {1}", speaker.FirstName, speaker.LastName);
+
+			return cell;
 		}
 	}
 }
