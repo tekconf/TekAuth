@@ -115,6 +115,10 @@
     <MtouchUseLlvm>true</MtouchUseLlvm>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SDWebImage, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.SDWebImage.3.7.3.4\lib\Xamarin.iOS\SDWebImage.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -339,6 +343,10 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Infrastructure\AkavacheSqliteLinkerOverride.cs" />
+    <Compile Include="ViewControllers\SpeakerDetailViewController.cs" />
+    <Compile Include="ViewControllers\SpeakerDetailViewController.designer.cs">
+      <DependentUpon>SpeakerDetailViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewControllers\ConferenceDetailViewController.cs" />
     <Compile Include="ViewControllers\ConferenceDetailViewController.designer.cs">
       <DependentUpon>ConferenceDetailViewController.cs</DependentUpon>
@@ -380,8 +388,8 @@
     <Compile Include="UnauthenticatedView.designer.cs">
       <DependentUpon>UnauthenticatedView.cs</DependentUpon>
     </Compile>
-    <Compile Include="SpeakerCollectionViewCell.cs" />
-    <Compile Include="SpeakerCollectionViewCell.designer.cs">
+    <Compile Include="CustomControls\SpeakerCollectionViewCell.cs" />
+    <Compile Include="CustomControls\SpeakerCollectionViewCell.designer.cs">
       <DependentUpon>SpeakerCollectionViewCell.cs</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -399,6 +407,10 @@
     <XamarinComponentReference Include="azure-messaging">
       <Version>1.1.5.6</Version>
       <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="sdwebimage">
+      <Visible>False</Visible>
+      <Version>3.7.3.4</Version>
     </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>

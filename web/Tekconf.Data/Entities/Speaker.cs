@@ -23,6 +23,15 @@ namespace Tekconf.Data.Entities
         [Required]
         public string LastName { get; set; }
 
+        public string ImageUrl { get; set; }
+        public string EmailAddress { get; set; }
+        public string TwitterHandle { get; set; }
+        public string CompanyName { get; set; }
+        public string LinkedInUrl { get; set; }
+        public string GithubUrl { get; set; }
+        public string FacebookUrl { get; set; }
+        public string PhoneNumber { get; set; }
+
         public virtual ICollection<Session> Sessions { get; set; }
     }
 }
