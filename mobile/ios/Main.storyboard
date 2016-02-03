@@ -1173,7 +1173,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="wordWrap" id="2928" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="0" misplaced="YES" adjustsFontSizeToFit="NO">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="wordWrap" id="2928" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="0" adjustsFontSizeToFit="NO">
                                 <rect key="frame" x="20" y="76" width="402" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
@@ -1190,17 +1190,60 @@
                                     <constraint id="2961" firstItem="2929" firstAttribute="width" constant="150"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="wordWrap" id="2979" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="0" adjustsFontSizeToFit="NO">
+                                <rect key="frame" x="20" y="234" width="560" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="2983" firstItem="2979" firstAttribute="height" constant="21" relation="greaterThanOrEqual"/>
+                                </constraints>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="wordWrap" id="2984" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="0" adjustsFontSizeToFit="NO">
+                                <rect key="frame" x="20" y="109" width="29" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="2988" firstItem="2984" firstAttribute="height" constant="21" relation="greaterThanOrEqual"/>
+                                </constraints>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3001" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="138" width="402" height="30"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="12"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <constraints>
+                                    <constraint id="3005" firstItem="3001" firstAttribute="height" constant="30"/>
+                                </constraints>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint id="2955" firstItem="2928" firstAttribute="leading" secondItem="2818" secondAttribute="leading" constant="20"/>
                             <constraint id="2956" firstItem="2929" firstAttribute="leading" secondItem="2928" secondAttribute="trailing" constant="8"/>
                             <constraint id="2958" firstItem="2929" firstAttribute="top" secondItem="2814" secondAttribute="bottom" constant="12"/>
                             <constraint id="2959" firstItem="2818" firstAttribute="trailing" secondItem="2929" secondAttribute="trailing" constant="20"/>
+                            <constraint id="2980" firstItem="2979" firstAttribute="leading" secondItem="2818" secondAttribute="leading" constant="20"/>
+                            <constraint id="2981" firstItem="2979" firstAttribute="top" secondItem="2929" secondAttribute="bottom" constant="8"/>
+                            <constraint id="2982" firstItem="2818" firstAttribute="trailing" secondItem="2979" secondAttribute="trailing" constant="20"/>
+                            <constraint id="2985" firstItem="2984" firstAttribute="top" secondItem="2928" secondAttribute="bottom" constant="8"/>
+                            <constraint id="2986" firstItem="2984" firstAttribute="leading" secondItem="2818" secondAttribute="leading" constant="20"/>
+                            <constraint id="2987" firstItem="2929" firstAttribute="leading" secondItem="2984" secondAttribute="trailing" constant="8" relation="greaterThanOrEqual"/>
+                            <constraint id="2989" firstItem="2928" firstAttribute="top" secondItem="2814" secondAttribute="bottom" constant="12"/>
+                            <constraint id="3002" firstItem="3001" firstAttribute="leading" secondItem="2984" secondAttribute="leading"/>
+                            <constraint id="3003" firstItem="3001" firstAttribute="top" secondItem="2984" secondAttribute="bottom" constant="8"/>
+                            <constraint id="3004" firstItem="2929" firstAttribute="leading" secondItem="3001" secondAttribute="trailing" constant="8"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="speakerName" destination="2928" id="name-outlet-2928"/>
                         <outlet property="speakerImage" destination="2929" id="name-outlet-2929"/>
+                        <outlet property="speakerBio" destination="2979" id="name-outlet-2979"/>
+                        <outlet property="speakerCompany" destination="2984" id="name-outlet-2984"/>
+                        <outlet property="speakerTwitterHandle" destination="3001" id="name-outlet-3001"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2819" userLabel="First Responder" sceneMemberID="firstResponder"/>

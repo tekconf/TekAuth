@@ -23,7 +23,24 @@ namespace ios
             base.ViewWillAppear(animated);
 
             speakerName.Text = _speaker.FirstName + " " + _speaker.LastName;
+            speakerBio.Text = _speaker.Bio;
+            speakerTwitterHandle.SetTitle(_speaker.TwitterHandle, UIControlState.Normal);
+            speakerTwitterHandle.TouchUpInside += ShowSpeakerTwitterProfile;
+            speakerCompany.Text = _speaker.CompanyName;
+
             SetImage();
+        }
+
+        private void ShowSpeakerTwitterProfile(object sender, EventArgs eventArgs)
+        {
+            var nativeTwitterUrl = new NSUrl($@"twitter://user?screen_name={_speaker.TwitterHandle}");
+            var webTwitterUrl = new NSUrl($@"http://twitter.com/{_speaker.TwitterHandle}");
+
+            UIApplication.SharedApplication.OpenUrl(
+                UIApplication.SharedApplication.CanOpenUrl(nativeTwitterUrl)
+                ? nativeTwitterUrl
+                : webTwitterUrl
+            );
         }
 
         private void SetImage()
