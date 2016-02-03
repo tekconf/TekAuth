@@ -146,9 +146,13 @@ namespace ios
 			this.TableView.ReloadData ();
 		}
 
+
 		public override async void ViewWillAppear (bool animated)
 		{
 			base.ViewWillAppear (animated);
+
+			this.NavigationController.NavigationBar.BarTintColor = UIColor.FromRGB(red: 34, green: 91, blue: 149);
+
 
 			Insights.Track ("ViewedScreen", 
 				new Dictionary <string,string> { 

@@ -22,11 +22,17 @@ namespace ios
             }
         }
 
+		public override void ViewWillAppear (bool animated)
+		{
+			base.ViewWillAppear (animated);
 
+			this.NavigationController.NavigationBar.BarTintColor = UIColorExtensions.FromHex (Application.Locator.Conference.Conference.HighlightColor);
+
+		}
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-
+			this.Title = Vm.Title ?? string.Empty;
             speakersCollectionView.WeakDataSource = this;
             //speakersList.TableFooterView = new UIView();
             addToMySchedule.Layer.BorderColor = UIColor.LightGray.CGColor;
@@ -123,7 +129,7 @@ namespace ios
 
             var speaker = Vm.Session.Speakers[indexPaths.First().Row];
             var vc = segue.DestinationViewController as SpeakerDetailViewController;
-            vc?.SetSpeaker(speaker);
+			vc?.SetSpeaker(speaker);
 
         }
 

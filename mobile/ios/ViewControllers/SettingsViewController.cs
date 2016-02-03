@@ -39,7 +39,8 @@ namespace ios
 		public override void ViewWillAppear (bool animated)
 		{
 			base.ViewWillAppear (animated);
-
+			UINavigationBar.Appearance.BarTintColor = UIColor.FromRGB(red: 34, green: 91, blue: 149);
+			UIBarButtonItem.Appearance.TintColor = UIColor.White;
 			Insights.Track("ViewedScreen", 
 				new Dictionary <string,string> { 
 					{"Screen", "Settings"},

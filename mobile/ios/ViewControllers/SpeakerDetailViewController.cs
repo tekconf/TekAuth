@@ -13,7 +13,7 @@ namespace ios
         {
         }
 
-        public void SetSpeaker(Speaker speaker)
+		public void SetSpeaker(Speaker speaker)
         {
             _speaker = speaker;
         }
@@ -22,6 +22,8 @@ namespace ios
         {
             base.ViewWillAppear(animated);
 
+			this.NavigationController.NavigationBar.BarTintColor = UIColorExtensions.FromHex (Application.Locator.Conference.Conference.HighlightColor);
+			this.Title = _speaker.FirstName + " " + _speaker.LastName;
             speakerName.Text = _speaker.FirstName + " " + _speaker.LastName;
             speakerBio.Text = _speaker.Bio;
             speakerTwitterHandle.SetTitle(_speaker.TwitterHandle, UIControlState.Normal);
@@ -33,8 +35,12 @@ namespace ios
 
         private void ShowSpeakerTwitterProfile(object sender, EventArgs eventArgs)
         {
-            var nativeTwitterUrl = new NSUrl($@"twitter://user?screen_name={_speaker.TwitterHandle}");
-            var webTwitterUrl = new NSUrl($@"http://twitter.com/{_speaker.TwitterHandle}");
+			string screenName = _speaker.TwitterHandle;
+			if (_speaker.TwitterHandle.StartsWith ("@")) {
+				screenName = _speaker.TwitterHandle.Substring (1);
+			}
+			var nativeTwitterUrl = new NSUrl($@"twitter://user?screen_name={screenName}");
+            var webTwitterUrl = new NSUrl($@"http://twitter.com/{screenName}");
 
             UIApplication.SharedApplication.OpenUrl(
                 UIApplication.SharedApplication.CanOpenUrl(nativeTwitterUrl)

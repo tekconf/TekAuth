@@ -22,6 +22,12 @@ namespace ios
 
 		UISearchController searchController;
 
+		public override void ViewWillAppear (bool animated)
+		{
+			base.ViewWillAppear (animated);
+			this.NavigationController.NavigationBar.BarTintColor = UIColorExtensions.FromHex (Application.Locator.Conference.Conference.HighlightColor);
+
+		}
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
