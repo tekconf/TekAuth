@@ -450,23 +450,16 @@
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="400" id="iFk-aJ-2t0"/>
                                                 </constraints>
                                             </mapView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2448">
-                                                <rect key="frame" x="8" y="70" width="476" height="21"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="2453"/>
-                                                </constraints>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" id="2915" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                                <rect key="frame" x="8" y="70" width="476" height="30"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="14"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <state key="normal" title="Button">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="2448" firstAttribute="leading" secondItem="o1j-83-rLE" secondAttribute="leading" constant="8" id="2449"/>
-                                            <constraint firstItem="2448" firstAttribute="top" secondItem="lNd-tZ-M5L" secondAttribute="bottom" constant="8" id="2450"/>
-                                            <constraint firstItem="A5C-PJ-RNv" firstAttribute="leading" secondItem="2448" secondAttribute="trailing" constant="8" id="2451"/>
-                                            <constraint firstItem="JFW-yx-M69" firstAttribute="top" relation="greaterThanOrEqual" secondItem="2448" secondAttribute="bottom" constant="8" id="2452"/>
                                             <constraint firstItem="JFW-yx-M69" firstAttribute="leading" secondItem="o1j-83-rLE" secondAttribute="leading" constant="8" id="2c9-r5-YlM"/>
                                             <constraint firstItem="Plt-57-3MG" firstAttribute="top" secondItem="JFW-yx-M69" secondAttribute="bottom" constant="8" id="9Jy-bi-VwX"/>
                                             <constraint firstItem="JFW-yx-M69" firstAttribute="top" secondItem="A5C-PJ-RNv" secondAttribute="bottom" constant="8" id="BqI-VW-49r"/>
@@ -515,13 +508,13 @@
                     </view>
                     <connections>
                         <outlet property="addToMySchedule" destination="Plt-57-3MG" id="name-outlet-Plt-57-3MG"/>
-                        <outlet property="conferenceAddress" destination="2448" id="name-outlet-2448"/>
                         <outlet property="conferenceDescription" destination="JFW-yx-M69" id="name-outlet-JFW-yx-M69"/>
                         <outlet property="conferenceImage" destination="A5C-PJ-RNv" id="name-outlet-A5C-PJ-RNv"/>
                         <outlet property="conferenceMap" destination="Pma-bI-FJF" id="name-outlet-Pma-bI-FJF"/>
                         <outlet property="conferenceName" destination="GFw-Qy-PTQ" id="name-outlet-GFw-Qy-PTQ"/>
                         <outlet property="conferenceStartDate" destination="lNd-tZ-M5L" id="name-outlet-lNd-tZ-M5L"/>
                         <outlet property="viewSessions" destination="Ogf-1q-xck" id="name-outlet-Ogf-1q-xck"/>
+                        <outlet property="conferenceAddress" destination="2915" id="name-outlet-2915"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="720" userLabel="First Responder" sceneMemberID="firstResponder"/>
