@@ -14,6 +14,8 @@ namespace Tekconf.Data.Entities
         }
 
         public int Id { get; set; }
+        [StringLength(100)]
+        public string Slug { get; set; }
 
         [Required]
         [StringLength(50)]

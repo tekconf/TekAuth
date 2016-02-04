@@ -112,6 +112,10 @@
     <Compile Include="Migrations\201602031527382_SpeakerWebsite.Designer.cs">
       <DependentUpon>201602031527382_SpeakerWebsite.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602041650148_SpeakerSlug.cs" />
+    <Compile Include="Migrations\201602041650148_SpeakerSlug.Designer.cs">
+      <DependentUpon>201602041650148_SpeakerSlug.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScheduleEfRepository.cs" />
     <Compile Include="Entities\Conference.cs" />
     <Compile Include="Entities\ConferenceContext.cs" />
@@ -207,6 +211,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602031527382_SpeakerWebsite.resx">
       <DependentUpon>201602031527382_SpeakerWebsite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602041650148_SpeakerSlug.resx">
+      <DependentUpon>201602041650148_SpeakerSlug.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
