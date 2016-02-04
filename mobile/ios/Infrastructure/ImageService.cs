@@ -57,7 +57,7 @@ namespace ios
 				using (var httpClient = new HttpClient (new NativeMessageHandler ())) {
 
 					try {
-						bytes = await httpClient.GetByteArrayAsync (conference.ImageUrl);
+						bytes = await httpClient.GetByteArrayAsync (speaker.ImageUrl);
 					} catch (OperationCanceledException opEx) {
 						Insights.Report (opEx);
 						return null;

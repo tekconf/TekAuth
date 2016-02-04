@@ -128,9 +128,7 @@ namespace ios
             if (indexPaths == null || !indexPaths.Any()) return;
 
             var speaker = Vm.Session.Speakers[indexPaths.First().Row];
-            var vc = segue.DestinationViewController as SpeakerDetailViewController;
-			vc?.SetSpeaker(speaker);
-
+			Application.Locator.Speaker = new SpeakerDetailViewModel (Vm.Session, speaker);
         }
 
     }

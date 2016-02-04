@@ -3,41 +3,44 @@ using Foundation;
 using SDWebImage;
 using Tekconf.DTO;
 using UIKit;
+using TekConf.Mobile.Core.ViewModels;
 
 namespace ios
 {
     partial class SpeakerDetailViewController : UIViewController
     {
-        private Speaker _speaker;
+        
         public SpeakerDetailViewController(IntPtr handle) : base(handle)
         {
         }
 
-		public void SetSpeaker(Speaker speaker)
-        {
-            _speaker = speaker;
-        }
-
+		private SpeakerDetailViewModel Vm
+		{
+			get
+			{
+				return Application.Locator.Speaker;
+			}
+		}
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
 
 			this.NavigationController.NavigationBar.BarTintColor = UIColorExtensions.FromHex (Application.Locator.Conference.Conference.HighlightColor);
-			this.Title = _speaker.FirstName + " " + _speaker.LastName;
-            speakerName.Text = _speaker.FirstName + " " + _speaker.LastName;
-            speakerBio.Text = _speaker.Bio;
-            speakerTwitterHandle.SetTitle(_speaker.TwitterHandle, UIControlState.Normal);
+			this.Title = Vm.Speaker.FirstName + " " + Vm.Speaker.LastName;
+            speakerName.Text = Vm.Speaker.FirstName + " " + Vm.Speaker.LastName;
+            speakerBio.Text = Vm.Speaker.Bio;
+            speakerTwitterHandle.SetTitle(Vm.Speaker.TwitterHandle, UIControlState.Normal);
             speakerTwitterHandle.TouchUpInside += ShowSpeakerTwitterProfile;
-            speakerCompany.Text = _speaker.CompanyName;
+            speakerCompany.Text = Vm.Speaker.CompanyName;
 
             SetImage();
         }
 
         private void ShowSpeakerTwitterProfile(object sender, EventArgs eventArgs)
         {
-			string screenName = _speaker.TwitterHandle;
-			if (_speaker.TwitterHandle.StartsWith ("@")) {
-				screenName = _speaker.TwitterHandle.Substring (1);
+			string screenName = Vm.Speaker.TwitterHandle;
+			if (Vm.Speaker.TwitterHandle.StartsWith ("@")) {
+				screenName = Vm.Speaker.TwitterHandle.Substring (1);
 			}
 			var nativeTwitterUrl = new NSUrl($@"twitter://user?screen_name={screenName}");
             var webTwitterUrl = new NSUrl($@"http://twitter.com/{screenName}");
@@ -51,10 +54,10 @@ namespace ios
 
         private void SetImage()
         {
-            if (!string.IsNullOrWhiteSpace(_speaker.ImageUrl))
+            if (!string.IsNullOrWhiteSpace(Vm.Speaker.ImageUrl))
             {
                 speakerImage.SetImage(
-                    url: new NSUrl(_speaker.ImageUrl),
+                    url: new NSUrl(Vm.Speaker.ImageUrl),
                     placeholder: UIImage.FromBundle("BlankUser.png")
                 );
             }

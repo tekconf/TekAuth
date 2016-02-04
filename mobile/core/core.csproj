@@ -21,7 +21,6 @@
     <ConsolePause>false</ConsolePause>
     <IntermediateOutputPath>obj\Debug</IntermediateOutputPath>
     <AssemblyName>tekconf.mobile.core</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
@@ -31,7 +30,6 @@
     <ConsolePause>false</ConsolePause>
     <IntermediateOutputPath>obj\Debug</IntermediateOutputPath>
     <AssemblyName>tekconf.mobile.core</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AdHoc|iPhone' ">
     <Optimize>false</Optimize>
@@ -70,6 +68,7 @@
     <Compile Include="Services\ISchedulesService.cs" />
     <Compile Include="Services\SchedulesService.cs" />
     <Compile Include="Messages\ConferenceAddedMessage.cs" />
+    <Compile Include="ViewModels\SpeakerDetailViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\refit.2.4.1\build\portable-net45+netcore45+wp8+wpa81+monoandroid+xamarin.ios10\refit.targets" Condition="Exists('..\..\packages\refit.2.4.1\build\portable-net45+netcore45+wp8+wpa81+monoandroid+xamarin.ios10\refit.targets')" />

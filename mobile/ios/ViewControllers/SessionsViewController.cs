@@ -6,6 +6,7 @@ using System.Linq;
 using Tekconf.DTO;
 using TekConf.Mobile.Core.ViewModels;
 using Xamarin;
+using System.Globalization;
 
 namespace ios
 {
@@ -28,6 +29,7 @@ namespace ios
 			this.NavigationController.NavigationBar.BarTintColor = UIColorExtensions.FromHex (Application.Locator.Conference.Conference.HighlightColor);
 
 		}
+
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
@@ -65,7 +67,14 @@ namespace ios
 		{
 			var text = searchController.SearchBar.Text;
 			if (searchController.Active) {
-				FilteredSessions = Vm.Conference.Sessions.Where (x => x.Title.Contains (text)).ToList ();
+				FilteredSessions = Vm
+				.Conference
+				.Sessions
+				.Where (
+					x => CultureInfo.CurrentCulture.CompareInfo.IndexOf (x.Title, text, CompareOptions.IgnoreCase) >= 0
+					|| x.Speakers.Any (s => CultureInfo.CurrentCulture.CompareInfo.IndexOf (s.LastName, text, CompareOptions.IgnoreCase) >= 0)
+				)
+				.ToList ();
 			} else {
 				FilteredSessions = Vm.Conference.Sessions;
 			}

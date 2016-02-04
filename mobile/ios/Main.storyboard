@@ -1096,7 +1096,7 @@
         <!--Speaker Detail View Controller-->
         <scene sceneID="2816">
             <objects>
-                <viewController id="2817" customClass="SpeakerDetailViewController" sceneMemberID="viewController">
+                <viewController id="2817" customClass="SpeakerDetailViewController" sceneMemberID="viewController" storyboardIdentifier="SpeakerDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2814"/>
                         <viewControllerLayoutGuide type="bottom" id="2815"/>

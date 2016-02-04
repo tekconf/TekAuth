@@ -21,23 +21,23 @@ namespace ios
 	{
 		public override UIWindow Window { get; set; }
 
-//		public static async Task LoadConferences(string token)
-//		{
-//			ITekConfApi api;
-//			if (!string.IsNullOrWhiteSpace (token)) {
-//				api = RestService.For<ITekConfApi> (new HttpClient (new AuthenticatedHttpClientHandler (token)) { 
-//					BaseAddress = new Uri ("https://tekauth.azurewebsites.net/api") 
-//				});
-//				var conferences = await api.GetConferences();
-//				AppDelegate.Conferences = conferences;
-//			} else {
-//				//api = RestService.For<ITekConfApi> ("https://tekauth.azurewebsites.net/api");
-//			
-//			}
-//
-//
-//
-//		}
+		//		public static async Task LoadConferences(string token)
+		//		{
+		//			ITekConfApi api;
+		//			if (!string.IsNullOrWhiteSpace (token)) {
+		//				api = RestService.For<ITekConfApi> (new HttpClient (new AuthenticatedHttpClientHandler (token)) {
+		//					BaseAddress = new Uri ("https://tekauth.azurewebsites.net/api")
+		//				});
+		//				var conferences = await api.GetConferences();
+		//				AppDelegate.Conferences = conferences;
+		//			} else {
+		//				//api = RestService.For<ITekConfApi> ("https://tekauth.azurewebsites.net/api");
+		//
+		//			}
+		//
+		//
+		//
+		//		}
 		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
 		{
 			#if DEBUG
@@ -47,8 +47,8 @@ namespace ios
 			AdjustDefaultUI ();
 
 			var pushSettings = UIUserNotificationSettings.GetSettingsForTypes (
-				UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound,
-				new NSSet ());
+				                   UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound,
+				                   new NSSet ());
 
 			UIApplication.SharedApplication.RegisterUserNotificationSettings (pushSettings);
 			UIApplication.SharedApplication.RegisterForRemoteNotifications ();
@@ -84,58 +84,107 @@ namespace ios
 
 		public override bool ContinueUserActivity (UIApplication application, NSUserActivity userActivity, UIApplicationRestorationHandler completionHandler)
 		{
-			var settingsService = ServiceLocator.Current.GetInstance<ISettingsService>();
-			var schedulesService = ServiceLocator.Current.GetInstance<ISchedulesService>();
+			var settingsService = ServiceLocator.Current.GetInstance<ISettingsService> ();
+			var schedulesService = ServiceLocator.Current.GetInstance<ISchedulesService> ();
 
 			if (userActivity.ActivityType == CSSearchableItem.ActionType) {
 				var tabController = this.Window.RootViewController as UITabBarController;
-				var navController = tabController.ViewControllers[0] as UINavigationController;
+				var navController = tabController.ViewControllers [0] as UINavigationController;
 
 				var identifier = userActivity?.UserInfo?.ObjectForKey (CSSearchableItem.ActivityIdentifier);
 
 				if (identifier != null && identifier.ToString ().Contains ("|\\/|")) {
-					// This is a session
-					var parts = identifier.ToString().Split(new [] {"|\\/|"}, System.StringSplitOptions.RemoveEmptyEntries);
-					var conferenceSlug = parts[0];
-					var sessionSlug = parts[1];
+					// This is a session or a speaker
+					var parts = identifier.ToString ().Split (new [] { "|\\/|" }, StringSplitOptions.RemoveEmptyEntries);
+					if (parts.Length == 2) {
+						//This is a session
+						var conferenceSlug = parts [0];
+						var sessionSlug = parts [1];
 
-					var conferencesViewModel = Application.Locator.Conferences;
-					var task = Task.Run(async () => { 
-						await conferencesViewModel.LoadConferences (Priority.Explicit); 
-					});
-					task.Wait();
-					var conference = conferencesViewModel.Conferences.Single(c => c.Slug == conferenceSlug);
-					var session = conference.Sessions.Single (s => s.Slug == sessionSlug);
-					var conferenceVm = new ConferenceDetailViewModel(conference, schedulesService, settingsService);
-					var sessionVm = new SessionDetailViewModel (session, conference.Name);
+						var conferencesViewModel = Application.Locator.Conferences;
+						var task = Task.Run (async () => { 
+							await conferencesViewModel.LoadConferences (Priority.Explicit); 
+						});
+						task.Wait ();
+						var conference = conferencesViewModel.Conferences.Single (c => c.Slug == conferenceSlug);
+						var session = conference.Sessions.Single (s => s.Slug == sessionSlug);
+						var conferenceVm = new ConferenceDetailViewModel (conference, schedulesService, settingsService);
+						var sessionVm = new SessionDetailViewModel (session, conference.Name);
 
-					Application.Locator.Conference = conferenceVm;
-					Application.Locator.Session = sessionVm;
+						Application.Locator.Conference = conferenceVm;
+						Application.Locator.Session = sessionVm;
 
-					var storyboard = UIStoryboard.FromName ("Main", null);
+						var storyboard = UIStoryboard.FromName ("Main", null);
 
-					var conferencesViewController = storyboard.InstantiateViewController ("ConferencesViewController") as ConferencesViewController;
+						var conferencesViewController = storyboard.InstantiateViewController ("ConferencesViewController") as ConferencesViewController;
 
-					var conferenceDetailViewController = storyboard.InstantiateViewController ("ConferenceDetailViewController") as ConferenceDetailViewController;
-					var sessionsViewController = storyboard.InstantiateViewController ("SessionsViewController") as SessionsViewController;
-					var sessionDetailViewController = storyboard.InstantiateViewController ("SessionDetailViewController");
+						var conferenceDetailViewController = storyboard.InstantiateViewController ("ConferenceDetailViewController") as ConferenceDetailViewController;
+						var sessionsViewController = storyboard.InstantiateViewController ("SessionsViewController") as SessionsViewController;
+						var sessionDetailViewController = storyboard.InstantiateViewController ("SessionDetailViewController");
 
-					navController.SetViewControllers (new UIViewController[] { conferencesViewController, conferenceDetailViewController, sessionsViewController, sessionDetailViewController }, animated:false);
+						navController.SetViewControllers (new UIViewController[] {
+							conferencesViewController,
+							conferenceDetailViewController,
+							sessionsViewController,
+							sessionDetailViewController
+						}, animated: false);
+					} else if (parts.Length == 3) {
+						//This is a speaker
+						var conferenceSlug = parts [0];
+						var sessionSlug = parts [1];
+						var speakerSlug = parts [2];
+
+						var conferencesViewModel = Application.Locator.Conferences;
+						var task = Task.Run (async () => { 
+							await conferencesViewModel.LoadConferences (Priority.Explicit); 
+						});
+						task.Wait ();
+						var conference = conferencesViewModel.Conferences.Single (c => c.Slug == conferenceSlug);
+						var session = conference.Sessions.Single (s => s.Slug == sessionSlug);
+						var speaker = session.Speakers.Single (s => s.Slug == speakerSlug);
+						var conferenceVm = new ConferenceDetailViewModel (conference, schedulesService, settingsService);
+						var sessionVm = new SessionDetailViewModel (session, conference.Name);
+						var speakerVm = new SpeakerDetailViewModel (session, speaker);
+
+						Application.Locator.Conference = conferenceVm;
+						Application.Locator.Session = sessionVm;
+						Application.Locator.Speaker = speakerVm;
+
+						var storyboard = UIStoryboard.FromName ("Main", null);
+
+						var conferencesViewController = storyboard.InstantiateViewController ("ConferencesViewController") as ConferencesViewController;
+
+						var conferenceDetailViewController = storyboard.InstantiateViewController ("ConferenceDetailViewController") as ConferenceDetailViewController;
+						var sessionsViewController = storyboard.InstantiateViewController ("SessionsViewController") as SessionsViewController;
+						var sessionDetailViewController = storyboard.InstantiateViewController ("SessionDetailViewController");
+						var speakerDetailViewController = storyboard.InstantiateViewController ("SpeakerDetailViewController");
+
+						navController.SetViewControllers (new UIViewController[] {
+							conferencesViewController,
+							conferenceDetailViewController,
+							sessionsViewController,
+							sessionDetailViewController,
+							speakerDetailViewController
+						}, animated: false);
+					}
 				} else {
 					// This is a conference
-					var conferenceSlug = identifier.ToString();
+					var conferenceSlug = identifier.ToString ();
 
 					var conferencesViewModel = Application.Locator.Conferences;
-					var task = Task.Run(async () => { await conferencesViewModel.LoadConferences (Priority.Explicit); });
-					task.Wait();
-					var conference = conferencesViewModel.Conferences.Single(c => c.Slug == conferenceSlug);
-					var vm = new ConferenceDetailViewModel(conference, schedulesService, settingsService);
+					var task = Task.Run (async () => {
+						await conferencesViewModel.LoadConferences (Priority.Explicit);
+					});
+					task.Wait ();
+					var conference = conferencesViewModel.Conferences.Single (c => c.Slug == conferenceSlug);
+					var vm = new ConferenceDetailViewModel (conference, schedulesService, settingsService);
 					Application.Locator.Conference = vm;
 
 					var storyboard = UIStoryboard.FromName ("Main", null);
-					var conferenceDetailViewController = storyboard.InstantiateViewController ("ConferenceDetailViewController") as ConferenceDetailViewController;;
+					var conferenceDetailViewController = storyboard.InstantiateViewController ("ConferenceDetailViewController") as ConferenceDetailViewController;
+					;
 
-					navController.SetViewControllers (new UIViewController[] { conferenceDetailViewController }, animated:false);
+					navController.SetViewControllers (new UIViewController[] { conferenceDetailViewController }, animated: false);
 				}
 			}
 
@@ -151,7 +200,7 @@ namespace ios
 		{
 			
 			//UINavigationBar.Appearance.BarTintColor = UIColor.FromRGB(red: 34, green: 91, blue: 149);
-			UINavigationBar.Appearance.BarTintColor = UIColor.FromRGB(red: 128, green: 153, blue: 77);
+			UINavigationBar.Appearance.BarTintColor = UIColor.FromRGB (red: 128, green: 153, blue: 77);
 			UIBarButtonItem.Appearance.TintColor = UIColor.White;
 
 			UINavigationBar.Appearance.TintColor = UIColor.White;
@@ -162,12 +211,12 @@ namespace ios
 				Font = UIFont.FromName ("OpenSans-Light", 16f)
 			};
 
-			UINavigationBar.Appearance.SetTitleTextAttributes(navStyle); 
+			UINavigationBar.Appearance.SetTitleTextAttributes (navStyle); 
 			UIImageView.AppearanceWhenContainedIn (typeof(UINavigationBar)).TintColor = UIColor.White;
 			UIBarButtonItem.Appearance.SetTitleTextAttributes (navStyle, UIControlState.Normal);
 		}
 
-		public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
+		public override void RegisteredForRemoteNotifications (UIApplication application, NSData deviceToken)
 		{
 
 			if (deviceToken != null) {
@@ -179,7 +228,7 @@ namespace ios
 						return;
 					}
 					NSSet tags = null;
-					var settingsService = ServiceLocator.Current.GetInstance<ISettingsService>();
+					var settingsService = ServiceLocator.Current.GetInstance<ISettingsService> ();
 					if (!string.IsNullOrWhiteSpace (settingsService.EmailAddress)) {
 						tags = new NSSet (new string[] {
 							"platform:iOS",
@@ -203,18 +252,17 @@ namespace ios
 
 		private static SBNotificationHub Hub { get; set; }
 
-		public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
+		public override void ReceivedRemoteNotification (UIApplication application, NSDictionary userInfo)
 		{
-			ProcessNotification(userInfo, false);
+			ProcessNotification (userInfo, false);
 		}
 
-		void ProcessNotification(NSDictionary options, bool fromFinishedLaunching)
+		void ProcessNotification (NSDictionary options, bool fromFinishedLaunching)
 		{
 			// Check to see if the dictionary has the aps key.  This is the notification payload you would have sent
-			if (null != options && options.ContainsKey(new NSString("aps")))
-			{
+			if (null != options && options.ContainsKey (new NSString ("aps"))) {
 				//Get the aps dictionary
-				NSDictionary aps = options.ObjectForKey(new NSString("aps")) as NSDictionary;
+				NSDictionary aps = options.ObjectForKey (new NSString ("aps")) as NSDictionary;
 
 				string command = string.Empty;
 
@@ -230,14 +278,12 @@ namespace ios
 				}
 				//If this came from the ReceivedRemoteNotification while the app was running,
 				// we of course need to manually process things like the sound, badge, and alert.
-				if (!fromFinishedLaunching)
-				{
+				if (!fromFinishedLaunching) {
 					//Manually show an alert
-					if (!string.IsNullOrEmpty(command))
-					{
+					if (!string.IsNullOrEmpty (command)) {
 						if (command == RemoteCommands.Alert) {
-							UIAlertView avAlert = new UIAlertView("Notification", "Alert", null, "OK", null);
-							avAlert.Show();
+							UIAlertView avAlert = new UIAlertView ("Notification", "Alert", null, "OK", null);
+							avAlert.Show ();
 						} else if (command == RemoteCommands.RefreshConferences) {
 							Messenger.Default.Send (new ConferenceAddedMessage ());
 						} else if (command == RemoteCommands.RefreshSchedule) {
