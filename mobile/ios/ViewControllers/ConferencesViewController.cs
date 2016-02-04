@@ -95,8 +95,8 @@ namespace ios
 			_searchController.SearchBar.SizeToFit ();
 			DefinesPresentationContext = true;
 			_searchController.SearchResultsUpdater = this;
-			this.TableView.SetContentOffset (new CoreGraphics.CGPoint (0, _searchController.SearchBar.Frame.Size.Height), animated: false);
-			_searchController.SearchBar.BarTintColor = UIColor.FromRGB (red: 34, green: 91, blue: 149);
+			this.TableView.SetContentOffset (new CGPoint (0, _searchController.SearchBar.Frame.Size.Height), animated: false);
+			_searchController.SearchBar.BarTintColor = UIColor.FromRGB(red: 128, green: 153, blue: 77);
 
 		}
 
@@ -174,7 +174,7 @@ namespace ios
 			if (!string.IsNullOrWhiteSpace (conference.ImageUrl)) {
 				try {
 					var imageService = ServiceLocator.Current.GetInstance<IImageService> ();
-					var localPath = await imageService.GetImagePath (conference);
+					var localPath = await imageService.GetConferenceImagePath (conference);
 					UIImage image = null;
 					await Task.Run (() => {
 						var uiImage = UIImage.FromFile (localPath);
@@ -191,6 +191,33 @@ namespace ios
 			return searchableSession;
 		}
 
+		async Task<CSSearchableItem> AddSpeakerToSearch (Conference conference, Session session, Speaker speaker)
+		{
+
+			var attributes = new CSSearchableItemAttributeSet (itemContentType: MobileCoreServices.UTType.DelimitedText.ToString());
+
+			attributes.Title = speaker.FirstName + " " + speaker.LastName;
+			attributes.ContentDescription = speaker.Bio;
+			if (!string.IsNullOrWhiteSpace (speaker.ImageUrl)) {
+				try {
+					var imageService = ServiceLocator.Current.GetInstance<IImageService> ();
+					var localPath = await imageService.GetSpeakerImagePath (conference, speaker);
+					UIImage image = null;
+					await Task.Run (() => {
+						var uiImage = UIImage.FromFile (localPath);
+						if (uiImage != null) {
+							attributes.ThumbnailData = uiImage.AsPNG ();
+						}
+					});
+				} catch (Exception e) {
+					Insights.Report (e);
+				}
+			}
+
+			var searchableSession = new CSSearchableItem (conference.Slug + "|\\/|" + session.Slug + "|\\/|" + speaker.Slug, "tekconf", attributes);
+			return searchableSession;
+		}
+
 		async Task<CSSearchableItem> AddConferenceToSearch (Conference conference)
 		{
 			var attributes = new CSSearchableItemAttributeSet (itemContentType: MobileCoreServices.UTType.DelimitedText.ToString());
@@ -199,7 +226,7 @@ namespace ios
 			if (!string.IsNullOrWhiteSpace (conference.ImageUrl)) {
 				try {
 					var imageService = ServiceLocator.Current.GetInstance<IImageService> ();
-					var localPath = await imageService.GetImagePath (conference);
+					var localPath = await imageService.GetConferenceImagePath (conference);
 					UIImage image = null;
 					await Task.Run (() => {
 						var uiImage = UIImage.FromFile (localPath);

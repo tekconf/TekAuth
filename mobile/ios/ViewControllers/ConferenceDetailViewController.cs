@@ -39,7 +39,7 @@ namespace ios
 		{
 			base.ViewWillAppear (animated);
 
-			//this.NavigationController.NavigationBar.BarTintColor = UIColorExtensions.FromHex (Vm.Conference.HighlightColor);
+			this.NavigationController.NavigationBar.BarTintColor = UIColorExtensions.FromHex (Vm.Conference.HighlightColor);
 
 			Insights.Track("ViewedScreen", 
 				new Dictionary <string,string> { 
@@ -180,7 +180,7 @@ namespace ios
 				try {
 
 					var imageService = ServiceLocator.Current.GetInstance<IImageService>();
-					var localPath = await imageService.GetImagePath(conference);
+					var localPath = await imageService.GetConferenceImagePath(conference);
 
 					//Resizing image is time costing, using async to avoid blocking the UI thread
 					UIImage image = null;

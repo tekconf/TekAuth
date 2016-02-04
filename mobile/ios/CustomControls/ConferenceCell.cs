@@ -43,7 +43,7 @@ namespace ios
 				try {
 					
 					var imageService = ServiceLocator.Current.GetInstance<IImageService>();
-					var localPath = await imageService.GetImagePath(conference);
+					var localPath = await imageService.GetConferenceImagePath(conference);
 
 					//Resizing image is time costing, using async to avoid blocking the UI thread
 					UIImage image = null;
