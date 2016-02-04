@@ -62,7 +62,7 @@ namespace ios
 
 			RefreshControl = _uirc;
 
-			AddEmptyView ();
+			//AddEmptyView ();
 				
             Messenger.Default.Register<AuthenticationInitializedMessage>
             (
@@ -100,26 +100,26 @@ namespace ios
 
 		}
 
-		private void AddEmptyView()
-		{
-//			var background = new UIView()  
-//			{ 
-//				BackgroundColor = UIColor.White 
-//			};
-//			var signInLabel = new UILabel (new CGRect(x:0, y:0, width:300, height:300)) {
-//				Lines = 0,
-//				LineBreakMode = UILineBreakMode.WordWrap
-//			};
-//			signInLabel.Font = UIFont.FromName("FontAwesome", 168f);
-//			signInLabel.Text = "\xf090";
-//			signInLabel.TextColor = UIColor.DarkGray;
+//		private void AddEmptyView()
+//		{
+////			var background = new UIView()  
+////			{ 
+////				BackgroundColor = UIColor.White 
+////			};
+////			var signInLabel = new UILabel (new CGRect(x:0, y:0, width:300, height:300)) {
+////				Lines = 0,
+////				LineBreakMode = UILineBreakMode.WordWrap
+////			};
+////			signInLabel.Font = UIFont.FromName("FontAwesome", 168f);
+////			signInLabel.Text = "\xf090";
+////			signInLabel.TextColor = UIColor.DarkGray;
+////
+////			background.AddSubview (signInLabel);
 //
-//			background.AddSubview (signInLabel);
-
-			var unauthenticatedView = Runtime.GetNSObject(NSBundle.MainBundle.LoadNib("UnauthenticatedView", this, null).ValueAt(0)) as UnauthenticatedView;
-
-			TableView.BackgroundView = unauthenticatedView;
-		}
+//			var unauthenticatedView = Runtime.GetNSObject(NSBundle.MainBundle.LoadNib("UnauthenticatedView", this, null).ValueAt(0)) as UnauthenticatedView;
+//
+//			TableView.BackgroundView = unauthenticatedView;
+//		}
 
 		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
@@ -151,8 +151,8 @@ namespace ios
 		{
 			base.ViewWillAppear (animated);
 
-			this.NavigationController.NavigationBar.BarTintColor = UIColor.FromRGB(red: 34, green: 91, blue: 149);
-
+			//this.NavigationController.NavigationBar.BarTintColor = UIColor.FromRGB(red: 34, green: 91, blue: 149);
+			this.NavigationController.NavigationBar.BarTintColor = UIColor.FromRGB(red: 128, green: 153, blue: 77);
 
 			Insights.Track ("ViewedScreen", 
 				new Dictionary <string,string> { 

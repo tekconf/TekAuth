@@ -11,59 +11,59 @@ using UIKit;
 
 namespace ios
 {
-    [Register ("SessionDetailViewController")]
-    partial class SessionDetailViewController
-    {
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton addToMySchedule { get; set; }
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel sessionDescription { get; set; }
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel sessionRoom { get; set; }
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel sessionTime { get; set; }
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel sessionTitle { get; set; }
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UICollectionView speakersCollectionView { get; set; }
+	[Register ("SessionDetailViewController")]
+	partial class SessionDetailViewController
+	{
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UIButton addToMySchedule { get; set; }
 
-        void ReleaseDesignerOutlets ()
-        {
-            if (addToMySchedule != null) {
-                addToMySchedule.Dispose ();
-                addToMySchedule = null;
-            }
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UILabel sessionDescription { get; set; }
 
-            if (sessionDescription != null) {
-                sessionDescription.Dispose ();
-                sessionDescription = null;
-            }
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UILabel sessionRoom { get; set; }
 
-            if (sessionRoom != null) {
-                sessionRoom.Dispose ();
-                sessionRoom = null;
-            }
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UILabel sessionTime { get; set; }
 
-            if (sessionTime != null) {
-                sessionTime.Dispose ();
-                sessionTime = null;
-            }
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UILabel sessionTitle { get; set; }
 
-            if (sessionTitle != null) {
-                sessionTitle.Dispose ();
-                sessionTitle = null;
-            }
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UICollectionView speakersCollectionView { get; set; }
 
-            if (speakersCollectionView != null) {
-                speakersCollectionView.Dispose ();
-                speakersCollectionView = null;
-            }
-        }
-    }
+		void ReleaseDesignerOutlets ()
+		{
+			if (addToMySchedule != null) {
+				addToMySchedule.Dispose ();
+				addToMySchedule = null;
+			}
+			if (sessionDescription != null) {
+				sessionDescription.Dispose ();
+				sessionDescription = null;
+			}
+			if (sessionRoom != null) {
+				sessionRoom.Dispose ();
+				sessionRoom = null;
+			}
+			if (sessionTime != null) {
+				sessionTime.Dispose ();
+				sessionTime = null;
+			}
+			if (sessionTitle != null) {
+				sessionTitle.Dispose ();
+				sessionTitle = null;
+			}
+			if (speakersCollectionView != null) {
+				speakersCollectionView.Dispose ();
+				speakersCollectionView = null;
+			}
+		}
+	}
 }

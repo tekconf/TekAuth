@@ -149,7 +149,9 @@ namespace ios
 
 		private void AdjustDefaultUI ()
 		{
-			UINavigationBar.Appearance.BarTintColor = UIColor.FromRGB(red: 34, green: 91, blue: 149);
+			
+			//UINavigationBar.Appearance.BarTintColor = UIColor.FromRGB(red: 34, green: 91, blue: 149);
+			UINavigationBar.Appearance.BarTintColor = UIColor.FromRGB(red: 128, green: 153, blue: 77);
 			UIBarButtonItem.Appearance.TintColor = UIColor.White;
 
 			UINavigationBar.Appearance.TintColor = UIColor.White;

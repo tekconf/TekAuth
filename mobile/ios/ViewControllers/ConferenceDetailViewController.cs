@@ -38,7 +38,8 @@ namespace ios
 		public override void ViewWillAppear (bool animated)
 		{
 			base.ViewWillAppear (animated);
-			this.NavigationController.NavigationBar.BarTintColor = UIColorExtensions.FromHex (Vm.Conference.HighlightColor);
+
+			//this.NavigationController.NavigationBar.BarTintColor = UIColorExtensions.FromHex (Vm.Conference.HighlightColor);
 
 			Insights.Track("ViewedScreen", 
 				new Dictionary <string,string> { 
