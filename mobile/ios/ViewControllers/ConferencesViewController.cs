@@ -6,6 +6,7 @@ using TekConf.Mobile.Core.ViewModels;
 using Xamarin;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing;
 using Tekconf.DTO;
 using System.Globalization;
 using CoreSpotlight;
@@ -63,9 +64,11 @@ namespace ios
 
 			RefreshControl = _uirc;
 
-			//AddEmptyView ();
-				
-			Messenger.Default.Register<AuthenticationInitializedMessage>
+            //AddEmptyView ();
+
+		    AddSettingsButton();
+
+		    Messenger.Default.Register<AuthenticationInitializedMessage>
             (
 				this,
 				async (message) => { 
@@ -100,28 +103,56 @@ namespace ios
 
 		}
 
-		//		private void AddEmptyView()
-		//		{
-		////			var background = new UIView()  
-		////			{ 
-		////				BackgroundColor = UIColor.White 
-		////			};
-		////			var signInLabel = new UILabel (new CGRect(x:0, y:0, width:300, height:300)) {
-		////				Lines = 0,
-		////				LineBreakMode = UILineBreakMode.WordWrap
-		////			};
-		////			signInLabel.Font = UIFont.FromName("FontAwesome", 168f);
-		////			signInLabel.Text = "\xf090";
-		////			signInLabel.TextColor = UIColor.DarkGray;
-		////
-		////			background.AddSubview (signInLabel);
-		//
-		//			var unauthenticatedView = Runtime.GetNSObject(NSBundle.MainBundle.LoadNib("UnauthenticatedView", this, null).ValueAt(0)) as UnauthenticatedView;
-		//
-		//			TableView.BackgroundView = unauthenticatedView;
-		//		}
+	    private void AddSettingsButton()
+	    {
+            //var settingsButton = new UIBarButtonItem();
+            var settingsAttributes = new UIStringAttributes()
+            {
+                Font = UIFont.FromName("FontAwesome", 16f)
+            };
+            //settingsButton.Title = "\xf013";
+            //settingsButton.SetTitleTextAttributes(settingsAttributes, UIControlState.Normal);
+            //settingsButton.Clicked += (sender, args) => { var sdsds = this.ParentViewController; };
 
-		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
+            UIButton menuButton = new UIButton(UIButtonType.Custom);
+            var prettyString = new NSMutableAttributedString("\xf013");
+            prettyString.SetAttributes(settingsAttributes.Dictionary, new NSRange(0, 1));
+            menuButton.SetAttributedTitle(prettyString, UIControlState.Normal);
+            //menuButton.SetImage(UIImage.FromBundle("Images/menu"), UIControlState.Normal);
+            menuButton.Frame = new CGRect(0, 0, 24, 24);
+
+            UIBarButtonItem menuItem = new UIBarButtonItem(menuButton);
+
+            menuButton.TouchUpInside += (sender, e) => {
+                                                           var x = "";
+            };
+
+            this.NavigationItem.SetRightBarButtonItem(menuItem, true);
+
+        }
+
+        //		private void AddEmptyView()
+        //		{
+        ////			var background = new UIView()  
+        ////			{ 
+        ////				BackgroundColor = UIColor.White 
+        ////			};
+        ////			var signInLabel = new UILabel (new CGRect(x:0, y:0, width:300, height:300)) {
+        ////				Lines = 0,
+        ////				LineBreakMode = UILineBreakMode.WordWrap
+        ////			};
+        ////			signInLabel.Font = UIFont.FromName("FontAwesome", 168f);
+        ////			signInLabel.Text = "\xf090";
+        ////			signInLabel.TextColor = UIColor.DarkGray;
+        ////
+        ////			background.AddSubview (signInLabel);
+        //
+        //			var unauthenticatedView = Runtime.GetNSObject(NSBundle.MainBundle.LoadNib("UnauthenticatedView", this, null).ValueAt(0)) as UnauthenticatedView;
+        //
+        //			TableView.BackgroundView = unauthenticatedView;
+        //		}
+
+        public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
 			var conference = _filteredConferences [indexPath.Row];
 			ConferenceCell cell = this.TableView.DequeueReusableCell (cellId) as ConferenceCell;
