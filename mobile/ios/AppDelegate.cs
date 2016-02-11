@@ -88,8 +88,8 @@ namespace ios
 			var schedulesService = ServiceLocator.Current.GetInstance<ISchedulesService> ();
 
 			if (userActivity.ActivityType == CSSearchableItem.ActionType) {
-				var tabController = this.Window.RootViewController as UITabBarController;
-				var navController = tabController.ViewControllers [0] as UINavigationController;
+				//var tabController = this.Window.RootViewController as UITabBarController;
+				var navController = this.Window.RootViewController as UINavigationController;
 
 				var identifier = userActivity?.UserInfo?.ObjectForKey (CSSearchableItem.ActivityIdentifier);
 
