@@ -40,9 +40,9 @@ namespace ios
 		//		}
 		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
 		{
-			#if DEBUG
-			//Xamarin.Calabash.Start();
-			#endif
+			//#if DEBUG
+			Xamarin.Calabash.Start();
+			//#endif
 
 			AdjustDefaultUI ();
 
