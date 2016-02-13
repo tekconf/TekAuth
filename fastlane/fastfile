@@ -1,0 +1,17 @@
+fastlane_version "1.10.0"
+
+default_platform :ios
+
+platform :ios do
+
+  desc "Submit to TestFlight"
+  lane :testflight do
+    puts "Run from fastlane testflight"
+    ENV["DELIVER_ITMSTRANSPORTER_ADDITIONAL_UPLOAD_PARAMETERS"] = "-t DAV"
+    #pilot(
+        #ipa: "../TekConf.ipa",
+        #skip_submission: true,
+    #)
+  end
+
+end
