@@ -39,6 +39,8 @@ namespace ios
 		{
 			base.ViewWillAppear (animated);
 
+			this.NavigationController.NavigationBar.BarTintColor = UIColorExtensions.FromHex (Vm.Conference.HighlightColor);
+
 			Insights.Track("ViewedScreen", 
 				new Dictionary <string,string> { 
 					{"Screen", "ConferenceDetail"},
@@ -112,7 +114,8 @@ namespace ios
 			conferenceStartDate.Text = Vm.DateRange;
 			conferenceStartDate.SizeToFit ();
 
-			conferenceAddress.Text = Vm.Conference.Address.AddressLongDisplay ();
+			SetConferenceLocationButton (Vm.Conference.Address.AddressLongDisplay ());
+
 			conferenceAddress.SizeToFit ();
 
 			GetImage (Vm.Conference);
@@ -124,27 +127,57 @@ namespace ios
 
         private void SetAddButtonStatus()
 	    {
-	        SetButtonStatus(AddToScheduleMessage);
+	        SetAddToScheduleButtonStatus(AddToScheduleMessage);
 	    }
 
         private void SetRemoveButtonStatus()
         {
-            SetButtonStatus(RemoveFromScheduleMessage);
+            SetAddToScheduleButtonStatus(RemoveFromScheduleMessage);
         }
 
-        private void SetButtonStatus(string status)
+		//
+		private void SetConferenceLocationButton(string location)
+		{
+			var encodedAddress = System.Net.WebUtility.UrlEncode (location.Replace ("\\n", " "));
+			var mapAddress = $@"http://maps.apple.com/?address={encodedAddress}";
+
+			conferenceAddress.TouchUpInside += (sender, e) => {
+				UIApplication.SharedApplication.OpenUrl(new NSUrl(mapAddress)); 
+			};
+
+			var statusAttributes = new UIStringAttributes
+			{
+				ForegroundColor = UIColor.FromRGBA(red: 0f, blue: 1.0f, green: 0.478431f, alpha: 1.0f),
+				Font = UIFont.FromName("FontAwesome", 16f)
+			};
+
+			var textAttributes = new UIStringAttributes
+			{
+				ForegroundColor = UIColor.FromRGBA(red: 0f, blue: 1.0f, green: 0.478431f, alpha: 1.0f),
+				Font = UIFont.FromName("OpenSans-Light", 14f)
+			};
+
+			location = "\xf041 " + location;
+			var endOfString = location.Length - 2;
+			var prettyString = new NSMutableAttributedString(location);
+			prettyString.SetAttributes(statusAttributes.Dictionary, new NSRange(0, 1));
+			prettyString.SetAttributes(textAttributes.Dictionary, new NSRange(2, endOfString));
+			this.conferenceAddress.SetAttributedTitle(prettyString, UIControlState.Normal);
+		}
+
+        private void SetAddToScheduleButtonStatus(string status)
 	    {
             var statusAttributes = new UIStringAttributes
             {
                 ForegroundColor = UIColor.FromRGBA(red: 0f, blue: 1.0f, green: 0.478431f, alpha: 1.0f),
-                Font = UIFont.FromName("FontAwesome", 17f)
+                Font = UIFont.FromName("FontAwesome", 16f)
             };
 
 
             var textAttributes = new UIStringAttributes
             {
                 ForegroundColor = UIColor.FromRGBA(red: 0f, blue: 1.0f, green: 0.478431f, alpha: 1.0f),
-                Font = UIFont.FromName("Open Sans Light", 17f)
+				Font = UIFont.FromName("OpenSans-Light", 16f)
             };
 
             var prettyString = new NSMutableAttributedString(status);
@@ -178,7 +211,7 @@ namespace ios
 				try {
 
 					var imageService = ServiceLocator.Current.GetInstance<IImageService>();
-					var localPath = await imageService.GetImagePath(conference);
+					var localPath = await imageService.GetConferenceImagePath(conference);
 
 					//Resizing image is time costing, using async to avoid blocking the UI thread
 					UIImage image = null;

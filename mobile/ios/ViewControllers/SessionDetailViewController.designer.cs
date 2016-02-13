@@ -34,6 +34,10 @@ namespace ios
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UILabel sessionTitle { get; set; }
 
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UICollectionView speakersCollectionView { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
 			if (addToMySchedule != null) {
@@ -55,6 +59,10 @@ namespace ios
 			if (sessionTitle != null) {
 				sessionTitle.Dispose ();
 				sessionTitle = null;
+			}
+			if (speakersCollectionView != null) {
+				speakersCollectionView.Dispose ();
+				speakersCollectionView = null;
 			}
 		}
 	}

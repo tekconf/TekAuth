@@ -100,6 +100,22 @@
     <Compile Include="Migrations\201601172153117_LatLongPrecision.Designer.cs">
       <DependentUpon>201601172153117_LatLongPrecision.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601270254595_SpeakerDetails.cs" />
+    <Compile Include="Migrations\201601270254595_SpeakerDetails.Designer.cs">
+      <DependentUpon>201601270254595_SpeakerDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602031518518_Constraints.cs" />
+    <Compile Include="Migrations\201602031518518_Constraints.Designer.cs">
+      <DependentUpon>201602031518518_Constraints.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602031527382_SpeakerWebsite.cs" />
+    <Compile Include="Migrations\201602031527382_SpeakerWebsite.Designer.cs">
+      <DependentUpon>201602031527382_SpeakerWebsite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602041650148_SpeakerSlug.cs" />
+    <Compile Include="Migrations\201602041650148_SpeakerSlug.Designer.cs">
+      <DependentUpon>201602041650148_SpeakerSlug.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScheduleEfRepository.cs" />
     <Compile Include="Entities\Conference.cs" />
     <Compile Include="Entities\ConferenceContext.cs" />
@@ -186,6 +202,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601172153117_LatLongPrecision.resx">
       <DependentUpon>201601172153117_LatLongPrecision.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601270254595_SpeakerDetails.resx">
+      <DependentUpon>201601270254595_SpeakerDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602031518518_Constraints.resx">
+      <DependentUpon>201602031518518_Constraints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602031527382_SpeakerWebsite.resx">
+      <DependentUpon>201602031527382_SpeakerWebsite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602041650148_SpeakerSlug.resx">
+      <DependentUpon>201602041650148_SpeakerSlug.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

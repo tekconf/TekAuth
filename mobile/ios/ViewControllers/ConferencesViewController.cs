@@ -6,6 +6,7 @@ using TekConf.Mobile.Core.ViewModels;
 using Xamarin;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing;
 using Tekconf.DTO;
 using System.Globalization;
 using CoreSpotlight;
@@ -24,11 +25,11 @@ namespace ios
 	partial class ConferencesViewController : UITableViewController, IUISearchResultsUpdating
 	{
 		private UIRefreshControl _uirc;
-        private ObservableCollection<Conference> _conferences;
-        private ObservableCollection<Conference> _filteredConferences;
-        private UISearchController _searchController;
+		private ObservableCollection<Conference> _conferences;
+		private ObservableCollection<Conference> _filteredConferences;
+		private UISearchController _searchController;
 
-        private const string cellId = "conferenceCell";
+		private const string cellId = "conferenceCell";
 
 		public ConferencesViewController (IntPtr handle) : base (handle)
 		{
@@ -46,8 +47,9 @@ namespace ios
 		{
 			return _filteredConferences.Count ();
 		}
-        
+
 		UIView _emptyView;
+
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
@@ -62,64 +64,116 @@ namespace ios
 
 			RefreshControl = _uirc;
 
-			AddEmptyView ();
-				
-            Messenger.Default.Register<AuthenticationInitializedMessage>
+			AddSettingsButton ();
+			AddFilterButton ();
+
+			Messenger.Default.Register<AuthenticationInitializedMessage>
             (
-                this,
-                async (message) => { 
-					_uirc.BeginRefreshing();
-					await LoadConferences(Priority.UserInitiated);
-					_uirc.EndRefreshing();
+				this,
+				async (message) => { 
+					_uirc.BeginRefreshing ();
+					await LoadConferences (Priority.UserInitiated);
+					_uirc.EndRefreshing ();
 				}
-            );
+			);
 
 			Messenger.Default.Register<ConferenceAddedMessage>
 			(
 				this,
 				async (message) => { 
-					TableView.SetContentOffset(new CoreGraphics.CGPoint(x:0, y: 0-_uirc.Frame.Size.Height-_searchController.SearchBar.Frame.Size.Height), animated:true);
-					_uirc.BeginRefreshing();
-					await LoadConferences(Priority.UserInitiated);
-					_uirc.EndRefreshing();
-					TableView.SetContentOffset(new CoreGraphics.CGPoint(x:0, y: -((_searchController.SearchBar.Frame.Size.Height - 10) * 2)), animated:true);
+					TableView.SetContentOffset (new CoreGraphics.CGPoint (x: 0, y: 0 - _uirc.Frame.Size.Height - _searchController.SearchBar.Frame.Size.Height), animated: true);
+					_uirc.BeginRefreshing ();
+					await LoadConferences (Priority.UserInitiated);
+					_uirc.EndRefreshing ();
+					TableView.SetContentOffset (new CoreGraphics.CGPoint (x: 0, y: -((_searchController.SearchBar.Frame.Size.Height - 10) * 2)), animated: true);
 
 				}
 			);
 
-		    _searchController = new UISearchController((UITableViewController) null)
-		    {
-		        DimsBackgroundDuringPresentation = false
-		    };
-		    this.TableView.TableHeaderView = _searchController.SearchBar;
+			_searchController = new UISearchController ((UITableViewController)null) {
+				DimsBackgroundDuringPresentation = false
+			};
+			this.TableView.TableHeaderView = _searchController.SearchBar;
 			_searchController.SearchBar.SizeToFit ();
 			DefinesPresentationContext = true;
 			_searchController.SearchResultsUpdater = this;
-			this.TableView.SetContentOffset (new CoreGraphics.CGPoint (0, _searchController.SearchBar.Frame.Size.Height), animated: false);
-			_searchController.SearchBar.BarTintColor = UIColor.FromRGB (red: 34, green: 91, blue: 149);
+			this.TableView.SetContentOffset (new CGPoint (0, _searchController.SearchBar.Frame.Size.Height), animated: false);
+			_searchController.SearchBar.BarTintColor = UIColor.FromRGB (red: 128, green: 153, blue: 77);
 
 		}
 
-		private void AddEmptyView()
+		private void AddFilterButton()
 		{
-//			var background = new UIView()  
-//			{ 
-//				BackgroundColor = UIColor.White 
-//			};
-//			var signInLabel = new UILabel (new CGRect(x:0, y:0, width:300, height:300)) {
-//				Lines = 0,
-//				LineBreakMode = UILineBreakMode.WordWrap
-//			};
-//			signInLabel.Font = UIFont.FromName("FontAwesome", 168f);
-//			signInLabel.Text = "\xf090";
-//			signInLabel.TextColor = UIColor.DarkGray;
-//
-//			background.AddSubview (signInLabel);
+			var filterAttributes = new UIStringAttributes () {
+				ForegroundColor = UIColor.White,
+				Font = UIFont.FromName ("FontAwesome", 16f)
+			};
 
-			var unauthenticatedView = Runtime.GetNSObject(NSBundle.MainBundle.LoadNib("UnauthenticatedView", this, null).ValueAt(0)) as UnauthenticatedView;
+			UIButton menuButton = new UIButton (UIButtonType.Custom);
+			var prettyString = new NSMutableAttributedString ("\xf0b0");
+			prettyString.SetAttributes (filterAttributes.Dictionary, new NSRange (0, 1));
+			menuButton.SetAttributedTitle (prettyString, UIControlState.Normal);
+			menuButton.Frame = new CGRect (0, 0, 24, 24);
 
-			TableView.BackgroundView = unauthenticatedView;
+			UIBarButtonItem menuItem = new UIBarButtonItem (menuButton);
+
+			menuButton.TouchUpInside += (sender, e) => {
+				var storyboard = UIStoryboard.FromName ("Main", null);
+				var filterViewController = storyboard.InstantiateViewController ("ConferencesFilterNavigationController") as ConferencesFilterNavigationController;
+
+				this.NavigationController.PresentModalViewController(filterViewController, animated:true);
+			};
+
+			this.NavigationItem.SetLeftBarButtonItem (menuItem, true);
+
 		}
+		private void AddSettingsButton ()
+		{
+			var settingsAttributes = new UIStringAttributes () {
+				ForegroundColor = UIColor.White,
+				Font = UIFont.FromName ("FontAwesome", 16f)
+			};
+
+			UIButton menuButton = new UIButton (UIButtonType.Custom);
+			var prettyString = new NSMutableAttributedString ("\xf013");
+			prettyString.SetAttributes (settingsAttributes.Dictionary, new NSRange (0, 1));
+			menuButton.SetAttributedTitle (prettyString, UIControlState.Normal);
+			menuButton.Frame = new CGRect (0, 0, 24, 24);
+
+			UIBarButtonItem menuItem = new UIBarButtonItem (menuButton);
+
+			menuButton.TouchUpInside += (sender, e) => {
+				var storyboard = UIStoryboard.FromName ("Main", null);
+				var settingsController = storyboard.InstantiateViewController ("SettingsNavigationController") as SettingsNavigationController;
+
+				this.NavigationController.PresentModalViewController(settingsController, animated:true);
+
+			};
+
+			this.NavigationItem.SetRightBarButtonItem (menuItem, true);
+
+		}
+
+		//		private void AddEmptyView()
+		//		{
+		////			var background = new UIView()  
+		////			{ 
+		////				BackgroundColor = UIColor.White 
+		////			};
+		////			var signInLabel = new UILabel (new CGRect(x:0, y:0, width:300, height:300)) {
+		////				Lines = 0,
+		////				LineBreakMode = UILineBreakMode.WordWrap
+		////			};
+		////			signInLabel.Font = UIFont.FromName("FontAwesome", 168f);
+		////			signInLabel.Text = "\xf090";
+		////			signInLabel.TextColor = UIColor.DarkGray;
+		////
+		////			background.AddSubview (signInLabel);
+		//
+		//			var unauthenticatedView = Runtime.GetNSObject(NSBundle.MainBundle.LoadNib("UnauthenticatedView", this, null).ValueAt(0)) as UnauthenticatedView;
+		//
+		//			TableView.BackgroundView = unauthenticatedView;
+		//		}
 
 		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
@@ -146,9 +200,13 @@ namespace ios
 			this.TableView.ReloadData ();
 		}
 
+
 		public override async void ViewWillAppear (bool animated)
 		{
 			base.ViewWillAppear (animated);
+
+			//this.NavigationController.NavigationBar.BarTintColor = UIColor.FromRGB(red: 34, green: 91, blue: 149);
+			this.NavigationController.NavigationBar.BarTintColor = UIColor.FromRGB (red: 128, green: 153, blue: 77);
 
 			Insights.Track ("ViewedScreen", 
 				new Dictionary <string,string> { 
@@ -163,14 +221,14 @@ namespace ios
 		async Task<CSSearchableItem> AddSessionToSearch (Conference conference, Session session)
 		{
 			
-			var attributes = new CSSearchableItemAttributeSet (itemContentType: MobileCoreServices.UTType.DelimitedText.ToString());
+			var attributes = new CSSearchableItemAttributeSet (itemContentType: MobileCoreServices.UTType.DelimitedText.ToString ());
 
 			attributes.Title = session.Title;
 			attributes.ContentDescription = session.Description;
 			if (!string.IsNullOrWhiteSpace (conference.ImageUrl)) {
 				try {
 					var imageService = ServiceLocator.Current.GetInstance<IImageService> ();
-					var localPath = await imageService.GetImagePath (conference);
+					var localPath = await imageService.GetConferenceImagePath (conference);
 					UIImage image = null;
 					await Task.Run (() => {
 						var uiImage = UIImage.FromFile (localPath);
@@ -187,15 +245,42 @@ namespace ios
 			return searchableSession;
 		}
 
+		async Task<CSSearchableItem> AddSpeakerToSearch (Conference conference, Session session, Speaker speaker)
+		{
+
+			var attributes = new CSSearchableItemAttributeSet (itemContentType: MobileCoreServices.UTType.DelimitedText.ToString ());
+
+			attributes.Title = speaker.FirstName + " " + speaker.LastName + " - " + conference.Name;
+			attributes.ContentDescription = speaker.Bio;
+			if (!string.IsNullOrWhiteSpace (speaker.ImageUrl)) {
+				try {
+					var imageService = ServiceLocator.Current.GetInstance<IImageService> ();
+					var localPath = await imageService.GetSpeakerImagePath (conference, speaker);
+					UIImage image = null;
+					await Task.Run (() => {
+						var uiImage = UIImage.FromFile (localPath);
+						if (uiImage != null) {
+							attributes.ThumbnailData = uiImage.AsPNG ();
+						}
+					});
+				} catch (Exception e) {
+					Insights.Report (e);
+				}
+			}
+
+			var searchableSession = new CSSearchableItem (conference.Slug + "|\\/|" + session.Slug + "|\\/|" + speaker.Slug, "tekconf", attributes);
+			return searchableSession;
+		}
+
 		async Task<CSSearchableItem> AddConferenceToSearch (Conference conference)
 		{
-			var attributes = new CSSearchableItemAttributeSet (itemContentType: MobileCoreServices.UTType.DelimitedText.ToString());
+			var attributes = new CSSearchableItemAttributeSet (itemContentType: MobileCoreServices.UTType.DelimitedText.ToString ());
 			attributes.Title = conference.Name;
 			attributes.ContentDescription = conference.Description;
 			if (!string.IsNullOrWhiteSpace (conference.ImageUrl)) {
 				try {
 					var imageService = ServiceLocator.Current.GetInstance<IImageService> ();
-					var localPath = await imageService.GetImagePath (conference);
+					var localPath = await imageService.GetConferenceImagePath (conference);
 					UIImage image = null;
 					await Task.Run (() => {
 						var uiImage = UIImage.FromFile (localPath);
@@ -225,6 +310,10 @@ namespace ios
 				foreach (var session in conference.Sessions) {
 					var searchableSession = await AddSessionToSearch (conference, session);
 					searchableItems.Add (searchableSession);
+					foreach (var speaker in session.Speakers) {
+						var searchableSpeaker = await AddSpeakerToSearch (conference, session, speaker);
+						searchableItems.Add (searchableSpeaker);
+					}
 				}
 			}
 
@@ -249,8 +338,8 @@ namespace ios
 				var conference = _filteredConferences [this.TableView.IndexPathForSelectedRow.Row];
 				Insights.Track ("UserSelectedConference", "ConferenceSlug", conference.Slug);
 
-				var settingsService = ServiceLocator.Current.GetInstance<ISettingsService>();
-				var schedulesService = ServiceLocator.Current.GetInstance<ISchedulesService>();
+				var settingsService = ServiceLocator.Current.GetInstance<ISettingsService> ();
+				var schedulesService = ServiceLocator.Current.GetInstance<ISchedulesService> ();
 
 				Application.Locator.Conference = new ConferenceDetailViewModel (conference, schedulesService, settingsService);
 				this.NavigationItem.BackBarButtonItem = new UIBarButtonItem ("Conferences", UIBarButtonItemStyle.Plain, null);
@@ -260,7 +349,7 @@ namespace ios
 
 		public void SelectSession (string conferenceSlug, string sessionSlug)
 		{
-			if (string.IsNullOrWhiteSpace (conferenceSlug) || string.IsNullOrWhiteSpace(sessionSlug)) {
+			if (string.IsNullOrWhiteSpace (conferenceSlug) || string.IsNullOrWhiteSpace (sessionSlug)) {
 				return;
 			}
 
@@ -286,9 +375,12 @@ namespace ios
 		{
 			var text = searchController.SearchBar.Text;
 			if (searchController.Active) {
-				var filteredList = _conferences.Where (p => 
-					CultureInfo.CurrentCulture.CompareInfo.IndexOf
-					(p.Name, text, CompareOptions.IgnoreCase) >= 0).ToList ();
+				var filteredList = _conferences.Where (
+					                   conf => CultureInfo.CurrentCulture.CompareInfo.IndexOf (conf.Name, text, CompareOptions.IgnoreCase) >= 0
+					                   || conf.Sessions.Any (session => CultureInfo.CurrentCulture.CompareInfo.IndexOf (session.Title, text, CompareOptions.IgnoreCase) >= 0
+					                   || conf.Sessions.Any (session2 => session2.Speakers.Any (speaker => CultureInfo.CurrentCulture.CompareInfo.IndexOf (speaker.LastName, text, CompareOptions.IgnoreCase) >= 0)) 
+					                   )
+				                   ).ToList ();
 				_filteredConferences = new ObservableCollection<Conference> (filteredList);
 			} else {
 				_filteredConferences = _conferences;

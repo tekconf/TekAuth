@@ -39,7 +39,10 @@ namespace ios
 		public override void ViewWillAppear (bool animated)
 		{
 			base.ViewWillAppear (animated);
+			//UINavigationBar.Appearance.BarTintColor = UIColor.FromRGB(red: 34, green: 91, blue: 149);
+			//this.NavigationController.NavigationBar.BarTintColor = UIColor.FromRGB(red: 128, green: 153, blue: 77);
 
+			//UIBarButtonItem.Appearance.TintColor = UIColor.White;
 			Insights.Track("ViewedScreen", 
 				new Dictionary <string,string> { 
 					{"Screen", "Settings"},
@@ -69,6 +72,7 @@ namespace ios
 			_emailLabelBinding = this.SetBinding (
 				() => Vm.Email,
 				() => email.Text);
+
 
 			loginButton.TouchUpInside += async (sender, e) => {
 				Auth0User user = null;
@@ -104,6 +108,10 @@ namespace ios
 
                 }
             };
+
+			closeSettings.TouchUpInside += (sender, e) => {
+				this.DismissModalViewController(animated:true);
+			};
 		}
 	}
 }

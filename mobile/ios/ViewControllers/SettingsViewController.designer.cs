@@ -16,6 +16,10 @@ namespace ios
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UIButton closeSettings { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UILabel email { get; set; }
 
 		[Outlet]
@@ -32,6 +36,10 @@ namespace ios
 
 		void ReleaseDesignerOutlets ()
 		{
+			if (closeSettings != null) {
+				closeSettings.Dispose ();
+				closeSettings = null;
+			}
 			if (email != null) {
 				email.Dispose ();
 				email = null;

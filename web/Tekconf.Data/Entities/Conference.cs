@@ -68,16 +68,24 @@ namespace Tekconf.Data.Entities
 
         public bool IsOnlineConference { get; set; }
 
+        [StringLength(100)]
         public string AddressLine1 { get; set; }
+        [StringLength(100)]
         public string AddressLine2 { get; set; }
+        [StringLength(100)]
         public string AddressLine3 { get; set; }
+        [StringLength(100)]
         public string City { get; set; }
+        [StringLength(50)]
         public string StateOrProvince { get; set; }
+        [StringLength(20)]
         public string PostalCode { get; set; }
         public string Country { get; set; }
         public decimal? Latitude { get; set; }
         public decimal? Longitude { get; set; }
+        [StringLength(20)]
         public string VenuePhoneNumber { get; set; }
+        [StringLength(20)]
         public string OrganizerPhoneNumber { get; set; }
 
         public string ImageUrl { get; set; }
@@ -87,7 +95,9 @@ namespace Tekconf.Data.Entities
         public string HomepageUrl { get; set; }
         public string LanyrdUrl { get; set; }
 
+        [StringLength(20)]
         public string TwitterHashtag { get; set; }
+        [StringLength(50)]
         public string TwitterName { get; set; }
         public string MeetupUrl { get; set; }
         public string GooglePlusUrl { get; set; }

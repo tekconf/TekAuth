@@ -31,7 +31,6 @@ namespace TekConf.Mobile.Core.ViewModels
 
 			this.AddToScheduleCommand = new RelayCommand(async () => await this.AddToSchedule(Priority.UserInitiated), CanAddToSchedule);
             this.RemoveFromScheduleCommand = new RelayCommand(async () => await this.RemoveFromSchedule(Priority.UserInitiated), CanRemoveFromSchedule);
-
         }
 
         public async Task AddToSchedule(Priority priority)
