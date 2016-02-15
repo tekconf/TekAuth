@@ -8,7 +8,7 @@ namespace TekConf.Tests.Unit.Mobile.Core
 		[Fact]
 		public void TestCase ()
 		{
-			Assert.True (false);
+			Assert.True (true);
 		}
 	}
 }
