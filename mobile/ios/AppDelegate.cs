@@ -100,10 +100,8 @@ namespace ios
 						var sessionSlug = parts [1];
 
 						var conferencesViewModel = Application.Locator.Conferences;
-						var task = Task.Run (async () => { 
-							await conferencesViewModel.LoadConferences (Priority.Explicit); 
-						});
-						task.Wait ();
+					    conferencesViewModel.LoadConferencesCommand.Execute(Priority.Explicit);
+
 						var conference = conferencesViewModel.Conferences.Single (c => c.Slug == conferenceSlug);
 						var session = conference.Sessions.Single (s => s.Slug == sessionSlug);
 						var conferenceVm = new ConferenceDetailViewModel (conference, schedulesService, settingsService);
@@ -133,11 +131,13 @@ namespace ios
 						var speakerSlug = parts [2];
 
 						var conferencesViewModel = Application.Locator.Conferences;
-						var task = Task.Run (async () => { 
-							await conferencesViewModel.LoadConferences (Priority.Explicit); 
-						});
-						task.Wait ();
-						var conference = conferencesViewModel.Conferences.Single (c => c.Slug == conferenceSlug);
+                        conferencesViewModel.LoadConferencesCommand.Execute(Priority.Explicit);
+
+                        //var task = Task.Run (async () => { 
+                        //	await conferencesViewModel.LoadConferences (Priority.Explicit); 
+                        //});
+                        //task.Wait ();
+                        var conference = conferencesViewModel.Conferences.Single (c => c.Slug == conferenceSlug);
 						var session = conference.Sessions.Single (s => s.Slug == sessionSlug);
 						var speaker = session.Speakers.Single (s => s.Slug == speakerSlug);
 						var conferenceVm = new ConferenceDetailViewModel (conference, schedulesService, settingsService);
@@ -170,11 +170,13 @@ namespace ios
 					var conferenceSlug = identifier.ToString ();
 
 					var conferencesViewModel = Application.Locator.Conferences;
-					var task = Task.Run (async () => {
-						await conferencesViewModel.LoadConferences (Priority.Explicit);
-					});
-					task.Wait ();
-					var conference = conferencesViewModel.Conferences.Single (c => c.Slug == conferenceSlug);
+                    conferencesViewModel.LoadConferencesCommand.Execute(Priority.Explicit);
+
+                    //var task = Task.Run (async () => {
+                    //	await conferencesViewModel.LoadConferences (Priority.Explicit);
+                    //});
+                    //task.Wait ();
+                    var conference = conferencesViewModel.Conferences.Single (c => c.Slug == conferenceSlug);
 					var vm = new ConferenceDetailViewModel (conference, schedulesService, settingsService);
 					Application.Locator.Conference = vm;
 

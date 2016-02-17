@@ -13,14 +13,15 @@ namespace TekConf.Mobile.Core.ViewModels
 		private readonly ISettingsService _settingsService;
 		public RelayCommand LoadConferencesCommand { get; private set; }
 
-	    readonly IConferencesService _conferencesService;
+	    private readonly IConferencesService _conferencesService;
 
 		public ConferencesViewModel (ISettingsService settingsService, IConferencesService conferencesService)
 		{
-			this._conferencesService = conferencesService;
+			_conferencesService = conferencesService;
 			_settingsService = settingsService;
 			_conferences = new ObservableCollection<Conference> ();
-			this.LoadConferencesCommand = new RelayCommand(async () => await this.LoadConferences(Priority.UserInitiated), CanLoadConferences);
+
+            this.LoadConferencesCommand = new RelayCommand(async () => await this.LoadConferences(Priority.UserInitiated), CanLoadConferences);
 		}
 
 		private ObservableCollection<Conference> _conferences;
@@ -35,7 +36,7 @@ namespace TekConf.Mobile.Core.ViewModels
 			}
 		}
 
-		public async Task LoadConferences(Priority priority)
+		private async Task LoadConferences(Priority priority)
 		{
 				var conferences = await _conferencesService
     				.GetConferences(_settingsService.UserIdToken, priority)

@@ -24,16 +24,11 @@ namespace TekConf.Mobile.Core.ViewModels
 			_schedulesService = schedulesService;
 			_settingsService = settingsService;
 
-			Name = conference.Name;
-			Description = conference.Description;
-			StartDate = conference.StartDate.Value;
-			EndDate = conference.EndDate;
-
-			this.AddToScheduleCommand = new RelayCommand(async () => await this.AddToSchedule(Priority.UserInitiated), CanAddToSchedule);
+            this.AddToScheduleCommand = new RelayCommand(async () => await this.AddToSchedule(Priority.UserInitiated), CanAddToSchedule);
             this.RemoveFromScheduleCommand = new RelayCommand(async () => await this.RemoveFromSchedule(Priority.UserInitiated), CanRemoveFromSchedule);
         }
 
-        public async Task AddToSchedule(Priority priority)
+        private async Task AddToSchedule(Priority priority)
 		{
 			var schedule = await _schedulesService
 				.AddToSchedule(priority, Conference.Slug)
@@ -47,7 +42,7 @@ namespace TekConf.Mobile.Core.ViewModels
 			return !string.IsNullOrWhiteSpace(_settingsService.UserIdToken);
 		}
 
-        public async Task RemoveFromSchedule(Priority priority)
+        private async Task RemoveFromSchedule(Priority priority)
         {
             await _schedulesService
                 .RemoveFromSchedule(priority, Conference.Slug)
@@ -67,32 +62,32 @@ namespace TekConf.Mobile.Core.ViewModels
 			{
 
 				string range;
-				if (StartDate == default(DateTime?) && EndDate == default(DateTime?)) {
+				if (Conference.StartDate == default(DateTime?) && Conference.EndDate == default(DateTime?)) {
 					range = "No Date Set";
-				} else if (StartDate.HasValue && !EndDate.HasValue) {
+				} else if (Conference.StartDate.HasValue && !Conference.EndDate.HasValue) {
 					// Only start Date
-					range = StartDate.Value.ToString("MMMM") + " " + StartDate.Value.Day + ", " + StartDate.Value.Year;
+					range = Conference.StartDate.Value.ToString("MMMM") + " " + Conference.StartDate.Value.Day + ", " + Conference.StartDate.Value.Year;
 				}
-				else if (StartDate.Value.Month == EndDate.Value.Month && StartDate.Value.Year == EndDate.Value.Year)
+				else if (Conference.StartDate.Value.Month == Conference.EndDate.Value.Month && Conference.StartDate.Value.Year == Conference.EndDate.Value.Year)
 				{
 					// They begin and end in the same month
-					if (StartDate.Value.Date == EndDate.Value.Date)
+					if (Conference.StartDate.Value.Date == Conference.EndDate.Value.Date)
 					{
-						range = StartDate.Value.ToString("MMMM") + " " + StartDate.Value.Day + ", " + StartDate.Value.Year;
+						range = Conference.StartDate.Value.ToString("MMMM") + " " + Conference.StartDate.Value.Day + ", " + Conference.StartDate.Value.Year;
 					}
 					else
-						range = StartDate.Value.ToString("MMMM") + " " + StartDate.Value.Day + " - " + EndDate.Value.Day + ", " + StartDate.Value.Year;
+						range = Conference.StartDate.Value.ToString("MMMM") + " " + Conference.StartDate.Value.Day + " - " + Conference.EndDate.Value.Day + ", " + Conference.StartDate.Value.Year;
 				}
 				else
 				{
 					// They begin and end in different months
-					if (StartDate.Value.Year == EndDate.Value.Year)
+					if (Conference.StartDate.Value.Year == Conference.EndDate.Value.Year)
 					{
-						range = StartDate.Value.ToString("MMMM") + " " + StartDate.Value.Day + " - " + EndDate.Value.ToString("MMMM") + " " + EndDate.Value.Day + ", " + StartDate.Value.Year;
+						range = Conference.StartDate.Value.ToString("MMMM") + " " + Conference.StartDate.Value.Day + " - " + Conference.EndDate.Value.ToString("MMMM") + " " + Conference.EndDate.Value.Day + ", " + Conference.StartDate.Value.Year;
 					}
 					else
 					{
-						range = StartDate.Value.ToString("MMMM") + " " + StartDate.Value.Day + ", " + StartDate.Value.Year + " - " + EndDate.Value.ToString("MMMM") + " " + EndDate.Value.Day + ", " + EndDate.Value.Year;
+						range = Conference.StartDate.Value.ToString("MMMM") + " " + Conference.StartDate.Value.Day + ", " + Conference.StartDate.Value.Year + " - " + Conference.EndDate.Value.ToString("MMMM") + " " + Conference.EndDate.Value.Day + ", " + Conference.EndDate.Value.Year;
 					}
 
 				}
@@ -100,68 +95,6 @@ namespace TekConf.Mobile.Core.ViewModels
 				return range;
 			}
 		}
-		private string _name;
-		public string Name {
-			get {
-				return _name;
-			}
-			set {
-				if (value == _name) return;
-				_name = value;
-				RaisePropertyChanged (() => Name);
-			}
-		}
-
-		private string _description;
-		public string Description {
-			get {
-				return _description;
-			}
-			set {
-				if (value == _description) return;
-				_description = value;
-				RaisePropertyChanged (() => Description);
-			}
-		}
-
-		private DateTime? _startDate;
-		public DateTime? StartDate {
-			get {
-				return _startDate;
-			}
-			set {
-				if (value == _startDate) return;
-				_startDate = value;
-				RaisePropertyChanged (() => StartDate);
-			}
-		}
-
-		private DateTime? _endDate;
-		public DateTime? EndDate {
-			get {
-				return _endDate;
-			}
-			set {
-				if (value == _endDate) return;
-				_endDate = value;
-				RaisePropertyChanged (() => EndDate);
-			}
-		}
-
-        private bool _isAddedToSchedule;
-        public bool IsAddedToSchedule
-        {
-            get
-            {
-                return _isAddedToSchedule;
-            }
-            set
-            {
-                if (value == _isAddedToSchedule) return;
-                _isAddedToSchedule = value;
-                RaisePropertyChanged(() => IsAddedToSchedule);
-            }
-        }
 
     }
 }

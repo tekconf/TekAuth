@@ -90,7 +90,7 @@ namespace ios
 				var session = Vm.Conference.Sessions [this.TableView.IndexPathForSelectedRow.Row];
 				Insights.Track ("UserSelectedSession", "SessionSlug", session.Slug);
 
-				Application.Locator.Session = new SessionDetailViewModel (session, Vm.Name);
+				Application.Locator.Session = new SessionDetailViewModel (session, Vm.Conference.Name);
 
 				this.NavigationItem.BackBarButtonItem = new UIBarButtonItem ("Sessions", UIBarButtonItemStyle.Plain, null);
 

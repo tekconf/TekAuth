@@ -191,9 +191,15 @@ namespace ios
 
 		async Task LoadConferences (Priority priority)
 		{
-			using (Insights.TrackTime ("Loading Conferences List")) {
-				await Vm.LoadConferences (priority);
-				_conferences = Vm.Conferences;
+			using (Insights.TrackTime ("Loading Conferences List"))
+			{
+			    Task.Run(() =>
+			    {
+                    Vm.LoadConferencesCommand.Execute(Priority.Explicit);
+                }).Wait();
+
+                //await Vm.LoadConferences (priority);
+                _conferences = Vm.Conferences;
 				_filteredConferences = _conferences;
 				await PrepareForSearch (_conferences);
 			}
