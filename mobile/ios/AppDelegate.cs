@@ -10,13 +10,16 @@ using Microsoft.Practices.ServiceLocation;
 using TekConf.Mobile.Core.Services;
 using WindowsAzure.Messaging;
 using GalaSoft.MvvmLight.Messaging;
+using MvvmCross.Core.ViewModels;
+using MvvmCross.iOS.Platform;
+using MvvmCross.Platform;
 using TekConf.Mobile.Core.Messages;
 
 namespace ios
 {
 	[Register ("AppDelegate")]
-	public class AppDelegate : UIApplicationDelegate
-	{
+	public class AppDelegate : MvxApplicationDelegate
+    {
 		public override UIWindow Window { get; set; }
 
 		//		public static async Task LoadConferences(string token)
@@ -51,7 +54,17 @@ namespace ios
 			UIApplication.SharedApplication.RegisterUserNotificationSettings (pushSettings);
 			UIApplication.SharedApplication.RegisterForRemoteNotifications ();
 
-			return true;
+            Window = new UIWindow(UIScreen.MainScreen.Bounds);
+
+            var setup = new Setup(this, Window);
+            setup.Initialize();
+
+            var startup = Mvx.Resolve<IMvxAppStart>();
+            startup.Start();
+
+            Window.MakeKeyAndVisible();
+
+            return true;
 		}
 
 		public override void OnResignActivation (UIApplication application)
