@@ -148,7 +148,7 @@ namespace ios
 				Insights.Track ("UserSelectedConference", "ConferenceSlug", conference.Slug);
 				var settingsService = ServiceLocator.Current.GetInstance<ISettingsService>();
 				var schedulesService = ServiceLocator.Current.GetInstance<ISchedulesService>();
-				Application.Locator.Conference = new ConferenceDetailViewModel (conference, schedulesService, settingsService);
+				Application.Locator.Conference = new ConferenceDetailViewModel2 (conference, schedulesService, settingsService);
 				this.NavigationItem.BackBarButtonItem = new UIBarButtonItem ("Conferences", UIBarButtonItemStyle.Plain, null);
 
 			}

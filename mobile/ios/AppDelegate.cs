@@ -117,7 +117,7 @@ namespace ios
 
 						var conference = conferencesViewModel.Conferences.Single (c => c.Slug == conferenceSlug);
 						var session = conference.Sessions.Single (s => s.Slug == sessionSlug);
-						var conferenceVm = new ConferenceDetailViewModel (conference, schedulesService, settingsService);
+						var conferenceVm = new ConferenceDetailViewModel2 (conference, schedulesService, settingsService);
 						var sessionVm = new SessionDetailViewModel (session, conference.Name);
 
 						Application.Locator.Conference = conferenceVm;
@@ -153,7 +153,7 @@ namespace ios
                         var conference = conferencesViewModel.Conferences.Single (c => c.Slug == conferenceSlug);
 						var session = conference.Sessions.Single (s => s.Slug == sessionSlug);
 						var speaker = session.Speakers.Single (s => s.Slug == speakerSlug);
-						var conferenceVm = new ConferenceDetailViewModel (conference, schedulesService, settingsService);
+						var conferenceVm = new ConferenceDetailViewModel2 (conference, schedulesService, settingsService);
 						var sessionVm = new SessionDetailViewModel (session, conference.Name);
 						var speakerVm = new SpeakerDetailViewModel (session, speaker);
 
@@ -190,7 +190,7 @@ namespace ios
                     //});
                     //task.Wait ();
                     var conference = conferencesViewModel.Conferences.Single (c => c.Slug == conferenceSlug);
-					var vm = new ConferenceDetailViewModel (conference, schedulesService, settingsService);
+					var vm = new ConferenceDetailViewModel2 (conference, schedulesService, settingsService);
 					Application.Locator.Conference = vm;
 
 					var storyboard = UIStoryboard.FromName ("Main", null);

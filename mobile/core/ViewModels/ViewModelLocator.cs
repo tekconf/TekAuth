@@ -35,7 +35,7 @@ namespace TekConf.Mobile.Core.ViewModels
 			}
 		}
 
-		public ConferenceDetailViewModel Conference { get; set; }
+		public ConferenceDetailViewModel2 Conference { get; set; }
 		public SessionDetailViewModel Session { get; set; }
 		public SpeakerDetailViewModel Speaker { get; set; }
 

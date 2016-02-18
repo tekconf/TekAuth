@@ -24,7 +24,7 @@ namespace TekConf.Tests.Unit.Mobile.Core
 
             var conference = _fixture.Create<Conference>();
 
-            var vm = new ConferenceDetailViewModel(conference, schedulesService.Object, settingsService.Object);
+            var vm = new ConferenceDetailViewModel2(conference, schedulesService.Object, settingsService.Object);
 
             vm.Conference.ShouldEqual(conference);
         }
@@ -38,7 +38,7 @@ namespace TekConf.Tests.Unit.Mobile.Core
 
             var schedulesService = new Mock<ISchedulesService>();
 
-            var vm = new ConferenceDetailViewModel(null, schedulesService.Object, settingsService.Object);
+            var vm = new ConferenceDetailViewModel2(null, schedulesService.Object, settingsService.Object);
 
             vm.CanAddToSchedule().ShouldBeTrue();
         }
@@ -52,7 +52,7 @@ namespace TekConf.Tests.Unit.Mobile.Core
 
             var schedulesService = new Mock<ISchedulesService>();
 
-            var vm = new ConferenceDetailViewModel(null, schedulesService.Object, settingsService.Object);
+            var vm = new ConferenceDetailViewModel2(null, schedulesService.Object, settingsService.Object);
 
             vm.CanAddToSchedule().ShouldBeFalse();
         }
@@ -66,7 +66,7 @@ namespace TekConf.Tests.Unit.Mobile.Core
 
             var schedulesService = new Mock<ISchedulesService>();
 
-            var vm = new ConferenceDetailViewModel(null, schedulesService.Object, settingsService.Object);
+            var vm = new ConferenceDetailViewModel2(null, schedulesService.Object, settingsService.Object);
 
             vm.CanRemoveFromSchedule().ShouldBeTrue();
         }
@@ -80,7 +80,7 @@ namespace TekConf.Tests.Unit.Mobile.Core
 
             var schedulesService = new Mock<ISchedulesService>();
 
-            var vm = new ConferenceDetailViewModel(null, schedulesService.Object, settingsService.Object);
+            var vm = new ConferenceDetailViewModel2(null, schedulesService.Object, settingsService.Object);
 
             vm.CanRemoveFromSchedule().ShouldBeFalse();
         }

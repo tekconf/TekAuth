@@ -359,6 +359,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
     <BundleResource Include="Resources\BlankUser.png" />
+    <InterfaceDefinition Include="Views\ConferenceDetailView.xib" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DebugTrace.cs" />
@@ -428,6 +429,10 @@
     <Compile Include="ViewControllers\ConferencesFilterViewController.designer.cs">
       <DependentUpon>ConferencesFilterViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ConferenceDetailView.cs" />
+    <Compile Include="Views\ConferenceDetailView.designer.cs">
+      <DependentUpon>ConferenceDetailView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ConferencesView.cs" />
     <Compile Include="Views\ConferenceCell.cs" />
     <Compile Include="Views\ConferenceCell.designer.cs">
@@ -493,7 +498,6 @@
     <Content Include="Resources\Fonts\OpenSans-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="ToDo-MvvmCross\_ iOS UI.txt" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Fonts\OpenSans-Semibold.ttf" />

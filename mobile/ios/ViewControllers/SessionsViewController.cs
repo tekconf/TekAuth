@@ -43,7 +43,7 @@ namespace ios
 			searchController.SearchBar.BarTintColor = UIColorExtensions.FromHex (Vm.Conference.HighlightColor);
 		}
 
-		private ConferenceDetailViewModel Vm {
+		private ConferenceDetailViewModel2 Vm {
 			get {
 				return Application.Locator.Conference;
 			}

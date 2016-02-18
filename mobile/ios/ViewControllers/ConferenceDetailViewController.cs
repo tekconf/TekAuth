@@ -24,7 +24,7 @@ namespace ios
 		{
 		}
 
-		private ConferenceDetailViewModel Vm {
+		private ConferenceDetailViewModel2 Vm {
 			get {
 				return Application.Locator.Conference;
 			}
