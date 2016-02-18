@@ -346,7 +346,6 @@
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
     <InterfaceDefinition Include="Main.storyboard" />
     <InterfaceDefinition Include="UnauthenticatedView.xib" />
-    <InterfaceDefinition Include="Views\ConferenceCell.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -383,10 +382,6 @@
     <Compile Include="ViewControllers\SettingsViewController.cs" />
     <Compile Include="ViewControllers\SettingsViewController.designer.cs">
       <DependentUpon>SettingsViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\ConferenceCell.cs" />
-    <Compile Include="CustomControls\ConferenceCell.designer.cs">
-      <DependentUpon>ConferenceCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\UIColorExtensions.cs" />
     <Compile Include="Infrastructure\ImageService.cs" />
@@ -434,9 +429,9 @@
       <DependentUpon>ConferenceDetailView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ConferencesView.cs" />
-    <Compile Include="Views\ConferenceCell.cs" />
-    <Compile Include="Views\ConferenceCell.designer.cs">
-      <DependentUpon>ConferenceCell.cs</DependentUpon>
+    <Compile Include="CustomControls\ConferenceListCell.cs" />
+    <Compile Include="CustomControls\ConferenceListCell.designer.cs">
+      <DependentUpon>ConferenceListCell.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

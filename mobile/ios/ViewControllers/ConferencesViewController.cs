@@ -24,9 +24,9 @@ namespace ios
 {
 	partial class ConferencesViewController : UITableViewController, IUISearchResultsUpdating
 	{
-		private UIRefreshControl _uirc;
 		private ObservableCollection<Conference> _conferences;
 		private ObservableCollection<Conference> _filteredConferences;
+		private UIRefreshControl _uirc;
 		private UISearchController _searchController;
 
 		private const string cellId = "conferenceCell";

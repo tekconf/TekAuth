@@ -11,8 +11,8 @@ using UIKit;
 
 namespace ios
 {
-	[Register ("ConferenceCell")]
-	partial class ConferenceCell
+	[Register ("ConferenceListCell")]
+	partial class ConferenceListCell
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
@@ -57,10 +57,6 @@ namespace ios
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UIView highlightColorBar { get; set; }
-
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel name { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
@@ -107,10 +103,6 @@ namespace ios
 			if (highlightColorBar != null) {
 				highlightColorBar.Dispose ();
 				highlightColorBar = null;
-			}
-			if (name != null) {
-				name.Dispose ();
-				name = null;
 			}
 		}
 	}
