@@ -29,15 +29,15 @@ namespace ios.Views
 
 		public ConferencesView ()
 		{
-				TableView.RowHeight = UITableView.AutomaticDimension;
-				TableView.EstimatedRowHeight = 221;
+			TableView.RowHeight = UITableView.AutomaticDimension;
+			TableView.EstimatedRowHeight = 221;
 		}
 
 
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-            Title = "Conferences";
+			Title = "Conferences";
 			this.TableView.SeparatorStyle = UITableViewCellSeparatorStyle.None;
 
 			AddSettingsButton ();
@@ -54,20 +54,28 @@ namespace ios.Views
 
 		void LoadTable ()
 		{
-			var source = new MvxSimpleTableViewSource (TableView, ConferenceCell.Key, ConferenceCell.Key);
-			TableView.Source = source;
-			var set = this.CreateBindingSet<ConferencesView, ConferencesViewModel> ();
-			set.Bind (source).To (vm => vm.Conferences);
-			set.Bind (source).For (s => s.SelectionChangedCommand).To (vm => vm.ShowConference);
-			set.Apply ();
-			this.ViewModel.LoadConferences.Execute ();
-			TableView.ReloadData ();
+			try {
+				//var source = new MvxSimpleTableViewSource (TableView, ConfListCell.Key, ConfListCell.Key);
+				var source = new MvxStandardTableViewSource(TableView, "TitleText Name;");
+				TableView.Source = source;
+				var set = this.CreateBindingSet<ConferencesView, ConferencesViewModel> ();
+				set.Bind (source).To (vm => vm.Conferences);
+				set.Bind (source).For (s => s.SelectionChangedCommand).To (vm => vm.ShowConference);
+				set.Apply ();
+				TableView.ReloadData ();
+
+				this.ViewModel.LoadConferences.Execute ();
+			} catch (Exception ex) {
+				var sdsd = ex.Message;
+				Console.WriteLine ("ERROR!!! - " + sdsd);
+			}
+
 		}
 
 		void AddRefreshControl ()
 		{
 			_uirc = new UIRefreshControl ();
-			_uirc.ValueChanged += async (sender, e) =>  {
+			_uirc.ValueChanged += (sender, e) => {
 				this.ViewModel.LoadConferences.Execute ();
 				_uirc.EndRefreshing ();
 			};
@@ -87,7 +95,7 @@ namespace ios.Views
 			_searchController.SearchBar.BarTintColor = UIColor.FromRGB (red: 128, green: 153, blue: 77);
 		}
 
-		private void AddFilterButton()
+		private void AddFilterButton ()
 		{
 			var filterAttributes = new UIStringAttributes () {
 				ForegroundColor = UIColor.White,
@@ -106,12 +114,13 @@ namespace ios.Views
 				var storyboard = UIStoryboard.FromName ("Main", null);
 				var filterViewController = storyboard.InstantiateViewController ("ConferencesFilterNavigationController") as ConferencesFilterNavigationController;
 
-				this.NavigationController.PresentModalViewController(filterViewController, animated:true);
+				this.NavigationController.PresentModalViewController (filterViewController, animated: true);
 			};
 
 			this.NavigationItem.SetLeftBarButtonItem (menuItem, true);
 
 		}
+
 		private void AddSettingsButton ()
 		{
 			var settingsAttributes = new UIStringAttributes () {
@@ -131,7 +140,7 @@ namespace ios.Views
 				var storyboard = UIStoryboard.FromName ("Main", null);
 				var settingsController = storyboard.InstantiateViewController ("SettingsNavigationController") as SettingsNavigationController;
 
-				this.NavigationController.PresentModalViewController(settingsController, animated:true);
+				this.NavigationController.PresentModalViewController (settingsController, animated: true);
 
 			};
 
@@ -141,12 +150,12 @@ namespace ios.Views
 
 		void ListenForMessages ()
 		{
-			Messenger.Default.Register<AuthenticationInitializedMessage> (this, async message =>  {
+			Messenger.Default.Register<AuthenticationInitializedMessage> (this, async message => {
 				_uirc.BeginRefreshing ();
 				//await LoadConferences (Priority.UserInitiated);
 				_uirc.EndRefreshing ();
 			});
-			Messenger.Default.Register<ConferenceAddedMessage> (this, async message =>  {
+			Messenger.Default.Register<ConferenceAddedMessage> (this, async message => {
 				TableView.SetContentOffset (new CoreGraphics.CGPoint (x: 0, y: 0 - _uirc.Frame.Size.Height - _searchController.SearchBar.Frame.Size.Height), animated: true);
 				_uirc.BeginRefreshing ();
 				//await LoadConferences (Priority.UserInitiated);
@@ -270,14 +279,14 @@ namespace ios.Views
 			var text = searchController.SearchBar.Text;
 			if (searchController.Active) {
 				var filteredList = this.ViewModel.Conferences.Where (
-					conf => CultureInfo.CurrentCulture.CompareInfo.IndexOf (conf.Name, text, CompareOptions.IgnoreCase) >= 0
-					|| conf.Sessions.Any (session => CultureInfo.CurrentCulture.CompareInfo.IndexOf (session.Title, text, CompareOptions.IgnoreCase) >= 0
-						|| conf.Sessions.Any (session2 => session2.Speakers.Any (speaker => CultureInfo.CurrentCulture.CompareInfo.IndexOf (speaker.LastName, text, CompareOptions.IgnoreCase) >= 0)) 
-					)
-				).ToList ();
+					                   conf => CultureInfo.CurrentCulture.CompareInfo.IndexOf (conf.Name, text, CompareOptions.IgnoreCase) >= 0
+					                   || conf.Sessions.Any (session => CultureInfo.CurrentCulture.CompareInfo.IndexOf (session.Title, text, CompareOptions.IgnoreCase) >= 0
+					                   || conf.Sessions.Any (session2 => session2.Speakers.Any (speaker => CultureInfo.CurrentCulture.CompareInfo.IndexOf (speaker.LastName, text, CompareOptions.IgnoreCase) >= 0)) 
+					                   )
+				                   ).ToList ();
 				_filteredConferences = new ObservableCollection<Conference> (filteredList);
 			} else {
-				_filteredConferences = this.ViewModel.Conferences;
+				//_filteredConferences = this.ViewModel.Conferences;
 			}
 
 			TableView.ReloadData ();

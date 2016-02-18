@@ -346,6 +346,8 @@
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
     <InterfaceDefinition Include="Main.storyboard" />
     <InterfaceDefinition Include="UnauthenticatedView.xib" />
+    <InterfaceDefinition Include="Views\ConferenceCell.xib" />
+    <InterfaceDefinition Include="Views\ConfListCell.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -432,6 +434,14 @@
     <Compile Include="CustomControls\ConferenceListCell.cs" />
     <Compile Include="CustomControls\ConferenceListCell.designer.cs">
       <DependentUpon>ConferenceListCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ConferenceCell.cs" />
+    <Compile Include="Views\ConferenceCell.designer.cs">
+      <DependentUpon>ConferenceCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ConfListCell.cs" />
+    <Compile Include="Views\ConfListCell.designer.cs">
+      <DependentUpon>ConfListCell.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

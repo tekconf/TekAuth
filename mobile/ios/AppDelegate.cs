@@ -232,35 +232,35 @@ namespace ios
 		public override void RegisteredForRemoteNotifications (UIApplication application, NSData deviceToken)
 		{
 
-			if (deviceToken != null) {
-				Hub = new SBNotificationHub (Constants.ConnectionString, Constants.NotificationHubPath);
-
-				Hub.UnregisterAllAsync (deviceToken, (error) => {
-					if (error != null) {
-						Console.WriteLine ("Error calling Unregister: {0}", error.ToString ());
-						return;
-					}
-					NSSet tags = null;
-					var settingsService = ServiceLocator.Current.GetInstance<ISettingsService> ();
-					if (!string.IsNullOrWhiteSpace (settingsService.EmailAddress)) {
-						tags = new NSSet (new string[] {
-							"platform:iOS",
-							"emailAddress:" + settingsService.EmailAddress
-						});
-					} else {
-						tags = new NSSet (new string[] {
-							"platform:iOS"
-						});
-					}
-
-					Hub.RegisterNativeAsync (deviceToken, tags, (errorCallback) => {
-						if (errorCallback != null)
-							Console.WriteLine ("RegisterNativeAsync error: " + errorCallback.ToString ());
-					});
-
-
-				});
-			}
+//			if (deviceToken != null) {
+//				Hub = new SBNotificationHub (Constants.ConnectionString, Constants.NotificationHubPath);
+//
+//				Hub.UnregisterAllAsync (deviceToken, (error) => {
+//					if (error != null) {
+//						Console.WriteLine ("Error calling Unregister: {0}", error.ToString ());
+//						return;
+//					}
+//					NSSet tags = null;
+//					var settingsService = ServiceLocator.Current.GetInstance<ISettingsService> ();
+//					if (!string.IsNullOrWhiteSpace (settingsService.EmailAddress)) {
+//						tags = new NSSet (new string[] {
+//							"platform:iOS",
+//							"emailAddress:" + settingsService.EmailAddress
+//						});
+//					} else {
+//						tags = new NSSet (new string[] {
+//							"platform:iOS"
+//						});
+//					}
+//
+//					Hub.RegisterNativeAsync (deviceToken, tags, (errorCallback) => {
+//						if (errorCallback != null)
+//							Console.WriteLine ("RegisterNativeAsync error: " + errorCallback.ToString ());
+//					});
+//
+//
+//				});
+//			}
 		}
 
 		private static SBNotificationHub Hub { get; set; }

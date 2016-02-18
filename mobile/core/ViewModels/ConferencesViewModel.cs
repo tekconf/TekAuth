@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using TekConf.Mobile.Core.Services;
 using Fusillade;
+using System.Threading.Tasks;
 
 namespace TekConf.Mobile.Core.ViewModels
 {
@@ -14,6 +15,7 @@ namespace TekConf.Mobile.Core.ViewModels
 
 	    public ConferencesViewModel(IConferencesService conferencesService)
 	    {
+			Conferences = new ObservableCollection<Conference> ();
 	        this.ShowConference = new MvxCommand<Conference>((conference) =>
             {
                 var navObject = new ConferenceDetailViewModel.NavObject()
@@ -25,11 +27,16 @@ namespace TekConf.Mobile.Core.ViewModels
 
 			this.LoadConferences = new MvxCommand(async () =>
 				{
-					var conferences = await conferencesService.GetConferences("", Priority.Explicit);
-					Conferences = new ObservableCollection<Conference>(conferences);
+					await Load(conferencesService);
 				});
         }
 
+		private async Task Load(IConferencesService conferencesService)
+		{
+			var conferences = await conferencesService.GetConferences("", Priority.Explicit);
+			Conferences = new ObservableCollection<Conference>(conferences);
+		}
+			
 		private ObservableCollection<Conference> _conferences;
 		public ObservableCollection<Conference> Conferences
 		{
