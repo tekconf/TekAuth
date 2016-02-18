@@ -1,7 +1,11 @@
 using MvvmCross.Core.ViewModels;
+using Tekconf.DTO;
+using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace TekConf.Mobile.Core.ViewModels
 {
+
     public class FirstViewModel 
         : MvxViewModel
     {

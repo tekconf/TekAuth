@@ -28,7 +28,7 @@ namespace TekConf.Tests.Unit.Mobile.Core
             conferencesService.Setup(x => x.GetConferences(It.IsAny<string>(), It.IsAny<Priority>()))
                 .ReturnsAsync(conferences);
 
-            var vm = new ConferencesViewModel(settingsService.Object, conferencesService.Object);
+            var vm = new ConferencesListViewModel(settingsService.Object, conferencesService.Object);
 
             vm.Conferences.ShouldBeEmpty();
 
@@ -43,7 +43,7 @@ namespace TekConf.Tests.Unit.Mobile.Core
 
             var conferencesService = new Mock<IConferencesService>();
             
-            var vm = new ConferencesViewModel(settingsService.Object, conferencesService.Object);
+            var vm = new ConferencesListViewModel(settingsService.Object, conferencesService.Object);
 
             vm.CanLoadConferences().ShouldBeTrue();
         }
@@ -57,7 +57,7 @@ namespace TekConf.Tests.Unit.Mobile.Core
 
             var conferencesService = new Mock<IConferencesService>();
 
-            var vm = new ConferencesViewModel(settingsService.Object, conferencesService.Object);
+            var vm = new ConferencesListViewModel(settingsService.Object, conferencesService.Object);
 
             vm.CanLoadConferences().ShouldBeFalse();
         }
@@ -75,7 +75,7 @@ namespace TekConf.Tests.Unit.Mobile.Core
             conferencesService.Setup(x => x.GetConferences(userIdToken, It.IsAny<Priority>())).ReturnsAsync(conferences);
 
 
-            var vm = new ConferencesViewModel(settingsService.Object, conferencesService.Object);
+            var vm = new ConferencesListViewModel(settingsService.Object, conferencesService.Object);
 
             vm.LoadConferencesCommand.Execute(Priority.Explicit);
 

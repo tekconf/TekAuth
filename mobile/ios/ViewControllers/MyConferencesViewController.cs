@@ -108,7 +108,7 @@ namespace ios
 			ConferenceCell cell = this.TableView.DequeueReusableCell (cellId) as ConferenceCell;
 
 			try {
-				cell.SetConference (conference);
+				//cell.SetConference (conference);
 
 			} catch (Exception ex) {
 				Insights.Report (ex);

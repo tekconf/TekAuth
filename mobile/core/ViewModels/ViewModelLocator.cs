@@ -10,7 +10,7 @@ namespace TekConf.Mobile.Core.ViewModels
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-			SimpleIoc.Default.Register<ConferencesViewModel>();
+			SimpleIoc.Default.Register<ConferencesListViewModel>();
 			SimpleIoc.Default.Register<MyConferencesViewModel>();
             SimpleIoc.Default.Register<SettingsViewModel>();
 			SimpleIoc.Default.Register<ISettingsService, SettingsService> ();
@@ -27,11 +27,11 @@ namespace TekConf.Mobile.Core.ViewModels
 				return ServiceLocator.Current.GetInstance<MyConferencesViewModel>();
 			}
 		}
-		public ConferencesViewModel Conferences
+		public ConferencesListViewModel Conferences
 		{
 			get
 			{
-				return ServiceLocator.Current.GetInstance<ConferencesViewModel>();
+				return ServiceLocator.Current.GetInstance<ConferencesListViewModel>();
 			}
 		}
 

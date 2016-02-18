@@ -37,7 +37,7 @@ namespace ios
 			TableView.EstimatedRowHeight = 220;
 		}
 
-		private ConferencesViewModel Vm {
+		private ConferencesListViewModel Vm {
 			get {
 				return Application.Locator.Conferences;
 			}
@@ -181,7 +181,7 @@ namespace ios
 			ConferenceCell cell = this.TableView.DequeueReusableCell (cellId) as ConferenceCell;
 
 			try {
-				cell.SetConference (conference);
+				//cell.SetConference (conference);
 
 			} catch (Exception ex) {
 				Insights.Report (ex);
