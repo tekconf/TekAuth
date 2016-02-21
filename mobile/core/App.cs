@@ -11,7 +11,7 @@ namespace TekConf.Mobile.Core
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 
-            RegisterAppStart<ViewModels.ConferencesViewModel>();
+			RegisterAppStart<PolymorphicListItemTypesViewModel>();
         }
     }
 }

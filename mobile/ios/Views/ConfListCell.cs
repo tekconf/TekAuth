@@ -11,13 +11,31 @@ namespace ios
 		public static readonly NSString Key = new NSString ("ConfListCell");
 		public static readonly UINib Nib;
 
-		static ConfListCell ()
+		//static ConfListCell ()
+		//{
+		//	Nib = UINib.FromName ("ConfListCell", NSBundle.MainBundle);
+		//}
+
+		//public ConfListCell (IntPtr handle) : base (handle)
+		//{
+		//}
+		private const string BindingText = "Name Name;";
+
+		public ConfListCell()
+			: base(BindingText)
 		{
-			Nib = UINib.FromName ("ConfListCell", NSBundle.MainBundle);
+			
 		}
 
-		public ConfListCell (IntPtr handle) : base (handle)
+		public ConfListCell(IntPtr handle)
+			: base(BindingText, handle)
 		{
+			
+		}
+
+		public static float GetCellHeight()
+		{
+			return 120f;
 		}
 	}
 }

@@ -11,19 +11,19 @@ using UIKit;
 
 namespace ios.Views
 {
-	[Register ("ConferenceDetailView")]
-	partial class ConferenceDetailView
-	{
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel slug { get; set; }
+    [Register ("ConferenceDetailView")]
+    partial class ConferenceDetailView
+    {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel slug { get; set; }
 
-		void ReleaseDesignerOutlets ()
-		{
-			if (slug != null) {
-				slug.Dispose ();
-				slug = null;
-			}
-		}
-	}
+        void ReleaseDesignerOutlets ()
+        {
+            if (slug != null) {
+                slug.Dispose ();
+                slug = null;
+            }
+        }
+    }
 }

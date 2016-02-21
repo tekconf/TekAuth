@@ -11,35 +11,37 @@ using UIKit;
 
 namespace ios
 {
-	[Register ("ConferencesFilterViewController")]
-	partial class ConferencesFilterViewController
-	{
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UISwitch myScheduleOnly { get; set; }
+    [Register ("ConferencesFilterViewController")]
+    partial class ConferencesFilterViewController
+    {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UISwitch myScheduleOnly { get; set; }
 
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UIButton resetFilter { get; set; }
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton resetFilter { get; set; }
 
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UIButton saveFilter { get; set; }
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton saveFilter { get; set; }
 
-		void ReleaseDesignerOutlets ()
-		{
-			if (myScheduleOnly != null) {
-				myScheduleOnly.Dispose ();
-				myScheduleOnly = null;
-			}
-			if (resetFilter != null) {
-				resetFilter.Dispose ();
-				resetFilter = null;
-			}
-			if (saveFilter != null) {
-				saveFilter.Dispose ();
-				saveFilter = null;
-			}
-		}
-	}
+        void ReleaseDesignerOutlets ()
+        {
+            if (myScheduleOnly != null) {
+                myScheduleOnly.Dispose ();
+                myScheduleOnly = null;
+            }
+
+            if (resetFilter != null) {
+                resetFilter.Dispose ();
+                resetFilter = null;
+            }
+
+            if (saveFilter != null) {
+                saveFilter.Dispose ();
+                saveFilter = null;
+            }
+        }
+    }
 }

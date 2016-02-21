@@ -11,11 +11,11 @@ using UIKit;
 
 namespace ios
 {
-	[Register ("SettingsNavigationController")]
-	partial class SettingsNavigationController
-	{
-		void ReleaseDesignerOutlets ()
-		{
-		}
-	}
+    [Register ("SettingsNavigationController")]
+    partial class SettingsNavigationController
+    {
+        void ReleaseDesignerOutlets ()
+        {
+        }
+    }
 }

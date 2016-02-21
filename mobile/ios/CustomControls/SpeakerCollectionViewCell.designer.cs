@@ -11,27 +11,28 @@ using UIKit;
 
 namespace ios
 {
-	[Register ("SpeakerCollectionViewCell")]
-	partial class SpeakerCollectionViewCell
-	{
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UIImageView speakerImage { get; set; }
+    [Register ("SpeakerCollectionViewCell")]
+    partial class SpeakerCollectionViewCell
+    {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView speakerImage { get; set; }
 
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel speakerName { get; set; }
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel speakerName { get; set; }
 
-		void ReleaseDesignerOutlets ()
-		{
-			if (speakerImage != null) {
-				speakerImage.Dispose ();
-				speakerImage = null;
-			}
-			if (speakerName != null) {
-				speakerName.Dispose ();
-				speakerName = null;
-			}
-		}
-	}
+        void ReleaseDesignerOutlets ()
+        {
+            if (speakerImage != null) {
+                speakerImage.Dispose ();
+                speakerImage = null;
+            }
+
+            if (speakerName != null) {
+                speakerName.Dispose ();
+                speakerName = null;
+            }
+        }
+    }
 }

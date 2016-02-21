@@ -11,11 +11,11 @@ using UIKit;
 
 namespace ios
 {
-	[Register ("MyConferencesViewController")]
-	partial class MyConferencesViewController
-	{
-		void ReleaseDesignerOutlets ()
-		{
-		}
-	}
+    [Register ("MyConferencesViewController")]
+    partial class MyConferencesViewController
+    {
+        void ReleaseDesignerOutlets ()
+        {
+        }
+    }
 }

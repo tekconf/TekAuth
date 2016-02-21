@@ -11,51 +11,55 @@ using UIKit;
 
 namespace ios
 {
-	[Register ("SpeakerDetailViewController")]
-	partial class SpeakerDetailViewController
-	{
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel speakerBio { get; set; }
+    [Register ("SpeakerDetailViewController")]
+    partial class SpeakerDetailViewController
+    {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel speakerBio { get; set; }
 
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel speakerCompany { get; set; }
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel speakerCompany { get; set; }
 
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UIImageView speakerImage { get; set; }
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView speakerImage { get; set; }
 
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel speakerName { get; set; }
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel speakerName { get; set; }
 
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UIButton speakerTwitterHandle { get; set; }
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton speakerTwitterHandle { get; set; }
 
-		void ReleaseDesignerOutlets ()
-		{
-			if (speakerBio != null) {
-				speakerBio.Dispose ();
-				speakerBio = null;
-			}
-			if (speakerCompany != null) {
-				speakerCompany.Dispose ();
-				speakerCompany = null;
-			}
-			if (speakerImage != null) {
-				speakerImage.Dispose ();
-				speakerImage = null;
-			}
-			if (speakerName != null) {
-				speakerName.Dispose ();
-				speakerName = null;
-			}
-			if (speakerTwitterHandle != null) {
-				speakerTwitterHandle.Dispose ();
-				speakerTwitterHandle = null;
-			}
-		}
-	}
+        void ReleaseDesignerOutlets ()
+        {
+            if (speakerBio != null) {
+                speakerBio.Dispose ();
+                speakerBio = null;
+            }
+
+            if (speakerCompany != null) {
+                speakerCompany.Dispose ();
+                speakerCompany = null;
+            }
+
+            if (speakerImage != null) {
+                speakerImage.Dispose ();
+                speakerImage = null;
+            }
+
+            if (speakerName != null) {
+                speakerName.Dispose ();
+                speakerName = null;
+            }
+
+            if (speakerTwitterHandle != null) {
+                speakerTwitterHandle.Dispose ();
+                speakerTwitterHandle = null;
+            }
+        }
+    }
 }

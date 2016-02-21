@@ -11,11 +11,19 @@ using UIKit;
 
 namespace ios
 {
-	[Register ("ConfListCell")]
-	partial class ConfListCell
-	{
-		void ReleaseDesignerOutlets ()
-		{
-		}
-	}
+    [Register ("ConfListCell")]
+    partial class ConfListCell
+    {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel Name { get; set; }
+
+        void ReleaseDesignerOutlets ()
+        {
+            if (Name != null) {
+                Name.Dispose ();
+                Name = null;
+            }
+        }
+    }
 }

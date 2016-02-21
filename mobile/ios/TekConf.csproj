@@ -348,6 +348,7 @@
     <InterfaceDefinition Include="UnauthenticatedView.xib" />
     <InterfaceDefinition Include="Views\ConferenceCell.xib" />
     <InterfaceDefinition Include="Views\ConfListCell.xib" />
+    <InterfaceDefinition Include="Views\KittenCell.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -443,6 +444,9 @@
     <Compile Include="Views\ConfListCell.designer.cs">
       <DependentUpon>ConfListCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\EmptyClass.cs" />
+    <Compile Include="Views\KittenCell.cs" />
+    <Compile Include="Views\KittenCell.designer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\refit.2.4.1\build\portable-net45+netcore45+wp8+wpa81+monoandroid+xamarin.ios10\refit.targets" Condition="Exists('..\..\packages\refit.2.4.1\build\portable-net45+netcore45+wp8+wpa81+monoandroid+xamarin.ios10\refit.targets')" />

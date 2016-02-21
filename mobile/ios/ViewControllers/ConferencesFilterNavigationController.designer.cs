@@ -11,11 +11,11 @@ using UIKit;
 
 namespace ios
 {
-	[Register ("ConferencesFilterNavigationController")]
-	partial class ConferencesFilterNavigationController
-	{
-		void ReleaseDesignerOutlets ()
-		{
-		}
-	}
+    [Register ("ConferencesFilterNavigationController")]
+    partial class ConferencesFilterNavigationController
+    {
+        void ReleaseDesignerOutlets ()
+        {
+        }
+    }
 }
