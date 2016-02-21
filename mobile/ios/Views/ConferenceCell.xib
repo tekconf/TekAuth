@@ -6,12 +6,10 @@
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner">
-            <connections>
-                <outlet property="ConferenceCell" destination="cxk-wN-pdQ" id="name-outlet-cxk-wN-pdQ"/>
-            </connections>
+            <connections/>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" restorationIdentifier="ConferenceCell" selectionStyle="default" indentationWidth="10" rowHeight="221" id="cxk-wN-pdQ" customClass="ConferenceCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="221" id="cxk-wN-pdQ" customClass="ConferenceCell" reuseIdentifier="ConferenceCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="221"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cxk-wN-pdQ" id="YTl-1W-gDM">
@@ -92,7 +90,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iKZ-lR-o0b">
-                        <rect key="frame" x="22" y="8" width="182" height="21"/>
+                        <rect key="frame" x="22" y="8" width="182" height="25"/>
                         <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="18"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>

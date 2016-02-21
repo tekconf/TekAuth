@@ -17,6 +17,8 @@ namespace ios
 		public PolymorphicListItemTypesView()
 		{
 			Title = "Poly List";
+			TableView.RowHeight = UITableView.AutomaticDimension;
+			TableView.EstimatedRowHeight = 221;
 		}
 
 		public override void ViewDidLoad()
@@ -42,14 +44,18 @@ namespace ios
 			public TableSource(UITableView tableView)
 				: base(tableView)
 			{
-				tableView.RegisterNibForCellReuse(UINib.FromName("ConfListCell", NSBundle.MainBundle),
-				                                                  ConfListCell.Key);
+				tableView.RegisterNibForCellReuse(UINib.FromName("ConferenceCell", NSBundle.MainBundle),
+				                                  ConferenceCell.Key);
 				
 				tableView.RegisterNibForCellReuse(UINib.FromName("KittenCell", NSBundle.MainBundle),
 				                                  KittenCellIdentifier);
 				tableView.RegisterNibForCellReuse(UINib.FromName("DogCell", NSBundle.MainBundle), DogCellIdentifier);
 			}
 
+			public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
+			{
+				return 221f;
+			}
 			protected override UITableViewCell GetOrCreateCellFor(UITableView tableView, NSIndexPath indexPath,
 			                                                      object item)
 			{
@@ -66,7 +72,7 @@ namespace ios
 				{
 					throw new ArgumentException("Unknown animal of type " + item.GetType().Name);
 				}
-				cellIdentifier = ConfListCell.Key;
+				cellIdentifier = ConferenceCell.Key;
 				return (UITableViewCell)TableView.DequeueReusableCell(cellIdentifier, indexPath);
 			}
 		}

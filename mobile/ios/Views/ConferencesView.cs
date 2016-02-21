@@ -29,6 +29,7 @@ namespace ios.Views
 
 		public ConferencesView ()
 		{
+			
 			TableView.RowHeight = UITableView.AutomaticDimension;
 			TableView.EstimatedRowHeight = 221;
 		}
@@ -48,8 +49,7 @@ namespace ios.Views
 
 			ListenForMessages ();
 
-			AddSearchController ();
-
+			AddSearchController();
 		}
 
 		void LoadTable ()
