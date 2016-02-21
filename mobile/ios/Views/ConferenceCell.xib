@@ -29,14 +29,14 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mU0-bS-BLg">
                                 <rect key="frame" x="8" y="8" width="34" height="21"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                 <nil key="highlightedColor"/>
                                 <constraints>
                                     <constraint id="26" firstItem="mU0-bS-BLg" firstAttribute="height" constant="21"/>
                                 </constraints>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.10863160574978847" blue="0.32560005359839694" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" colorSpace="calibratedRGB" red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1"/>
                         <constraints>
                             <constraint id="21" firstItem="XZW-YF-cg9" firstAttribute="height" constant="37"/>
                             <constraint id="22" firstItem="XZW-YF-cg9" firstAttribute="width" constant="106"/>
@@ -60,7 +60,7 @@
                                 </constraints>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.94468530030187747" blue="0.29215346886009008" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" colorSpace="calibratedRGB" red="0.90588235294117647" green="0.90196078431372551" blue="0.90196078431372551" alpha="1"/>
                         <constraints>
                             <constraint id="31" firstItem="l69-sz-gJu" firstAttribute="height" constant="37"/>
                             <constraint id="43" firstItem="aM6-gb-GYT" firstAttribute="leading" secondItem="l69-sz-gJu" secondAttribute="leading" constant="8"/>
@@ -100,7 +100,7 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ff4-uO-t5l">
                         <rect key="frame" x="22" y="41" width="182" height="21"/>
-                        <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="14"/>
+                        <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                         <constraints>
@@ -145,6 +145,7 @@
                 <outlet property="date" destination="mU0-bS-BLg" id="name-outlet-mU0-bS-BLg"/>
                 <outlet property="scheduleStatus" destination="z85-2h-7OP" id="name-outlet-z85-2h-7OP"/>
                 <outlet property="location" destination="aM6-gb-GYT" id="name-outlet-aM6-gb-GYT"/>
+                <outlet property="favoriteView" destination="25S-Vn-F3I" id="name-outlet-25S-Vn-F3I"/>
             </connections>
         </tableViewCell>
     </objects>

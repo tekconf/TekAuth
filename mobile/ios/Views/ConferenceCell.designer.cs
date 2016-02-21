@@ -64,6 +64,10 @@ namespace ios
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView favoriteView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView highlightColor { get; set; }
 
         [Outlet]
@@ -146,6 +150,11 @@ namespace ios
             if (description != null) {
                 description.Dispose ();
                 description = null;
+            }
+
+            if (favoriteView != null) {
+                favoriteView.Dispose ();
+                favoriteView = null;
             }
 
             if (highlightColor != null) {
