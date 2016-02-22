@@ -30,6 +30,8 @@ namespace ios.Views
 			Title = "Conferences";
 			TableView.RowHeight = UITableView.AutomaticDimension;
 			TableView.EstimatedRowHeight = 221;
+			TableView.TranslatesAutoresizingMaskIntoConstraints = false;
+
 		}
 
 		public override void ViewDidLoad()

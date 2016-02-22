@@ -56,7 +56,15 @@ namespace ios
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView contentView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel date { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView dateView { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -81,6 +89,10 @@ namespace ios
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel location { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView locationView { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -142,9 +154,19 @@ namespace ios
                 conferenceName = null;
             }
 
+            if (contentView != null) {
+                contentView.Dispose ();
+                contentView = null;
+            }
+
             if (date != null) {
                 date.Dispose ();
                 date = null;
+            }
+
+            if (dateView != null) {
+                dateView.Dispose ();
+                dateView = null;
             }
 
             if (description != null) {
@@ -175,6 +197,11 @@ namespace ios
             if (location != null) {
                 location.Dispose ();
                 location = null;
+            }
+
+            if (locationView != null) {
+                locationView.Dispose ();
+                locationView = null;
             }
 
             if (name != null) {

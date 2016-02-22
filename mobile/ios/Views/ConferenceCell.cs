@@ -16,8 +16,8 @@ namespace ios
 		public ConferenceCell(IntPtr handle) : base(handle)
 		{
 			this.DelayBind(() => {
-			   //conferenceContentView.Layer.BorderColor = UIColor.LightGray.CGColor;
-			   //conferenceContentView.Layer.BorderWidth = 0.5f;
+			   contentView.Layer.BorderColor = UIColor.LightGray.CGColor;
+			   contentView.Layer.BorderWidth = 0.5f;
 
 			   _imageViewLoader = new MvxImageViewLoader(() => this.image);
 			   this.scheduleStatus.Font = UIFont.FromName("FontAwesome", 17f);
