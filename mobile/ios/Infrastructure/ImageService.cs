@@ -9,6 +9,7 @@ using System.Net.Http;
 using ModernHttpClient;
 using TekConf.Mobile.Core.Services;
 using Xamarin;
+using System.Net.Http;
 
 namespace ios
 {
@@ -23,6 +24,7 @@ namespace ios
 			byte[] bytes = null;
 
 			if (!File.Exists (localPath)) {
+
 				using (var httpClient = new HttpClient (new NativeMessageHandler ())) {
 
 					try {

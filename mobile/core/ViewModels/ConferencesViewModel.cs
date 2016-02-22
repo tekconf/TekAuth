@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using TekConf.Mobile.Core.Services;
 using Fusillade;
 using System.Threading.Tasks;
+using AutoMapper;
 
 namespace TekConf.Mobile.Core.ViewModels
 {
@@ -12,11 +13,15 @@ namespace TekConf.Mobile.Core.ViewModels
 	{
         public IMvxCommand ShowConference { get; private set; }
 		public IMvxCommand LoadConferences { get; private set; }
+		private readonly IMapper _mapper;
 
-	    public ConferencesViewModel(IConferencesService conferencesService)
+	    public ConferencesViewModel(IConferencesService conferencesService, IMapper mapper)
 	    {
-			Conferences = new ObservableCollection<Conference> ();
-	        this.ShowConference = new MvxCommand<Conference>((conference) =>
+			_mapper = mapper;
+
+			Conferences = new ObservableCollection<ConferenceListViewModel> ();
+	        
+			this.ShowConference = new MvxCommand<ConferenceListViewModel>((conference) =>
             {
                 var navObject = new ConferenceDetailViewModel.NavObject()
                 {
@@ -25,20 +30,21 @@ namespace TekConf.Mobile.Core.ViewModels
                 ShowViewModel<ConferenceDetailViewModel>(navObject);
             });
 
-			this.LoadConferences = new MvxCommand(async () =>
+			this.LoadConferences = new MvxCommand<Priority>(async (priority) =>
 				{
-					await Load(conferencesService);
+					await Load(conferencesService, priority);
 				});
         }
 
-		private async Task Load(IConferencesService conferencesService)
+		private async Task Load(IConferencesService conferencesService, Priority priority)
 		{
-			var conferences = await conferencesService.GetConferences("", Priority.Explicit);
-			Conferences = new ObservableCollection<Conference>(conferences);
+			var conferences = await conferencesService.GetConferences("", priority);
+			var viewModels = _mapper.Map <List<ConferenceListViewModel>>(conferences);
+			Conferences = new ObservableCollection<ConferenceListViewModel>(viewModels);
 		}
 			
-		private ObservableCollection<Conference> _conferences;
-		public ObservableCollection<Conference> Conferences
+		private ObservableCollection<ConferenceListViewModel> _conferences;
+		public ObservableCollection<ConferenceListViewModel> Conferences
 		{
 			get { 
 				return _conferences;
@@ -48,5 +54,7 @@ namespace TekConf.Mobile.Core.ViewModels
 			}
 		}
 	}
+
+	
     
 }

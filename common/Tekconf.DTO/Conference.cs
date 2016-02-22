@@ -51,5 +51,7 @@ namespace Tekconf.DTO
         public string HighlightColor { get; set; }
         public Address Address { get; set; } = new Address();
         public List<Session> Sessions { get; set; }
+
+
     }
 }

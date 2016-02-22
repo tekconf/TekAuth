@@ -14,6 +14,7 @@ using MvvmCross.Core.ViewModels;
 using MvvmCross.iOS.Platform;
 using MvvmCross.Platform;
 using TekConf.Mobile.Core.Messages;
+using TekConf.Mobile.Core;
 
 namespace ios
 {
@@ -46,6 +47,7 @@ namespace ios
 			#endif
 
 			AdjustDefaultUI ();
+
 
 			var pushSettings = UIUserNotificationSettings.GetSettingsForTypes (
 				                   UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound,
