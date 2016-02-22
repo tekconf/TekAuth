@@ -31,14 +31,13 @@ namespace ios.Views
 			TableView.RowHeight = UITableView.AutomaticDimension;
 			TableView.EstimatedRowHeight = 221;
 			TableView.TranslatesAutoresizingMaskIntoConstraints = false;
-
 		}
 
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
 			Title = "Conferences";
-			this.TableView.SeparatorStyle = UITableViewCellSeparatorStyle.None;
+			this.TableView.SeparatorStyle = UITableViewCellSeparatorStyle.SingleLine;
 
 			AddSettingsButton();
 			AddFilterButton();
@@ -319,7 +318,7 @@ namespace ios.Views
 		{
 			public TableSource(UITableView tableView) : base(tableView)
 			{
-				tableView.RegisterNibForCellReuse(UINib.FromName("ConferenceCell", NSBundle.MainBundle), ConferenceCell.Key);
+				tableView.RegisterClassForCellReuse(typeof(ConferenceCell), new NSString(ConferenceCell.Key));
 			}
 
 			public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)

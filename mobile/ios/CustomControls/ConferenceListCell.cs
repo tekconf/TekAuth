@@ -9,6 +9,7 @@ namespace ios
 	{
 		public ConferenceListCell (IntPtr handle) : base (handle)
 		{
+			
 		}
 	}
 }
