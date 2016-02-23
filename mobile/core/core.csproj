@@ -51,7 +51,6 @@
     <Compile Include="Messages\UserLoggedInMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ConferenceDetailViewModel.cs" />
-    <Compile Include="ViewModels\FirstViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\ConferenceDetailViewModel2.cs" />
@@ -72,7 +71,6 @@
     <Compile Include="ViewModels\SpeakerDetailViewModel.cs" />
     <Compile Include="ViewModels\ConferencesListViewModel.cs" />
     <Compile Include="ViewModels\ConferencesViewModel.cs" />
-    <Compile Include="ViewModels\EmptyClass.cs" />
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
     <Compile Include="ViewModels\ConferenceListViewModel.cs" />
     <Compile Include="Converters\AddedToScheduleConverter.cs" />
@@ -207,7 +205,5 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Folder Include="Converters\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>
