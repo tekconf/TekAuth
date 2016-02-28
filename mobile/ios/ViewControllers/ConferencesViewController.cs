@@ -19,6 +19,7 @@ using TekConf.Mobile.Core.Messages;
 using TekConf.Mobile.Core.Services;
 using CoreGraphics;
 using ObjCRuntime;
+using BigTed;
 
 namespace ios
 {
@@ -191,6 +192,7 @@ namespace ios
 
 		async Task LoadConferences (Priority priority)
 		{
+			BTProgressHUD.Show(status:"Loading Conferences", maskType:ProgressHUD.MaskType.Gradient);
 			using (Insights.TrackTime ("Loading Conferences List")) {
 				await Vm.LoadConferences (priority);
 				_conferences = Vm.Conferences;
@@ -198,6 +200,7 @@ namespace ios
 				await PrepareForSearch (_conferences);
 			}
 			this.TableView.ReloadData ();
+			BTProgressHUD.Dismiss();
 		}
 
 
