@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
   <Import Project="..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
-  <Import Project="..\..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -41,23 +41,132 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.5.0.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AutoMapper.EF6, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.EF6.0.5.0\lib\net45\AutoMapper.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DelegateDecompiler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=93b26a10a04705bd, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DelegateDecompiler.0.18.1\lib\net40-Client\DelegateDecompiler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DelegateDecompiler.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=93b26a10a04705bd, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DelegateDecompiler.EntityFramework.0.18.1\lib\net45\DelegateDecompiler.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EntityFramework.6.1.3-beta1\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EntityFramework.6.1.3-beta1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentValidation.Mvc, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentValidation.MVC5.6.2.1.0\lib\Net45\FluentValidation.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Glimpse.Ado, Version=1.7.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Glimpse.Ado.1.7.3\lib\net45\Glimpse.Ado.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Glimpse.AspNet, Version=1.9.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Glimpse.AspNet.1.9.2\lib\net45\Glimpse.AspNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Glimpse.Core, Version=1.8.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Glimpse.1.8.6\lib\net45\Glimpse.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Glimpse.EF6, Version=1.6.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Glimpse.EF6.1.6.5\lib\net45\Glimpse.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Glimpse.Mvc5, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Glimpse.Mvc5.1.5.3\lib\net45\Glimpse.Mvc5.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlTags, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\HtmlTags.4.1.0\lib\net45\HtmlTags.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MediatR, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MediatR.2.1.0\lib\net45\MediatR.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=1.0.0.127, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.IdentityModel.Logging.1.0.0\lib\net451\Microsoft.IdentityModel.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.0.0.127, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.IdentityModel.Tokens.5.0.0\lib\net451\Microsoft.IdentityModel.Tokens.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.HttpListener, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Owin.Host.HttpListener.3.0.1\lib\net45\Microsoft.Owin.Host.HttpListener.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Hosting, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Owin.Hosting.3.0.1\lib\net45\Microsoft.Owin.Hosting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.Futures.5.0.0\lib\net40\Microsoft.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mono.Reflection, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Mono.Reflection.1.0.0.0\lib\Mono.Reflection.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StructureMap, Version=4.3.0.442, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\StructureMap.4.3.0\lib\net45\StructureMap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StructureMap.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\structuremap.web.4.0.0.315\lib\net40\StructureMap.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.0.0.127, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.IdentityModel.Tokens.Jwt.5.0.0\lib\net451\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
@@ -75,9 +184,6 @@
     <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f">
       <HintPath>..\..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005">
-      <HintPath>..\..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -87,14 +193,8 @@
     <Reference Include="Microsoft.Owin.Cors, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\..\packages\Microsoft.Owin.Cors.3.0.1\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Owin.Host.HttpListener, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\..\packages\Microsoft.Owin.Host.HttpListener.2.0.2\lib\net45\Microsoft.Owin.Host.HttpListener.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Hosting, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\..\packages\Microsoft.Owin.Hosting.2.0.2\lib\net45\Microsoft.Owin.Hosting.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
@@ -108,26 +208,8 @@
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
-      <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5">
       <HintPath>..\..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="StructureMap, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\packages\structuremap.3.0.0.108\lib\net40\StructureMap.dll</HintPath>
-    </Reference>
-    <Reference Include="StructureMap.Net4, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\packages\structuremap.3.0.0.108\lib\net40\StructureMap.Net4.dll</HintPath>
-    </Reference>
-    <Reference Include="StructureMap.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\packages\structuremap.web.3.0.0.108\lib\net40\StructureMap.Web.dll</HintPath>
-    </Reference>
-    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\..\packages\System.IdentityModel.Tokens.Jwt.4.0.0\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Cors, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\..\packages\Microsoft.AspNet.Cors.5.0.0\lib\net45\System.Web.Cors.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http.Owin, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
@@ -162,8 +244,9 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4">
-      <HintPath>..\..\packages\WebActivatorEx.2.0.5\lib\net40\WebActivatorEx.dll</HintPath>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WebActivatorEx.2.1.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -171,13 +254,8 @@
     <Reference Include="Auth0, Version=1.11.2.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\packages\Auth0.1.11.3\lib\net\Auth0.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp, Version=105.1.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\packages\RestSharp.105.1.0\lib\net452\RestSharp.dll</HintPath>
-    </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -220,17 +298,86 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MyAuthAttribute.cs" />
     <Compile Include="Controllers\SchedulesController.cs" />
+    <Compile Include="DAL\SchoolConfiguration.cs" />
+    <Compile Include="DAL\ConferenceContext.cs" />
+    <Compile Include="DAL\SchoolInitializer.cs" />
+    <Compile Include="DAL\SchoolInterceptorLogging.cs" />
+    <Compile Include="DAL\SchoolInterceptorTransientErrors.cs" />
+    <Compile Include="DependencyResolution\ControllerConvention.cs" />
     <Compile Include="DependencyResolution\DefaultRegistry.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
     <Compile Include="DependencyResolution\StructureMapDependencyScope.cs" />
     <Compile Include="DependencyResolution\StructureMapScopeModule.cs" />
     <Compile Include="DependencyResolution\StructureMapWebApiDependencyResolver.cs" />
     <Compile Include="DependencyResolution\StructureMapWebApiDependencyScope.cs" />
+    <Compile Include="Features\Course\Create.cs" />
+    <Compile Include="Features\Course\Delete.cs" />
+    <Compile Include="Features\Course\Details.cs" />
+    <Compile Include="Features\Course\Edit.cs" />
+    <Compile Include="Features\Course\Index.cs" />
+    <Compile Include="Features\Course\MappingProfile.cs" />
+    <Compile Include="Features\Course\UiController.cs" />
+    <Compile Include="Features\Department\Create.cs" />
+    <Compile Include="Features\Department\Delete.cs" />
+    <Compile Include="Features\Department\Details.cs" />
+    <Compile Include="Features\Department\Edit.cs" />
+    <Compile Include="Features\Department\Index.cs" />
+    <Compile Include="Features\Department\MappingProfile.cs" />
+    <Compile Include="Features\Department\UiController.cs" />
+    <Compile Include="Features\Home\About.cs" />
+    <Compile Include="Features\Home\UiController.cs" />
+    <Compile Include="Features\Instructor\CreateEdit.cs" />
+    <Compile Include="Features\Instructor\Delete.cs" />
+    <Compile Include="Features\Instructor\Details.cs" />
+    <Compile Include="Features\Instructor\Index.cs" />
+    <Compile Include="Features\Instructor\MappingProfile.cs" />
+    <Compile Include="Features\Instructor\UiController.cs" />
+    <Compile Include="Features\Student\Create.cs" />
+    <Compile Include="Features\Student\Delete.cs" />
+    <Compile Include="Features\Student\Details.cs" />
+    <Compile Include="Features\Student\Edit.cs" />
+    <Compile Include="Features\Student\Index.cs" />
+    <Compile Include="Features\Student\MappingProfile.cs" />
+    <Compile Include="Features\Student\UiController.cs" />
     <Compile Include="FromHeaderAttribute.cs" />
     <Compile Include="FromHeaderBinding.cs" />
+    <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\ControllerExtensions.cs" />
+    <Compile Include="Infrastructure\ControllerFactory.cs" />
+    <Compile Include="Infrastructure\DepartmentModelBinder.cs" />
+    <Compile Include="Infrastructure\DepartmentModelBinderProvider.cs" />
+    <Compile Include="Infrastructure\FeatureViewLocationRazorViewEngine.cs" />
+    <Compile Include="Infrastructure\CommandProcessing\CommandProcessingRegistry.cs" />
+    <Compile Include="Infrastructure\DataAccess\MvcTransactionFilter.cs" />
+    <Compile Include="Infrastructure\HtmlHelperExtensions.cs" />
+    <Compile Include="Infrastructure\InstructorModelBinder.cs" />
+    <Compile Include="Infrastructure\InstructorModelBinderProvider.cs" />
+    <Compile Include="Infrastructure\LinkBuilder.cs" />
+    <Compile Include="Infrastructure\Mapping\AutoMapperRegistry.cs" />
+    <Compile Include="Infrastructure\Mapping\MapperExtensions.cs" />
+    <Compile Include="Infrastructure\Tags\DefaultAspNetMvcHtmlConventions.cs" />
+    <Compile Include="Infrastructure\Tags\DefaultDisplayLabelBuilder.cs" />
+    <Compile Include="Infrastructure\Tags\DepartmentSelectElementBuilder.cs" />
+    <Compile Include="Infrastructure\Tags\EntitySelectElementBuilder.cs" />
+    <Compile Include="Infrastructure\Tags\HtmlTagExtensions.cs" />
+    <Compile Include="Infrastructure\Tags\HtmlTagRegistry.cs" />
+    <Compile Include="Infrastructure\Tags\InstructorSelectElementBuilder.cs" />
+    <Compile Include="Infrastructure\UrlHelperExtensions.cs" />
+    <Compile Include="Infrastructure\Validation\StructureMapValidatorFactory.cs" />
+    <Compile Include="Infrastructure\ValidatorActionFilter.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\Logger.cs" />
+    <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Enrollment.cs" />
+    <Compile Include="Models\IEntity.cs" />
+    <Compile Include="Models\Instructor.cs" />
+    <Compile Include="Models\OfficeAssignment.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Student.cs" />
     <Compile Include="MyHeaderAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StructureMapWebApiControllerActivator.cs" />
@@ -245,6 +392,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -267,6 +415,11 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="images\conferences\build-2016.png" />
+    <Content Include="images\conferences\codemash-2016.png" />
+    <Content Include="images\conferences\evolve-2016.png" />
+    <Content Include="images\conferences\googleio-2016.png" />
+    <Content Include="images\conferences\wwdc-2016.png" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -275,20 +428,44 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="images\conferences\build-2016.png" />
-    <Content Include="images\conferences\codemash-2016.png" />
-    <Content Include="images\conferences\evolve-2016.png" />
-    <Content Include="images\conferences\googleio-2016.png" />
-    <Content Include="images\conferences\wwdc-2016.png" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Features\Course\Create.cshtml" />
+    <Content Include="Features\Course\Delete.cshtml" />
+    <Content Include="Features\Course\Details.cshtml" />
+    <Content Include="Features\Course\Edit.cshtml" />
+    <Content Include="Features\Course\Index.cshtml" />
+    <Content Include="Features\Course\UpdateCourseCredits.cshtml" />
+    <Content Include="Features\Department\Create.cshtml" />
+    <Content Include="Features\Department\Delete.cshtml" />
+    <Content Include="Features\Department\Details.cshtml" />
+    <Content Include="Features\Department\Edit.cshtml" />
+    <Content Include="Features\Department\Index.cshtml" />
+    <Content Include="Features\Home\About.cshtml" />
+    <Content Include="Features\Home\Contact.cshtml" />
+    <Content Include="Features\Home\Index.cshtml" />
+    <Content Include="Features\Instructor\CreateEdit.cshtml" />
+    <Content Include="Features\Instructor\Delete.cshtml" />
+    <Content Include="Features\Instructor\Details.cshtml" />
+    <Content Include="Features\Instructor\Index.cshtml" />
+    <Content Include="Features\Shared\Error.cshtml" />
+    <Content Include="Features\Shared\_Layout.cshtml" />
+    <Content Include="Features\Student\Create.cshtml" />
+    <Content Include="Features\Student\Delete.cshtml" />
+    <Content Include="Features\Student\Details.cshtml" />
+    <Content Include="Features\Student\Edit.cshtml" />
+    <Content Include="Features\Student\Index.cshtml" />
+    <Content Include="Features\Web.config" />
+    <Content Include="Features\_ViewStart.cshtml" />
     <None Include="Properties\PublishProfiles\tekauth - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\tekauth - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\tekauth - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\tekauth - Web Deploy.pubxml" />
-    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
-    <Content Include="Scripts\jquery-2.1.4.js" />
-    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <None Include="Scripts\jquery-3.1.0.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-3.1.0.js" />
+    <Content Include="Scripts\jquery-3.1.0.min.js" />
+    <Content Include="Scripts\jquery-3.1.0.slim.js" />
+    <Content Include="Scripts\jquery-3.1.0.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
@@ -309,6 +486,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Scripts\jquery-3.1.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.0.min.map" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tekconf.Data\Tekconf.Data.csproj">
@@ -323,7 +502,6 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-2.1.4.min.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -362,8 +540,8 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

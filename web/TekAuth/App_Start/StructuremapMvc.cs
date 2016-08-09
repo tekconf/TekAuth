@@ -22,35 +22,45 @@ using WebActivatorEx;
 [assembly: PreApplicationStartMethod(typeof(StructuremapMvc), "Start")]
 [assembly: ApplicationShutdownMethod(typeof(StructuremapMvc), "End")]
 
-namespace TekAuth.App_Start {
-	using System.Web.Mvc;
+namespace TekAuth.App_Start
+{
+    using System.Web;
+    using System.Web.Mvc;
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
-	using TekAuth.DependencyResolution;
-
+    using TekAuth.DependencyResolution;
+    using Infrastructure.Mapping;
     using StructureMap;
-    
-	public static class StructuremapMvc {
-        #region Public Properties
 
-        public static StructureMapDependencyScope StructureMapDependencyScope { get; set; }
+    public static class StructuremapMvc
+    {
+        public static StructureMapDependencyScope ParentScope { get; set; }
 
-        #endregion
-		
-		#region Public Methods and Operators
-		
-		public static void End() {
-            StructureMapDependencyScope.Dispose();
+        public static void End()
+        {
+            ParentScope.Dispose();
+            ParentScope.DisposeParentContainer();
         }
-		
-        public static void Start() {
+
+        public static void Start()
+        {
             IContainer container = IoC.Initialize();
-            StructureMapDependencyScope = new StructureMapDependencyScope(container);
-            DependencyResolver.SetResolver(StructureMapDependencyScope);
+            ParentScope = new StructureMapDependencyScope(container, new HttpContextNestedContainerScope());
+            DependencyResolver.SetResolver(ParentScope);
             DynamicModuleUtility.RegisterModule(typeof(StructureMapScopeModule));
         }
-
-        #endregion
     }
+
+    public class HttpContextNestedContainerScope : INestedContainerScope
+    {
+        private const string NestedContainerKey = "Nested.Container.Key";
+
+        public IContainer NestedContainer
+        {
+            get { return (IContainer)(HttpContext.Current != null ? HttpContext.Current.Items[NestedContainerKey] : null); }
+            set { HttpContext.Current.Items[NestedContainerKey] = value; }
+        }
+    }
+
 }

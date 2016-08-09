@@ -15,6 +15,8 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using StructureMap;
+
 namespace TekAuth.DependencyResolution {
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
@@ -27,6 +29,7 @@ namespace TekAuth.DependencyResolution {
                 scan => {
                     scan.TheCallingAssembly();
                     scan.WithDefaultConventions();
+					scan.With(new ControllerConvention());
                 });
             //For<IExample>().Use<Example>();
         }
